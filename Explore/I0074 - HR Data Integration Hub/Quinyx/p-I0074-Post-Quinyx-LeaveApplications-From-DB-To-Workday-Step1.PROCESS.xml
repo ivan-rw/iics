@@ -1,0 +1,422 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>i1R0aa-gt-1698662-2020-11-18T12:59:03.413Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step1</types1:Name>
+      <types1:ParentFlowIds>Gci3zymbduaa-gt-27395250-2020-10-20T11:55:43.529Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>For deletion and in the case of update, it reverses the entries of the original leave application.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-18T12:59:03Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-18T15:58:27Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-18T16:00:45Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step1/p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step1.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step1"
+                  name="p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step1"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>For deletion and in the case of update, it reverses the entries of the original leave application.</description>
+            <tags>.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_LeaveTypeToBeDeleted"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_CurrentLeaveApplicationXML"
+                          required="true"
+                          type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_DeleteType"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_NewLeaveType"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_Step1Response" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Step1ErrorMessage" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Step1StatusCode" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Step1RequestPayload" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="khnipwrq" targetId="khnipwrp"/>
+               </start>
+               <subflow id="khnipwrp">
+                  <title>p-Shared-GetEnvironmentVariables</title>
+                  <subflowGUID>hVwvolFWXAfkAG7pjbqKwh</subflowGUID>
+                  <subflowPath>p-Shared-GetEnvironmentVariables</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_IDFPath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_Environment" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ScriptPath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ArchiveCommand" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_SharedSQLServerName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_SharedDatabaseName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_AgentHomePath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_OrgId" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ServerName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="khnipwrr" targetId="khnew1rx"/>
+               </subflow>
+               <container id="khnew1rx" type="exclusive">
+                  <title>in_LeaveTypeToBeDeleted</title>
+                  <flow id="khnew1s1">
+                     <assignment id="khnipvwq">
+                        <title>Assignment to out_Step1RequestPayload</title>
+                        <operation source="formula" to="output.out_Step1RequestPayload">
+                           <expression language="XQuery">&lt;WORKER_ADJUST_ABSENCE_INPUT&gt;
+  &lt;WorkerId&gt;
+  	{$input.in_CurrentLeaveApplicationXML/BadgeNumber/text()}
+  &lt;/WorkerId&gt;
+  &lt;Adjustment_to_Requested&gt;-{$input.in_CurrentLeaveApplicationXML/Replacing/RequestedUnits/Requested[1]/text()}
+  &lt;/Adjustment_to_Requested&gt;
+  &lt;Comment&gt;{concat('Quinyx_TimeOff_Adjustment-DBRowId', $input.in_CurrentLeaveApplicationXML/Id/text(), '-QId', $input.in_CurrentLeaveApplicationXML/QuinyxRecordId/text())}&lt;/Comment&gt;
+  &lt;REFERENCEIDS&gt;
+  {
+	for $r in $input.in_CurrentLeaveApplicationXML/Replacing/TimeOffRefId/text/text()
+	return 
+    	element {'ReferenceId'}{$r}
+  }
+  &lt;/REFERENCEIDS&gt;
+&lt;/WORKER_ADJUST_ABSENCE_INPUT&gt;</expression>
+                        </operation>
+                        <link id="khnipvxr" targetId="khnipvyn"/>
+                     </assignment>
+                     <eventContainer id="khnipvyn">
+                        <service id="khnipvxq">
+                           <title>Adjust_Time_Off_Request</title>
+                           <serviceName>svccon-I0074-Workday-Absence:Adjust_Time_Off_Request</serviceName>
+                           <serviceGUID>aVaVU9IPA3sj53NYZW5jqJ</serviceGUID>
+                           <serviceInput>
+                              <parameter name="in_WorkerAdjustAbsence" source="formula">
+                                 <expression language="XQuery">$output.out_Step1RequestPayload </expression>
+                              </parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="khnipvyp">
+                           <assignment id="khnipw32">
+                              <title>Assignment to out_Step1StatusCode, out_Step1Response etc. 1</title>
+                              <operation source="constant" to="output.out_Step1StatusCode">1</operation>
+                              <operation source="field" to="output.out_Step1Response">output.Adjust_Time_Off_Event_Response</operation>
+                              <operation source="formula" to="output.out_Step1ErrorMessage">
+                                 <expression language="XQuery">''</expression>
+                              </operation>
+                              <link id="khnipw4n" targetId="khnipw4m"/>
+                           </assignment>
+                           <container id="khnipw4m" type="exclusive">
+                              <title>in_DeleteType</title>
+                              <flow id="khnipw4p">
+                                 <service id="khnipwn7">
+                                    <title>Run a Shell Command: Set IsReversed to true</title>
+                                    <serviceName>avShellService</serviceName>
+                                    <serviceGUID/>
+                                    <serviceInput>
+                                       <parameter name="command" source="formula">
+                                          <expression language="XQuery">'SQLCMD -S "' || $output.out_SharedSQLServerName || '" -d "' || $output.out_SharedDatabaseName || '" -Q "update HR.QuinyxLeaveApplications set IsReversed = 1 where Id = ' || $input.in_CurrentLeaveApplicationXML/Replacing/Id/text() || '"'</expression>
+                                       </parameter>
+                                       <parameter name="workingDirPath" source="formula">
+                                          <expression language="XQuery">'c:\'</expression>
+                                       </parameter>
+                                    </serviceInput>
+                                 </service>
+                                 <link id="khnipw4q" targetId="khnipw4m" type="containerLink"/>
+                              </flow>
+                              <flow id="khnipw4s">
+                                 <link id="khnipw4t" targetId="khnipw4m" type="containerLink"/>
+                              </flow>
+                              <link id="khnipw4o" targetId="khnipw4p" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$input.in_DeleteType}</arg>
+                                       <arg name="right">Replace</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="khnipw4r" targetId="khnipw4s" type="containerLink"/>
+                           </container>
+                           <link id="khnipvyq" targetId="khnipvyn" type="containerLink"/>
+                        </flow>
+                        <flow id="khnipvys">
+                           <assignment id="khnipw0q">
+                              <title>Assignment to out_Step1StatusCode, out_Step1Response etc.</title>
+                              <operation source="constant" to="output.out_Step1StatusCode">-1</operation>
+                              <operation source="field" to="output.out_Step1Response">output.Adjust_Time_Off_Event_Response</operation>
+                              <operation source="formula" to="output.out_Step1ErrorMessage">
+                                 <expression language="XQuery">$output.faultInfo[1]/reason </expression>
+                              </operation>
+                           </assignment>
+                           <link id="khnipvyt" targetId="khnipvyn" type="containerLink"/>
+                        </flow>
+                        <link id="khnipvyo" targetId="khnipvyp" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="khnipvxw" interrupting="true">
+                              <link id="khnipvyr" targetId="khnipvys" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="khnew1s2" targetId="khnew1rx" type="containerLink"/>
+                  </flow>
+                  <flow id="khnew1s4">
+                     <container id="khnipw92" type="exclusive">
+                        <title>in_DeleteType</title>
+                        <flow id="khnipw94">
+                           <assignment id="khnipwad">
+                              <title>Assignment to Rescind Leave Absence Payload</title>
+                              <operation source="formula" to="output.out_Step1RequestPayload">
+                                 <expression language="XQuery">&lt;RESCIND_WORKER_LEAVE_OF_ABSENCE_INPUT&gt;
+  &lt;Request_Leave_of_Absence_Id&gt;{fn:concat('Quinyx_LEAVE_REQUEST_', $input.in_CurrentLeaveApplicationXML/QuinyxRecordId/text())}&lt;/Request_Leave_of_Absence_Id&gt;
+  &lt;Comment&gt;{concat('Quinyx_Rescind_Leave_of_Absence-DBRowId', $input.in_CurrentLeaveApplicationXML/Id/text(), '-QId', $input.in_CurrentLeaveApplicationXML/QuinyxRecordId/text())}&lt;/Comment&gt;
+&lt;/RESCIND_WORKER_LEAVE_OF_ABSENCE_INPUT&gt;  </expression>
+                              </operation>
+                              <link id="khnipwca" targetId="khnipwey"/>
+                           </assignment>
+                           <eventContainer id="khnipwey">
+                              <service id="khnipwc9">
+                                 <title>Rescind_Leave_of_Absence</title>
+                                 <serviceName>svccon-I0074-Workday-Absence:Rescind_Leave_of_Absence</serviceName>
+                                 <serviceGUID>aVaVU9IPA3sj53NYZW5jqJ</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="in_WorkdayrRescindLeaveOfAbsence" source="formula">
+                                       <expression language="XQuery">$output.out_Step1RequestPayload </expression>
+                                    </parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="khnipwf0">
+                                 <assignment id="khnipwju">
+                                    <title>Assignment to out_Step1StatusCode, out_Step1Response etc. 1 1</title>
+                                    <operation source="constant" to="output.out_Step1StatusCode">1</operation>
+                                    <operation source="field" to="output.out_Step1Response">output.Rescind_Leave_of_Absence_Response</operation>
+                                    <operation source="formula" to="output.out_Step1ErrorMessage">
+                                       <expression language="XQuery">''</expression>
+                                    </operation>
+                                    <link id="khnipwln" targetId="khnipwlm"/>
+                                 </assignment>
+                                 <container id="khnipwlm" type="exclusive">
+                                    <title>in_DeleteType</title>
+                                    <flow id="khnipwlp">
+                                       <service id="khnipx2v">
+                                          <title>Run a Shell Command: Set IsReversed to true 1</title>
+                                          <serviceName>avShellService</serviceName>
+                                          <serviceGUID/>
+                                          <serviceInput>
+                                             <parameter name="command" source="formula">
+                                                <expression language="XQuery">'SQLCMD -S "' || $output.out_SharedSQLServerName || '" -d "' || $output.out_SharedDatabaseName || '" -Q "update HR.QuinyxLeaveApplications set IsReversed = 1 where Id = ' || $input.in_CurrentLeaveApplicationXML/Replacing/Id/text() || '"'</expression>
+                                             </parameter>
+                                             <parameter name="workingDirPath" source="formula">
+                                                <expression language="XQuery">'c:\'</expression>
+                                             </parameter>
+                                          </serviceInput>
+                                       </service>
+                                       <link id="khnipwlq" targetId="khnipwlm" type="containerLink"/>
+                                    </flow>
+                                    <flow id="khnipwls">
+                                       <link id="khnipwyb" targetId="khnipwlm" type="containerLink"/>
+                                    </flow>
+                                    <link id="khnipwlo" targetId="khnipwlp" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="string-equals">
+                                             <arg name="left">{$input.in_DeleteType}</arg>
+                                             <arg name="right">Replace</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="khnipwlr" targetId="khnipwls" type="containerLink"/>
+                                 </container>
+                                 <link id="khnipwf1" targetId="khnipwey" type="containerLink"/>
+                              </flow>
+                              <flow id="khnipwf3">
+                                 <assignment id="khnipwgz">
+                                    <title>Assignment to out_Step1StatusCode, out_Step1Response etc. 2</title>
+                                    <operation source="constant" to="output.out_Step1StatusCode">-1</operation>
+                                    <operation source="field" to="output.out_Step1Response">output.Rescind_Leave_of_Absence_Response</operation>
+                                    <operation source="formula" to="output.out_Step1ErrorMessage">
+                                       <expression language="XQuery">$output.faultInfo[1]/reason </expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="khnipwf4" targetId="khnipwey" type="containerLink"/>
+                              </flow>
+                              <link id="khnipwez" targetId="khnipwf0" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="khnipwcl" interrupting="true">
+                                    <link id="khnipwf2" targetId="khnipwf3" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="khnipw95" targetId="khnipw92" type="containerLink"/>
+                        </flow>
+                        <flow id="khnipw97">
+                           <container id="khnipx6v" type="exclusive">
+                              <title>in_LeaveTypeToBeDeleted</title>
+                              <flow id="khnipx6x">
+                                 <link id="khnipx6y" targetId="khnipx6v" type="containerLink"/>
+                              </flow>
+                              <flow id="khnipx70">
+                                 <jumpTo id="khnipxcb">
+                                    <link id="khnipxcc" targetId="khnipwad"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="khnipx6w" targetId="khnipx6x" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$input.in_LeaveTypeToBeDeleted}</arg>
+                                       <arg name="right">{$input.in_NewLeaveType}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="khnipx6z" targetId="khnipx70" type="containerLink"/>
+                           </container>
+                           <link id="khnipw98" targetId="khnipw92" type="containerLink"/>
+                        </flow>
+                        <link id="khnipw93" targetId="khnipw94" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$input.in_DeleteType}</arg>
+                                 <arg name="right">Remove</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="khnipw96" targetId="khnipw97" type="containerLink"/>
+                     </container>
+                     <link id="khnew1s5" targetId="khnew1rx" type="containerLink"/>
+                  </flow>
+                  <flow id="khnew1su">
+                     <assignment id="khnew1t4">
+                        <title>Assignment to out_Step1StatusCode, out_Step1RequestPayload etc.</title>
+                        <operation source="constant" to="output.out_Step1StatusCode">-1</operation>
+                        <operation source="formula" to="output.out_Step1RequestPayload">
+                           <expression language="XQuery">()</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_Step1Response">
+                           <expression language="XQuery">()</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_Step1ErrorMessage">
+                           <expression language="XQuery">if ($input.in_DeleteType = 'Remove') then
+fn:concat('Unable to determine leave type for deletion: ', $input.in_LeaveTypeToBeDeleted )
+else
+fn:concat('Unable to determine leave type of the previous leave applciation to be reversed: ', $input.in_LeaveTypeToBeDeleted )</expression>
+                        </operation>
+                     </assignment>
+                     <link id="khnew1sv" targetId="khnew1rx" type="containerLink"/>
+                  </flow>
+                  <link id="khnew1s0" targetId="khnew1s1" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.in_LeaveTypeToBeDeleted}</arg>
+                           <arg name="right">TimeOff</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="khnew1s3" targetId="khnew1s4" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.in_LeaveTypeToBeDeleted}</arg>
+                           <arg name="right">Leave</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="khnew1st" targetId="khnew1su" type="containerLink"/>
+                  <link id="khnew1rz" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>4w98Zy6jdblfXXIsCh2xyw</types1:GUID>
+      <types1:DisplayName>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step1</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-19T13:01:15.432Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,64 @@
+{
+  "objectInfo" : {
+    "id" : "4w98Zy6jdblfXXIsCh2xyw",
+    "name" : "p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step1",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "i1R0aa-gt-1698662-2020-11-18T12:59:03.413Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "For deletion and in the case of update, it reverses the entries of the original leave application.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "hVwvolFWXAfkAG7pjbqKwh",
+    "name" : "p-Shared-GetEnvironmentVariables",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "D8WhIpppppppppp-gt-34253860-2019-10-31T03:21:23.479Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Shared"
+  }, {
+    "id" : "aVaVU9IPA3sj53NYZW5jqJ",
+    "name" : "svccon-I0074-Workday-Absence",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "43dtQR6kbeJHQjA-gt-68565-2019-08-19T08:11:28.88Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0074 - HR Data Integration Hub/Common"
+  } ]
+}
