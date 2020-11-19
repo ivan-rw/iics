@@ -1,0 +1,67 @@
+{
+  "objectInfo" : {
+    "id" : "4L6tKSjwm8VkYAYwohXIe8",
+    "name" : "Synchronization_Task3 - Copy 1",
+    "type" : "DSS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD60I00000000007K"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : null,
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "objectRefs" : [ {
+    "id" : "eSLNkI7br4Vbwqm1fq7Laa",
+    "name" : "Cloud Integration Hub",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD60B000000000066"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "2qHBOyRSBY2iGL6Rj1tnAC",
+    "name" : "ff_I0039_dev",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD60B0000000000CQ"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/SYS"
+  } ]
+}
