@@ -1,0 +1,22 @@
+{
+  "objectInfo" : {
+    "id" : "aAItf2BM5LSg13DMSB1aAQ",
+    "name" : "I0074 - HR Data Integration Hub",
+    "type" : "Project",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : null,
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "Integration Hub for HR data to support Payroll and any applications that require HR data.",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "objectRefs" : [ ]
+}
