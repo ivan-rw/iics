@@ -1,0 +1,373 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Owhz5chspiRASmv-gt-2007107-2020-10-15T05:52:42.658Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0074-Quinyx-LeaveApplication-ToWorkday-ETL-TaskFlow</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Starting point for I0074 Quinyx Leave Application to Workday taskflow</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-10-15T05:52:43Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-10-30T12:14:39Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0074-Quinyx-LeaveApplication-ToWorkday-ETL-TaskFlow"
+                  name="p-I0074-Quinyx-LeaveApplication-ToWorkday-ETL-TaskFlow"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>Starting point for I0074 Quinyx Leave Application to Workday taskflow</description>
+            <tags>.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="result" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Completed</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_DB_ETLControl_LatestRow" type="reference">
+                  <options>
+                     <option name="referenceTo">sql-I0074-HR:QuinyxLeaveApplicationETLControl</option>
+                     <option name="required">false</option>
+                     <option name="guid">lUAecQlK5mybMDYMXeE1Mk</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_GetDataUpdatedFrom" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ETLStatus" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ErrorMessages" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_GetDataUpdatedThrough" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LastUpdateTime" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kgaepo7z" targetId="kgaepo7y"/>
+               </start>
+               <assignment id="kgaepo7y">
+                  <title>Get Latest ETLControl</title>
+                  <operation source="query" to="temp.tmp_DB_ETLControl_LatestRow">
+                     <query advanceQuery="false"
+                            from="sql-I0074-HR:QuinyxLeaveApplicationETLControl">
+                        <where>Order By Id Desc</where>
+                     </query>
+                  </operation>
+                  <link id="kgaepoam" targetId="kgaepoa0"/>
+               </assignment>
+               <assignment id="kgaepohp">
+                  <title>Assignment to tmp_GetDataUpdatedThrough</title>
+                  <operation source="formula" to="temp.tmp_GetDataUpdatedThrough">
+                     <expression language="XQuery">format-dateTime(fn:adjust-dateTime-to-timezone(fn:current-dateTime()), '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]Z')</expression>
+                  </operation>
+                  <link id="kghuuebh" targetId="kgaezuv1"/>
+               </assignment>
+               <assignment id="jxoi371w">
+                  <title>Assignment to ErrorMessage, ETLStatus</title>
+                  <operation source="field"
+                             to="output.Created QuinyxLeaveApplicationETLControl.ErrorMessage">temp.tmp_ErrorMessages</operation>
+                  <operation source="field"
+                             to="output.Created QuinyxLeaveApplicationETLControl.ETLStatus">temp.tmp_ETLStatus</operation>
+                  <link id="kgsw9fxl" targetId="kgsw9fxk"/>
+               </assignment>
+               <container id="kgaepoa0" type="exclusive">
+                  <title>tmp_DB_ETLControl_LatestRow</title>
+                  <flow id="kgaepoa1">
+                     <container id="kgaepoa2" type="exclusive">
+                        <title>ETLStatus</title>
+                        <flow id="kgaepoa3">
+                           <subflow id="kgaepoa4">
+                              <title>p-Shared-SendEmail: Warn incomplete</title>
+                              <subflowGUID>gxxxPg07XMEelwXQQcmjK5</subflowGUID>
+                              <subflowPath>p-Shared-SendEmail</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_To" source="constant" updatable="true">daniel.ong@rockwool.com</parameter>
+                                 <parameter name="in_Subject" source="constant" updatable="true">ICRT Process p-I0074-Quinyx-LeaveApplication-ToWorkday-ETL-TaskFlow did not run due to last job status is incomplete</parameter>
+                                 <parameter name="in_Message" source="formula" updatable="true">
+                                    <expression language="XQuery">fn:concat('Previous Id:', $temp.tmp_DB_ETLControl_LatestRow.Id, '&lt;br&gt;Date From (CET):', $temp.tmp_DB_ETLControl_LatestRow.FromCET, '&lt;br&gt;Last Run Time (CET):', $temp.tmp_DB_ETLControl_LatestRow.RunTimeCET)</expression>
+                                 </parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_SendEmail_Result" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="kgaepoai" targetId="kgaepoa5"/>
+                           </subflow>
+                           <throw id="kgaepoa5">
+                              <title>Throw 1</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">500</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Previous ETL incomplete</parameter>
+                                 <parameter name="reason" source="constant" updatable="true"/>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <flow id="kgaepoa6">
+                           <assignment id="kgaepoa7">
+                              <title>Set Update_From to last Updated_From</title>
+                              <operation source="field" to="temp.tmp_GetDataUpdatedFrom">temp.tmp_DB_ETLControl_LatestRow.FromCET</operation>
+                           </assignment>
+                           <link id="kgaepoaj" targetId="kgaepoa2" type="containerLink"/>
+                        </flow>
+                        <flow id="kgaepoa8">
+                           <assignment id="kgaepoa9">
+                              <title>Set Update_From to 1 second after last Updated_Through 1</title>
+                              <operation source="field" to="temp.tmp_GetDataUpdatedFrom">temp.tmp_DB_ETLControl_LatestRow.RunTimeCET</operation>
+                           </assignment>
+                           <link id="kgaepoak" targetId="kgaepoa2" type="containerLink"/>
+                        </flow>
+                        <link id="kgaepoaf" targetId="kgaepoa3" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_DB_ETLControl_LatestRow.ETLStatus}</arg>
+                                 <arg name="right">{0}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kgaepoag" targetId="kgaepoa6" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_DB_ETLControl_LatestRow.ETLStatus}</arg>
+                                 <arg name="right">{-1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kgaepoah" targetId="kgaepoa8" type="containerLink"/>
+                     </container>
+                     <link id="kgaepoae" targetId="kgaepoa0" type="containerLink"/>
+                  </flow>
+                  <flow id="kgaepoaa">
+                     <assignment id="kgaepoab">
+                        <title>Set Updated_From to pre-WorkDay implementation</title>
+                        <operation source="formula" to="temp.tmp_GetDataUpdatedFrom">
+                           <expression language="XQuery">'2000-01-01 00:00:00'</expression>
+                        </operation>
+                     </assignment>
+                     <link id="kgaepoal" targetId="kgaepoa0" type="containerLink"/>
+                  </flow>
+                  <link id="kgaepoac" targetId="kgaepoa1" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_DB_ETLControl_LatestRow}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kgaepoad" targetId="kgaepoaa" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_DB_ETLControl_LatestRow}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kgaezuq2" targetId="kgaepohp"/>
+               </container>
+               <container id="jxvnnnac" type="exclusive">
+                  <title>tmp_ETLStatus</title>
+                  <flow id="jxvnnnag">
+                     <assignment id="kgiz7wsy">
+                        <title>Assignment to tmp_LastUpdateTime</title>
+                        <operation source="formula" to="temp.tmp_LastUpdateTime">
+                           <expression language="XQuery">format-dateTime($temp.tmp_GetDataUpdatedFrom, '[Y0001]-[M01]-[D01] [H01]:[m01]:[s01]')</expression>
+                        </operation>
+                        <link id="kgiz7wsz" targetId="kget2hva"/>
+                     </assignment>
+                     <eventContainer id="kget2hva">
+                        <subflow id="kget2hp0">
+                           <title>p-I0074-GetLeaveApplications-Quinyx-To-DB</title>
+                           <subflowGUID>6mbD5ayHeECcBzC7Uh4jw7</subflowGUID>
+                           <subflowPath>p-I0074-GetLeaveApplications-Quinyx-To-DB</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_ModifiedAfter" source="field" updatable="true">temp.tmp_LastUpdateTime</parameter>
+                              <parameter name="in_ETLId" source="field">output.Created QuinyxLeaveApplicationETLControl.Id</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="output" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="kget2hvc">
+                           <link id="kget2hvd" targetId="kget2hva" type="containerLink"/>
+                        </flow>
+                        <flow id="kget2hvf">
+                           <assignment id="kget2hw6">
+                              <title>Assignment to tmp_ETLStatus, tmp_ErrorMessages</title>
+                              <operation source="constant" to="temp.tmp_ETLStatus">-1</operation>
+                              <operation source="formula" to="temp.tmp_ErrorMessages">
+                                 <expression language="XQuery">util:toXML($output.faultInfo )</expression>
+                              </operation>
+                           </assignment>
+                           <link id="kget2hvg" targetId="kget2hva" type="containerLink"/>
+                        </flow>
+                        <link id="kget2hvb" targetId="kget2hvc" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kget2huw" interrupting="true">
+                              <link id="kget2hve" targetId="kget2hvf" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="jxvnnnah" targetId="jxvnnnac" type="containerLink"/>
+                  </flow>
+                  <flow id="jxvnnnaj">
+                     <link id="jxvnnnak" targetId="jxvnnnac" type="containerLink"/>
+                  </flow>
+                  <link id="jxvnnnaf" targetId="jxvnnnag" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.tmp_ETLStatus}</arg>
+                           <arg name="right">{1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jxvnnnai" targetId="jxvnnnaj" type="containerLink"/>
+                  <link id="jxvnnnwd" targetId="jxvnnnwc"/>
+               </container>
+               <container id="jxvnnnwc" type="exclusive">
+                  <title>tmp_ETLStatus</title>
+                  <flow id="jxvnnnwg">
+                     <subflow id="jxvnnnzx">
+                        <title>p-Shared-SendEmail:  GetWorkdayWorkers failure alert</title>
+                        <subflowGUID>gxxxPg07XMEelwXQQcmjK5</subflowGUID>
+                        <subflowPath>p-Shared-SendEmail</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_To" source="constant" updatable="true">daniel.ong@rockwool.com</parameter>
+                           <parameter name="in_Subject" source="constant" updatable="true">ICRT Process p-I0074-Quinyx-LeaveApplication-ToWorkday-ETL-TaskFlow failed</parameter>
+                           <parameter name="in_Message" source="formula" updatable="true">
+                              <expression language="XQuery">concat($temp.tmp_ErrorMessages, '&amp;#xD;&amp;#xA;', 'Informatica Process Id:', util:getProcessId())</expression>
+                           </parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_SendEmail_Result" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                     </subflow>
+                     <link id="jxvnnnwh" targetId="jxvnnnwc" type="containerLink"/>
+                  </flow>
+                  <flow id="jxvnnnwj">
+                     <link id="jxvnnnwk" targetId="jxvnnnwc" type="containerLink"/>
+                  </flow>
+                  <link id="jxvnnnwf" targetId="jxvnnnwg" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.tmp_ETLStatus}</arg>
+                           <arg name="right">{-1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jxvnnnwi" targetId="jxvnnnwj" type="containerLink"/>
+                  <link id="kgafleqm" targetId="jxoi371w"/>
+               </container>
+               <container id="kgsw9fxk" type="exclusive">
+                  <title>tmp_ETLStatus</title>
+                  <flow id="kgsw9fxo">
+                     <subflow id="kgsw9g00">
+                        <title>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday</title>
+                        <subflowGUID>9Hw7QsrFp6agLh2zeA8kUD</subflowGUID>
+                        <subflowPath>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input/>
+                        <outputDef>
+                           <field name="out_ProcessId" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                     </subflow>
+                     <link id="kgsw9fxp" targetId="kgsw9fxk" type="containerLink"/>
+                  </flow>
+                  <flow id="kgsw9fxr">
+                     <link id="kgsw9fxs" targetId="kgsw9fxk" type="containerLink"/>
+                  </flow>
+                  <link id="kgsw9fxn" targetId="kgsw9fxo" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.tmp_ETLStatus}</arg>
+                           <arg name="right">{1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kgsw9fxq" targetId="kgsw9fxr" type="containerLink"/>
+                  <link id="kgt2rof9" targetId="kgt2rof8"/>
+               </container>
+               <create id="kgaezuv1">
+                  <title>QuinyxLeaveApplicationETLControl</title>
+                  <entityName>sql-I0074-HR:QuinyxLeaveApplicationETLControl</entityName>
+                  <createInput>
+                     <parameter name="FromCET" source="field" updatable="true">temp.tmp_GetDataUpdatedFrom</parameter>
+                     <parameter name="RunTimeCET" source="field" updatable="true">temp.tmp_GetDataUpdatedThrough</parameter>
+                     <parameter name="ETLStatus" source="constant" updatable="true">0</parameter>
+                     <parameter name="InformaticaProcessId" source="formula" updatable="true">
+                        <expression language="XQuery">util:getProcessId()</expression>
+                     </parameter>
+                  </createInput>
+                  <link id="kgaflf04" targetId="jxvnnnac"/>
+               </create>
+               <subflow id="kgt2rof8">
+                  <title>p-I0074-Quinyx-LeaveApplications-To-Workday-CreateErrorReport</title>
+                  <subflowGUID>cQVAT8CCEkkk9pL6L7RkSN</subflowGUID>
+                  <subflowPath>p-I0074-Quinyx-LeaveApplications-To-Workday-CreateErrorReport</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_PostWorkdayProcessId" source="field" updatable="true">output.out_ProcessId</parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="kgt2rofa" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>fU6WqaLC4ebd6JnnKS7JST</types1:GUID>
+      <types1:DisplayName>p-I0074-Quinyx-LeaveApplication-ToWorkday-ETL-TaskFlow</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-20T06:16:29.642Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
