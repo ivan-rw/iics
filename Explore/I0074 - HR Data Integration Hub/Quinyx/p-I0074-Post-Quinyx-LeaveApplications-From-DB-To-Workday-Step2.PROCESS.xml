@@ -1,0 +1,430 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>3a-gt-1725648-2020-11-18T08:57:29.877Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step2</types1:Name>
+      <types1:ParentFlowIds>Gci3zymbduaa-gt-27395250-2020-10-20T11:55:43.529Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Post leave application to Workday either as a time off, or leave of absence.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-18T08:57:30Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-18T16:24:34Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-18T16:25:05Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step2/p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step2.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step2"
+                  name="p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step2"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>Post leave application to Workday either as a time off, or leave of absence.</description>
+            <tags>.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_LeaveType"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_CurrentLeaveApplicationXML"
+                          required="true"
+                          type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_MappedLeaveTypeNode"
+                          required="true"
+                          type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_PreviousLeaveType"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_LOA_MarkRescindRequired"
+                          required="true"
+                          type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_Step2Response" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Step2ErrorMessage" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Step2StatusCode" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Step2RequestPayload" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="khn69bop" targetId="khn69boo"/>
+               </start>
+               <container id="khn69boo" type="exclusive">
+                  <title>in_LeaveType</title>
+                  <flow id="khn69bos">
+                     <assignment id="khn69btf">
+                        <title>Assignment to out_Step2RequestPayload</title>
+                        <operation source="formula" to="output.out_Step2RequestPayload">
+                           <expression language="XQuery">let $fromDateTime := xs:dateTime($input.in_CurrentLeaveApplicationXML/FromDateTime/text())
+let $toDateTime := xs:dateTime($input.in_CurrentLeaveApplicationXML/ToDateTime/text())
+
+let $totalhours := ($toDateTime - $fromDateTime) div xs:dayTimeDuration("PT1H")
+let $days := fn:ceiling(($toDateTime - $fromDateTime) div xs:dayTimeDuration("P1D"))-1
+
+return
+&lt;WORKER_ABSENCE_INPUT&gt;
+  &lt;WorkerId&gt;{ $input.in_CurrentLeaveApplicationXML/BadgeNumber/text() }&lt;/WorkerId&gt;
+  &lt;Comment&gt;{concat('Quinyx_TimeOff_Entry-DBRowId', $input.in_CurrentLeaveApplicationXML/Id/text(), '-QId', $input.in_CurrentLeaveApplicationXML/QuinyxRecordId/text())}&lt;/Comment&gt;
+  &lt;WORKER_ABSENCE_ENTRIES&gt;
+  {
+  for $n in 0 to xs:integer($days)
+  return
+    &lt;WORKER_ABSENCE_ENTRY&gt;
+      &lt;Date&gt;{fn:format-dateTime($fromDateTime + xs:dayTimeDuration(fn:concat('P', $n,'D')), '[Y0001]-[M01]-[D01]')}&lt;/Date&gt;
+      &lt;Time_Off_Code&gt;{ $input.in_MappedLeaveTypeNode/WorkdayLeaveCode/text() }&lt;/Time_Off_Code&gt;
+      &lt;Requested&gt;{ if(xs:decimal($totalhours) &lt;= 4 ) then '0.5' else 1 }&lt;/Requested&gt;
+      &lt;Time_Off_Reason_ID&gt;{ $input.in_MappedLeaveTypeNode/WorkdayRefId/text() }&lt;/Time_Off_Reason_ID&gt;
+      
+    &lt;/WORKER_ABSENCE_ENTRY&gt;
+  }
+  &lt;/WORKER_ABSENCE_ENTRIES&gt;
+&lt;/WORKER_ABSENCE_INPUT&gt;</expression>
+                        </operation>
+                        <link id="khn69bvb" targetId="khn69bvl"/>
+                     </assignment>
+                     <eventContainer id="khn69bvl">
+                        <service id="khn69bu8">
+                           <title>Enter_Time_Off</title>
+                           <serviceName>svccon-I0074-Workday-Absence:Enter_Time_Off</serviceName>
+                           <serviceGUID>aVaVU9IPA3sj53NYZW5jqJ</serviceGUID>
+                           <serviceInput>
+                              <parameter name="in_WorkerAbsence" source="formula">
+                                 <expression language="XQuery">$output.out_Step2RequestPayload </expression>
+                              </parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="khn69bvn">
+                           <assignment id="khn69bvz">
+                              <title>Assignment to out_Step2Response, out_Step2StatusCode etc.</title>
+                              <operation source="field" to="output.out_Step2Response">output.Time_Off_Event_Response</operation>
+                              <operation source="constant" to="output.out_Step2StatusCode">1</operation>
+                              <operation source="formula" to="output.out_Step2ErrorMessage">
+                                 <expression language="XQuery">''</expression>
+                              </operation>
+                           </assignment>
+                           <link id="khn69bvo" targetId="khn69bvl" type="containerLink"/>
+                        </flow>
+                        <flow id="khn69bvq">
+                           <assignment id="khn69byk">
+                              <title>Assignment to out_Step2Response, out_Step2StatusCode etc.</title>
+                              <operation source="field" to="output.out_Step2Response">output.Time_Off_Event_Response</operation>
+                              <operation source="constant" to="output.out_Step2StatusCode">-1</operation>
+                              <operation source="formula" to="output.out_Step2ErrorMessage">
+                                 <expression language="XQuery">$output.faultInfo[1]/reason </expression>
+                              </operation>
+                           </assignment>
+                           <link id="khn69bvr" targetId="khn69bvl" type="containerLink"/>
+                        </flow>
+                        <link id="khn69bvm" targetId="khn69bvn" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="khn69bvk" interrupting="true">
+                              <link id="khn69bvp" targetId="khn69bvq" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="khn69bot" targetId="khn69boo" type="containerLink"/>
+                  </flow>
+                  <flow id="khn69bov">
+                     <assignment id="khn69c24">
+                        <title>Assignment to out_Step2RequestPayload</title>
+                        <operation source="formula" to="output.out_Step2RequestPayload">
+                           <expression language="XQuery">let $FromDateTime := xs:dateTime($input.in_CurrentLeaveApplicationXML/FromDateTime/text())
+let $ToDateTime := xs:dateTime($input.in_CurrentLeaveApplicationXML/ToDateTime/text())
+
+let $ActualToDateTime :=
+if (xs:time($ToDateTime) = xs:time('00:00:00')) then 
+	$ToDateTime - xs:dayTimeDuration("P1D")
+else 
+    $ToDateTime
+  
+return
+&lt;WORKER_LEAVE_OF_ABSENCE_INPUT&gt;
+  &lt;WorkerId&gt;{ $input.in_CurrentLeaveApplicationXML/BadgeNumber/text() }&lt;/WorkerId&gt;
+  &lt;Request_Leave_of_Absence_Id&gt;{fn:concat('Quinyx_LEAVE_REQUEST_', $input.in_CurrentLeaveApplicationXML/QuinyxRecordId/text())}&lt;/Request_Leave_of_Absence_Id&gt;
+  &lt;Comment&gt;{concat('Quinyx_Leave_of_Absence_Request-DBRowId', $input.in_CurrentLeaveApplicationXML/Id/text(), '-QId', $input.in_CurrentLeaveApplicationXML/QuinyxRecordId/text())}&lt;/Comment&gt;
+  &lt;Correction&gt;{ if (fn:count($input.in_CurrentLeaveApplicationXML/Replacing) &gt; 0 and $input.in_LeaveType = $input.in_PreviousLeaveType ) then '1' else '0' }&lt;/Correction&gt;
+  &lt;WorkdayLeaveTypeId&gt;{$input.in_MappedLeaveTypeNode/WorkdayLeaveCode/text()}&lt;/WorkdayLeaveTypeId&gt;
+  &lt;WorkdayLeaveReasonId&gt;{$input.in_MappedLeaveTypeNode/WorkdayRefId/text()}&lt;/WorkdayLeaveReasonId&gt;
+  &lt;First_Day_of_Leave&gt;{fn:format-dateTime($FromDateTime, '[Y0001]-[M01]-[D01]')}&lt;/First_Day_of_Leave&gt;
+  &lt;Last_Day_of_Work&gt;{fn:format-dateTime($FromDateTime - xs:dayTimeDuration("P1D"), '[Y0001]-[M01]-[D01]')}&lt;/Last_Day_of_Work&gt;
+  &lt;Last_Day_of_Leave&gt;{fn:format-dateTime($ActualToDateTime, '[Y0001]-[M01]-[D01]')}&lt;/Last_Day_of_Leave&gt;
+&lt;/WORKER_LEAVE_OF_ABSENCE_INPUT&gt; </expression>
+                        </operation>
+                        <link id="khn69c45" targetId="khn69c5s"/>
+                     </assignment>
+                     <eventContainer id="khn69c5s">
+                        <service id="khn69c3d">
+                           <title>Request_Leave_of_Absence</title>
+                           <serviceName>svccon-I0074-Workday-Absence:Request_Leave_of_Absence</serviceName>
+                           <serviceGUID>aVaVU9IPA3sj53NYZW5jqJ</serviceGUID>
+                           <serviceInput>
+                              <parameter name="in_WorkdayLeaveOfAbsence" source="formula">
+                                 <expression language="XQuery">$output.out_Step2RequestPayload </expression>
+                              </parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="khn69c5u">
+                           <assignment id="khn69c79">
+                              <title>Assignment to out_Step2Response, out_Step2StatusCode etc. 1</title>
+                              <operation source="field" to="output.out_Step2Response">output.Request_Leave_of_Absence_Response</operation>
+                              <operation source="constant" to="output.out_Step2StatusCode">1</operation>
+                              <operation source="formula" to="output.out_Step2ErrorMessage">
+                                 <expression language="XQuery">''</expression>
+                              </operation>
+                              <link id="khnloqkz" targetId="khnloqp5"/>
+                           </assignment>
+                           <eventContainer id="khnloqp5">
+                              <service id="khnloqky">
+                                 <title>Request_Return_from_Leave_of_Absence</title>
+                                 <serviceName>svccon-I0074-Workday-Absence:Request_Return_from_Leave_of_Absence</serviceName>
+                                 <serviceGUID>aVaVU9IPA3sj53NYZW5jqJ</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="in_WorkdayReturnFromLeaveOfAbsence" source="formula">
+                                       <expression language="XQuery">let $ToDateTime := xs:dateTime($input.in_CurrentLeaveApplicationXML/ToDateTime/text())
+
+let $ActualToDateTime :=
+if (xs:time($ToDateTime) = xs:time('00:00:00')) then 
+	$ToDateTime - xs:dayTimeDuration("P1D")
+else 
+    $ToDateTime
+  
+return
+&lt;RETURN_FROM_LEAVE_OF_ABSENCE_INPUT&gt;
+  &lt;WorkerId&gt;{ $input.in_CurrentLeaveApplicationXML/BadgeNumber/text() }&lt;/WorkerId&gt;
+  &lt;Request_Leave_of_Absence_Id&gt;{fn:concat('Quinyx_LEAVE_REQUEST_', $input.in_CurrentLeaveApplicationXML/QuinyxRecordId/text())}&lt;/Request_Leave_of_Absence_Id&gt;
+  &lt;Comment&gt;{concat('Quinyx_Return_From_Leave_of_Absence_Request-DBRowId', $input.in_CurrentLeaveApplicationXML/Id/text(), '-QId', $input.in_CurrentLeaveApplicationXML/QuinyxRecordId/text())}&lt;/Comment&gt;
+  &lt;Correction&gt;{ if (fn:count($input.in_CurrentLeaveApplicationXML/Replacing) &gt; 0 and $input.in_LeaveType = $input.in_PreviousLeaveType ) then '1' else '0' }&lt;/Correction&gt;
+  &lt;First_Day_Back_at_Work&gt;{fn:format-dateTime($ActualToDateTime + xs:dayTimeDuration("P1D"), '[Y0001]-[M01]-[D01]')}&lt;/First_Day_Back_at_Work&gt;
+  &lt;Actual_Last_Day_of_Leave&gt;{fn:format-dateTime($ActualToDateTime, '[Y0001]-[M01]-[D01]')}&lt;/Actual_Last_Day_of_Leave&gt;  
+&lt;/RETURN_FROM_LEAVE_OF_ABSENCE_INPUT&gt; </expression>
+                                    </parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="khnloqp7">
+                                 <link id="khnloqp8" targetId="khnloqp5" type="containerLink"/>
+                              </flow>
+                              <flow id="khnloqpa">
+                                 <assignment id="khnloqqw">
+                                    <title>Assignment to out_Step2ErrorMessage</title>
+                                    <operation source="formula" to="output.out_Step2ErrorMessage">
+                                       <expression language="XQuery">concat('Failed to request for return from leave of absence. Error: ', $output.faultInfo[1]/reason )</expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="khnloqpb" targetId="khnloqp5" type="containerLink"/>
+                              </flow>
+                              <link id="khnloqp6" targetId="khnloqp7" type="containerLink"/>
+                              <link id="khnloql0" targetId="khn7qrpu"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="khnloqlk" interrupting="true">
+                                    <link id="khnloqp9" targetId="khnloqpa" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <container id="khn7qrpu" type="exclusive">
+                              <title>in_LOA_MarkRescindRequired</title>
+                              <flow id="khn7qrpx">
+                                 <subflow id="khnkn8ux">
+                                    <title>p-Shared-GetEnvironmentVariables</title>
+                                    <subflowGUID>hVwvolFWXAfkAG7pjbqKwh</subflowGUID>
+                                    <subflowPath>p-Shared-GetEnvironmentVariables</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input/>
+                                    <outputDef>
+                                       <field name="out_IDFPath" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_Environment" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_ScriptPath" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_ArchiveCommand" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_SharedSQLServerName" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_SharedDatabaseName" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_AgentHomePath" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_OrgId" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_ServerName" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                    <link id="khnkn8uy" targetId="khnkn8rw"/>
+                                 </subflow>
+                                 <service id="khnkn8rw">
+                                    <title>Run a Shell Command: Set IsReversed to true</title>
+                                    <serviceName>avShellService</serviceName>
+                                    <serviceGUID/>
+                                    <serviceInput>
+                                       <parameter name="command" source="formula">
+                                          <expression language="XQuery">'SQLCMD -S "' || $output.out_SharedSQLServerName || '" -d "' || $output.out_SharedDatabaseName || '" -Q "update HR.QuinyxLeaveApplications set IsReversed = 1 where Id = ' || $input.in_CurrentLeaveApplicationXML/Replacing/Id/text() || '"'</expression>
+                                       </parameter>
+                                       <parameter name="workingDirPath" source="formula">
+                                          <expression language="XQuery">'c:\'</expression>
+                                       </parameter>
+                                    </serviceInput>
+                                 </service>
+                                 <link id="khn7qrpy" targetId="khn7qrpu" type="containerLink"/>
+                              </flow>
+                              <flow id="khn7qrq0">
+                                 <link id="khn7qrq1" targetId="khn7qrpu" type="containerLink"/>
+                              </flow>
+                              <link id="khn7qrpw" targetId="khn7qrpx" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$input.in_LOA_MarkRescindRequired}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="khn7qrpz" targetId="khn7qrq0" type="containerLink"/>
+                           </container>
+                           <link id="khn69c5v" targetId="khn69c5s" type="containerLink"/>
+                        </flow>
+                        <flow id="khn69c5x">
+                           <assignment id="khn69c9j">
+                              <title>Assignment to out_Step2Response, out_Step2StatusCode etc. 2</title>
+                              <operation source="field" to="output.out_Step2Response">output.Request_Leave_of_Absence_Response</operation>
+                              <operation source="constant" to="output.out_Step2StatusCode">-1</operation>
+                              <operation source="formula" to="output.out_Step2ErrorMessage">
+                                 <expression language="XQuery">$output.faultInfo[1]/reason </expression>
+                              </operation>
+                           </assignment>
+                           <link id="khn69c5y" targetId="khn69c5s" type="containerLink"/>
+                        </flow>
+                        <link id="khn69c5t" targetId="khn69c5u" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="khn69c5r" interrupting="true">
+                              <link id="khn69c5w" targetId="khn69c5x" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="khn69bow" targetId="khn69boo" type="containerLink"/>
+                  </flow>
+                  <flow id="khn69bpl">
+                     <assignment id="khn69bqi">
+                        <title>Assignment to out_Step2StatusCode, out_Step2Response etc.</title>
+                        <operation source="constant" to="output.out_Step2StatusCode">-1</operation>
+                        <operation source="formula" to="output.out_Step2Response">
+                           <expression language="XQuery">()</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_Step2RequestPayload">
+                           <expression language="XQuery">()</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_Step2ErrorMessage">
+                           <expression language="XQuery">fn:concat('Invalid leave type: ', $input.in_LeaveType  )</expression>
+                        </operation>
+                     </assignment>
+                     <link id="khn69bpm" targetId="khn69boo" type="containerLink"/>
+                  </flow>
+                  <link id="khn69bor" targetId="khn69bos" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.in_LeaveType}</arg>
+                           <arg name="right">TimeOff</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="khn69bou" targetId="khn69bov" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.in_LeaveType}</arg>
+                           <arg name="right">Leave</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="khn69bpk" targetId="khn69bpl" type="containerLink"/>
+                  <link id="khn69boq" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>96HcnwSkQfLkpg9D6bgHQE</types1:GUID>
+      <types1:DisplayName>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-20T06:13:59.921Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
