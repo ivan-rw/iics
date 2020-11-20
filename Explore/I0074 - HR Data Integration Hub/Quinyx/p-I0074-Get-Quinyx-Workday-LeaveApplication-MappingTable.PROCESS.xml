@@ -1,0 +1,469 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>gk1AhrswVYx8R8W-gt-3197228-2020-10-21T13:10:59.108Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable</types1:Name>
+      <types1:ParentFlowIds>478OHDvGFaaaaaa-gt-4275602-2020-11-18T06:51:28.88Z::pd.xml,fWvJ4rswVYx8R8W-gt-333595-2020-09-29T08:56:08.8Z::pd.xml,Gci3zymbduaa-gt-27395250-2020-10-20T11:55:43.529Z::pd.xml,jseGbciZBpDUQbg-gt-3838055-2020-11-17T10:17:08.15Z::pd.xml,RDVhJEaaaaaaaaa-gt-19124958-2020-09-04T06:45:56.703Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Build the mapping table between Quinyx and Workday</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-10-21T13:10:59Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-18T06:04:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-19T13:59:56Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable/p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable"
+                  name="p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>Build the mapping table between Quinyx and Workday</description>
+            <tags>.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_WorkerType"
+                          required="true"
+                          type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Direct","value":"Direct"},{"label":"Indirect","value":"Indirect"}]</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="QuinyxWorkdayMappingTable" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_QuinyxLeaveReasonMapping" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kh0jcnhz" targetId="kh0jcnhy"/>
+               </start>
+               <service id="kh0jcnhy">
+                  <title>GetLeaveReasons</title>
+                  <serviceName>svccon-I0074-Quinyx-FlexForceWebServices:GetLeaveReasons</serviceName>
+                  <serviceGUID>6oTrm6jPdmJhetQYqTrWaY</serviceGUID>
+                  <serviceInput/>
+                  <link id="khm5bc2e" targetId="khm5bc2d"/>
+               </service>
+               <container id="khm5bc2d" type="exclusive">
+                  <title>in_WorkerType</title>
+                  <flow id="khm5bc2h">
+                     <assignment id="khm5bc3y">
+                        <title>Indirect Workers Mapping Table</title>
+                        <operation source="formula" to="temp.tmp_QuinyxLeaveReasonMapping">
+                           <expression language="XQuery">&lt;QuinyxLeaveReasonMapping&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38671&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave unpaid gt 78 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38667&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Maternity Leave Prohibition of Employment&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38679&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_OTHER_PAID_DAYS&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;  
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38668&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Parental Leave&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38683&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_SICK_LT_1MTH&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38669&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 1 month lt 6 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-105&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38758&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_CURE_LT_1MTH&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38661&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 1 month lt 6 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-104&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38691&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_WPLACC_DAYS&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38739&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_COMMACC_DAYS&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38733&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 1 month lt 6 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-106&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38736&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 1 month lt 6 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-103&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;  
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38686&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_SICK_WO_CERT&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37308&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_FLX_COMP&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37353&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_FLX_FULL_DAY&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;  
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37465&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_RED_DAYS&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38670&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 6 weeks lt 78 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-101&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38662&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 6 weeks lt 78 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-102&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38692&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 6 weeks lt 78 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-99&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38742&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 6 weeks lt 78 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-100&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;  
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38665&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Maternity Leave after Birth&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38664&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Maternity Leave after Birth premature or multiple birth&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38666&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Maternity Leave Prior to Birth&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38685&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_FAMILY_SICKNESS&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38688&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_UNPAID_HOLIDAYS&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt; 
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38681&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_UNPAID_DAYS&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt; 
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38682&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_UNPAID_SHORT_CARE&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;        
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38663&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Care Time&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38687&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_PAID_LEAVE_DAYS&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt; 
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38688&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_UNPAID_HOURS&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt; 
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38659&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE_ANNUAL_LEAVE_DAYS&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;       
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38672&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Other Leave&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;  
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38675&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;Global Leave&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;Garden Leave&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+&lt;/QuinyxLeaveReasonMapping&gt;</expression>
+                        </operation>
+                     </assignment>
+                     <link id="khm5bc2i" targetId="khm5bc2d" type="containerLink"/>
+                  </flow>
+                  <flow id="khm5bc2k">
+                     <assignment id="khm5bc4h">
+                        <title>Direct Workers Mapping Table</title>
+                        <operation source="formula" to="temp.tmp_QuinyxLeaveReasonMapping">
+                           <expression language="XQuery">&lt;QuinyxLeaveReasonMapping&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;36973&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave unpaid gt 78 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;36972&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Maternity Leave Prohibition of Employment&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;36976&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Parental Leave&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;36970&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Other Sickness &amp;lt; 1 month (TIME)&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;36975&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 1 month lt 6 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-105&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38757&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Other Sickness - Cure &amp;lt; 1 month (TIME)&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37306&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 1 month lt 6 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-104&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;36974&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Other Sickness / Workplace Accident (TIME)&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38738&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Other Sickness / Commuting Accident (TIME)&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38732&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 1 month lt 6 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-106&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;  
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38735&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 1 month lt 6 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-103&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;  
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37288&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Short Term Sickness w/o Cert (TIME)&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;36971&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 6 weeks lt 78 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-101&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37310&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 6 weeks lt 78 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-102&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37314&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 6 weeks lt 78 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-99&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38741&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Sick Leave gt 6 weeks lt 78 weeks&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;LEAVE_TYPE_REASON-6-100&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;  
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37316&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Maternity Leave after Birth&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37317&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Maternity Leave after Birth premature or multiple birth&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37319&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Maternity Leave Prior to Birth&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37325&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Care Time&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;37309&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;DE Other Leave&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;  
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;38356&lt;/QuinyxLeaveId&gt;
+    &lt;WorkdayType&gt;Leave&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;Global Leave&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;Garden Leave&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+&lt;/QuinyxLeaveReasonMapping&gt;</expression>
+                        </operation>
+                     </assignment>
+                     <link id="khm5bc2l" targetId="khm5bc2d" type="containerLink"/>
+                  </flow>
+                  <link id="khm5bc2g" targetId="khm5bc2h" type="containerLink">
+                     <condition source="formula">
+                        <function name="included">
+                           <arg name="left">{$input.in_WorkerType}</arg>
+                           <arg name="right">Indirect</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="khm5bc2j" targetId="khm5bc2k" type="containerLink"/>
+                  <link id="khm5bc2f" targetId="kgjey28u"/>
+               </container>
+               <assignment id="kgjey28u">
+                  <title>Assignment to QuinyxWorkdayMappingTable</title>
+                  <operation source="formula" to="output.QuinyxWorkdayMappingTable">
+                     <expression language="XQuery">&lt;QuinyxLeaveReasonMapping&gt;
+{
+for $i in $temp.tmp_QuinyxLeaveReasonMapping/LeaveType
+let $mappedLeaveReason :=
+util:parseXML($output.GetLeaveReasonsResponse)//item[id=$i/QuinyxLeaveId]
+return 
+  &lt;LeaveType&gt;
+    &lt;QuinyxLeaveId&gt;{ $i/QuinyxLeaveId/text()}&lt;/QuinyxLeaveId&gt;
+    &lt;QuinyxLeaveReason&gt;{ $mappedLeaveReason/name/text()  }&lt;/QuinyxLeaveReason&gt;
+    &lt;QuinyxCode&gt;{ $mappedLeaveReason/extCode/text()}&lt;/QuinyxCode&gt;
+    &lt;WorkdayType&gt;{$i/WorkdayType/text() }&lt;/WorkdayType&gt;
+    &lt;WorkdayLeaveCode&gt;{$i/WorkdayLeaveCode/text()}&lt;/WorkdayLeaveCode&gt;
+    &lt;WorkdayRefId&gt;{$i/WorkdayRefId/text()}&lt;/WorkdayRefId&gt;
+  &lt;/LeaveType&gt;
+}
+&lt;/QuinyxLeaveReasonMapping&gt;</expression>
+                  </operation>
+                  <link id="kgjey28w" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>8lTuPD1fEYxkaf8yExPkGX</types1:GUID>
+      <types1:DisplayName>p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-20T03:09:34.336Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
