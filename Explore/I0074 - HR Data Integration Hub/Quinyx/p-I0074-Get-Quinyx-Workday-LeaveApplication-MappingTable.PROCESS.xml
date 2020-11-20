@@ -14,10 +14,10 @@
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-10-21T13:10:59Z</types1:CreationDate>
       <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2020-11-18T06:04:54Z</types1:ModificationDate>
+      <types1:ModificationDate>2020-11-20T03:14:22Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2020-11-19T13:59:56Z</types1:PublicationDate>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-20T03:14:29Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable/p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -255,7 +255,7 @@
     &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
   &lt;/LeaveType&gt; 
   &lt;LeaveType&gt;
-    &lt;QuinyxLeaveId&gt;38688&lt;/QuinyxLeaveId&gt;
+    &lt;QuinyxLeaveId&gt;38689&lt;/QuinyxLeaveId&gt;
     &lt;WorkdayType&gt;TimeOff&lt;/WorkdayType&gt;
     &lt;WorkdayLeaveCode&gt;DE_UNPAID_HOURS&lt;/WorkdayLeaveCode&gt;
     &lt;WorkdayRefId&gt;&lt;/WorkdayRefId&gt;
@@ -465,5 +465,5 @@ return
       <types1:GUID>8lTuPD1fEYxkaf8yExPkGX</types1:GUID>
       <types1:DisplayName>p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-11-20T03:09:34.336Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-11-20T03:15:20.299Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
