@@ -1,0 +1,189 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>PwLdqcgm8lnCmp6-gt-11601740-2020-10-28T06:16:45.666Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0074-Quinyx-LeaveApplications-To-Workday-CreateErrorReport</types1:Name>
+      <types1:ParentFlowIds>Owhz5chspiRASmv-gt-2007107-2020-10-15T05:52:42.658Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-10-28T06:16:46Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-17T08:56:13Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-17T08:56:24Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0074-Quinyx-LeaveApplications-To-Workday-CreateErrorReport/p-I0074-Quinyx-LeaveApplications-To-Workday-CreateErrorReport.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0074-Quinyx-LeaveApplications-To-Workday-CreateErrorReport"
+                  name="p-I0074-Quinyx-LeaveApplications-To-Workday-CreateErrorReport"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags>.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_PostWorkdayProcessId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_AlertEmailContent" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_DB_ErrorLeaveApplications"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">sql-I0074-HR:vwQuinyxLeaveApplicationErrors</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">lUAecQlK5mybMDYMXeE1Mk</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kgt099z2" targetId="kgt099z1"/>
+               </start>
+               <assignment id="kgt099z1">
+                  <title>Assignment to tmp_DB_ErrorLeaveApplications</title>
+                  <operation source="query" to="temp.tmp_DB_ErrorLeaveApplications">
+                     <query advanceQuery="false" from="sql-I0074-HR:vwQuinyxLeaveApplicationErrors">
+                        <where>InformaticaProcessId = {$input.in_PostWorkdayProcessId}</where>
+                     </query>
+                  </operation>
+                  <link id="kgt099za" targetId="kgt099z9"/>
+               </assignment>
+               <assignment id="kgt099z9">
+                  <title>Assignment to tmp_AlertEmailContent</title>
+                  <operation source="formula" to="temp.tmp_AlertEmailContent">
+                     <expression language="XQuery">let $ErrorData :=
+if (fn:string-length($temp.tmp_DB_ErrorLeaveApplications/ErrorData) = 0) then () else
+util:parseXML($temp.tmp_DB_ErrorLeaveApplications/ErrorData)
+
+return
+fn:string-join(
+for $e at $idx in $ErrorData/ErrorRow
+  let $rowcolor := if (($idx mod 2) = 1) then 'white' else 'whitesmoke'
+  return 
+  concat( 
+         '&lt;tr style="background-color:', $rowcolor ,';"&gt;&lt;td nowrap&gt;', if ($e/StatusCode/text() = '1') then '&lt;font color=darkgreen&gt;Okay&lt;/font&gt;' else '&lt;font color=orangered&gt;&lt;b&gt;Error&lt;/b&gt;&lt;/font&gt;',
+         '&lt;/td&gt;&lt;td&gt;', 
+         $e/BadgeNumber/text(),
+         '&lt;/td&gt;&lt;td&gt;', 
+         $e/LeaveReason/text(),
+         '&lt;/td&gt;&lt;td&gt;',
+         fn:replace($e/FromDateTime/text(), 'T', ' ') ,
+         '&lt;/td&gt;&lt;td&gt;',
+         fn:replace($e/ToDateTime/text(), 'T', ' '),
+         '&lt;/td&gt;&lt;td&gt;',
+         $e/ExtCode/text(),
+         '&lt;/td&gt;&lt;td&gt;',           
+         if ($e/IsDelete/text() = '1' or $e/IsReversed/text() = '1') then 'Rescind' else 'New entry',    
+         '&lt;/td&gt;&lt;td style="word-break:break-all;"&gt;', 
+		try 
+		{
+  			try
+  			{
+    			if (fn:count(util:parseXML($e/PostErrorMessage)//*[local-name()='faultstring']) = 0) then
+      				util:toXML($e/PostErrorMessage)
+    			else
+      				util:parseXML($e/PostErrorMessage)//*[local-name()='faultstring']/text()
+  			}
+  			catch *
+  			{ 
+            	util:toXML($e/PostErrorMessage) 
+            }
+		}
+		catch *
+		{ $e/PostErrorMessage },
+        '&lt;/td&gt;&lt;td&gt;', 
+        $e/Id/text(),
+        '&lt;/td&gt;&lt;td&gt;', 
+        $e/QuinyxRecordId/text(),
+        '&lt;/td&gt;&lt;td&gt;',
+        if ($e/StatusCode/text() = '-1') then
+        fn:concat('&lt;a href="https://emw1-cai.dm-em.informaticacloud.com/active-bpel/public/rt/8mtjFhNra3bhM914NuLqGQ/p-I0074-Quinyx-SetLeaveStatus-To-DoNotProcess?in_Id=', $e/Id/text(), '&amp;amp;in_QId=', $e/QuinyxRecordId/text(), '" target=_"blank"&gt;Do not reprocess&lt;/a&gt;') else '',
+		'&lt;/td&gt;&lt;/tr&gt;'
+  )
+)
+</expression>
+                  </operation>
+                  <link id="kgt099zl" targetId="kgt099zk"/>
+               </assignment>
+               <container id="kgt099zk" type="exclusive">
+                  <title>tmp_AlertEmailContent</title>
+                  <flow id="kgt099zo">
+                     <link id="kgt099zp" targetId="kgt099zk" type="containerLink"/>
+                  </flow>
+                  <flow id="kgt099zr">
+                     <subflow id="kgt09a05">
+                        <title>p-Shared-SendEmail</title>
+                        <subflowGUID>gxxxPg07XMEelwXQQcmjK5</subflowGUID>
+                        <subflowPath>p-Shared-SendEmail</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_To" source="constant" updatable="true">daniel.ong@rockwool.com; norazean.shafein@rockwool.com; nora.olischlaeger@rockwool.com; Simon.Burt@rockwool.com; femke.behning@rockwool.com; daniela.krampl@rockwool.com; stefanie.putz@rockwool.com;</parameter>
+                           <parameter name="in_Subject" source="constant" updatable="true">[TEST-Integration Alert] Post absence from Quinyx to Workday</parameter>
+                           <parameter name="in_Message" source="formula" updatable="true">
+                              <expression language="XQuery">fn:concat
+(
+'&lt;table cellpadding="5" cellspacing="0" border="1" style="border-collapse:collapse;"&gt;&lt;tr style="background-color:lightblue; font-weight: bold;"&gt;&lt;td&gt;Status&lt;/td&gt;&lt;td nowrap&gt;Worker Id&lt;/td&gt;&lt;td&gt;Leave Reason&lt;/td&gt;&lt;td nowrap&gt;Leave From&lt;/td&gt;&lt;td nowrap&gt;Leave To&lt;/td&gt;&lt;td nowrap&gt;Ext Code&lt;/td&gt;&lt;td nowrap&gt;Operation&lt;/td&gt;&lt;td nowrap&gt;Error description&lt;/td&gt;&lt;td nowrap&gt;Informatica Id&lt;/td&gt;&lt;td&gt;Quinyx Id&lt;/td&gt;&lt;td&gt;Action&lt;/td&gt;&lt;/tr&gt;',
+
+$temp.tmp_AlertEmailContent,
+
+'&lt;/table&gt;'
+)
+</expression>
+                           </parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_SendEmail_Result" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                     </subflow>
+                     <link id="kgt099zs" targetId="kgt099zk" type="containerLink"/>
+                  </flow>
+                  <link id="kgt099zn" targetId="kgt099zo" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_AlertEmailContent}</arg>
+                           <arg name="right"/>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kgt099zq" targetId="kgt099zr" type="containerLink"/>
+                  <link id="kgt099zm" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>cQVAT8CCEkkk9pL6L7RkSN</types1:GUID>
+      <types1:DisplayName>p-I0074-Quinyx-LeaveApplications-To-Workday-CreateErrorReport</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-20T06:13:32.093Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

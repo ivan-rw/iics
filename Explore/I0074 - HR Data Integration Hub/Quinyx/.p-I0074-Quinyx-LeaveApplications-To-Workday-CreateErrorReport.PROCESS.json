@@ -1,0 +1,64 @@
+{
+  "objectInfo" : {
+    "id" : "cQVAT8CCEkkk9pL6L7RkSN",
+    "name" : "p-I0074-Quinyx-LeaveApplications-To-Workday-CreateErrorReport",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "PwLdqcgm8lnCmp6-gt-11601740-2020-10-28T06:16:45.666Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "lUAecQlK5mybMDYMXeE1Mk",
+    "name" : "sql-I0074-HR",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "f5kck8jKBmeK3jh-gt-3247611-2019-06-26T07:59:30.095Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0074 - HR Data Integration Hub/Common"
+  }, {
+    "id" : "gxxxPg07XMEelwXQQcmjK5",
+    "name" : "p-Shared-SendEmail",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "38nXxpr1Iw8jIw8-gt-12678732-2019-07-02T03:33:24.877Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Shared"
+  } ]
+}
