@@ -1,0 +1,470 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Gci3zymbduaa-gt-27395250-2020-10-20T11:55:43.529Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Main</types1:Name>
+      <types1:ParentFlowIds>Owhz5chspiRASmv-gt-2007107-2020-10-15T05:52:42.658Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-10-20T11:55:44Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-18T16:00:30Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-20T07:28:23Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Main/p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Main.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Main"
+                  name="p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Main"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags>.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="out_ProcessId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description=""
+                      name="tmp_DB_QuinyxLeaveApplications"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">sql-I0074-HR:vwNewQuinyxLeaveApplications</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">lUAecQlK5mybMDYMXeE1Mk</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_QuinyxLeaveApplicationsXML" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CurrentLeaveApplicationXML" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IsLeaveApplicationEOL" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DeleteType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LeaveType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WorkdayRequestPayload" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_DB_LeaveApplicationRecordForStatusUpdate"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">sql-I0074-HR:QuinyxLeaveApplications</option>
+                     <option name="required">false</option>
+                     <option name="guid">lUAecQlK5mybMDYMXeE1Mk</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_StatusCode" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WorkdayResponse" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmpErrorMessage" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_GotData" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MappedLeaveTypeNode" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MappedLeaveTypeNodeForDelete" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LeaveTypeForDelete" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kgkjfj1t" targetId="kgkjfj1s"/>
+               </start>
+               <container id="kgkjfj1s" type="parallel">
+                  <title>Parallel Paths 1</title>
+                  <flow id="kgkjfj1w">
+                     <assignment id="kgkjfj28">
+                        <title>Assignment to tmp_DB_QuinyxLeaveApplications</title>
+                        <operation source="query" to="temp.tmp_DB_QuinyxLeaveApplications">
+                           <query advanceQuery="false" from="sql-I0074-HR:vwNewQuinyxLeaveApplications"/>
+                        </operation>
+                        <link id="kglv83f2" targetId="kglv83f1"/>
+                     </assignment>
+                     <assignment id="kglv83f1">
+                        <title>Assignment to tmp_GotData</title>
+                        <operation source="formula" to="temp.tmp_GotData">
+                           <expression language="XQuery">if (fn:string-length($temp.tmp_DB_QuinyxLeaveApplications/LeaveApplicationData) &gt; 0) then 1 else 0</expression>
+                        </operation>
+                     </assignment>
+                     <link id="kgkjfj1x" targetId="kgkjfj1s" type="containerLink"/>
+                  </flow>
+                  <flow id="kgkjfj1z">
+                     <subflow id="kgkjfj35">
+                        <title>p-I0074-Get-Quinyx-To-Workday-LeaveApplication-MappingTable</title>
+                        <subflowGUID>8lTuPD1fEYxkaf8yExPkGX</subflowGUID>
+                        <subflowPath>p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_WorkerType" source="constant" updatable="true">Direct</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="QuinyxWorkdayMappingTable" type="xml">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                     </subflow>
+                     <link id="kgkjfj20" targetId="kgkjfj1s" type="containerLink"/>
+                  </flow>
+                  <link id="kgkjfj1v" targetId="kgkjfj1w" type="containerLink"/>
+                  <link id="kgkjfj1y" targetId="kgkjfj1z" type="containerLink"/>
+                  <link id="kgkt8nz0" targetId="kgkt8nyz"/>
+               </container>
+               <container id="kgkt8nyz" type="exclusive">
+                  <title>tmp_DB_QuinyxLeaveApplications</title>
+                  <flow id="kgkt8nz3">
+                     <assignment id="kgkt8o0c">
+                        <title>Assignment to tmp_QuinyxLeaveApplicationsXML</title>
+                        <operation source="formula" to="temp.tmp_QuinyxLeaveApplicationsXML">
+                           <expression language="XQuery">util:parseXML($temp.tmp_DB_QuinyxLeaveApplications[1]/LeaveApplicationData)/LeaveApplication </expression>
+                        </operation>
+                        <link id="kgkt8o1w" targetId="kgkt8o1v"/>
+                     </assignment>
+                     <assignment id="kgkt8o1v">
+                        <title>Assignment to tmp_CurrentLeaveApplicationXML, tmp_QuinyxLeaveApplicationsXML etc.</title>
+                        <operation source="formula" to="temp.tmp_CurrentLeaveApplicationXML">
+                           <expression language="XQuery">list:head($temp.tmp_QuinyxLeaveApplicationsXML )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_QuinyxLeaveApplicationsXML">
+                           <expression language="XQuery">list:tail($temp.tmp_QuinyxLeaveApplicationsXML )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_IsLeaveApplicationEOL">
+                           <expression language="XQuery">if (fn:string-length($temp.tmp_CurrentLeaveApplicationXML) = 0) then 1 else 0</expression>
+                        </operation>
+                        <link id="kgkt8o59" targetId="kgkt8o36"/>
+                     </assignment>
+                     <container id="kgkt8o36" type="exclusive">
+                        <title>tmp_IsLeaveApplicationEOL</title>
+                        <flow id="kgkt8o37">
+                           <end id="kgkt8o38">
+                              <title>End (Processing done)</title>
+                           </end>
+                        </flow>
+                        <flow id="kgkt8o39">
+                           <assignment id="kgkt8o3a">
+                              <title>Assignment to tmp_DeleteType, tmp_MappedLeaveTypeNode etc.</title>
+                              <operation source="formula" to="temp.tmp_DeleteType">
+                                 <expression language="XQuery">if (  $temp.tmp_CurrentLeaveApplicationXML/IsDelete/text() = '1') then 
+    'Remove'
+  else
+    if (  fn:count($temp.tmp_CurrentLeaveApplicationXML/Replacing) &gt; 0) then
+      'Replace'
+    else 'No need delete'</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_MappedLeaveTypeNode">
+                                 <expression language="XQuery">$output.QuinyxWorkdayMappingTable/LeaveType[QuinyxLeaveReason=$temp.tmp_CurrentLeaveApplicationXML/LeaveReason and (QuinyxCode=$temp.tmp_CurrentLeaveApplicationXML/ExtCode or (fn:string-length(QuinyxCode) = 0 and fn:string-length($temp.tmp_CurrentLeaveApplicationXML/ExtCode) = 0))]
+
+</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_LeaveType">
+                                 <expression language="XQuery">$temp.tmp_MappedLeaveTypeNode/WorkdayType/text()
+
+</expression>
+                              </operation>
+                              <link id="khltp0fd" targetId="khltoyal"/>
+                           </assignment>
+                           <assignment id="khltp452">
+                              <title>Assignment to tmp_DB_LeaveApplicationRecordForStatusUpdate</title>
+                              <operation source="query" to="temp.tmp_DB_LeaveApplicationRecordForStatusUpdate">
+                                 <query advanceQuery="false" from="sql-I0074-HR:QuinyxLeaveApplications">
+                                    <where>Id = {$temp.tmp_CurrentLeaveApplicationXML/Id/text()}</where>
+                                 </query>
+                              </operation>
+                              <link id="khltp4b3" targetId="khltp4b2"/>
+                           </assignment>
+                           <assignment id="khltp4b2">
+                              <title>Assignment to WorkdayRequest, WorkdayResponse etc.</title>
+                              <operation source="formula"
+                                         to="temp.tmp_DB_LeaveApplicationRecordForStatusUpdate.WorkdayRequest">
+                                 <expression language="XQuery">if (fn:string-length($temp.tmp_WorkdayRequestPayload) = 0) then '' else util:toXML($temp.tmp_WorkdayRequestPayload)
+</expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="temp.tmp_DB_LeaveApplicationRecordForStatusUpdate.WorkdayResponse">
+                                 <expression language="XQuery">$temp.tmp_WorkdayResponse</expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="temp.tmp_DB_LeaveApplicationRecordForStatusUpdate.PostErrorMessage">
+                                 <expression language="XQuery">$temp.tmpErrorMessage</expression>
+                              </operation>
+                              <operation source="field"
+                                         to="temp.tmp_DB_LeaveApplicationRecordForStatusUpdate.StatusCode">temp.tmp_StatusCode</operation>
+                              <operation source="formula"
+                                         to="temp.tmp_DB_LeaveApplicationRecordForStatusUpdate.InformaticaProcessId">
+                                 <expression language="XQuery">util:getProcessId()</expression>
+                              </operation>
+                              <operation source="formula" to="output.out_ProcessId">
+                                 <expression language="XQuery">util:getProcessId()</expression>
+                              </operation>
+                              <link id="khltp4do" targetId="khltp4dm"/>
+                           </assignment>
+                           <container id="khltoyal" type="exclusive">
+                              <title>tmp_DeleteType</title>
+                              <flow id="khltoyap">
+                                 <assignment id="khltozmx">
+                                    <title>Assignment to tmp_StatusCode, tmpErrorMessage</title>
+                                    <operation source="constant" to="temp.tmp_StatusCode">1</operation>
+                                    <operation source="formula" to="temp.tmpErrorMessage">
+                                       <expression language="XQuery">''</expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="khltoyaq" targetId="khltoyal" type="containerLink"/>
+                              </flow>
+                              <flow id="khltoyas">
+                                 <assignment id="khltp1d2">
+                                    <title>Assignment to tmp_MappedLeaveTypeNodeForDelete, tmp_LeaveTypeForDelete</title>
+                                    <operation source="formula" to="temp.tmp_MappedLeaveTypeNodeForDelete">
+                                       <expression language="XQuery">if ($temp.tmp_DeleteType = 'Remove') then
+$temp.tmp_MappedLeaveTypeNode 	
+else
+$output.QuinyxWorkdayMappingTable/LeaveType[QuinyxLeaveReason=$temp.tmp_CurrentLeaveApplicationXML/Replacing/LeaveReason and (QuinyxCode=$temp.tmp_CurrentLeaveApplicationXML/Replacing/ExtCode or (fn:string-length(QuinyxCode) = 0 and fn:string-length($temp.tmp_CurrentLeaveApplicationXML/Replacing/ExtCode) = 0))]</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_LeaveTypeForDelete">
+                                       <expression language="XQuery">$temp.tmp_MappedLeaveTypeNode/WorkdayType/text()</expression>
+                                    </operation>
+                                    <link id="khninam7" targetId="khninam6"/>
+                                 </assignment>
+                                 <assignment id="khninaqe">
+                                    <title>Assignment to tmp_WorkdayResponse, tmp_WorkdayRequestPayload etc. 1</title>
+                                    <operation source="field" to="temp.tmp_WorkdayResponse">output.out_Step1Response</operation>
+                                    <operation source="field" to="temp.tmp_WorkdayRequestPayload">output.out_Step1RequestPayload</operation>
+                                    <operation source="field" to="temp.tmp_StatusCode">output.out_Step1StatusCode</operation>
+                                    <operation source="field" to="temp.tmpErrorMessage">output.out_Step1ErrorMessage</operation>
+                                 </assignment>
+                                 <subflow id="khninam6">
+                                    <title>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step1</title>
+                                    <subflowGUID>4w98Zy6jdblfXXIsCh2xyw</subflowGUID>
+                                    <subflowPath>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step1</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_LeaveTypeToBeDeleted" source="field" updatable="true">temp.tmp_LeaveTypeForDelete</parameter>
+                                       <parameter name="in_CurrentLeaveApplicationXML"
+                                                  source="field"
+                                                  updatable="true">temp.tmp_CurrentLeaveApplicationXML</parameter>
+                                       <parameter name="in_DeleteType" source="field" updatable="true">temp.tmp_DeleteType</parameter>
+                                       <parameter name="in_NewLeaveType" source="field" updatable="true">temp.tmp_LeaveType</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_Step1Response" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_Step1ErrorMessage" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_Step1StatusCode" type="int">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_Step1RequestPayload" type="xml">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                    <link id="khninaqf" targetId="khninaqe"/>
+                                 </subflow>
+                                 <link id="khltoyat" targetId="khltoyal" type="containerLink"/>
+                              </flow>
+                              <link id="khltoyao" targetId="khltoyap" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$temp.tmp_DeleteType}</arg>
+                                       <arg name="right">No need delete</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="khltoyar" targetId="khltoyas" type="containerLink"/>
+                              <link id="khltp2if" targetId="khltp2ie"/>
+                           </container>
+                           <container id="khltp2ie" type="exclusive">
+                              <title>tmp_StatusCode</title>
+                              <flow id="khltp2ii">
+                                 <container id="khltp301" type="exclusive">
+                                    <title>tmp_DeleteType</title>
+                                    <flow id="khltp303">
+                                       <link id="khltp304" targetId="khltp301" type="containerLink"/>
+                                    </flow>
+                                    <flow id="khltp306">
+                                       <subflow id="khn4nu7i">
+                                          <title>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step2</title>
+                                          <subflowGUID>96HcnwSkQfLkpg9D6bgHQE</subflowGUID>
+                                          <subflowPath>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step2</subflowPath>
+                                          <runForEach>false</runForEach>
+                                          <input>
+                                             <parameter name="in_LeaveType" source="field" updatable="true">temp.tmp_LeaveType</parameter>
+                                             <parameter name="in_CurrentLeaveApplicationXML"
+                                                        source="field"
+                                                        updatable="true">temp.tmp_CurrentLeaveApplicationXML</parameter>
+                                             <parameter name="in_MappedLeaveTypeNode" source="field" updatable="true">temp.tmp_MappedLeaveTypeNode</parameter>
+                                             <parameter name="in_PreviousLeaveType" source="field" updatable="true">temp.tmp_LeaveTypeForDelete</parameter>
+                                             <parameter name="in_LOA_MarkRescindRequired" source="formula" updatable="true">
+                                                <expression language="XQuery">if ($temp.tmp_DeleteType = 'Replace' and $temp.tmp_LeaveType = $temp.tmp_LeaveTypeForDelete ) then 1 else 0</expression>
+                                             </parameter>
+                                          </input>
+                                          <outputDef>
+                                             <field name="out_Step2Response" type="string">
+                                                <options>
+                                                   <option name="required">false</option>
+                                                </options>
+                                             </field>
+                                             <field name="out_Step2ErrorMessage" type="string">
+                                                <options>
+                                                   <option name="required">false</option>
+                                                </options>
+                                             </field>
+                                             <field name="out_Step2StatusCode" type="int">
+                                                <options>
+                                                   <option name="required">false</option>
+                                                </options>
+                                             </field>
+                                             <field name="out_Step2RequestPayload" type="xml">
+                                                <options>
+                                                   <option name="required">false</option>
+                                                </options>
+                                             </field>
+                                          </outputDef>
+                                          <link id="khninaq1" targetId="khnemj7m"/>
+                                       </subflow>
+                                       <assignment id="khnemj7m">
+                                          <title>Assignment to tmp_WorkdayResponse, tmp_WorkdayRequestPayload etc.</title>
+                                          <operation source="field" to="temp.tmp_WorkdayResponse">output.out_Step2Response</operation>
+                                          <operation source="field" to="temp.tmp_WorkdayRequestPayload">output.out_Step2RequestPayload</operation>
+                                          <operation source="field" to="temp.tmp_StatusCode">output.out_Step2StatusCode</operation>
+                                          <operation source="field" to="temp.tmpErrorMessage">output.out_Step2ErrorMessage</operation>
+                                       </assignment>
+                                       <link id="khltp307" targetId="khltp301" type="containerLink"/>
+                                    </flow>
+                                    <link id="khltp302" targetId="khltp303" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="string-equals">
+                                             <arg name="left">{$temp.tmp_DeleteType}</arg>
+                                             <arg name="right">Remove</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="khltp305" targetId="khltp306" type="containerLink"/>
+                                 </container>
+                                 <link id="khltp2ij" targetId="khltp2ie" type="containerLink"/>
+                              </flow>
+                              <flow id="khltp2il">
+                                 <link id="khltp2im" targetId="khltp2ie" type="containerLink"/>
+                              </flow>
+                              <link id="khltp2ih" targetId="khltp2ii" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_StatusCode}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="khltp2ik" targetId="khltp2il" type="containerLink"/>
+                              <link id="khltp453" targetId="khltp452"/>
+                           </container>
+                           <jumpTo id="khltp4dm">
+                              <link id="khltp4dn" targetId="kgkt8o1v"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="kgkt8o48" targetId="kgkt8o37" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_IsLeaveApplicationEOL}</arg>
+                                 <arg name="right">{1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kgkt8o49" targetId="kgkt8o39" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="kgkt8nz6">
+                     <end id="kgkt8o86">
+                        <title>End (No data to process)</title>
+                     </end>
+                  </flow>
+                  <link id="kgkt8nz2" targetId="kgkt8nz3" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.tmp_GotData}</arg>
+                           <arg name="right">{1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kgkt8nz5" targetId="kgkt8nz6" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>9Hw7QsrFp6agLh2zeA8kUD</types1:GUID>
+      <types1:DisplayName>p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Main</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-20T07:29:12.087Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

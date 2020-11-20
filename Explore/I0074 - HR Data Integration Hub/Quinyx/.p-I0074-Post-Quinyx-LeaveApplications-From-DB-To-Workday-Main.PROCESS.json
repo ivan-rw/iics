@@ -1,0 +1,104 @@
+{
+  "objectInfo" : {
+    "id" : "9Hw7QsrFp6agLh2zeA8kUD",
+    "name" : "p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Main",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Gci3zymbduaa-gt-27395250-2020-10-20T11:55:43.529Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "8lTuPD1fEYxkaf8yExPkGX",
+    "name" : "p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "gk1AhrswVYx8R8W-gt-3197228-2020-10-21T13:10:59.108Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Build the mapping table between Quinyx and Workday",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0074 - HR Data Integration Hub/Quinyx"
+  }, {
+    "id" : "lUAecQlK5mybMDYMXeE1Mk",
+    "name" : "sql-I0074-HR",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "f5kck8jKBmeK3jh-gt-3247611-2019-06-26T07:59:30.095Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0074 - HR Data Integration Hub/Common"
+  }, {
+    "id" : "96HcnwSkQfLkpg9D6bgHQE",
+    "name" : "p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step2",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3a-gt-1725648-2020-11-18T08:57:29.877Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Post leave application to Workday either as a time off, or leave of absence.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0074 - HR Data Integration Hub/Quinyx"
+  }, {
+    "id" : "4w98Zy6jdblfXXIsCh2xyw",
+    "name" : "p-I0074-Post-Quinyx-LeaveApplications-From-DB-To-Workday-Step1",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "i1R0aa-gt-1698662-2020-11-18T12:59:03.413Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "For deletion and in the case of update, it reverses the entries of the original leave application.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0074 - HR Data Integration Hub/Quinyx"
+  } ]
+}

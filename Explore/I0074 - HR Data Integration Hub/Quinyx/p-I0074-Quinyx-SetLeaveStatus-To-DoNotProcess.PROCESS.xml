@@ -1,0 +1,118 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>fQVK9Em2kVNKSmv-gt-13441568-2020-11-01T08:03:10.827Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0074-Quinyx-SetLeaveStatus-To-DoNotProcess</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-01T08:03:11Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-01T08:07:11Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-01T08:07:19Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0074-Quinyx-SetLeaveStatus-To-DoNotProcess/p-I0074-Quinyx-SetLeaveStatus-To-DoNotProcess.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0074-Quinyx-SetLeaveStatus-To-DoNotProcess"
+                  name="p-I0074-Quinyx-SetLeaveStatus-To-DoNotProcess"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_Id" required="true" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_QId" required="true" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="result" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Completed</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description=""
+                      name="tmp_DB_QuinyxLeaveApplications"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">sql-I0074-HR:QuinyxLeaveApplications</option>
+                     <option name="required">false</option>
+                     <option name="guid">lUAecQlK5mybMDYMXeE1Mk</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kgytrzg0" targetId="kgytrzfz"/>
+               </start>
+               <assignment id="kgytrzfz">
+                  <title>Assignment to tmp_DB_QuinyxLeaveApplications</title>
+                  <operation source="query" to="temp.tmp_DB_QuinyxLeaveApplications">
+                     <query advanceQuery="false" from="sql-I0074-HR:QuinyxLeaveApplications">
+                        <where>Id = {$input.in_Id} and QuinyxRecordId = {$input.in_QId}</where>
+                     </query>
+                  </operation>
+                  <link id="kgytrzgs" targetId="kgytrzgr"/>
+               </assignment>
+               <container id="kgytrzgr" type="exclusive">
+                  <title>tmp_DB_QuinyxLeaveApplications</title>
+                  <flow id="kgytrzgv">
+                     <assignment id="kgytrzh7">
+                        <title>Assignment to StatusCode</title>
+                        <operation source="constant" to="temp.tmp_DB_QuinyxLeaveApplications.StatusCode">901</operation>
+                     </assignment>
+                     <link id="kgytrzgw" targetId="kgytrzgr" type="containerLink"/>
+                  </flow>
+                  <flow id="kgytrzgy">
+                     <link id="kgytrzgz" targetId="kgytrzgr" type="containerLink"/>
+                  </flow>
+                  <link id="kgytrzgu" targetId="kgytrzgv" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_DB_QuinyxLeaveApplications}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kgytrzgx" targetId="kgytrzgy" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_DB_QuinyxLeaveApplications}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kgytrzgt" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>4kZURB4s4s2dArRmiOBUc5</types1:GUID>
+      <types1:DisplayName>p-I0074-Quinyx-SetLeaveStatus-To-DoNotProcess</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-20T07:29:12.138Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

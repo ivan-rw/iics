@@ -1,0 +1,517 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>fWvJ4rswVYx8R8W-gt-333595-2020-09-29T08:56:08.8Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0074-GetLeaveApplications-Quinyx-To-DB</types1:Name>
+      <types1:ParentFlowIds>Owhz5chspiRASmv-gt-2007107-2020-10-15T05:52:42.658Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-09-29T08:56:09Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-18T15:37:07Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-20T06:22:13Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0074-GetLeaveApplications-Quinyx-To-DB/p-I0074-GetLeaveApplications-Quinyx-To-DB.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0074-GetLeaveApplications-Quinyx-To-DB"
+                  name="p-I0074-GetLeaveApplications-Quinyx-To-DB"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags>.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ModifiedAfter"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ETLId" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="output" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_CurrentAPIKey" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_APIKeysXML" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LeaveApplicationItemsXML" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CurrentLeaveApplicationXML" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IsLeaveApplicationEOF" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_DeletedLeaveApplicationItemsXML"
+                      type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_CurrentDeletedLeaveApplicationXML"
+                      type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IsDeletedLeaveApplicationEOF" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IsLeaveReasonRelevant" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kgkb3h94" targetId="kgkb3h93"/>
+               </start>
+               <container id="kgkb3h93" type="parallel">
+                  <title>Parallel Paths 1</title>
+                  <flow id="kgkb3h97">
+                     <service id="kgkb3h9h">
+                        <title>GetUnitsAPIKey</title>
+                        <serviceName>svccon-I0074-Quinyx-FlexForceWebServices:GetUnitsAPIKey</serviceName>
+                        <serviceGUID>6oTrm6jPdmJhetQYqTrWaY</serviceGUID>
+                        <serviceInput/>
+                        <link id="kgkb3h9u" targetId="kgkb3h9t"/>
+                     </service>
+                     <assignment id="kgkb3h9t">
+                        <title>Assignment to tmp_APIKeysXML</title>
+                        <operation source="formula" to="temp.tmp_APIKeysXML">
+                           <expression language="XQuery">let $x := util:parseXML($output.GetUnitsAPIKey_Response)
+return
+for $i in $x//item/API_key
+return
+    element {'API_key'} {$i/text()}
+</expression>
+                        </operation>
+                     </assignment>
+                     <link id="kgkb3h98" targetId="kgkb3h93" type="containerLink"/>
+                  </flow>
+                  <flow id="kgkb3h9a">
+                     <subflow id="kgkb3haa">
+                        <title>p-I0074-Get-Quinyx-To-Workday-LeaveApplication-MappingTable</title>
+                        <subflowGUID>8lTuPD1fEYxkaf8yExPkGX</subflowGUID>
+                        <subflowPath>p-I0074-Get-Quinyx-Workday-LeaveApplication-MappingTable</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_WorkerType" source="constant" updatable="true">Direct</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="QuinyxWorkdayMappingTable" type="xml">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                     </subflow>
+                     <link id="kgkb3h9b" targetId="kgkb3h93" type="containerLink"/>
+                  </flow>
+                  <flow id="kgxoi6sk">
+                     <subflow id="kgxoi6t1">
+                        <title>p-Shared-GetEnvironmentVariables</title>
+                        <subflowGUID>hVwvolFWXAfkAG7pjbqKwh</subflowGUID>
+                        <subflowPath>p-Shared-GetEnvironmentVariables</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input/>
+                        <outputDef>
+                           <field name="out_IDFPath" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_Environment" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ScriptPath" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ArchiveCommand" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_SharedSQLServerName" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_SharedDatabaseName" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_AgentHomePath" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_OrgId" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ServerName" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                     </subflow>
+                     <link id="kgxoi6sl" targetId="kgkb3h93" type="containerLink"/>
+                  </flow>
+                  <link id="kgkb3h96" targetId="kgkb3h97" type="containerLink"/>
+                  <link id="kgkb3h99" targetId="kgkb3h9a" type="containerLink"/>
+                  <link id="kgxoi6sj" targetId="kgxoi6sk" type="containerLink"/>
+                  <link id="kgkb3h9s" targetId="kfnqu7or"/>
+               </container>
+               <container id="kfnqu7q2" type="exclusive">
+                  <title>tmp_CurrentAPIKey</title>
+                  <flow id="kfnqu7q6">
+                     <service id="kgxoi6ty">
+                        <title>Run a Shell Command: Update redundant unprocessed records</title>
+                        <serviceName>avShellService</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="command" source="formula">
+                              <expression language="XQuery">'SQLCMD -S "' || $output.out_SharedSQLServerName || '" -d "' || $output.out_SharedDatabaseName || '" -Q "update HR.QuinyxLeaveApplications set StatusCode = 900 where StatusCode &lt; 900 and StatusCode &lt;&gt; 1 and QuinyxRecordId = (select QuinyxRecordId from HR.QuinyxLeaveApplications where StatusCode in (-1, 0) group by QuinyxRecordId having count(*) &gt; 1) and Id &lt; (select max(Id) from HR.QuinyxLeaveApplications where StatusCode in (-1, 0))"'</expression>
+                           </parameter>
+                           <parameter name="workingDirPath" source="formula">
+                              <expression language="XQuery">'c:\'</expression>
+                           </parameter>
+                        </serviceInput>
+                        <link id="khlfr697" targetId="khlfr696"/>
+                     </service>
+                     <service id="khlfr696">
+                        <title>Run a Shell Command: Ignore deletion request that has no successful entry (due to error, or leaves that has not approved in Quinyx)</title>
+                        <serviceName>avShellService</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="command" source="formula">
+                              <expression language="XQuery">'SQLCMD -S "' || $output.out_SharedSQLServerName || '" -d "' || $output.out_SharedDatabaseName || '" -Q "update [HR].[QuinyxLeaveApplications] set StatusCode = 902 where id in (select id from [HR].[QuinyxLeaveApplications] m where IsDelete = 1 and StatusCode &lt; 900 and StatusCode &lt;&gt; 1 and StatusCode &lt;&gt; 1 and (select count(*) from [HR].[QuinyxLeaveApplications] c where m.QuinyxRecordId = c.QuinyxRecordId and IsDelete = 0 and StatusCode in (0,  1)) = 0)"'</expression>
+                           </parameter>
+                           <parameter name="workingDirPath" source="formula">
+                              <expression language="XQuery">'c:\'</expression>
+                           </parameter>
+                        </serviceInput>
+                        <link id="khlfr698" targetId="kfnqu7ru"/>
+                     </service>
+                     <end id="kfnqu7ru"/>
+                  </flow>
+                  <flow id="kfnqu7q9">
+                     <service id="kgesjdvs">
+                        <title>GetLeaveApplicationsV2</title>
+                        <serviceName>svccon-I0074-Quinyx-FlexForceWebServices:GetLeaveApplicationsV2</serviceName>
+                        <serviceGUID>6oTrm6jPdmJhetQYqTrWaY</serviceGUID>
+                        <serviceInput>
+                           <parameter name="apiKey" source="formula">
+                              <expression language="XQuery">$temp.tmp_CurrentAPIKey </expression>
+                           </parameter>
+                           <parameter name="ModifiedAfter" source="field" updatable="true">input.in_ModifiedAfter</parameter>
+                        </serviceInput>
+                        <link id="kgesjdw3" targetId="kgesjdw2"/>
+                     </service>
+                     <assignment id="kgesjdw2">
+                        <title>Assignment to tmp_LeaveApplicationItemsXML</title>
+                        <operation source="formula" to="temp.tmp_LeaveApplicationItemsXML">
+                           <expression language="XQuery">util:parseXML($output.GetLeaveApplicationsV2_Response)/return/leaveApplications/item</expression>
+                        </operation>
+                        <link id="kgesjdwb" targetId="kgesjdwa"/>
+                     </assignment>
+                     <assignment id="kgesjdwa">
+                        <title>Assignment to tmp_CurrentLeaveApplicationXML, tmp_LeaveApplicationItemsXML etc.</title>
+                        <operation source="formula" to="temp.tmp_CurrentLeaveApplicationXML">
+                           <expression language="XQuery">list:head($temp.tmp_LeaveApplicationItemsXML )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_LeaveApplicationItemsXML">
+                           <expression language="XQuery">list:tail($temp.tmp_LeaveApplicationItemsXML )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_IsLeaveApplicationEOF">
+                           <expression language="XQuery">if ( fn:string-length($temp.tmp_CurrentLeaveApplicationXML) &gt; 0 ) then 0 else 1</expression>
+                        </operation>
+                        <link id="kgesjdyy" targetId="kgesjdyh"/>
+                     </assignment>
+                     <container id="kgesjdyh" type="exclusive">
+                        <title>tmp_IsLeaveApplicationEOF</title>
+                        <flow id="kgesjdyi">
+                           <service id="kgesjdyj">
+                              <title>GetDeletedLeaveApplications</title>
+                              <serviceName>svccon-I0074-Quinyx-FlexForceWebServices:GetDeletedLeaveApplications</serviceName>
+                              <serviceGUID>6oTrm6jPdmJhetQYqTrWaY</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="APIKey" source="formula">
+                                    <expression language="XQuery">$temp.tmp_CurrentAPIKey</expression>
+                                 </parameter>
+                                 <parameter name="LastModified" source="field" updatable="true">input.in_ModifiedAfter</parameter>
+                              </serviceInput>
+                              <link id="kgesjdys" targetId="kgesjdyk"/>
+                           </service>
+                           <assignment id="kgesjdyk">
+                              <title>Assignment to tmp_DeletedLeaveApplicationItemsXML</title>
+                              <operation source="formula" to="temp.tmp_DeletedLeaveApplicationItemsXML">
+                                 <expression language="XQuery">util:parseXML($output.GetDeletedLeaveApplications_Response )/return/item</expression>
+                              </operation>
+                              <link id="kgesjdyt" targetId="kgesjdyl"/>
+                           </assignment>
+                           <assignment id="kgesjdyl">
+                              <title>Assignment to tmp_CurrentDeletedLeaveApplicationXML, tmp_DeletedLeaveApplicationItemsXML etc.</title>
+                              <operation source="formula" to="temp.tmp_CurrentDeletedLeaveApplicationXML">
+                                 <expression language="XQuery">list:head($temp.tmp_DeletedLeaveApplicationItemsXML  )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_DeletedLeaveApplicationItemsXML">
+                                 <expression language="XQuery">list:tail($temp.tmp_DeletedLeaveApplicationItemsXML )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_IsDeletedLeaveApplicationEOF">
+                                 <expression language="XQuery">if ( fn:string-length($temp.tmp_CurrentDeletedLeaveApplicationXML ) &gt; 0 ) then 0 else 1</expression>
+                              </operation>
+                              <link id="kgesjdz7" targetId="kgesjdz6"/>
+                           </assignment>
+                           <container id="kgesjdz6" type="exclusive">
+                              <title>tmp_IsDeletedLeaveApplicationEOF</title>
+                              <flow id="kgesjdza">
+                                 <jumpTo id="kgesjdzx">
+                                    <link id="kgesjdzy" targetId="kfnqu7or"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="kgesjdzd">
+                                 <assignment id="kgxoi78g">
+                                    <title>Assignment to tmp_IsLeaveReasonRelevant 1</title>
+                                    <operation source="formula" to="temp.tmp_IsLeaveReasonRelevant">
+                                       <expression language="XQuery">if (fn:count($output.QuinyxWorkdayMappingTable//LeaveType[QuinyxLeaveReason=$temp.tmp_CurrentDeletedLeaveApplicationXML/leaveReason/text/text()]) &gt; 0 
+(: for deletion no need check for approval  
+and ($temp.tmp_CurrentDeletedLeaveApplicationXML/approvedByManager/text/text() = 'true') and
+($temp.tmp_CurrentDeletedLeaveApplicationXML/approvedByEmployee/text/text() = 'true' :)
+) then 1 else 0</expression>
+                                    </operation>
+                                    <link id="kgxoi79u" targetId="kgxoi79t"/>
+                                 </assignment>
+                                 <container id="kgxoi79t" type="exclusive">
+                                    <title>tmp_IsLeaveReasonRelevant</title>
+                                    <flow id="kgxoi79x">
+                                       <create id="kgxoi7c9">
+                                          <title>QuinyxLeaveApplications</title>
+                                          <entityName>sql-I0074-HR:QuinyxLeaveApplications</entityName>
+                                          <createInput>
+                                             <parameter name="ETLId" source="field" updatable="true">input.in_ETLId</parameter>
+                                             <parameter name="QuinyxRecordId" source="formula" updatable="true">
+                                                <expression language="XQuery">$temp.tmp_CurrentDeletedLeaveApplicationXML/id/text/text()</expression>
+                                             </parameter>
+                                             <parameter name="QuinyxAPIKey" source="field" updatable="true">temp.tmp_CurrentAPIKey</parameter>
+                                             <parameter name="BadgeNumber" source="formula" updatable="true">
+                                                <expression language="XQuery">$temp.tmp_CurrentDeletedLeaveApplicationXML/fromBadgeNo/text/text()</expression>
+                                             </parameter>
+                                             <parameter name="LeaveReason" source="formula" updatable="true">
+                                                <expression language="XQuery">$temp.tmp_CurrentDeletedLeaveApplicationXML/leaveReason/text/text()</expression>
+                                             </parameter>
+                                             <parameter name="FromDateTime" source="formula" updatable="true">
+                                                <expression language="XQuery">fn:concat($temp.tmp_CurrentDeletedLeaveApplicationXML/fromDate/text/text(), 'T', $temp.tmp_CurrentDeletedLeaveApplicationXML/fromTime/text/text())</expression>
+                                             </parameter>
+                                             <parameter name="ToDateTime" source="formula" updatable="true">
+                                                <expression language="XQuery">fn:concat($temp.tmp_CurrentDeletedLeaveApplicationXML/toDate/text/text(), 'T', $temp.tmp_CurrentDeletedLeaveApplicationXML/toTime/text/text())</expression>
+                                             </parameter>
+                                             <parameter name="ExtCode" source="formula" updatable="true">
+                                                <expression language="XQuery">$temp.tmp_CurrentDeletedLeaveApplicationXML/extCode/text/text()</expression>
+                                             </parameter>
+                                             <parameter name="ApprovedByManager" source="formula" updatable="true">
+                                                <expression language="XQuery">if ($temp.tmp_CurrentDeletedLeaveApplicationXML/approvedByManager/text/text() = 'true') then 1 else 0</expression>
+                                             </parameter>
+                                             <parameter name="ApprovedByEmployee" source="formula" updatable="true">
+                                                <expression language="XQuery">if ($temp.tmp_CurrentDeletedLeaveApplicationXML/approvedByEmployee/text/text() = 'true') then 1 else 0</expression>
+                                             </parameter>
+                                             <parameter name="SentDate" source="formula" updatable="true">
+                                                <expression language="XQuery">fn:substring($temp.tmp_CurrentLeaveApplicationXML/senddate/text/text(), 1, 19)
+</expression>
+                                             </parameter>
+                                             <parameter name="IsDelete" source="constant" updatable="true">true</parameter>
+                                          </createInput>
+                                       </create>
+                                       <link id="kgxoi79y" targetId="kgxoi79t" type="containerLink"/>
+                                    </flow>
+                                    <flow id="kgxoi7a0">
+                                       <link id="kgxoi7a1" targetId="kgxoi79t" type="containerLink"/>
+                                    </flow>
+                                    <link id="kgxoi79w" targetId="kgxoi79x" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="equals">
+                                             <arg name="left">{$temp.tmp_IsLeaveReasonRelevant}</arg>
+                                             <arg name="right">{1}</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="kgxoi79z" targetId="kgxoi7a0" type="containerLink"/>
+                                    <link id="kgxoi7c8" targetId="kgesje07"/>
+                                 </container>
+                                 <jumpTo id="kgesje07">
+                                    <link id="kgesje08" targetId="kgesjdyl"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="kgesjdz9" targetId="kgesjdza" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_IsDeletedLeaveApplicationEOF}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="kgesjdzc" targetId="kgesjdzd" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <flow id="kgesjdyn">
+                           <assignment id="kgjdng52">
+                              <title>Assignment to tmp_IsLeaveReasonRelevant</title>
+                              <operation source="formula" to="temp.tmp_IsLeaveReasonRelevant">
+                                 <expression language="XQuery">if (fn:count($output.QuinyxWorkdayMappingTable//LeaveType[QuinyxLeaveReason=$temp.tmp_CurrentLeaveApplicationXML/leaveReason/text/text()]) &gt; 0 and ($temp.tmp_CurrentLeaveApplicationXML/approvedByManager/text/text() = 'true') and ($temp.tmp_CurrentLeaveApplicationXML/approvedByEmployee/text/text() = 'true')) then 1 else 0</expression>
+                              </operation>
+                              <link id="kgjdng53" targetId="kgjdng4g"/>
+                           </assignment>
+                           <container id="kgjdng4g" type="exclusive">
+                              <title>tmp_IsLeaveReasonRelevant</title>
+                              <flow id="kgjdng4j">
+                                 <create id="kgjdng5c">
+                                    <title>QuinyxLeaveApplications</title>
+                                    <entityName>sql-I0074-HR:QuinyxLeaveApplications</entityName>
+                                    <createInput>
+                                       <parameter name="ETLId" source="field" updatable="true">input.in_ETLId</parameter>
+                                       <parameter name="QuinyxRecordId" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_CurrentLeaveApplicationXML/id/text/text()</expression>
+                                       </parameter>
+                                       <parameter name="QuinyxAPIKey" source="field" updatable="true">temp.tmp_CurrentAPIKey</parameter>
+                                       <parameter name="BadgeNumber" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_CurrentLeaveApplicationXML/fromBadgeNo/text/text()</expression>
+                                       </parameter>
+                                       <parameter name="LeaveReason" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_CurrentLeaveApplicationXML/leaveReason/text/text()</expression>
+                                       </parameter>
+                                       <parameter name="FromDateTime" source="formula" updatable="true">
+                                          <expression language="XQuery">fn:concat($temp.tmp_CurrentLeaveApplicationXML/fromDate/text/text(), 'T', $temp.tmp_CurrentLeaveApplicationXML/fromTime/text/text())</expression>
+                                       </parameter>
+                                       <parameter name="ToDateTime" source="formula" updatable="true">
+                                          <expression language="XQuery">fn:concat($temp.tmp_CurrentLeaveApplicationXML/toDate/text/text(), 'T', $temp.tmp_CurrentLeaveApplicationXML/toTime/text/text())</expression>
+                                       </parameter>
+                                       <parameter name="ExtCode" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_CurrentLeaveApplicationXML/extCode/text/text()</expression>
+                                       </parameter>
+                                       <parameter name="ApprovedByManager" source="formula" updatable="true">
+                                          <expression language="XQuery">if ($temp.tmp_CurrentLeaveApplicationXML/approvedByManager/text/text() = 'true') then fn:true() else fn:false()</expression>
+                                       </parameter>
+                                       <parameter name="ApprovedByEmployee" source="formula" updatable="true">
+                                          <expression language="XQuery">if ($temp.tmp_CurrentLeaveApplicationXML/approvedByEmployee/text/text() = 'true') then fn:true() else fn:false()</expression>
+                                       </parameter>
+                                       <parameter name="SentDate" source="formula" updatable="true">
+                                          <expression language="XQuery">fn:substring($temp.tmp_CurrentLeaveApplicationXML/senddate/text/text(), 1, 19)
+</expression>
+                                       </parameter>
+                                    </createInput>
+                                 </create>
+                                 <link id="kgjdng4k" targetId="kgjdng4g" type="containerLink"/>
+                              </flow>
+                              <flow id="kgjdng4m">
+                                 <link id="kgjdng4n" targetId="kgjdng4g" type="containerLink"/>
+                              </flow>
+                              <link id="kgjdng4i" targetId="kgjdng4j" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_IsLeaveReasonRelevant}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="kgjdng4l" targetId="kgjdng4m" type="containerLink"/>
+                              <link id="kgjdng5b" targetId="kgesjdyp"/>
+                           </container>
+                           <jumpTo id="kgesjdyp">
+                              <link id="kgesjdyx" targetId="kgesjdwa"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="kgesjdyq" targetId="kgesjdyi" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_IsLeaveApplicationEOF}</arg>
+                                 <arg name="right">{1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kgesjdyr" targetId="kgesjdyn" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="kfnqu7q5" targetId="kfnqu7q6" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_CurrentAPIKey}</arg>
+                           <arg name="right"/>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kfnqu7q8" targetId="kfnqu7q9" type="containerLink"/>
+               </container>
+               <assignment id="kfnqu7or">
+                  <title>Assignment to tmp_CurrentAPIKey, tmp_APIKeysXML</title>
+                  <operation source="formula" to="temp.tmp_CurrentAPIKey">
+                     <expression language="XQuery">list:head($temp.tmp_APIKeysXML)/text()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_APIKeysXML">
+                     <expression language="XQuery">list:tail($temp.tmp_APIKeysXML)</expression>
+                  </operation>
+                  <link id="kfnqu7q3" targetId="kfnqu7q2"/>
+               </assignment>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>6mbD5ayHeECcBzC7Uh4jw7</types1:GUID>
+      <types1:DisplayName>p-I0074-GetLeaveApplications-Quinyx-To-DB</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-20T07:29:12.113Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

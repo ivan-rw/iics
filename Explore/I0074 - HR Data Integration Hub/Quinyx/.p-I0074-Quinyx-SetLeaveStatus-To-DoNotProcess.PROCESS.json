@@ -1,0 +1,44 @@
+{
+  "objectInfo" : {
+    "id" : "4kZURB4s4s2dArRmiOBUc5",
+    "name" : "p-I0074-Quinyx-SetLeaveStatus-To-DoNotProcess",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "fQVK9Em2kVNKSmv-gt-13441568-2020-11-01T08:03:10.827Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "lUAecQlK5mybMDYMXeE1Mk",
+    "name" : "sql-I0074-HR",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "f5kck8jKBmeK3jh-gt-3247611-2019-06-26T07:59:30.095Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0074 - HR Data Integration Hub/Common"
+  } ]
+}
