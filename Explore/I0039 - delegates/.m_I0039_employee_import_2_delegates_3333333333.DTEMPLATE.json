@@ -1,7 +1,7 @@
 {
   "objectInfo" : {
     "id" : "hbafylkFAq5io5e0PWdS0v",
-    "name" : "m_I0039_employee_import_2_delegates - Copy 1",
+    "name" : "m_I0039_employee_import_2_delegates_3333333333",
     "type" : "DTEMPLATE",
     "metadata" : {
       "modelVersion" : {
@@ -17,7 +17,7 @@
       } ],
       "additionalInfo" : {
         "description" : "vzor pro manager managers onleave 2",
-        "contentType" : null,
+        "contentType" : "JSON",
         "documentState" : "VALID"
       }
     }
