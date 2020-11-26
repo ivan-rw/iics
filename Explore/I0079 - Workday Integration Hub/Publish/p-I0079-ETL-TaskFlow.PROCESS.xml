@@ -1,0 +1,567 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>nfSmbduaa-gt-1602366-2019-07-02T01:53:46.225Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0079-ETL-TaskFlow</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Starting point for I0079</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2019-07-02T01:53:46Z</types1:CreationDate>
+      <types1:ModifiedBy>yen.shyang.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-09-30T10:09:24Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>yen.shyang.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-09-30T10:09:45Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0079-ETL-TaskFlow/p-I0079-ETL-TaskFlow.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0079-ETL-TaskFlow"
+                  name="p-I0079-ETL-TaskFlow"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>Starting point for I0079</description>
+            <tags>.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ResumeFromLastGetWorkersPage_ETLControlId"
+                          type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_DB_ETLControl_LatestRow" type="reference">
+                  <options>
+                     <option name="referenceTo">sql-I0079-HR:ETLControl</option>
+                     <option name="required">false</option>
+                     <option name="guid">4y8IxPDyztqff0VmpQWR0S</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_GetDataUpdatedFrom" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ETLStatus" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ErrorMessages" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_GetWorkersLastPage" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_GetWorkersRetryCount" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_GetDataUpdatedThrough" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="jynygnq7" targetId="jynygnq6"/>
+               </start>
+               <container id="jynygnq6" type="exclusive">
+                  <title>in_ResumeFromLastGetWorkersPage_ETLControlId</title>
+                  <flow id="jynygnqa">
+                     <assignment id="jynygnvy">
+                        <title>Get Latest ETLControl</title>
+                        <operation source="query" to="temp.tmp_DB_ETLControl_LatestRow">
+                           <query advanceQuery="false" from="sql-I0079-HR:ETLControl">
+                              <where>Order By Id Desc</where>
+                           </query>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_GetWorkersLastPage">1</operation>
+                        <operation source="constant" to="temp.tmp_GetWorkersRetryCount">10</operation>
+                        <link id="jynygnyx" targetId="jynygnyb"/>
+                     </assignment>
+                     <assignment id="jynygpvg">
+                        <title>Assignment to tmp_GetDataUpdatedThrough</title>
+                        <operation source="field" to="temp.tmp_GetDataUpdatedThrough">output.out_ConvertedDateTime</operation>
+                        <link id="k8rbeo7s" targetId="k8rbeo7r"/>
+                     </assignment>
+                     <assignment id="jyo21hcb">
+                        <title>Assignment to in_ResumeFromLastGetWorkersPage_ETLControlId</title>
+                        <operation source="field" to="input.in_ResumeFromLastGetWorkersPage_ETLControlId">output.Created ETLControl.Id</operation>
+                     </assignment>
+                     <container id="jynygnyb" type="exclusive">
+                        <title>tmp_DB_ETLControl_LatestRow</title>
+                        <flow id="jynygnyc">
+                           <container id="jynygnyd" type="exclusive">
+                              <title>ETLStatus</title>
+                              <flow id="jynygnye">
+                                 <subflow id="jynygnyf">
+                                    <title>p-Shared-SendEmail: Warn incomplete</title>
+                                    <subflowGUID>gxxxPg07XMEelwXQQcmjK5</subflowGUID>
+                                    <subflowPath>p-Shared-SendEmail</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_To" source="constant" updatable="true">daniel.ong@rockwool.com</parameter>
+                                       <parameter name="in_Subject" source="constant" updatable="true">ICRT Process p-I0079-ETL-Taskflow did not run due to last job status is incomplete</parameter>
+                                       <parameter name="in_Message" source="formula" updatable="true">
+                                          <expression language="XQuery">fn:concat('Previous Id:', $temp.tmp_DB_ETLControl_LatestRow.Id, '&lt;br&gt;Date From (PST):', $temp.tmp_DB_ETLControl_LatestRow.Workday_FromPST, '&lt;br&gt;Date Through (PST):', $temp.tmp_DB_ETLControl_LatestRow.Workday_ToPST)</expression>
+                                       </parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_SendEmail_Result" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                    <link id="jynygnyt" targetId="jynygnyg"/>
+                                 </subflow>
+                                 <throw id="jynygnyg">
+                                    <title>Throw 1</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">500</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">Previous ETL incomplete</parameter>
+                                       <parameter name="reason" source="constant" updatable="true"/>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <flow id="jynygnyh">
+                                 <assignment id="jynygnyi">
+                                    <title>Set Update_From to last Updated_From</title>
+                                    <operation source="field" to="temp.tmp_GetDataUpdatedFrom">temp.tmp_DB_ETLControl_LatestRow.Workday_FromPST</operation>
+                                 </assignment>
+                                 <link id="jynygnyu" targetId="jynygnyd" type="containerLink"/>
+                              </flow>
+                              <flow id="jynygnyj">
+                                 <assignment id="jynygnyk">
+                                    <title>Set Update_From to 1 second after last Updated_Through 1</title>
+                                    <operation source="formula" to="temp.tmp_GetDataUpdatedFrom">
+                                       <expression language="XQuery">xs:dateTime($temp.tmp_DB_ETLControl_LatestRow.Workday_ToPST) + xs:dayTimeDuration("PT1S")</expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="jynygnyv" targetId="jynygnyd" type="containerLink"/>
+                              </flow>
+                              <link id="jynygnyq" targetId="jynygnye" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_DB_ETLControl_LatestRow.ETLStatus}</arg>
+                                       <arg name="right">{0}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="jynygnyr" targetId="jynygnyh" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_DB_ETLControl_LatestRow.ETLStatus}</arg>
+                                       <arg name="right">{-1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="jynygnys" targetId="jynygnyj" type="containerLink"/>
+                           </container>
+                           <link id="jynygnyp" targetId="jynygnyb" type="containerLink"/>
+                        </flow>
+                        <flow id="jynygnyl">
+                           <assignment id="jynygnym">
+                              <title>Set Updated_From to pre-WorkDay implementation</title>
+                              <operation source="formula" to="temp.tmp_GetDataUpdatedFrom">
+                                 <expression language="XQuery">'2000-01-01T00:00:00'</expression>
+                              </operation>
+                           </assignment>
+                           <link id="jynygnyw" targetId="jynygnyb" type="containerLink"/>
+                        </flow>
+                        <link id="jynygnyn" targetId="jynygnyc" type="containerLink">
+                           <condition source="formula">
+                              <function name="set">
+                                 <arg name="field">{$temp.tmp_DB_ETLControl_LatestRow}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="jynygnyo" targetId="jynygnyl" type="containerLink">
+                           <condition source="formula">
+                              <function name="unset">
+                                 <arg name="field">{$temp.tmp_DB_ETLControl_LatestRow}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="jynygo11" targetId="jynygo10"/>
+                     </container>
+                     <subflow id="jynygo10">
+                        <title>Get current time in PST</title>
+                        <subflowGUID>18Y7B95iIwujh91TpdK5AX</subflowGUID>
+                        <subflowPath>p-Shared-Convert-DateTime-TimeZone</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="SourceDateTime" source="formula" updatable="true">
+                              <expression language="XQuery">format-dateTime(fn:current-dateTime(), '[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]')</expression>
+                           </parameter>
+                           <parameter name="SourceTimeZone" source="constant" updatable="true">CET</parameter>
+                           <parameter name="TargetTimeZone" source="constant" updatable="true">PST</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_ConvertedDateTime" type="datetime">
+                              <options>
+                                 <option name="thirtyMinutesIncrement">true</option>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="jynygpvh" targetId="jynygpvg"/>
+                     </subflow>
+                     <create id="k8rbeo7r">
+                        <title>ETLControl</title>
+                        <entityName>sql-I0079-HR:ETLControl</entityName>
+                        <createInput>
+                           <parameter name="Workday_FromPST" source="field" updatable="true">temp.tmp_GetDataUpdatedFrom</parameter>
+                           <parameter name="Workday_ToPST" source="field" updatable="true">temp.tmp_GetDataUpdatedThrough</parameter>
+                           <parameter name="InformaticaProcessId" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                        </createInput>
+                        <link id="k8rbeojt" targetId="jyo21hcb"/>
+                     </create>
+                     <link id="jynygnqb" targetId="jynygnq6" type="containerLink"/>
+                  </flow>
+                  <flow id="jynygnqd">
+                     <assignment id="jynygoa0">
+                        <title>Assignment to tmp_DB_ETLControl_LatestRow</title>
+                        <operation source="query" to="temp.tmp_DB_ETLControl_LatestRow">
+                           <query advanceQuery="false" from="sql-I0079-HR:ETLControl">
+                              <where>Id = {$input.in_ResumeFromLastGetWorkersPage_ETLControlId}</where>
+                           </query>
+                        </operation>
+                        <link id="jynygou0" targetId="jynygotz"/>
+                     </assignment>
+                     <assignment id="jynygotz">
+                        <title>Assignment to tmp_GetWorkersRetryCount, tmp_GetWorkersLastPage etc.</title>
+                        <operation source="constant" to="temp.tmp_GetWorkersRetryCount">10</operation>
+                        <operation source="field" to="temp.tmp_GetWorkersLastPage">temp.tmp_DB_ETLControl_LatestRow.GetWorkersLastPageNumber</operation>
+                        <operation source="field" to="temp.tmp_GetDataUpdatedFrom">temp.tmp_DB_ETLControl_LatestRow.Workday_FromPST</operation>
+                        <operation source="field" to="temp.tmp_GetDataUpdatedThrough">temp.tmp_DB_ETLControl_LatestRow.Workday_ToPST</operation>
+                        <link id="jyo21ily" targetId="jyo21ilx"/>
+                     </assignment>
+                     <assignment id="jyo21ilx">
+                        <title>Assignment to ETLStatus</title>
+                        <operation source="constant" to="temp.tmp_DB_ETLControl_LatestRow.ETLStatus">0</operation>
+                     </assignment>
+                     <link id="jynygnqe" targetId="jynygnq6" type="containerLink"/>
+                  </flow>
+                  <link id="jynygnq9" targetId="jynygnqa" type="containerLink">
+                     <condition source="formula">
+                        <function name="less-or-equals">
+                           <arg name="left">{$input.in_ResumeFromLastGetWorkersPage_ETLControlId}</arg>
+                           <arg name="right">{0}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jynygnqc" targetId="jynygnqd" type="containerLink"/>
+                  <link id="jynygo34" targetId="jxvnnm0r"/>
+               </container>
+               <container id="jxvnnm0r" type="parallel">
+                  <title>Parallel Paths 1</title>
+                  <flow id="jxvnnm0v">
+                     <eventContainer id="jxvnnm1t">
+                        <subflow id="jxvnnm1z">
+                           <title>p-I0079-GetWorkdayWorkers</title>
+                           <subflowGUID>8xvc3mUnKLmke708licrsI</subflowGUID>
+                           <subflowPath>p-I0079-GetWorkdayWorkers</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_UpdatedFrom" source="field" updatable="true">temp.tmp_GetDataUpdatedFrom</parameter>
+                              <parameter name="in_UpdatedThrough" source="field" updatable="true">temp.tmp_GetDataUpdatedThrough</parameter>
+                              <parameter name="in_ETLControl_Id" source="field" updatable="true">input.in_ResumeFromLastGetWorkersPage_ETLControlId</parameter>
+                              <parameter name="in_StartPage" source="field" updatable="true">temp.tmp_GetWorkersLastPage</parameter>
+                           </input>
+                           <outputDef/>
+                        </subflow>
+                        <flow id="jxvnnm1u">
+                           <link id="jxvnnm22" targetId="jxvnnm1t" type="containerLink"/>
+                        </flow>
+                        <flow id="jxvnnm1w">
+                           <container id="jynrkp9o" type="exclusive">
+                              <title>tmp_GetWorkersRetryCount</title>
+                              <flow id="jynrkp9r">
+                                 <assignment id="jynrkper">
+                                    <title>Assignment to tmp_DB_ETLControl_LatestRow</title>
+                                    <operation source="query" to="temp.tmp_DB_ETLControl_LatestRow">
+                                       <query advanceQuery="false" from="sql-I0079-HR:ETLControl">
+                                          <where>Id = {$input.in_ResumeFromLastGetWorkersPage_ETLControlId}</where>
+                                       </query>
+                                    </operation>
+                                    <link id="jynrkpgl" targetId="jynrkpgk"/>
+                                 </assignment>
+                                 <assignment id="jynrkpgk">
+                                    <title>Assignment to tmp_GetWorkersLastPage, tmp_GetWorkersRetryCount</title>
+                                    <operation source="field" to="temp.tmp_GetWorkersLastPage">temp.tmp_DB_ETLControl_LatestRow.GetWorkersLastPageNumber</operation>
+                                    <operation source="formula" to="temp.tmp_GetWorkersRetryCount">
+                                       <expression language="XQuery">$temp.tmp_GetWorkersRetryCount - 1</expression>
+                                    </operation>
+                                    <link id="jynrkpq3" targetId="jynrkpq1"/>
+                                 </assignment>
+                                 <jumpTo id="jynrkpq1">
+                                    <link id="jynrkpq2" targetId="jxvnnm1t"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="jynrkp9u">
+                                 <assignment id="jynrkpic">
+                                    <title>Assignment to tmp_ETLStatus, tmp_ErrorMessages</title>
+                                    <operation source="constant" to="temp.tmp_ETLStatus">-1</operation>
+                                    <operation source="formula" to="temp.tmp_ErrorMessages">
+                                       <expression language="XQuery">concat($temp.tmp_ErrorMessages,"GetWorkdayWorkers:", $output.faultInfo[1]/detail,"|")</expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="jynrkp9v" targetId="jynrkp9o" type="containerLink"/>
+                              </flow>
+                              <link id="jynrkp9q" targetId="jynrkp9r" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="greater-than">
+                                       <arg name="left">{$temp.tmp_GetWorkersRetryCount}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="jynrkp9t" targetId="jynrkp9u" type="containerLink"/>
+                           </container>
+                           <link id="jxvnnm23" targetId="jxvnnm1t" type="containerLink"/>
+                        </flow>
+                        <link id="jxvnnm20" targetId="jxvnnm1u" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="jxl5r69t" interrupting="true">
+                              <link id="jxvnnm21" targetId="jxvnnm1w" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="jxvnnm0w" targetId="jxvnnm0r" type="containerLink"/>
+                  </flow>
+                  <flow id="jxwo5c52">
+                     <eventContainer id="jxwvb8rz">
+                        <subflow id="jxwo5c6a">
+                           <title>p-I0079-GetWorkdayPayees</title>
+                           <subflowGUID>i8NRpOWyww6gdqbootlK4R</subflowGUID>
+                           <subflowPath>p-I0079-GetWorkdayPayees</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_UpdatedFrom" source="field" updatable="true">temp.tmp_GetDataUpdatedFrom</parameter>
+                              <parameter name="in_UpdatedThrough" source="field" updatable="true">temp.tmp_GetDataUpdatedThrough</parameter>
+                              <parameter name="in_ETLControl_Id" source="field" updatable="true">input.in_ResumeFromLastGetWorkersPage_ETLControlId</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="Get_Payees_Response" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_CurrentPage" type="int">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_TotalPage" type="int">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="jxwvb8s1">
+                           <link id="jxwvb8s2" targetId="jxwvb8rz" type="containerLink"/>
+                        </flow>
+                        <flow id="jxwvb8s4">
+                           <assignment id="jxwvb8ti">
+                              <title>Assignment to tmp_ETLStatus, tmp_ErrorMessages</title>
+                              <operation source="constant" to="temp.tmp_ETLStatus">-1</operation>
+                              <operation source="formula" to="temp.tmp_ErrorMessages">
+                                 <expression language="XQuery">concat($temp.tmp_ErrorMessages,"GetWorkdayPayees:", $output.faultInfo[1]/detail,"|")</expression>
+                              </operation>
+                           </assignment>
+                           <link id="jxwvb8s5" targetId="jxwvb8rz" type="containerLink"/>
+                        </flow>
+                        <link id="jxwvb8s0" targetId="jxwvb8s1" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="jxwvb8rr" interrupting="true">
+                              <link id="jxwvb8s3" targetId="jxwvb8s4" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="jxwo5c53" targetId="jxvnnm0r" type="containerLink"/>
+                  </flow>
+                  <link id="jxvnnm0u" targetId="jxvnnm0v" type="containerLink"/>
+                  <link id="jxwo5c51" targetId="jxwo5c52" type="containerLink"/>
+                  <link id="jxvnnnad" targetId="jxvnnnac"/>
+               </container>
+               <container id="jxvnnnac" type="exclusive">
+                  <title>tmp_ETLStatus</title>
+                  <flow id="jxvnnnag">
+                     <eventContainer id="jxvnnnmm">
+                        <service id="jxvnnndy">
+                           <title>Run Cloud Task: Load data</title>
+                           <serviceName>ICSExecuteTask</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="Task Name" source="constant">tf_I0079_Load_to_DB [SAAS_LINEAR_TASKFLOW]</parameter>
+                              <parameter name="Wait for Task to Complete" source="constant">true</parameter>
+                              <parameter name="Max Wait" source="constant">1800</parameter>
+                              <parameter name="Fail on Cloud Task Errors" source="constant">true</parameter>
+                              <parameter name="GUID" source="constant">2DWovg6rJted7AUdRF26yI</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="jxvnnnmo">
+                           <eventContainer id="k8s45vkw">
+                              <service id="k8s45vio">
+                                 <title>Start CIH Publication</title>
+                                 <serviceName>svccon-Shared-CIH-API:StartPublication</serviceName>
+                                 <serviceGUID>cOxhFS6hFwbgNcfELIC1aW</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="publicationName" source="constant">pub_I0079_Workday_WorkerData</parameter>
+                                    <parameter name="runDisabled" source="constant">false</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="k8s45vky">
+                                 <link id="k8s45vkz" targetId="k8s45vkw" type="containerLink"/>
+                              </flow>
+                              <flow id="k8s45vl1">
+                                 <assignment id="k8s45vqf">
+                                    <title>Assignment to tmp_ETLStatus, tmp_ErrorMessages 2 1</title>
+                                    <operation source="constant" to="temp.tmp_ETLStatus">-1</operation>
+                                    <operation source="formula" to="temp.tmp_ErrorMessages">
+                                       <expression language="XQuery">concat($temp.tmp_ErrorMessages,"Start publication:", $output.faultInfo[1]/detail,"|")</expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="k8s45vl2" targetId="k8s45vkw" type="containerLink"/>
+                              </flow>
+                              <link id="k8s45vkx" targetId="k8s45vky" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="k8s45vkv" interrupting="true">
+                                    <link id="k8s45vl0" targetId="k8s45vl1" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="jxvnnnmp" targetId="jxvnnnmm" type="containerLink"/>
+                        </flow>
+                        <flow id="jxvnnnmr">
+                           <assignment id="jxvnnnr4">
+                              <title>Assignment to tmp_ETLStatus, tmp_ErrorMessages 2</title>
+                              <operation source="constant" to="temp.tmp_ETLStatus">-1</operation>
+                              <operation source="formula" to="temp.tmp_ErrorMessages">
+                                 <expression language="XQuery">concat($temp.tmp_ErrorMessages,"Load Data (DI):", $output.faultInfo[1]/detail,"|")</expression>
+                              </operation>
+                           </assignment>
+                           <link id="jxvnnnms" targetId="jxvnnnmm" type="containerLink"/>
+                        </flow>
+                        <link id="jxvnnnmn" targetId="jxvnnnmo" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="jxvnnnez" interrupting="true">
+                              <link id="jxvnnnmq" targetId="jxvnnnmr" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="jxvnnnah" targetId="jxvnnnac" type="containerLink"/>
+                  </flow>
+                  <flow id="jxvnnnaj">
+                     <link id="jxvnnnak" targetId="jxvnnnac" type="containerLink"/>
+                  </flow>
+                  <link id="jxvnnnaf" targetId="jxvnnnag" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.tmp_ETLStatus}</arg>
+                           <arg name="right">{1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jxvnnnai" targetId="jxvnnnaj" type="containerLink"/>
+                  <link id="jxvnnnwd" targetId="jxvnnnwc"/>
+               </container>
+               <container id="jxvnnnwc" type="exclusive">
+                  <title>tmp_ETLStatus</title>
+                  <flow id="jxvnnnwg">
+                     <subflow id="jxvnnnzx">
+                        <title>p-Shared-SendEmail:  GetWorkdayWorkers failure alert</title>
+                        <subflowGUID>gxxxPg07XMEelwXQQcmjK5</subflowGUID>
+                        <subflowPath>p-Shared-SendEmail</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_To" source="constant" updatable="true">daniel.ong@rockwool.com</parameter>
+                           <parameter name="in_Subject" source="constant" updatable="true">ICRT Process p-I0079-ETL-Taskflow failed</parameter>
+                           <parameter name="in_Message" source="formula" updatable="true">
+                              <expression language="XQuery">concat($temp.tmp_ErrorMessages, '&amp;#xD;&amp;#xA;', 'Informatica Process Id:', util:getProcessId())</expression>
+                           </parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_SendEmail_Result" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                     </subflow>
+                     <link id="jxvnnnwh" targetId="jxvnnnwc" type="containerLink"/>
+                  </flow>
+                  <flow id="jxvnnnwj">
+                     <link id="jxvnnnwk" targetId="jxvnnnwc" type="containerLink"/>
+                  </flow>
+                  <link id="jxvnnnwf" targetId="jxvnnnwg" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.tmp_ETLStatus}</arg>
+                           <arg name="right">{-1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jxvnnnwi" targetId="jxvnnnwj" type="containerLink"/>
+                  <link id="jyo21h6q" targetId="jyo21h6p"/>
+               </container>
+               <assignment id="jyo21h6p">
+                  <title>Assignment to tmp_DB_ETLControl_LatestRow</title>
+                  <operation source="query" to="temp.tmp_DB_ETLControl_LatestRow">
+                     <query advanceQuery="false" from="sql-I0079-HR:ETLControl">
+                        <where>Id = {$input.in_ResumeFromLastGetWorkersPage_ETLControlId}</where>
+                     </query>
+                  </operation>
+                  <link id="jyo21h6r" targetId="jxoi371w"/>
+               </assignment>
+               <assignment id="jxoi371w">
+                  <title>Assignment to ETLEndUTC, ErrorMessage etc.</title>
+                  <operation source="formula" to="temp.tmp_DB_ETLControl_LatestRow.ETLEndUTC">
+                     <function name="time_from_now">
+                        <arg name="value">0</arg>
+                        <arg name="HM_flag">M</arg>
+                     </function>
+                  </operation>
+                  <operation source="field" to="temp.tmp_DB_ETLControl_LatestRow.ErrorMessage">temp.tmp_ErrorMessages</operation>
+                  <operation source="field" to="temp.tmp_DB_ETLControl_LatestRow.ETLStatus">temp.tmp_ETLStatus</operation>
+                  <link id="k8s45vi4" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>9nyy5uc4Qdqli5OMQyARmx</types1:GUID>
+      <types1:DisplayName>p-I0079-ETL-TaskFlow</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-26T09:01:00.464Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

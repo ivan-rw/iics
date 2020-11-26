@@ -1,0 +1,104 @@
+{
+  "objectInfo" : {
+    "id" : "i8NRpOWyww6gdqbootlK4R",
+    "name" : "p-I0079-GetWorkdayPayees",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "NCx1H5lRuImXyco-gt-2165446-2019-07-22T01:15:24.636Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Extract Workday bank account data for HR data hub.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "hVwvolFWXAfkAG7pjbqKwh",
+    "name" : "p-Shared-GetEnvironmentVariables",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "D8WhIpppppppppp-gt-34253860-2019-10-31T03:21:23.479Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Shared"
+  }, {
+    "id" : "9SkGJHjcBRdjKnKVyYdA8O",
+    "name" : "wkd-I0079-Payee-Interface",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "OMDOp7jvppppppp-gt-25256997-2019-07-04T02:29:38.645Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Common"
+  }, {
+    "id" : "1rdFvkFuNmEfiwxqeS9Qee",
+    "name" : "file-I0079-Workday-HR-Data",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "rUlxsnCmp6oIuQa-gt-20018754-2020-04-08T09:53:57.278Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Common"
+  }, {
+    "id" : "gz722djXKaMcibPUxdVnmq",
+    "name" : "svccon-InformaticaHRIntegrationHub",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "DXf66vfXjISUXL8-gt-1090648-2019-08-20T06:53:02.477Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0074 - HR Data Integration Hub/Common"
+  } ]
+}

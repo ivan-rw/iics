@@ -1,0 +1,164 @@
+{
+  "objectInfo" : {
+    "id" : "9nyy5uc4Qdqli5OMQyARmx",
+    "name" : "p-I0079-ETL-TaskFlow",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "nfSmbduaa-gt-1602366-2019-07-02T01:53:46.225Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Starting point for I0079",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "2DWovg6rJted7AUdRF26yI",
+    "name" : "tf_I0079_Load_to_DB",
+    "type" : "WORKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD60N00000000002R"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Publish"
+  }, {
+    "id" : "i8NRpOWyww6gdqbootlK4R",
+    "name" : "p-I0079-GetWorkdayPayees",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "NCx1H5lRuImXyco-gt-2165446-2019-07-22T01:15:24.636Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Extract Workday bank account data for HR data hub.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Publish"
+  }, {
+    "id" : "8xvc3mUnKLmke708licrsI",
+    "name" : "p-I0079-GetWorkdayWorkers",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "chvq9aabds8NTYg-gt-468108-2019-06-14T08:12:30.034Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Extract Workday worker data for HR data hub.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Publish"
+  }, {
+    "id" : "gxxxPg07XMEelwXQQcmjK5",
+    "name" : "p-Shared-SendEmail",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "38nXxpr1Iw8jIw8-gt-12678732-2019-07-02T03:33:24.877Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Shared"
+  }, {
+    "id" : "cOxhFS6hFwbgNcfELIC1aW",
+    "name" : "svccon-Shared-CIH-API",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "uxn2H0Fdw8jIw8j-gt-9494700-2019-11-08T10:31:43.337Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Shared"
+  }, {
+    "id" : "4y8IxPDyztqff0VmpQWR0S",
+    "name" : "sql-I0079-HR",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "CVf4VQT53nQciSr-gt-3452346-2020-04-08T09:54:00.466Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Common"
+  }, {
+    "id" : "18Y7B95iIwujh91TpdK5AX",
+    "name" : "p-Shared-Convert-DateTime-TimeZone",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "i31CHdqwx8R8WrY-gt-3196805-2019-06-21T08:20:25.137Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Shared"
+  } ]
+}

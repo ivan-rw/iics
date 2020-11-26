@@ -1,0 +1,457 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>NCx1H5lRuImXyco-gt-2165446-2019-07-22T01:15:24.636Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0079-GetWorkdayPayees</types1:Name>
+      <types1:ParentFlowIds>nfSmbduaa-gt-1602366-2019-07-02T01:53:46.225Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Extract Workday bank account data for HR data hub.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>norazean.shafein@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2019-07-22T01:15:25Z</types1:CreationDate>
+      <types1:ModifiedBy>yen.shyang.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-09-30T10:05:47Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>yen.shyang.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-09-30T10:09:45Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0079-GetWorkdayPayees/p-I0079-GetWorkdayPayees.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0079-GetWorkdayPayees"
+                  name="p-I0079-GetWorkdayPayees"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>Extract Workday bank account data for HR data hub.</description>
+            <tags>.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_UpdatedFrom" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_UpdatedThrough" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ETLControl_Id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_StartPage" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Get_Payees_Response" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_CurrentPage" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_TotalPage" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Page" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FileWriterTask_Payees" type="reference">
+                  <options>
+                     <option name="referenceTo">file-I0079-Workday-HR-Data:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1rdFvkFuNmEfiwxqeS9Qee</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WIP_Folder" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_XMLData" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WorkerId" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_XMLRow" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_XMLFinalData" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmptyRow" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FileContent" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EncryptOutput" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PrivateData" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WorkerIdAll" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k8r57s9x" targetId="k8r57s9w"/>
+               </start>
+               <subflow id="k8r57s9w">
+                  <title>p-Shared-GetEnvironmentVariables</title>
+                  <subflowGUID>hVwvolFWXAfkAG7pjbqKwh</subflowGUID>
+                  <subflowPath>p-Shared-GetEnvironmentVariables</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_IDFPath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_Environment" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ScriptPath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ArchiveCommand" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_SharedSQLServerName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_SharedDatabaseName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_AgentHomePath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_OrgId" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ServerName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="k8r57s9y" targetId="jx4brnw8"/>
+               </subflow>
+               <assignment id="jx4brnw8">
+                  <title>Initialize variables</title>
+                  <operation source="formula" to="temp.tmp_WIP_Folder">
+                     <expression language="XQuery">concat($output.out_IDFPath, 'WorkdayIntegrationHub\I0079\IN\')</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_CurrentPage">
+                     <expression language="XQuery">if (empty($input.in_StartPage ) or $input.in_StartPage = "") then
+   1
+else
+	$input.in_StartPage </expression>
+                  </operation>
+                  <link id="jxa493ob" targetId="jxa493oa"/>
+               </assignment>
+               <assignment id="jye4hv8q">
+                  <title>Assignment to tmp_XMLData, tmp_FileContent etc.</title>
+                  <operation source="formula" to="temp.tmp_XMLData">
+                     <expression language="XQuery">&lt;Accounts&gt;
+{
+
+for $payee in $output.Get_Payees_Response//Response_Data/Payee
+let $account := $payee//Payee_Payment_Election_Data/Payment_Election_Enrollment_Data/Payment_Election_Data
+let $paygrp := $payee//Pay_Group_Reference
+   
+return
+ 
+   &lt;Account&gt;
+      &lt;Currency&gt;{ $account[1]/Currency_Reference/ID[type="Currency_ID"]/text/text() }&lt;/Currency&gt;
+      &lt;BankName&gt;{ $account[1]/Worker_Bank_Account_Data/Bank_Name/text() }&lt;/BankName&gt;
+      &lt;BankID&gt;{ $account[1]/Worker_Bank_Account_Data/Bank_ID_Number/text() }&lt;/BankID&gt;
+      &lt;AccountNumber&gt;{ $account[1]/Worker_Bank_Account_Data/Account_Number/text() }&lt;/AccountNumber&gt;
+      &lt;PaymentElectionRuleID&gt;{ $account[1]/Payment_Election_Rule_Reference/ID[type="Payment_Election_Rule_ID"]/text/text() }&lt;/PaymentElectionRuleID&gt;
+      &lt;IBAN&gt;{ $account[1]/Worker_Bank_Account_Data/IBAN/text() }&lt;/IBAN&gt;
+      &lt;BIC&gt;{ $account[1]/Worker_Bank_Account_Data/BIC/text() }&lt;/BIC&gt;
+      
+
+&lt;/Account&gt;
+
+}  
+&lt;/Accounts&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_FileContent">
+                     <expression language="XQuery">'WorkerID,PayrollData,ETLControl_Id&amp;#xD;&amp;#xA;'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_WorkerIdAll">
+                     <expression language="XQuery">&lt;Workers&gt;
+ {
+  
+for $payee in $output.Get_Payees_Response//Response_Data/Payee
+   
+return
+
+&lt;Worker&gt;
+ 
+      &lt;WorkerId&gt;{ $payee//Payee_Reference/ID[type="Employee_ID"]/text/text() }&lt;/WorkerId&gt;
+&lt;/Worker&gt;
+
+}
+&lt;/Workers&gt;</expression>
+                  </operation>
+                  <link id="jyf6t4gi" targetId="jyf6t4gh"/>
+               </assignment>
+               <assignment id="jyf6t4gh">
+                  <title>Assignment to tmp_XMLRow, tmp_XMLData etc.</title>
+                  <operation source="formula" to="temp.tmp_XMLRow">
+                     <expression language="XQuery">list:head($temp.tmp_XMLData/Account)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_XMLData">
+                     <expression language="XQuery">&lt;Accounts&gt;{ list:tail($temp.tmp_XMLData/Account) }&lt;/Accounts&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_EmptyRow">
+                     <expression language="XQuery">if (fn:empty($temp.tmp_XMLRow )) then
+	1
+else
+	0</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_WorkerId">
+                     <expression language="XQuery">list:head($temp.tmp_WorkerIdAll/Worker)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_WorkerIdAll">
+                     <expression language="XQuery">&lt;Workers&gt;{ list:tail($temp.tmp_WorkerIdAll/Worker) }&lt;/Workers&gt;</expression>
+                  </operation>
+                  <link id="jyfieiln" targetId="jyf6t4i7"/>
+               </assignment>
+               <service id="jxa493oa">
+                  <title>Shell command: Delete intermediate files</title>
+                  <serviceName>avShellService</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="command" source="formula">
+                        <expression language="XQuery">concat('del ', $temp.tmp_WIP_Folder, 'WKD_Payees*.* &amp;amp; del ')</expression>
+                     </parameter>
+                     <parameter name="workingDirPath" source="formula">
+                        <expression language="XQuery">'C:\'</expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="jxa493oc" targetId="jx4brnwe"/>
+               </service>
+               <service id="jx4brnwe">
+                  <title>Get_Payees</title>
+                  <serviceName>wkd-I0079-Payee-Interface:Get_Payees</serviceName>
+                  <serviceGUID>9SkGJHjcBRdjKnKVyYdA8O</serviceGUID>
+                  <serviceInput>
+                     <parameter name="Get_Payees_Request" source="formula">
+                        <expression language="XQuery">&lt;Get_Payees_Request&gt;
+&lt;Request_Criteria&gt;
+&lt;Pay_Group_Reference&gt;
+	&lt;ID&gt;
+    	&lt;type&gt;Organization_Reference_ID&lt;/type&gt;
+    	&lt;text&gt;DNK Payday Monthly&lt;/text&gt;
+    &lt;/ID&gt;
+    &lt;/Pay_Group_Reference&gt;
+&lt;Transaction_Log_Criteria_Data&gt;
+&lt;Transaction_Date_Range_Data&gt;
+&lt;Updated_From&gt;{ $input.in_UpdatedFrom }&lt;/Updated_From&gt;
+&lt;Updated_Through&gt;{ $input.in_UpdatedThrough }&lt;/Updated_Through&gt;
+&lt;/Transaction_Date_Range_Data&gt;
+&lt;/Transaction_Log_Criteria_Data&gt;
+&lt;/Request_Criteria&gt;
+&lt;Response_Filter&gt;
+	&lt;Page&gt; { $output.out_CurrentPage } &lt;/Page&gt;
+	&lt;Count&gt;100&lt;/Count&gt;
+&lt;/Response_Filter&gt;
+&lt;Response_Group&gt;
+	&lt;Include_Payment_Election_Data&gt;true&lt;/Include_Payment_Election_Data&gt;
+    &lt;Include_Reference&gt;true&lt;/Include_Reference&gt;
+    &lt;Exclude_Payee_Detailed_Identification_Information&gt;0&lt;/Exclude_Payee_Detailed_Identification_Information&gt;
+&lt;/Response_Group&gt;
+&lt;/Get_Payees_Request&gt;</expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="jye4hv8r" targetId="jye4hv8q"/>
+               </service>
+               <container id="jyf6t4i7" type="exclusive">
+                  <title>Empty Row?</title>
+                  <flow id="jyf6t4ib">
+                     <assignment id="jyfieij4">
+                        <title>Assignment to Content Format, File name etc.</title>
+                        <operation source="constant" to="temp.tmp_FileWriterTask_Payees[1]/format">PlainText</operation>
+                        <operation source="formula" to="temp.tmp_FileWriterTask_Payees[1]/fileName">
+                           <expression language="XQuery">concat('WKD_Payees_Pg', $output.out_CurrentPage , '.csv')</expression>
+                        </operation>
+                        <operation source="field" to="temp.tmp_FileWriterTask_Payees[1]/content">temp.tmp_FileContent</operation>
+                        <operation source="constant" to="temp.tmp_FileWriterTask_Payees[1]/filePath">\IN</operation>
+                        <link id="jyfieijp" targetId="jyfieijo"/>
+                     </assignment>
+                     <service id="jyfieijo">
+                        <title>(Payees) Write to file</title>
+                        <serviceName>file-I0079-Workday-HR-Data:FileWriter</serviceName>
+                        <serviceGUID>1rdFvkFuNmEfiwxqeS9Qee</serviceGUID>
+                        <serviceInput>
+                           <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_FileWriterTask_Payees</parameter>
+                        </serviceInput>
+                        <link id="jygoeqrk" targetId="jygoeqrj"/>
+                     </service>
+                     <container id="jygoeqrj" type="exclusive">
+                        <title>tmp_Page</title>
+                        <flow id="jygoeqrn">
+                           <assignment id="jygoeqrx">
+                              <title>Increment page</title>
+                              <operation source="formula" to="output.out_CurrentPage">
+                                 <expression language="XQuery">$output.out_CurrentPage + 1</expression>
+                              </operation>
+                              <operation source="formula" to="output.out_TotalPage">
+                                 <expression language="XQuery">$output.Get_Payees_Response//Response_Results/Total_Pages/text()</expression>
+                              </operation>
+                              <link id="jygoequ0" targetId="jygoeqty"/>
+                           </assignment>
+                           <jumpTo id="jygoeqty">
+                              <link id="jygoeqtz" targetId="jx4brnwe"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="jygoeqrq">
+                           <service id="jygoeqs2">
+                              <title>Run a Shell Command</title>
+                              <serviceName>avShellService</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="command" source="formula">
+                                    <expression language="XQuery">concat('dir /b ', $temp.tmp_WIP_Folder, 'WKD_Payees*.csv &gt; ',$temp.tmp_WIP_Folder, 'WKD_Payees_List.txt')</expression>
+                                 </parameter>
+                                 <parameter name="workingDirPath" source="formula">
+                                    <expression language="XQuery">'C:\'</expression>
+                                 </parameter>
+                              </serviceInput>
+                              <link id="jygoeqte" targetId="jygoeqtd"/>
+                           </service>
+                           <end id="jygoeqtd">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="jygoeqrm" targetId="jygoeqrn" type="containerLink">
+                           <condition source="formula">
+                              <function name="less-than">
+                                 <arg name="left">{$output.out_CurrentPage}</arg>
+                                 <arg name="right">{$output.Get_Payees_Response//Response_Results/Total_Pages/text()}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="jygoeqrp" targetId="jygoeqrq" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="jyf6t4ie">
+                     <service id="kfhm9owd">
+                        <title>Bulk_Encrypt_HR_Data</title>
+                        <serviceName>svccon-InformaticaHRIntegrationHub:Bulk_Encrypt_HR_Data</serviceName>
+                        <serviceGUID>gz722djXKaMcibPUxdVnmq</serviceGUID>
+                        <serviceInput>
+                           <parameter name="xmlString" source="formula">
+                              <expression language="XQuery">fn:replace(fn:replace(fn:normalize-space(fn:serialize(util:simplifyXml($temp.tmp_XMLRow))), '&gt; &lt;', '&gt;&lt;'), '&lt;\?xml.*\?&gt;', '') </expression>
+                           </parameter>
+                           <parameter name="exchangeKey" source="constant">1234567890123456</parameter>
+                        </serviceInput>
+                        <link id="kfhmd1tw" targetId="jyfieilo"/>
+                     </service>
+                     <assignment id="jyfieilo">
+                        <title>Assignment to tmp_FileContent</title>
+                        <operation source="formula" to="temp.tmp_FileContent">
+                           <expression language="XQuery">concat($temp.tmp_FileContent,
+  string-join(
+    for $x in $temp.tmp_XMLRow 
+    return
+      concat('"', 
+      $temp.tmp_WorkerId/WorkerId/text(), '","',
+      $output.Bulk_Encrypt_HR_DataResult, '","',
+      $input.in_ETLControl_Id, '"&amp;#xD;&amp;#xA;')))</expression>
+                        </operation>
+                        <link id="jygn7evm" targetId="jygn7evk"/>
+                     </assignment>
+                     <jumpTo id="jygn7evk">
+                        <link id="jygn7evl" targetId="jyf6t4gh"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="jyf6t4ia" targetId="jyf6t4ib" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.tmp_EmptyRow}</arg>
+                           <arg name="right">{1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jyf6t4id" targetId="jyf6t4ie" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>i8NRpOWyww6gdqbootlK4R</types1:GUID>
+      <types1:DisplayName>p-I0079-GetWorkdayPayees</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-26T09:01:00.341Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

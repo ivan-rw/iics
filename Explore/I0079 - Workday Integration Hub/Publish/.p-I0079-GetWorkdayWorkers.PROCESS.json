@@ -1,0 +1,144 @@
+{
+  "objectInfo" : {
+    "id" : "8xvc3mUnKLmke708licrsI",
+    "name" : "p-I0079-GetWorkdayWorkers",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "chvq9aabds8NTYg-gt-468108-2019-06-14T08:12:30.034Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Extract Workday worker data for HR data hub.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "hVwvolFWXAfkAG7pjbqKwh",
+    "name" : "p-Shared-GetEnvironmentVariables",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "D8WhIpppppppppp-gt-34253860-2019-10-31T03:21:23.479Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Shared"
+  }, {
+    "id" : "kJlHYev0NSQigqt3IXxzm5",
+    "name" : "svccon-I0079-WorkdayWorkerExtendedData",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "SVMTonQYWeIssjq-gt-8069789-2020-05-18T06:55:28.712Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Common"
+  }, {
+    "id" : "1rdFvkFuNmEfiwxqeS9Qee",
+    "name" : "file-I0079-Workday-HR-Data",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "rUlxsnCmp6oIuQa-gt-20018754-2020-04-08T09:53:57.278Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Common"
+  }, {
+    "id" : "gz722djXKaMcibPUxdVnmq",
+    "name" : "svccon-InformaticaHRIntegrationHub",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "DXf66vfXjISUXL8-gt-1090648-2019-08-20T06:53:02.477Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0074 - HR Data Integration Hub/Common"
+  }, {
+    "id" : "4y8IxPDyztqff0VmpQWR0S",
+    "name" : "sql-I0079-HR",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "CVf4VQT53nQciSr-gt-3452346-2020-04-08T09:54:00.466Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Common"
+  }, {
+    "id" : "5er1yyNMF0fhGYFTqax0AW",
+    "name" : "wkd-I0079-Human-Resources",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "YjD4ARW8UBM7zsZ-gt-468330-2019-06-14T08:23:39.807Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Workday v2 connector for Human Resources",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Common"
+  } ]
+}

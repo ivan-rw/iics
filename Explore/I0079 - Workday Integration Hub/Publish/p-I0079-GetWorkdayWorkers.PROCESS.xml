@@ -1,0 +1,687 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>chvq9aabds8NTYg-gt-468108-2019-06-14T08:12:30.034Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0079-GetWorkdayWorkers</types1:Name>
+      <types1:ParentFlowIds>nfSmbduaa-gt-1602366-2019-07-02T01:53:46.225Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Extract Workday worker data for HR data hub.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous,I0063</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2019-06-14T08:12:30Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-26T08:59:56Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-26T09:00:07Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0079-GetWorkdayWorkers/p-I0079-GetWorkdayWorkers.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0079-GetWorkdayWorkers"
+                  name="p-I0079-GetWorkdayWorkers"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>Extract Workday worker data for HR data hub.</description>
+            <tags>I0063,.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_UpdatedFrom" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_UpdatedThrough" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ETLControl_Id" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_StartPage" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_FileWriterTask_Workers" type="reference">
+                  <options>
+                     <option name="referenceTo">file-I0079-Workday-HR-Data:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1rdFvkFuNmEfiwxqeS9Qee</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WIP_Folder" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FullWorkersXML" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CurrentPage" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ETLControlRow" type="reference">
+                  <options>
+                     <option name="referenceTo">sql-I0079-HR:ETLControl</option>
+                     <option name="required">false</option>
+                     <option name="guid">4y8IxPDyztqff0VmpQWR0S</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ADUserId_Lookup" type="reference">
+                  <options>
+                     <option name="referenceTo">sql-I0079-HR:vwADUserId_Lookup</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4y8IxPDyztqff0VmpQWR0S</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k8r4dmdb" targetId="k8r4dmda"/>
+               </start>
+               <subflow id="k8r4dmda">
+                  <title>p-Shared-GetEnvironmentVariables</title>
+                  <subflowGUID>hVwvolFWXAfkAG7pjbqKwh</subflowGUID>
+                  <subflowPath>p-Shared-GetEnvironmentVariables</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_IDFPath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_Environment" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ScriptPath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ArchiveCommand" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_SharedSQLServerName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_SharedDatabaseName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_AgentHomePath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_OrgId" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ServerName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="k8r4dmdc" targetId="jye4xi70"/>
+               </subflow>
+               <container id="jye4xi70" type="parallel">
+                  <title>Parallel Paths 2</title>
+                  <flow id="jye4xi74">
+                     <assignment id="jye4xi7k">
+                        <title>Initialize variables</title>
+                        <operation source="formula" to="temp.tmp_WIP_Folder">
+                           <expression language="XQuery">concat($output.out_IDFPath, 'WorkdayIntegrationHub\I0079\IN\')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CurrentPage">
+                           <expression language="XQuery">if ($input.in_StartPage = 0 or empty($input.in_StartPage)) then
+	1
+else
+	$input.in_StartPage</expression>
+                        </operation>
+                        <operation source="query" to="temp.tmp_ETLControlRow">
+                           <query advanceQuery="false" from="sql-I0079-HR:ETLControl">
+                              <where>Id = {$input.in_ETLControl_Id}</where>
+                           </query>
+                        </operation>
+                        <link id="jye4xi8g" targetId="jye4xi88"/>
+                     </assignment>
+                     <container id="jye4xi88" type="exclusive">
+                        <title>in_StartPage</title>
+                        <flow id="jye4xi89">
+                           <service id="jye4xi8a">
+                              <title>Shell command: Delete intermediate files</title>
+                              <serviceName>avShellService</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="command" source="formula">
+                                    <expression language="XQuery">concat('del ', $temp.tmp_WIP_Folder, 'WKD_Workers*.* &amp;amp; del ', $temp.tmp_WIP_Folder, 'debugGetWorkerResponse*.*')</expression>
+                                 </parameter>
+                                 <parameter name="workingDirPath" source="formula">
+                                    <expression language="XQuery">'C:\'</expression>
+                                 </parameter>
+                              </serviceInput>
+                           </service>
+                           <link id="jye4xi8e" targetId="jye4xi88" type="containerLink"/>
+                        </flow>
+                        <flow id="jye4xi8b">
+                           <link id="jye4xi8f" targetId="jye4xi88" type="containerLink"/>
+                        </flow>
+                        <link id="jye4xi8c" targetId="jye4xi89" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_CurrentPage}</arg>
+                                 <arg name="right">{1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="jye4xi8d" targetId="jye4xi8b" type="containerLink"/>
+                     </container>
+                     <link id="jye4xi75" targetId="jye4xi70" type="containerLink"/>
+                  </flow>
+                  <flow id="jye4xi77">
+                     <service id="jye4xi93">
+                        <title>Get_Organizations</title>
+                        <serviceName>wkd-I0079-Human-Resources:Get_Organizations</serviceName>
+                        <serviceGUID>5er1yyNMF0fhGYFTqax0AW</serviceGUID>
+                        <serviceInput>
+                           <parameter name="Get_Organizations_Request" source="formula">
+                              <expression language="XQuery">&lt;Get_Organizations_Request&gt;
+	&lt;Request_Criteria&gt;
+		&lt;Organization_Type_Reference&gt;
+			&lt;ID&gt;
+            	&lt;type&gt;Organization_Type_ID&lt;/type&gt;
+                &lt;text&gt;COST_CENTER_HIERARCHY&lt;/text&gt;
+            &lt;/ID&gt;
+		&lt;/Organization_Type_Reference&gt;
+		&lt;Include_Inactive&gt;false&lt;/Include_Inactive&gt;
+	&lt;/Request_Criteria&gt;
+    &lt;Response_Filter&gt;
+    	&lt;Count&gt;999&lt;/Count&gt;
+    &lt;/Response_Filter&gt;
+	&lt;Response_Group&gt;
+		&lt;Include_Roles_Data&gt;false&lt;/Include_Roles_Data&gt;
+		&lt;Include_Hierarchy_Data&gt;true&lt;/Include_Hierarchy_Data&gt;
+		&lt;Include_Supervisory_Data&gt;false&lt;/Include_Supervisory_Data&gt;
+		&lt;Include_Staffing_Restrictions_Data&gt;false&lt;/Include_Staffing_Restrictions_Data&gt;
+	&lt;/Response_Group&gt;
+&lt;/Get_Organizations_Request&gt;</expression>
+                           </parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="jye4xi78" targetId="jye4xi70" type="containerLink"/>
+                  </flow>
+                  <flow id="kadhjn3h">
+                     <assignment id="kadhjn5u">
+                        <title>Assignment to tmp_ADUserId_Lookup</title>
+                        <operation source="query" to="temp.tmp_ADUserId_Lookup">
+                           <query advanceQuery="false" from="sql-I0079-HR:vwADUserId_Lookup"/>
+                        </operation>
+                     </assignment>
+                     <link id="kadhjn3i" targetId="jye4xi70" type="containerLink"/>
+                  </flow>
+                  <flow id="kagexc23">
+                     <service id="kagexc2m">
+                        <title>RaaS: Get Extended Worker Data from RaaS</title>
+                        <serviceName>svccon-I0079-WorkdayWorkerExtendedData:Hub_Extract_Report</serviceName>
+                        <serviceGUID>kJlHYev0NSQigqt3IXxzm5</serviceGUID>
+                        <serviceInput/>
+                     </service>
+                     <link id="kagexc24" targetId="jye4xi70" type="containerLink"/>
+                  </flow>
+                  <link id="jye4xi73" targetId="jye4xi74" type="containerLink"/>
+                  <link id="jye4xi76" targetId="jye4xi77" type="containerLink"/>
+                  <link id="kadhjn3g" targetId="kadhjn3h" type="containerLink"/>
+                  <link id="kagexc22" targetId="kagexc23" type="containerLink"/>
+                  <link id="kctxe137" targetId="jx4cpc0y"/>
+               </container>
+               <container id="jynrbho9" type="parallel">
+                  <title>Parallel Paths 1</title>
+                  <flow id="jynrbhod">
+                     <assignment id="jynrbhpr">
+                        <title>Assignment to tmp_FullWorkersXML</title>
+                        <operation source="formula" to="temp.tmp_FullWorkersXML">
+                           <expression language="XQuery">let $extendedDataXml := util:parseXML($output.WorkdayWorkerExtendedData_Response) 
+
+let $ADUserIdLookupXml := util:parseXML($temp.tmp_ADUserId_Lookup[1]/ADUserIdLookupXml)
+
+return
+&lt;Workers&gt;
+{
+  for $x in $output.Get_Workers_Response//Response_Data/Worker/Worker_Data
+  let $workerExtendedData := $extendedDataXml//Report_Entry[Employee_ID=$x/Worker_ID]
+  let $reportingUnit := $x/Employment_Data/Worker_Job_Data/Position_Organizations_Data/Position_Organization_Data/Organization_Data[(Organization_Type_Reference/ID/type="Organization_Type_ID" and Organization_Type_Reference/ID/text="COST_CENTER_HIERARCHY") and (Organization_Subtype_Reference/ID/type="Organization_Subtype_ID" and Organization_Subtype_Reference/ID/text="Reporting_Unit")]/Organization_Code/text()
+  let $opco := $output.Get_Organizations_Response//Organization/Organization_Data[Hierarchy_Data/Subordinate_Organization_Reference/ID[type="Organization_Reference_ID"]/text=$reportingUnit and Organization_Type_Reference/ID[type="Organization_Type_ID"]/text="COST_CENTER_HIERARCHY" and Organization_Subtype_Reference/ID[type="Organization_Subtype_ID"]/text="ORGANIZATION_SUBTYPE-6-18"]
+  let $LeaveStatusDataSorted := for $y at $idx in $x//Leave_Status_Data order by $y/Leave_Start_Date descending return $y
+  return 
+      element {"Worker"}
+      {
+            element {"WorkerData"} {
+            element {"WorkerId"} {$x/Worker_ID/text()},
+            element {"ADUserId"} {$x/User_ID/text()},
+            element {"Title"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/Prefix_Data/Title_Descriptor/text()},
+            element {"LegalFirstName"} {$x/Personal_Data/Name_Data/Legal_Name_Data/Name_Detail_Data/First_Name/text()},
+            element {"LegalLastName"} {$x/Personal_Data/Name_Data/Legal_Name_Data/Name_Detail_Data/Last_Name/text()},
+            element {"LegalSecondaryLastName"} {$x/Personal_Data/Name_Data/Legal_Name_Data/Name_Detail_Data/Secondary_Last_Name/text()},            
+            element {"LegalMiddleName"} {$x/Personal_Data/Name_Data/Legal_Name_Data/Name_Detail_Data/Middle_Name/text()},
+            element {"Hereditary"} {$x/Personal_Data/Name_Data/Legal_Name_Data/Name_Detail_Data/Suffix_Data/Hereditary_Suffix_Reference/ID[type='Predefined_Name_Component_ID']/text/text()},
+            element {"PreferredFirstName"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/First_Name/text()},
+            element {"PreferredLastName"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/Last_Name/text()},
+            element {"PreferredSecondaryLastName"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/Secondary_Last_Name/text()}, 
+            element {"PreferredMiddleName"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/Middle_Name/text()},
+            element {"PreferredReportingName"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/Reporting_Name/text()},              element {"LocalName"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/Local_Name_Detail_Data/Local_Name/text()},            
+            element {"LocalFirstName"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/Local_Name_Detail_Data/First_Name/text()},
+            element {"LocalLastName"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/Local_Name_Detail_Data/Last_Name/text()},
+            element {"LocalSecondaryLastName"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/Local_Name_Detail_Data/Secondary_Last_Name/text()},             
+            element {"LocalMiddleName"} {$x/Personal_Data/Name_Data/Preferred_Name_Data/Name_Detail_Data/Local_Name_Detail_Data/Middle_Name/text()},
+            element {"Email"} {$x/Personal_Data/Contact_Data/Email_Address_Data[
+                ((Usage_Data/Type_Data/Primary="1") and
+                (Usage_Data/Public = "1") and                                          
+                (Usage_Data/Type_Data/Type_Reference/ID[type="Communication_Usage_Type_ID" and text="WORK"]))
+             ]/Email_Address/text()},
+            element {"LocationCode"} {$x/Organization_Data/Worker_Organization_Data/Organization_Data[
+                 (Organization_Type_Reference/ID[type="Organization_Type_ID" and text="LOCATION_HIERARCHY"]) and 
+                 (Organization_Subtype_Reference/ID[type="Organization_Subtype_ID" and text="Location"])
+               ]/Organization_Code/text()},
+            element {"LocationName"} {$x/Organization_Data/Worker_Organization_Data/Organization_Data[
+                 (Organization_Type_Reference/ID[type="Organization_Type_ID" and text="LOCATION_HIERARCHY"]) and 
+                 (Organization_Subtype_Reference/ID[type="Organization_Subtype_ID" and text="Location"])
+               ]/Organization_Name/text()},
+            element {"PayGroup"} {$x/Organization_Data/Worker_Organization_Data/Organization_Data[Organization_Type_Reference/ID[type="Organization_Type_ID"]/text="PAY_GROUP"]/Organization_Reference_ID/text()},
+            element {"CountryCode"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Business_Site_Summary_Data/Address_Data[Usage_Data/Type_Data[Primary="1"]/Type_Reference/ID[type="Communication_Usage_Type_ID"]/text="BUSINESS"]/Country_Reference/ID[type="ISO_3166-1_Alpha-2_Code"]/text/text()},
+            element {"PositionTitle"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Position_Title/text()},
+            element {"BusinessTitle"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Business_Title/text()},
+
+            element {"BusinessSiteAddressRegion"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Business_Site_Summary_Data/Address_Data/Country_Region_Reference/ID[type="Country_Region_ID"]/text/text()},             
+            element {"BusinessSiteAddressCountry"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Business_Site_Summary_Data/Address_Data/Country_Reference/ID[type="ISO_3166-1_Alpha-2_Code"]/text/text()},  
+            element {"BusinessSiteLocation"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Business_Site_Summary_Data/Location_Reference/ID[type='Location_ID']/text/text()},
+            element {"BusinessSiteLocale"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Business_Site_Summary_Data/Local_Reference/ID[type='Locale_ID']/text/text()}, 
+            element {"Company"} {$x/Organization_Data/Worker_Organization_Data/Organization_Data[
+                 (Organization_Type_Reference/ID[type="Organization_Type_ID" and text="COMPANY"]) and 
+                 (Organization_Subtype_Reference/ID[type="Organization_Subtype_ID" and text="Company"])
+               ]/Organization_Name/text()},
+            element {"Department"} {$x/Organization_Data/Worker_Organization_Data/Organization_Data[
+                 (Organization_Type_Reference/ID[type="Organization_Type_ID" and text="SUPERVISORY"]) and 
+                 (Organization_Subtype_Reference/ID[type="Organization_Subtype_ID" and text="Department"])
+               ]/Organization_Name/text()},
+            element {"ReportingUnit"} {$reportingUnit},
+            element {"OPCOCode"} {$opco/Organization_Code/text()},
+            element {"OPCOName"} {$opco/Name/text()},
+            element {"CostCenter"} {$x/Employment_Data/Worker_Job_Data/Position_Organizations_Data/Position_Organization_Data/Organization_Data[Organization_Type_Reference/ID[type="Organization_Type_ID" and text="COST_CENTER"]]/Organization_Code/text()},
+            element {"CostCenterType"} {$x/Employment_Data/Worker_Job_Data/Position_Organizations_Data/Position_Organization_Data/Organization_Data[Organization_Type_Reference/ID[type="Organization_Type_ID" and text="COST_CENTER"]]/Organization_Subtype_Reference/ID[type='Organization_Subtype_ID']/text/text()},             
+            element {"Active"} {$x/Employment_Data/Worker_Status_Data/Active/text()},
+            element {"OnLeave"} {$LeaveStatusDataSorted[1]/On_Leave/text()},
+            element {"AccountLockedDisabledOrExpired"} {$workerExtendedData/Workday_Account_group/Account_Locked__Disabled_or_Expired/text()},             
+            element {"HireDate"} {$x/Employment_Data/Worker_Status_Data/Hire_Date/text()},
+            element {"OriginalHireDate"} {$x/Employment_Data/Worker_Status_Data/Original_Hire_Date/text()},
+            element {"CurrentPositionStartDate"} {if (string-length($workerExtendedData/EmployeeCurrentPositionStart/text()) = 0) then '' else fn:concat(fn:substring($workerExtendedData/EmployeeCurrentPositionStart/text(), 7, 4), '-', fn:substring($workerExtendedData/EmployeeCurrentPositionStart/text(), 1, 2), '-', fn:substring($workerExtendedData/EmployeeCurrentPositionStart/text(), 4, 2))},
+            element {"FirstDayOfWork"} {$x/Employment_Data/Worker_Status_Data/First_Day_of_Work/text()},
+            element {"TerminationDate"} {$x/Employment_Data/Worker_Status_Data/Termination_Date/text()},
+            element {"LastDayOfWork"} {$x/Employment_Data/Worker_Status_Data/Termination_Last_Day_of_Work/text()},
+            element {"LeaveStartDate"} {$LeaveStatusDataSorted[1]/Leave_Start_Date/text()},
+            element {"Gender"} {fn:substring($x/Personal_Data/Gender_Reference/ID[type="Gender_Code"]/text/text(), 1, 1)},
+            element {"Nationality"} {$x/Personal_Data/Primary_Nationality_Reference/ID[type="ISO_3166-1_Alpha-2_Code"]/text/text()},
+            element {"EmployeeType"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Worker_Type_Reference/ID[type="Employee_Type_ID"]/text/text()},
+            element {"PositionTimeType"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Position_Time_Type_Reference/ID[type="Position_Time_Type_ID"]/text/text()},
+            element {"WorkShiftId"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Work_Shift_Reference/ID[type="Work_Shift_ID"]/text/text()},             
+            element {"CountryCurrency"} {$workerExtendedData/Location_Address_-_Country_group/Country_Currency/ID[type='Currency_ID']/text/text()},
+            element {"IsManager"} {$workerExtendedData/isManager/text()}, 
+            element {"Managers"} {
+               (: make sure the one matches RaaS report gets selected first :)
+               if (count($x/Employment_Data/Worker_Job_Data/Position_Data/Manager_as_of_last_detected_manager_change_Reference) &gt; 0) then
+               (
+                 
+                 for $mgr in $x/Employment_Data/Worker_Job_Data/Position_Data/Manager_as_of_last_detected_manager_change_Reference/ID[type=("Employee_ID","Contingent_Worker_ID") and text = $ADUserIdLookupXml//Worker[ADUserId/text()=$workerExtendedData/Worker_s_Manager_group/EmployeeSupervisor/text()]/WorkerId]
+                 return
+                 (
+                   element {"Manager"} {
+                     element {"WorkerId"} {$mgr/text/text()},
+                     element {"ADUserId"} {$ADUserIdLookupXml//Worker[WorkerId/text()=$mgr/text/text()]/ADUserId/text()}
+                   }
+                 ),
+                 (: now add the rest if more than 1 :)
+                 for $mgr in $x/Employment_Data/Worker_Job_Data/Position_Data/Manager_as_of_last_detected_manager_change_Reference/ID[type=("Employee_ID","Contingent_Worker_ID") and not(text = $ADUserIdLookupXml//Worker[ADUserId/text()=$workerExtendedData/Worker_s_Manager_group/EmployeeSupervisor/text()]/WorkerId)]
+                 return
+                 (
+                   element {"Manager"} {
+                     element {"WorkerId"} {$mgr/text/text()},
+                     element {"ADUserId"} {$ADUserIdLookupXml//Worker[WorkerId/text()=$mgr/text/text()]/ADUserId/text()}
+                   }
+                 )    
+               )
+               else 
+               (
+                 if (string-length($workerExtendedData/Worker_s_Manager_group/EmployeeSupervisor/text()) &gt; 0) then 
+                   element {"Manager"} {
+                     element {"WorkerId"} {$ADUserIdLookupXml//Worker[ADUserId/text()=$workerExtendedData/Worker_s_Manager_group/EmployeeSupervisor/text()]/WorkerId/text()},
+                     element {"ADUserId"} {$workerExtendedData/Worker_s_Manager_group/EmployeeSupervisor/text()}
+                   }                 
+                 else
+                 ()
+                 
+               )           
+             },
+             element {"PrevSystemIds"} {
+               for $i in $x/Personal_Data/Identification_Data/Custom_ID/Custom_ID_Data[(ID_Type_Reference/ID/type="Custom_ID_Type_ID") and (ID_Type_Reference/ID/text="Previous_System_ID")]
+               return
+                 element {"Id"} {$i/ID/text()}
+             },
+             element {"Addresses"} {
+               for $p in $x/Personal_Data/Contact_Data/Address_Data[Usage_Data/Public=1]
+                for $u in $p/Usage_Data
+                  for $ut in $u/Type_Data
+                  return
+                    element{"Address"} {
+                      element{"AddressLine1"} {$p/Address_Line_Data[Type='ADDRESS_LINE_1']/text/text()},
+                      element{"AddressLine2"} {$p/Address_Line_Data[Type='ADDRESS_LINE_2']/text/text()},
+                      element{"AddressLine3"} {$p/Address_Line_Data[Type='ADDRESS_LINE_3']/text/text()},
+                      element{"AddressLine4"} {$p/Address_Line_Data[Type='ADDRESS_LINE_4']/text/text()},
+                      element{"District"} {},
+                      element{"City"} {$p/Municipality/text()},
+                      element{"PostalCode"} {$p/Postal_Code/text()},
+                      element{"Region"} {$p/Country_Region_Descriptor/text()},
+                      element{"CountryCode"} {$p/Country_Reference/ID[type="ISO_3166-1_Alpha-2_Code"]/text/text()},
+                      element{"Formatted"} {$p/Formatted_Address/text()},
+                      element {"IsPrimary"} {$ut/Primary/text()},
+                      element{"IsPublic"} {$u/Public/text()},
+                      element{"UsageType"} {$ut/Type_Reference/ID[type="Communication_Usage_Type_ID"]/text/text()}
+                    }
+             },
+             element {"Phones"} {
+              for $p in $x/Personal_Data/Contact_Data/Phone_Data[Usage_Data/Public=1]
+                for $u in $p/Usage_Data
+                  for $ut in $u/Type_Data
+                  return
+                    element {"Phone"} {
+                      element {"InternationalCode"} {$p/International_Phone_Code/text()},
+                      element {"AreaCode"} {fn:replace($p/Area_Code/text(), "[^0-9]", "")},
+                      element {"PhoneNumber"} {$p/Phone_Number/text()},
+                      element {"Extension"} {$p/Phone_Extension/text()},
+                      element {"Formatted"} {$p/Tenant_Formatted_Phone/text()},                      
+                      element {"PhoneType"} {$p/Phone_Device_Type_Reference/ID[type='Phone_Device_Type_ID']/text/text()},
+                      element {"IsPrimary"} {$ut/Primary/text()},
+                      element {"IsPublic"} {$u/Public/text()},
+                      element {"UsageType"} {$ut/Type_Reference/ID[type="Communication_Usage_Type_ID"]/text/text()}
+                    }
+             }
+         },
+             element{"SecuredData"}{
+               element {"TimeType"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Position_Time_Type_Reference/ID[type="Position_Time_Type_ID"]/text/text()},
+               element {"EmploymentPercentage"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Full_Time_Equivalent_Percentage/text()},
+               element {"WeeklyHours"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Scheduled_Weekly_Hours/text()},
+               element {"BirthDate"} {$x/Personal_Data/Birth_Date/text()},
+               element {"PayRateType"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Pay_Rate_Type_Reference/ID[type="Pay_Rate_Type_ID"]/text/text()},
+               element {"PayrollFrequency"} {$x/Employment_Data/Worker_Job_Data/Position_Data/Payroll_Interface_Processing_Data/Frequency_Reference/ID[type="Frequency_ID"]/text/text()}  ,
+               element {"NationalIds"} {
+                 for $id in $x/Personal_Data/Identification_Data/National_ID/National_ID_Data
+                 return
+                   element {"NationalId"} {
+                     element {"IdNumber"} {$id/ID/text()},
+                     element {"IdType"} {$id/ID_Type_Reference/ID[type="National_ID_Type_Code"]/text/text()},
+                     element {"IdCountryCode"} {$id/Country_Reference/ID[type="ISO_3166-1_Alpha-2_Code"]/text/text()}
+                   }
+               },
+               element {"PrivateAddresses"} {
+                 for $p in $x/Personal_Data/Contact_Data/Address_Data[Usage_Data/Public=0]
+                  for $u in $p/Usage_Data
+                    for $ut in $u/Type_Data
+                    return
+                      element{"Address"} {
+                        element{"AddressLine1"} {$p/Address_Line_Data[Type='ADDRESS_LINE_1']/text/text()},
+                        element{"AddressLine2"} {$p/Address_Line_Data[Type='ADDRESS_LINE_2']/text/text()},
+                        element{"AddressLine3"} {$p/Address_Line_Data[Type='ADDRESS_LINE_3']/text/text()},
+                        element{"AddressLine4"} {$p/Address_Line_Data[Type='ADDRESS_LINE_4']/text/text()},
+                        element{"District"} {},
+                        element{"City"} {$p/Municipality/text()},
+                        element{"PostalCode"} {$p/Postal_Code/text()},
+                        element{"Region"} {$p/Country_Region_Descriptor/text()},
+                        element{"CountryCode"} {$p/Country_Reference/ID[type="ISO_3166-1_Alpha-2_Code"]/text/text()},
+                        element{"Formatted"} {$p/Formatted_Address/text()},                        
+                        element {"IsPrimary"} {$ut/Primary/text()},
+                        element{"IsPublic"} {$u/Public/text()},
+                        element{"UsageType"} {$ut/Type_Reference/ID[type="Communication_Usage_Type_ID"]/text/text()}
+                      }
+               },
+               element {"PrivatePhones"} {
+                for $p in $x/Personal_Data/Contact_Data/Phone_Data[Usage_Data/Public=0]
+                  for $u in $p/Usage_Data
+                    for $ut in $u/Type_Data
+                    return
+                      element {"Phone"} {
+                        element {"InternationalCode"} {$p/International_Phone_Code/text()},
+                        element {"AreaCode"} {fn:replace($p/Area_Code/text(), "[^0-9]", "")},
+                        element {"PhoneNumber"} {$p/Phone_Number/text()},
+                        element {"Extension"} {$p/Phone_Extension/text()},
+                      element {"Formatted"} {$p/Tenant_Formatted_Phone/text()},                         
+                        element {"PhoneType"} {$p/Phone_Device_Type_Reference/ID[type='Phone_Device_Type_ID']/text/text()},
+                        element {"IsPrimary"} {$ut/Primary/text()},
+                        element {"IsPublic"} {$u/Public/text()},
+                        element {"UsageType"} {$ut/Type_Reference/ID[type="Communication_Usage_Type_ID"]/text/text()}
+                      }
+               }                               
+               
+             }
+      }         
+  }
+  &lt;/Workers&gt;</expression>
+                        </operation>
+                        <link id="jyydsu2m" targetId="jyydsu2l"/>
+                     </assignment>
+                     <assignment id="jyydsu34">
+                        <title>(Workers) Assignment to Content Format, File name etc.</title>
+                        <operation source="constant" to="temp.tmp_FileWriterTask_Workers[1]/format">PlainText</operation>
+                        <operation source="formula" to="temp.tmp_FileWriterTask_Workers[1]/fileName">
+                           <expression language="XQuery">concat('WKD_Workers_Pg', $temp.tmp_CurrentPage, '.csv')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_FileWriterTask_Workers[1]/content">
+                           <expression language="XQuery">concat('WorkerId,LocationCode,CountryCode,OPCOCode,PayGroup,Active,WorkerData,SecuredData,ETLControl_Id&amp;#xD;&amp;#xA;',
+  string-join(
+    for $x in util:parseXML($output.Bulk_Encrypt_HR_DataResult)//Worker
+    return
+      concat('"',
+         $x/WorkerData/WorkerId/text(), 
+         '","',
+         $x/WorkerData/LocationCode/text(), 
+         '","',
+         $x/WorkerData/CountryCode/text(), 
+         '","',
+         $x/WorkerData/OPCOCode/text(), 
+         '","',
+         $x/WorkerData/PayGroup/text(), 
+         '","',
+         $x/WorkerData/Active/text(),
+         '","',
+         fn:replace(fn:replace(fn:replace(fn:normalize-space(fn:serialize(util:simplifyXml($x/WorkerData))), '&lt;\?xml.*\?&gt;', ''), '&gt; &lt;', '&gt;&lt;'), '"', '""'),
+         '","',
+         $x/SecuredData,
+         '","',
+         $input.in_ETLControl_Id,
+         '"&amp;#xD;&amp;#xA;')
+  )
+)</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_FileWriterTask_Workers[1]/filePath">\IN</operation>
+                        <link id="k8r6xrwu" targetId="jyydsu3m"/>
+                     </assignment>
+                     <service id="jyydsu2l">
+                        <title>Bulk_Encrypt_HR_Data</title>
+                        <serviceName>svccon-InformaticaHRIntegrationHub:Bulk_Encrypt_HR_Data</serviceName>
+                        <serviceGUID>gz722djXKaMcibPUxdVnmq</serviceGUID>
+                        <serviceInput>
+                           <parameter name="xmlString" source="formula">
+                              <expression language="XQuery">util:toXML($temp.tmp_FullWorkersXML)</expression>
+                           </parameter>
+                           <parameter name="exchangeKey" source="constant">1234567890123456</parameter>
+                        </serviceInput>
+                        <link id="jyydsu35" targetId="jyydsu34"/>
+                     </service>
+                     <service id="jyydsu3m">
+                        <title>(Workers) Write to file</title>
+                        <serviceName>file-I0079-Workday-HR-Data:FileWriter</serviceName>
+                        <serviceGUID>1rdFvkFuNmEfiwxqeS9Qee</serviceGUID>
+                        <serviceInput>
+                           <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_FileWriterTask_Workers</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="jynrbhoe" targetId="jynrbho9" type="containerLink"/>
+                  </flow>
+                  <flow id="jynrbhog">
+                     <assignment id="jynrbhqr">
+                        <title>Assignment to GetWorkersLastPageNumber, GetWorkersTotalPages</title>
+                        <operation source="field" to="temp.tmp_ETLControlRow.GetWorkersLastPageNumber">temp.tmp_CurrentPage</operation>
+                        <operation source="formula" to="temp.tmp_ETLControlRow.GetWorkersTotalPages">
+                           <expression language="XQuery">$output.Get_Workers_Response//Response_Results/Total_Pages/text()</expression>
+                        </operation>
+                     </assignment>
+                     <link id="jynrbhoh" targetId="jynrbho9" type="containerLink"/>
+                  </flow>
+                  <link id="jynrbhoc" targetId="jynrbhod" type="containerLink"/>
+                  <link id="jynrbhof" targetId="jynrbhog" type="containerLink"/>
+                  <link id="jyydsu3l" targetId="jyy8y367"/>
+               </container>
+               <container id="jyy8y367" type="exclusive">
+                  <title>tmp_Page</title>
+                  <flow id="jyy8y368">
+                     <assignment id="jyy8y369">
+                        <title>Increment page</title>
+                        <operation source="formula" to="temp.tmp_CurrentPage">
+                           <expression language="XQuery">$temp.tmp_CurrentPage + 1</expression>
+                        </operation>
+                        <link id="jyy8y36g" targetId="jyy8y36a"/>
+                     </assignment>
+                     <jumpTo id="jyy8y36a">
+                        <link id="jyy8y36h" targetId="jx4cpc0y"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="jyy8y36b">
+                     <service id="jyy8y36c">
+                        <title>Shell command: Create file lists</title>
+                        <serviceName>avShellService</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="command" source="formula">
+                              <expression language="XQuery">concat('dir /b ', $temp.tmp_WIP_Folder, 'WKD_Workers*.csv &gt; ',$temp.tmp_WIP_Folder, 'WKD_Workers_List.txt')</expression>
+                           </parameter>
+                           <parameter name="workingDirPath" source="formula">
+                              <expression language="XQuery">'C:\'</expression>
+                           </parameter>
+                        </serviceInput>
+                        <link id="jyy8y36i" targetId="jyy8y36d"/>
+                     </service>
+                     <end id="jyy8y36d">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="jyy8y36e" targetId="jyy8y368" type="containerLink">
+                     <condition source="formula">
+                        <function name="less-than">
+                           <arg name="left">{$temp.tmp_CurrentPage}</arg>
+                           <arg name="right">{$output.Get_Workers_Response//Response_Results/Total_Pages/text()}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jyy8y36f" targetId="jyy8y36b" type="containerLink"/>
+               </container>
+               <service id="jx4cpc0y">
+                  <title>Get_Workers</title>
+                  <serviceName>wkd-I0079-Human-Resources:Get_Workers</serviceName>
+                  <serviceGUID>5er1yyNMF0fhGYFTqax0AW</serviceGUID>
+                  <serviceInput>
+                     <parameter name="Get_Workers_Request" source="formula">
+                        <expression language="XQuery">&lt;Get_Workers_Request&gt;
+	{
+		element{"Request_Criteria"} 
+        {
+           		element{"Transaction_Log_Criteria_Data"}
+                {
+                	element{"Transaction_Date_Range_Data"}
+                    {
+                    	element{"Effective_From"}{ $input.in_UpdatedFrom  },
+                        element{"Effective_Through"}{ $input.in_UpdatedThrough },
+                        element{"Updated_From"}{ '2000-01-01T00:00:00'  },
+                        element{"Updated_Through"}{ $input.in_UpdatedThrough }
+                    }
+                },
+           		element{"Transaction_Log_Criteria_Data"}
+                {
+                	element{"Transaction_Date_Range_Data"}
+                    {
+                    	element{"Effective_From"}{ '2000-01-01T00:00:00'  },
+                        element{"Effective_Through"}{ $input.in_UpdatedThrough },
+                        element{"Updated_From"}{ $input.in_UpdatedFrom  },
+                        element{"Updated_Through"}{ $input.in_UpdatedThrough }
+                    }
+                }                
+         }
+    }
+   &lt;Response_Filter&gt;
+      &lt;Page&gt;{$temp.tmp_CurrentPage }&lt;/Page&gt;
+   	  &lt;Count&gt;999&lt;/Count&gt;
+   &lt;/Response_Filter&gt;    
+   &lt;Response_Group&gt;
+      &lt;Include_Personal_Information&gt;true&lt;/Include_Personal_Information&gt;
+      &lt;Include_Employment_Information&gt;true&lt;/Include_Employment_Information&gt;
+	 &lt;!-- Organization Data Groups --&gt;
+      &lt;Include_Organizations&gt;true&lt;/Include_Organizations&gt;
+      &lt;Exclude_Organization_Support_Role_Data&gt;true&lt;/Exclude_Organization_Support_Role_Data&gt;
+      &lt;Exclude_Location_Hierarchies&gt;false&lt;/Exclude_Location_Hierarchies&gt;
+      &lt;Exclude_Cost_Centers&gt;false&lt;/Exclude_Cost_Centers&gt;
+      &lt;Exclude_Cost_Center_Hierarchies&gt;false&lt;/Exclude_Cost_Center_Hierarchies&gt;
+      &lt;Exclude_Companies&gt;false&lt;/Exclude_Companies&gt;
+      &lt;Exclude_Company_Hierarchies&gt;true&lt;/Exclude_Company_Hierarchies&gt;
+      &lt;Exclude_Pay_Groups&gt;false&lt;/Exclude_Pay_Groups&gt;
+      &lt;Exclude_Supervisory_Organizations&gt;false&lt;/Exclude_Supervisory_Organizations&gt;
+      &lt;Exclude_Teams&gt;true&lt;/Exclude_Teams&gt;
+      &lt;Exclude_Custom_Organizations&gt;true&lt;/Exclude_Custom_Organizations&gt;
+      &lt;!-- End Organization Data Groups --&gt;      
+      &lt;Include_Photo&gt;false&lt;/Include_Photo&gt;
+      &lt;Include_User_Account&gt;true&lt;/Include_User_Account&gt;
+
+   &lt;/Response_Group&gt;
+&lt;/Get_Workers_Request&gt;
+</expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="jynrbhoa" targetId="jynrbho9"/>
+               </service>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>8xvc3mUnKLmke708licrsI</types1:GUID>
+      <types1:DisplayName>p-I0079-GetWorkdayWorkers</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-26T09:01:00.322Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
