@@ -3,7 +3,7 @@
    <types1:Item>
       <types1:EntryId>KCv2jop81V4Adyp-gt-2841338-2020-04-02T02:05:45.955Z::pd.xml</types1:EntryId>
       <types1:Name>p-I0074-Common-Process-Subscribed_HR-Data</types1:Name>
-      <types1:ParentFlowIds>C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+process</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -13,11 +13,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
-      <types1:ModifiedBy>norhana.yusuf@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2020-11-18T03:16:54Z</types1:ModificationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-25T08:06:46Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2020-11-19T01:49:23Z</types1:PublicationDate>
+      <types1:PublicationDate>2020-11-26T03:12:10Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -650,7 +650,8 @@ let $fields :=
   if ($input.in_PayrollCountry = 'DE') then
   (
   &lt;field&gt;&lt;name&gt;DEDistrictName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/DE_District_Name}&lt;/source&gt;&lt;/field&gt;,
-  &lt;field&gt;&lt;name&gt;DEDistrictRefId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/DE_District_Ref_ID}&lt;/source&gt;&lt;/field&gt;     
+  &lt;field&gt;&lt;name&gt;DEDistrictRefId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/DE_District_Ref_ID}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;ManagerOfManagerWorkerId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Managers_Manager_Employee_ID}&lt;/source&gt;&lt;/field&gt;     
   )
   else ()
   }
@@ -1458,5 +1459,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-11-19T12:26:25.479Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-11-26T07:05:04.489Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
