@@ -1,0 +1,70 @@
+{
+  "objectInfo" : {
+    "id" : "2JnMxOr15pBcyS1ag0T2W8",
+    "name" : "m_I0065_SAP_TO_PIM_Create_Payload_bckup20200527",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD61700000000014C"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "This mapping takes the products data from SAP (file) and load into PIM.",
+        "contentType" : null,
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "objectRefs" : [ {
+    "id" : "0taCxKFDnYSfJXy9fazQQh",
+    "name" : "ff_I0065",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD60B0000000000D5"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Folder for PIM integration",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "053DPh0h9GjeW28XkJEhUp",
+    "name" : "hschema_I0065_PIM_SAP_Data_Handler_v9",
+    "type" : "HSCHEMA",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD63600000000002O"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0065 - PIM"
+  } ]
+}

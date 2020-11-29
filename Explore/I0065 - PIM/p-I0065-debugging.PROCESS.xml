@@ -1,0 +1,73 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ZWs86zqzm5Y6tMF-gt-15008392-2018-12-06T01:48:52.835Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0065-debugging</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>yen.shyang.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2018-12-06T01:48:52Z</types1:CreationDate>
+      <types1:ModifiedBy>yen.shyang.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2018-12-06T02:45:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>yen.shyang.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2018-12-06T02:46:47Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0065-debugging/p-I0065-debugging.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0065-debugging"
+                  name="p-I0065-debugging">
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 8</generator>
+            <input>
+               <parameter name="Input" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field name="Output" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+                  <wholePayload inputWholePayload="true" outputWholePayload="true"/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="link1" targetId="c"/>
+               </start>
+               <assignment id="c">
+                  <title>Assignment to Output</title>
+                  <operation source="field" to="output.Output">input.Input</operation>
+                  <link id="jpbxygay" targetId="jpbxygax"/>
+               </assignment>
+               <throw id="jpbxygax">
+                  <throwInput>
+                     <parameter name="code" source="field" updatable="true">output.Output</parameter>
+                  </throwInput>
+               </throw>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>3hn85mhR3yjdcq4l5P2jCx</types1:GUID>
+      <types1:DisplayName>p-I0065-debugging</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-29T15:41:23.678Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

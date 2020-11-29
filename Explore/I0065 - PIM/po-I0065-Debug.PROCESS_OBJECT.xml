@@ -1,0 +1,38 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>abck0Kn7wporzYL-gt-15016204-2018-12-06T02:39:21.014Z::po.xml</types1:EntryId>
+      <types1:Name>po-I0065-Debug</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>For testing purpose</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>yen.shyang.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2018-12-06T02:39:21Z</types1:CreationDate>
+      <types1:ModifiedBy>yen.shyang.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2018-12-06T02:43:12Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                        xmlns:ns3="http://schemas.active-endpoints.com/appmodules/screenflow/2012/09/avosObjectDiscovery.xsd"
+                        displayName="po-I0065-Debug"
+                        isByCopy="true"
+                        name="po-I0065-Debug">
+            <description>For testing purpose</description>
+            <tags/>
+            <detail>
+               <field label="sku" name="sku" type="string"/>
+               <field label="name" name="name" type="string"/>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>aJvjrCQKEwDbAz1iIsOmAQ</types1:GUID>
+      <types1:DisplayName>po-I0065-Debug</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-11-29T15:41:23.661Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

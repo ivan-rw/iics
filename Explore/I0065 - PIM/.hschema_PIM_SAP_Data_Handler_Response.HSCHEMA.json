@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "22fEAMHkEXzbHEGeXga66x",
+    "name" : "hschema_PIM_SAP_Data_Handler_Response",
+    "type" : "HSCHEMA",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD63600000000000O"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "Hierarchical Schema for PIM Data Handler service API JSON response",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "objectRefs" : [ ]
+}

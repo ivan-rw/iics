@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "aJvjrCQKEwDbAz1iIsOmAQ",
+    "name" : "po-I0065-Debug",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "abck0Kn7wporzYL-gt-15016204-2018-12-06T02:39:21.014Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "For testing purpose",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

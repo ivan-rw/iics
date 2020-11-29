@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "3hn85mhR3yjdcq4l5P2jCx",
+    "name" : "p-I0065-debugging",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "ZWs86zqzm5Y6tMF-gt-15008392-2018-12-06T01:48:52.835Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}
