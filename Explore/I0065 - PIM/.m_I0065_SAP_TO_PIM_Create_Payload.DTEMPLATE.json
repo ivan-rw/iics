@@ -44,8 +44,8 @@
     },
     "path" : "/SYS"
   }, {
-    "id" : "4nWNlEF4UcciWPWVWYlsa5",
-    "name" : "hschema_I0065_PIM_SAP_Data_Handler_v11",
+    "id" : "ah5tt3WgUEvlfoW6kaHI8i",
+    "name" : "hschema_I0065_PIM_SAP_Data_Handler_v13",
     "type" : "HSCHEMA",
     "metadata" : {
       "modelVersion" : {
@@ -53,12 +53,9 @@
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "001KD63600000000002Q"
+        "repoHandle" : "001KD63600000000002X"
       },
-      "contextAttributes" : [ {
-        "name" : "id",
-        "value" : "@1"
-      } ],
+      "contextAttributes" : null,
       "additionalInfo" : {
         "description" : "",
         "contentType" : "JSON",
