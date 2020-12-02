@@ -1,0 +1,457 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>mn9OQcjoYsjqluQ-gt-5541417-2019-09-10T13:05:04.205Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0072-screeningRequest</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2019-09-10T13:05:04Z</types1:CreationDate>
+      <types1:ModifiedBy>ivanj@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2019-09-27T10:53:45Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>ivanj@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2019-09-27T10:54:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0072-screeningRequest/p-I0072-screeningRequest.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0072-screeningRequest"
+                  name="p-I0072-screeningRequest">
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="organizationName"
+                          name="organizationName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="organizationCountry"
+                          name="organizationCountry"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="caseID" name="caseID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out1_field" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="out_case_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_case_System_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_result1" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="out_result2" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="out_empty_case" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="data" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:po-I0072-screeningData</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1pGLlEGFahTcT1ybC587Yu</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="Date for Signing" name="Date" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="Signed Payload" name="signedPayload" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="Content Length" name="contentLength" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="gateway_url" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">/v1/</option>
+                  </options>
+               </field>
+               <field description="" name="gateway_host" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">rms-world-check-one-api-pilot.thomsonreuters.com</option>
+                  </options>
+               </field>
+               <field description="" name="apiKey" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">c6ed762f-9cc5-447d-b8ce-9ac384134875</option>
+                  </options>
+               </field>
+               <field description="" name="apiSecret" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Y8ZwqsjNtUbh3wPBSCrILmNteKLaxhyMOFT2V64U133HQ5LaBk/4sMlFkSVgsNZsQKMCxJbcY/3QCffNcM5ECQ==</option>
+                  </options>
+               </field>
+               <field description="" name="hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">rms-world-check-one-api-pilot.thomsonreuters.com</option>
+                  </options>
+               </field>
+               <field description="" name="protocol" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">https://</option>
+                  </options>
+               </field>
+               <field description="" name="part1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="part2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="payloadToSign" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_case_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_date2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_payloadToSign2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_empty_caseid" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_case_System_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_filter" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_time1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_iterations" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_totalResultCount" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="part3" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k02ri0j3" targetId="k02ri0j2"/>
+               </start>
+               <assignment id="k02ri0j2">
+                  <title>Assignment to tmp_empty_caseid</title>
+                  <operation source="formula" to="temp.tmp_empty_caseid">
+                     <expression language="XQuery">if (fn:empty($input.caseID )) then "Y" else "N"</expression>
+                  </operation>
+                  <link id="k02ri0j4" targetId="k02ri0i3"/>
+               </assignment>
+               <assignment id="k02ge96j">
+                  <title>Assignment to tmp_case_System_ID, caseReference</title>
+                  <operation source="field" to="temp.tmp_case_System_ID">output.CaseReference[1]/caseSystemId</operation>
+                  <operation source="formula" to="output.data[1]/caseReference">
+                     <expression language="XQuery">$output.CaseReference</expression>
+                  </operation>
+                  <link id="k06yj718" targetId="k02swtog"/>
+               </assignment>
+               <assignment id="k02swtrp">
+                  <title>Assignment to caseDetails</title>
+                  <operation source="formula" to="output.data[1]/caseDetails">
+                     <expression language="XQuery">$output.Case</expression>
+                  </operation>
+                  <link id="k06yj71o" targetId="k02uk82v"/>
+               </assignment>
+               <assignment id="k02uk861">
+                  <title>Assignment to screeningResultDetails</title>
+                  <operation source="formula" to="output.data[1]/screeningResultDetails">
+                     <expression language="XQuery">$output.ResultList</expression>
+                  </operation>
+                  <link id="k02uk863" targetId="c"/>
+               </assignment>
+               <container id="k02ri0i3" type="exclusive">
+                  <title>caseID</title>
+                  <flow id="k02ri0i7">
+                     <assignment id="k02swtli">
+                        <title>Assignment to tmp_case_id</title>
+                        <operation source="field" to="temp.tmp_case_id">input.caseID</operation>
+                        <link id="k0cx4xrf" targetId="k0cx4xre"/>
+                     </assignment>
+                     <assignment id="k0cx4xrr">
+                        <title>Assignment to tmp_case_System_ID, tmp_time1 etc.</title>
+                        <operation source="field" to="temp.tmp_case_System_ID">output.CaseReference[1]/caseSystemId</operation>
+                        <operation source="formula" to="temp.tmp_time1">
+                           <expression language="XQuery">fn:adjust-dateTime-to-timezone(fn:current-dateTime(), xs:dayTimeDuration('PT0H'))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_filter">
+                           <expression language="XQuery">'{ "query" : "actionType==SCREENED_CASE;eventDate&gt;' || $temp.tmp_time1  || '" }'
+
+(:
+'{ "query" : "actionType==SCREENED_CASE" }'
+:)</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_iterations">0</operation>
+                        <link id="k0cx4xtg" targetId="k0cx4xtx"/>
+                     </assignment>
+                     <service id="k0cx4xre">
+                        <title>GET_caseReferences 1</title>
+                        <serviceName>con-I0072-WC1:GET_caseReferences</serviceName>
+                        <serviceGUID>13GYurGR5fxhASLjqlIhOM</serviceGUID>
+                        <serviceInput>
+                           <parameter name="caseId" source="field" updatable="true">temp.tmp_case_id</parameter>
+                        </serviceInput>
+                        <link id="k0cx4xrs" targetId="k0cx4xrr"/>
+                     </service>
+                     <eventContainer id="k0cx4xtx">
+                        <service id="k0cx4xtf">
+                           <title>POST_cases_caseSystemId_screeningRequest</title>
+                           <serviceName>con-I0072-WC1:POST_cases_caseSystemId_screeningRequest</serviceName>
+                           <serviceGUID>13GYurGR5fxhASLjqlIhOM</serviceGUID>
+                           <serviceInput>
+                              <parameter name="caseSystemIdPathParam" source="field" updatable="true">temp.tmp_case_System_ID</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="k0cx4xtz">
+                           <assignment id="k0cx4xua">
+                              <title>Assignment to tmp_iterations</title>
+                              <operation source="formula" to="temp.tmp_iterations">
+                                 <expression language="XQuery">$temp.tmp_iterations + 1</expression>
+                              </operation>
+                              <link id="k0cx4xvt" targetId="k0cx4xvs"/>
+                           </assignment>
+                           <assignment id="k0cx4xxn">
+                              <title>Assignment to tmp_totalResultCount</title>
+                              <operation source="formula" to="temp.tmp_totalResultCount">
+                                 <expression language="XQuery">$output.AuditSearchResponse/totalResultCount</expression>
+                              </operation>
+                              <link id="k0cx4xyi" targetId="k0cx4xyh"/>
+                           </assignment>
+                           <service id="k0cx4xvs">
+                              <title>POST_cases_caseSystemId_auditEvents</title>
+                              <serviceName>con-I0072-WC1:POST_cases_caseSystemId_auditEvents</serviceName>
+                              <serviceGUID>13GYurGR5fxhASLjqlIhOM</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="caseSystemIdPathParam" source="field" updatable="true">temp.tmp_case_System_ID</parameter>
+                                 <parameter name="filter" source="field" updatable="true">temp.tmp_filter</parameter>
+                              </serviceInput>
+                              <link id="k0cx4xxo" targetId="k0cx4xxn"/>
+                           </service>
+                           <container id="k0cx4xyh" type="exclusive">
+                              <title>tmp_totalResultCount</title>
+                              <flow id="k0cx4xyk">
+                                 <jumpTo id="k0cx4xyy">
+                                    <link id="k0cx4xyz" targetId="k0cx4xua"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="k0cx4xyn">
+                                 <link id="k0cx4xyo" targetId="k0cx4xyh" type="containerLink"/>
+                              </flow>
+                              <link id="k0cx4xyj" targetId="k0cx4xyk" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$temp.tmp_totalResultCount}</arg>
+                                       <arg name="right">0</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="k0cx4xym" targetId="k0cx4xyn" type="containerLink"/>
+                           </container>
+                           <link id="k0cx4xu0" targetId="k0cx4xtx" type="containerLink"/>
+                        </flow>
+                        <flow id="k0cx4xu2">
+                           <assignment id="k0cx4xzx">
+                              <title>Assignment to out_result1</title>
+                              <operation source="formula" to="output.out_result1">
+                                 <expression language="XQuery">'Timeout Error'</expression>
+                              </operation>
+                           </assignment>
+                           <link id="k0cx4xu3" targetId="k0cx4xtx" type="containerLink"/>
+                        </flow>
+                        <link id="k0cx4xty" targetId="k0cx4xtz" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="k0cx4xtk" interrupting="true">
+                              <link id="k0cx4xu1" targetId="k0cx4xu2" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="k02ri0i8" targetId="k02ri0i3" type="containerLink"/>
+                  </flow>
+                  <flow id="k02ri0ia">
+                     <assignment id="k02swtkc">
+                        <title>prepare_parameters_for signing</title>
+                        <operation source="formula" to="temp.part1">
+                           <expression language="XQuery">'{"groupId":"0a3687cf-6a9c-11b9-9aba-615b000013b6","entityType":"ORGANISATION","providerTypes":["WATCHLIST"],"name":"'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.part2">
+                           <expression language="XQuery">'","secondaryFields":[{"typeId":"SFCT_6","value":"'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.part3">
+                           <expression language="XQuery">'"}],"customFields":[]}'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.payloadToSign">
+                           <expression language="XQuery">fn:concat($temp.part1 , $input.organizationName ,$temp.part2,$input.organizationCountry , $temp.part3  )</expression>
+                        </operation>
+                        <link id="k06yj6zr" targetId="k02swtl3"/>
+                     </assignment>
+                     <assignment id="k02swtlt">
+                        <title>Assignment to screeningResult</title>
+                        <operation source="formula" to="output.data[1]/screeningResult">
+                           <expression language="XQuery">$output.ScreeningResultCollection</expression>
+                        </operation>
+                        <link id="k02swtm7" targetId="k02swtm6"/>
+                     </assignment>
+                     <assignment id="k02swtm6">
+                        <title>Assignment to tmp_case_id</title>
+                        <operation source="formula" to="temp.tmp_case_id">
+                           <expression language="XQuery">$output.ScreeningResultCollection/caseId</expression>
+                        </operation>
+                     </assignment>
+                     <service id="k02swtl3">
+                        <title>svc-POST-screeningRequest</title>
+                        <serviceName>con-I0072-WC1:POST_cases_screeningRequest</serviceName>
+                        <serviceGUID>13GYurGR5fxhASLjqlIhOM</serviceGUID>
+                        <serviceInput>
+                           <parameter name="newCase" source="field" updatable="true">temp.payloadToSign</parameter>
+                        </serviceInput>
+                        <link id="k02swtlu" targetId="k02swtlt"/>
+                     </service>
+                     <link id="k02ri0ib" targetId="k02ri0i3" type="containerLink"/>
+                  </flow>
+                  <link id="k02ri0i6" targetId="k02ri0i7" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_empty_caseid}</arg>
+                           <arg name="right">N</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="k02ri0i9" targetId="k02ri0ia" type="containerLink"/>
+                  <link id="k0cx4xra" targetId="k02ge93v"/>
+               </container>
+               <service id="k02ge93v">
+                  <title>GET_caseReferences</title>
+                  <serviceName>con-I0072-WC1:GET_caseReferences</serviceName>
+                  <serviceGUID>13GYurGR5fxhASLjqlIhOM</serviceGUID>
+                  <serviceInput>
+                     <parameter name="caseId" source="field" updatable="true">temp.tmp_case_id</parameter>
+                  </serviceInput>
+                  <link id="k02ge96k" targetId="k02ge96j"/>
+               </service>
+               <service id="k02swtog">
+                  <title>GET_cases_caseSystemId_</title>
+                  <serviceName>con-I0072-WC1:GET_cases_caseSystemId_</serviceName>
+                  <serviceGUID>13GYurGR5fxhASLjqlIhOM</serviceGUID>
+                  <serviceInput>
+                     <parameter name="caseSystemIdPathParam" source="field" updatable="true">temp.tmp_case_System_ID</parameter>
+                  </serviceInput>
+                  <link id="k02swtrq" targetId="k02swtrp"/>
+               </service>
+               <service id="k02uk82v">
+                  <title>GET_cases_caseSystemId_results</title>
+                  <serviceName>con-I0072-WC1:GET_cases_caseSystemId_results</serviceName>
+                  <serviceGUID>13GYurGR5fxhASLjqlIhOM</serviceGUID>
+                  <serviceInput>
+                     <parameter name="caseSystemIdPathParam" source="field" updatable="true">temp.tmp_case_System_ID</parameter>
+                  </serviceInput>
+                  <link id="k02uk862" targetId="k02uk861"/>
+               </service>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>9WScQyGRCX6duXORaJzeEO</types1:GUID>
+      <types1:DisplayName>p-I0072-screeningRequest</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-12-02T14:03:35.886Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
