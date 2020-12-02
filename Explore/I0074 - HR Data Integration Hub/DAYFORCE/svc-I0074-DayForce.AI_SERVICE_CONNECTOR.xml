@@ -1,0 +1,270 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>P9RdtIS7T1cnFKi-gt-17597728-2020-07-16T03:26:19.663Z::svc.xml</types1:EntryId>
+      <types1:Name>svc-I0074-DayForce</types1:Name>
+      <types1:ParentFlowIds>M3LRfRW8UBM7zsZ-gt-26062430-2020-07-16T09:52:10.623Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-07-16T03:26:20Z</types1:CreationDate>
+      <types1:ModifiedBy>norhana.yusuf@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-10-20T01:56:32Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>norhana.yusuf@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-10-20T01:56:37Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/svc_I0074_DayForce/svc_I0074_DayForce_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="true"
+                            debug="false"
+                            displayName="svc-I0074-DayForce"
+                            label=""
+                            name="svc-I0074-DayForce"
+                            uuid="58f7430e-037e-4ec2-aa87-eaca520c49b2">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description=""
+                                    masked="false"
+                                    name="EndpointBaseURL"
+                                    required="true"
+                                    testWith="https://ustest59-services.dayforcehcm.com/"
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="UpdateEmployee"
+                       maxRedirects="100"
+                       name="UpdateEmployee"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description>Update employee.</description>
+                  <input>
+                     <parameter name="EmployeeNumber"
+                                required="true"
+                                testWith="90122452"
+                                type="string"/>
+                     <parameter name="JSONPayload"
+                                required="true"
+                                testWith="{&#34;XRefCode&#34;:&#34;90122452&#34;,&#34;TerminationDate&#34;:&#34;2020-07-21&#34;,&#34;EmploymentStatuses&#34;:{&#34;Items&#34;:[{&#34;PayGroup&#34;:{&#34;XRefCode&#34;:&#34;CAN_GRF_BI_WEEKLY_HOURLY&#34;},&#34;PayClass&#34;:{&#34;XRefCode&#34;:&#34;FT&#34;},&#34;EffectiveStart&#34;:&#34;2020-07-21&#34;,&#34;EmploymentStatus&#34;:{&#34;XRefCode&#34;:&#34;TERMINATED&#34;},&#34;PayType&#34;:{&#34;XRefCode&#34;:&#34;HOURLY_NON_EXEMPT&#34;},&#34;EmploymentStatusReason&#34;:{&#34;XRefCode&#34;:&#34;Terminate_Employee_Involuntary_Harassment&#34;}}]}}"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{fn:concat($EndpointBaseURL, 'api/ROCKWOOL/v1/Employees/', $EmployeeNumber)}"
+                                        verb="PATCH">
+                        <authentication>
+                           <username>Workday</username>
+                           <password>yZtWNZ5a$E988s;m</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json; charset=utf-8</header>
+                        </httpHeaders>
+                        <body>{$JSONPayload}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="UpdateEmployeeResponse"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="InsertEmployee"
+                       maxRedirects="100"
+                       name="InsertEmployee"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description>New hire</description>
+                  <input>
+                     <parameter name="EmployeeNumber"
+                                required="true"
+                                testWith="10122457"
+                                type="string"/>
+                     <parameter name="JSONPayload"
+                                required="true"
+                                testWith="{&#34;Gender&#34;:&#34;M&#34;,&#34;EmploymentStatuses&#34;:{&#34;Items&#34;:[{&#34;PayGroup&#34;:{&#34;XRefCode&#34;:&#34;USA_BI_WEEKLY_ROXUL&#34;},&#34;PayClass&#34;:{&#34;XRefCode&#34;:&#34;FT&#34;},&#34;EffectiveStart&#34;:&#34;2020-08-03&#34;,&#34;EmploymentStatus&#34;:{&#34;XRefCode&#34;:&#34;ACTIVE&#34;},&#34;PayType&#34;:{&#34;XRefCode&#34;:&#34;HOURLY_NON_EXEMPT&#34;},&#34;EmploymentStatusReason&#34;:{&#34;XRefCode&#34;:&#34;NEWHIRE&#34;},&#34;BaseRate&#34;:&#34;7.25&#34;}]},&#34;StartDate&#34;:&#34;2020-08-03&#34;,&#34;Addresses&#34;:{&#34;Items&#34;:[{&#34;State&#34;:{&#34;XRefCode&#34;:&#34;DC&#34;},&#34;Address2&#34;:&#34;&#34;,&#34;EffectiveStart&#34;:&#34;2020-08-03&#34;,&#34;Country&#34;:{&#34;XRefCode&#34;:&#34;USA&#34;},&#34;PostalCode&#34;:&#34;20500&#34;,&#34;Address1&#34;:&#34;1600 Pennsylvania Ave&#34;,&#34;City&#34;:&#34;Washington&#34;,&#34;County&#34;:&#34;&#34;,&#34;ContactInformationType&#34;:{&#34;XRefCode&#34;:&#34;PrimaryResidence&#34;}}]},&#34;MaritalStatuses&#34;:{&#34;Items&#34;:[{&#34;MaritalStatus&#34;:{&#34;XRefCode&#34;:&#34;MARRIED&#34;},&#34;EffectiveStart&#34;:&#34;2020-08-03&#34;}]},&#34;XRefCode&#34;:&#34;10122457&#34;,&#34;WorkAssignments&#34;:{&#34;Items&#34;:[{&#34;Position&#34;:{&#34;Department&#34;:{&#34;XRefCode&#34;:&#34;US102002&#34;},&#34;Job&#34;:{&#34;XRefCode&#34;:&#34;OPS_QA&#34;}},&#34;BusinessTitle&#34;:&#34;Operational Quality&#34;,&#34;IsPrimary&#34;:&#34;true&#34;,&#34;EffectiveStart&#34;:&#34;2020-08-03&#34;,&#34;EmploymentStatusReason&#34;:{&#34;XRefCode&#34;:&#34;NEWHIRE&#34;},&#34;Location&#34;:{&#34;XRefCode&#34;:&#34;USA_Byhalia (Factory)_US102002_Hourly&#34;}}]},&#34;HireDate&#34;:&#34;2020-08-03&#34;,&#34;BadgeNumber&#34;:&#34;10122457&#34;,&#34;Culture&#34;:{&#34;XRefCode&#34;:&#34;en-US&#34;},&#34;CommonName&#34;:&#34;Donald&#34;,&#34;SocialSecurityNumber&#34;:&#34;630-55-5121&#34;,&#34;OriginalHireDate&#34;:&#34;2020-08-03&#34;,&#34;FirstName&#34;:&#34;Donald&#34;,&#34;EmployeeNumber&#34;:&#34;10122457&#34;,&#34;Ethnicities&#34;:{&#34;Items&#34;:[{&#34;Ethnicity&#34;:{&#34;XRefCode&#34;:&#34;White (not Hispanic or Latino)&#34;},&#34;EffectiveStart&#34;:&#34;2020-08-03&#34;}]},&#34;Roles&#34;:{&#34;Items&#34;:[{&#34;Role&#34;:{&#34;XRefCode&#34;:&#34;EMPLOYEE&#34;},&#34;IsDefault&#34;:&#34;true&#34;,&#34;EffectiveStart&#34;:&#34;2020-08-03&#34;},{&#34;Role&#34;:{&#34;XRefCode&#34;:&#34;ONBOARDING&#34;},&#34;IsDefault&#34;:&#34;false&#34;,&#34;EffectiveEnd&#34;:&#34;2020-09-02&#34;,&#34;EffectiveStart&#34;:&#34;2020-08-03&#34;,&#34;IsPrestartRole&#34;:&#34;true&#34;}]},&#34;PreferredLastName&#34;:&#34;Trump&#34;,&#34;Contacts&#34;:{&#34;Items&#34;:[{&#34;EffectiveStart&#34;:&#34;2020-08-03&#34;,&#34;IsForSystemCommunications&#34;:&#34;true&#34;,&#34;ElectronicAddress&#34;:&#34;thedonald@googletown.com&#34;,&#34;IsVerified&#34;:&#34;true&#34;,&#34;ContactInformationType&#34;:{&#34;XRefCode&#34;:&#34;PersonalEmail&#34;}}]},&#34;LastName&#34;:&#34;Trump&#34;,&#34;SeniorityDate&#34;:&#34;2020-08-03&#34;,&#34;BirthDate&#34;:&#34;1920-02-12&#34;}"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{fn:concat($EndpointBaseURL, 'api/ROCKWOOL/v1/Employees/', $EmployeeNumber)}"
+                                        verb="POST">
+                        <authentication>
+                           <username>Workday</username>
+                           <password>yZtWNZ5a$E988s;m</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json; charset=utf-8</header>
+                        </httpHeaders>
+                        <body>{$JSONPayload}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="InsertEmployeeResponse"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="InsertPositions"
+                       maxRedirects="100"
+                       name="InsertPositions"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description>Add new positions</description>
+                  <input>
+                     <parameter name="PositionId" required="true" testWith="" type="string"/>
+                     <parameter name="JSONPayload" required="true" testWith="" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{fn:concat($EndpointBaseURL, 'api/ROCKWOOL/v1/Positions')}"
+                                        verb="POST">
+                        <authentication>
+                           <username>Workday</username>
+                           <password>yZtWNZ5a$E988s;m</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json; charset=utf-8</header>
+                        </httpHeaders>
+                        <body>{$JSONPayload}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="InsertPositionsResponse"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="UpdatePositions"
+                       maxRedirects="100"
+                       name="UpdatePositions"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description>Update positions.</description>
+                  <input>
+                     <parameter name="PositionId" required="true" testWith="" type="string"/>
+                     <parameter name="JSONPayload" required="true" testWith="" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{fn:concat($EndpointBaseURL, 'api/ROCKWOOL/v1/Positions/', $PositionId)}"
+                                        verb="PATCH">
+                        <authentication>
+                           <username>Workday</username>
+                           <password>yZtWNZ5a$E988s;m</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json; charset=utf-8</header>
+                        </httpHeaders>
+                        <body>{$JSONPayload}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="UpdatePositionsResponse"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetPositions"
+                       maxRedirects="100"
+                       name="GetPositions"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description/>
+                  <input>
+                     <parameter name="PositionId"
+                                nogen="true"
+                                required="true"
+                                testWith="0193_193_ACCOUNTING_ADMIN_SGA_INDIRECT_ACCOUNTING_MANAGER"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{fn:concat($EndpointBaseURL, 'api/ROCKWOOL/v1/Positions/', $PositionId)}"
+                                        verb="GET">
+                        <authentication>
+                           <username>Workday</username>
+                           <password>yZtWNZ5a$E988s;m</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="GetPositionsResponse"
+                            type="string"
+                            xmlElement="."/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetEmployees"
+                       maxRedirects="100"
+                       name="GetEmployees"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description/>
+                  <input>
+                     <parameter name="EmployeeNumber"
+                                nogen="true"
+                                required="false"
+                                testWith="10022056"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{fn:concat($EndpointBaseURL, 'api/ROCKWOOL/v1/Employees/', if (string-length($EmployeeNumber) &gt; 0)  then fn:concat($EmployeeNumber, '?expand=WorkAssignments') else '')}"
+                                        verb="GET">
+                        <authentication>
+                           <username>Workday</username>
+                           <password>yZtWNZ5a$E988s;m</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="GetEmployeesResponse"
+                            type="string"
+                            xmlElement="."/>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>64zJUjuAIUXlozrX8LRQyt</types1:GUID>
+      <types1:DisplayName>svc-I0074-DayForce</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-12-02T13:38:38.362Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
