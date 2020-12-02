@@ -1,0 +1,51 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>M3LRfRW8UBM7zsZ-gt-26062430-2020-07-16T09:52:10.623Z::conn.xml</types1:EntryId>
+      <types1:Name>svccon-I0074-DayForce</types1:Name>
+      <types1:ParentFlowIds>93aaa-gt-4619091-2020-08-14T13:22:26.979Z::pd.xml,AqhPVEQrXhNUdyO-gt-1152184-2020-08-14T07:49:49.427Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-07-16T09:52:11Z</types1:CreationDate>
+      <types1:ModifiedBy>norhana.yusuf@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-10-20T01:57:01Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>norhana.yusuf@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-10-20T01:57:07Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/svccon-I0074-DayForce/svccon-I0074-DayForce.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="svccon-I0074-DayForce"
+                     label="svccon-I0074-DayForce"
+                     name="svccon-I0074-DayForce">
+            <description/>
+            <tags>.agent:TEST</tags>
+            <agent>TEST</agent>
+            <attributes>
+               <attribute encrypted="false"
+                          name="EndpointBaseURL"
+                          value="https://ustest59-services.dayforcehcm.com/"/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="true"
+                               connectorPath="project:/rt.connector/svc_I0074_DayForce/svc_I0074_DayForce_svcDef.xml"
+                               guid="64zJUjuAIUXlozrX8LRQyt"
+                               name="svc-I0074-DayForce"
+                               supportsConnectionTest="false"
+                               uuid="58f7430e-037e-4ec2-aa87-eaca520c49b2">
+               <description/>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>1AyRqc1ylQucOzKuoeyCWI</types1:GUID>
+      <types1:DisplayName>svccon-I0074-DayForce</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-12-02T13:44:35.275Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
