@@ -3,7 +3,7 @@
    <types1:Item>
       <types1:EntryId>M3LRfRW8UBM7zsZ-gt-26062430-2020-07-16T09:52:10.623Z::conn.xml</types1:EntryId>
       <types1:Name>svccon-I0074-DayForce</types1:Name>
-      <types1:ParentFlowIds>93aaa-gt-4619091-2020-08-14T13:22:26.979Z::pd.xml,AqhPVEQrXhNUdyO-gt-1152184-2020-08-14T07:49:49.427Z::pd.xml,xVGkSSHCwkNmumf-gt-10471039-2020-12-03T06:16:55.371Z::pd.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>93aaa-gt-4619091-2020-08-14T13:22:26.979Z::pd.xml,AqhPVEQrXhNUdyO-gt-1152184-2020-08-14T07:49:49.427Z::pd.xml,qZpOzEkhK6LlRkP-gt-10501002-2020-12-03T07:59:04.261Z::pd.xml,xVGkSSHCwkNmumf-gt-10471039-2020-12-03T06:16:55.371Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+connection</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -17,7 +17,7 @@
       <types1:ModificationDate>2020-12-03T06:14:33Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>norhana.yusuf@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2020-12-03T07:42:00Z</types1:PublicationDate>
+      <types1:PublicationDate>2020-12-03T14:18:28Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connection/svccon-I0074-DayForce/svccon-I0074-DayForce.conn.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -50,5 +50,5 @@
       <types1:GUID>1AyRqc1ylQucOzKuoeyCWI</types1:GUID>
       <types1:DisplayName>svccon-I0074-DayForce</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-12-03T07:42:42.986Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-12-03T14:18:49.043Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
