@@ -14,10 +14,10 @@
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-07-16T03:26:20Z</types1:CreationDate>
       <types1:ModifiedBy>norhana.yusuf@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2020-10-20T01:56:32Z</types1:ModificationDate>
+      <types1:ModificationDate>2020-12-03T03:26:16Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>norhana.yusuf@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2020-10-20T01:56:37Z</types1:PublicationDate>
+      <types1:PublicationDate>2020-12-03T06:12:37Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connector/svc_I0074_DayForce/svc_I0074_DayForce_svcDef.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -36,6 +36,12 @@
                                     name="EndpointBaseURL"
                                     required="true"
                                     testWith="https://ustest59-services.dayforcehcm.com/"
+                                    type="string"/>
+               <connectionAttribute description=""
+                                    masked="false"
+                                    name="EndpointProdBaseURL"
+                                    required="false"
+                                    testWith="https://us59-services.dayforcehcm.com/"
                                     type="string"/>
             </connectionAttributes>
             <actions>
@@ -259,6 +265,60 @@
                             xmlElement="."/>
                   </output>
                </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="OData_EmployeeProperty_Manager"
+                       maxRedirects="100"
+                       name="OData_EmployeeProperty_Manager"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="{fn:concat($EndpointProdBaseURL , 'OData/ROCKWOOL/Reports/EmployeeProperty_Manager')}"
+                                        verb="GET">
+                        <authentication>
+                           <username>Workday</username>
+                           <password>yZtWNZ5a$E988s;m</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="OData_EmployeeProperty_Manager_Response"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="OData_EmployeeProperty_LocalHRPartner"
+                       maxRedirects="100"
+                       name="OData_EmployeeProperty_LocalHRPartner"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="{fn:concat($EndpointProdBaseURL , 'OData/ROCKWOOL/Reports/EmployeeProperty_LocalHRPartner')}"
+                                        verb="GET">
+                        <authentication>
+                           <username>Workday</username>
+                           <password>yZtWNZ5a$E988s;m</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="OData_EmployeeProperty_LocalHRPartner_Response"
+                            type="string"/>
+                  </output>
+               </action>
             </actions>
             <objects/>
          </businessConnector>
@@ -266,5 +326,5 @@
       <types1:GUID>64zJUjuAIUXlozrX8LRQyt</types1:GUID>
       <types1:DisplayName>svc-I0074-DayForce</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-12-02T13:38:38.362Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-12-03T06:13:22.615Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
