@@ -14,10 +14,10 @@
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
       <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2020-12-07T05:37:27Z</types1:ModificationDate>
+      <types1:ModificationDate>2020-12-07T07:22:18Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2020-12-07T05:37:41Z</types1:PublicationDate>
+      <types1:PublicationDate>2020-12-07T07:22:31Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -322,7 +322,9 @@ let $SalaryNode :=
 if (count($CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1')]) &gt; 1) then
 (
   let $NewSalary := $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1') and fn:string-length(End_Date) = 0]
-  let $OldSalary := $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1') and fn:string-length(End_Date) &gt; 0]
+  (:let $OldSalary := $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1') and fn:string-length(End_Date) &gt; 0]:)
+  let $OldSalary := (for $n in $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1') and fn:string-length(End_Date) &gt; 0] order by $n/End_Date descending return $n)[1]
+ 
   return 
     element {'Salary_and_Hourly_Plan'} 
     {
@@ -1461,5 +1463,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-12-07T05:38:06.018Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-12-07T07:23:35.965Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
