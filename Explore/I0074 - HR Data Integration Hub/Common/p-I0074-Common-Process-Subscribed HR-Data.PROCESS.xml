@@ -14,10 +14,10 @@
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
       <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2020-12-07T07:22:18Z</types1:ModificationDate>
+      <types1:ModificationDate>2020-12-11T12:05:28Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2020-12-07T07:22:31Z</types1:PublicationDate>
+      <types1:PublicationDate>2020-12-11T12:05:41Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -598,10 +598,12 @@ let $fields :=
   
   (: PersonIdentification :)
   &lt;field&gt;&lt;name&gt;NationalId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$NationalIdentifierChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$NationalIdentifierNode/National_ID}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;NationalIdExpirationDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$NationalIdentifierChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$NationalIdentifierNode/Expiration_Date}&lt;/source&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;SocialInsuranceNumber&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$SocialInsuranceNumberChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SocialInsuranceNumberNode/National_ID}&lt;/source&gt;&lt;/field&gt; 
   &lt;field&gt;&lt;name&gt;NationalTaxId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$NationalTaxIdChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$NationalTaxIdNode/National_ID}&lt;/source&gt;&lt;/field&gt;     
   &lt;field&gt;&lt;name&gt;PreviousSystemId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrevSystemIdChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrevSystemIdNode/Custom_ID}&lt;/source&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;UIDNumber&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$UIDNumberChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$UIDNumberNode/Custom_ID}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;UIDNumber&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$UIDNumberChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$UIDNumberNode/Custom_ID}&lt;/source&gt;&lt;/field&gt;
+ 
  
   (:Position:)
   &lt;field&gt;&lt;name&gt;PositionId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Position_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Position_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
@@ -1463,5 +1465,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-12-07T07:23:35.965Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-12-11T12:06:25.454Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
