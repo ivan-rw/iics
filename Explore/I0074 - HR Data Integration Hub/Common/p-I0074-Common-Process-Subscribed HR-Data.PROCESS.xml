@@ -3,7 +3,7 @@
    <types1:Item>
       <types1:EntryId>KCv2jop81V4Adyp-gt-2841338-2020-04-02T02:05:45.955Z::pd.xml</types1:EntryId>
       <types1:Name>p-I0074-Common-Process-Subscribed_HR-Data</types1:Name>
-      <types1:ParentFlowIds>C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,K0CYybdsMkdypKw-gt-376081-2020-12-13T01:58:11.591Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,Q1LqRQciSrZMSPf-gt-3329763-2020-11-29T03:43:08.684Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml,Uopz4KhPVEQrXhN-gt-3472267-2020-12-16T07:58:20.756Z::pd.xml,VFlprzYLnzYLnzY-gt-2218229-2020-12-14T04:35:16.758Z::pd.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>0CYybdsMkdypKwK-gt-2317732-2020-04-27T08:29:56.987Z::pd.xml,C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,K0CYybdsMkdypKw-gt-376081-2020-12-13T01:58:11.591Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pMDVK9Em2kVNKSm-gt-5093579-2020-12-20T05:38:55.257Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,QYWeIssjqluQgab-gt-6617180-2020-12-23T01:59:16.691Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml,Uopz4KhPVEQrXhN-gt-3472267-2020-12-16T07:58:20.756Z::pd.xml,VFlprzYLnzYLnzY-gt-2218229-2020-12-14T04:35:16.758Z::pd.xml,yk6yQC8WrY1Sypm-gt-28431768-2021-01-06T01:59:52.389Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+process</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -13,11 +13,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
-      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2020-12-18T10:03:35Z</types1:ModificationDate>
+      <types1:ModifiedBy>norhana.yusuf@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2021-01-19T04:03:25Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2020-12-18T10:03:49Z</types1:PublicationDate>
+      <types1:PublishedBy>norhana.yusuf@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2021-01-19T04:03:38Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -570,6 +570,7 @@ let $fields :=
   &lt;field&gt;&lt;name&gt;ContinuousServiceDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Continuous_Service_Date}&lt;/source&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;RetirementEligibilityDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Retirement_Eligibility_Date}&lt;/source&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;BenefitsServiceDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Benefits_Service_Date}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PayGroup&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Pay_Group}&lt;/source&gt;&lt;/field&gt;
   
   (: PersonCommunication:)
   &lt;field&gt;&lt;name&gt;HomeAddressLine1&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/Address_Line_1}&lt;/source&gt;&lt;/field&gt;
@@ -1466,5 +1467,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-12-18T10:04:26.404Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-01-19T04:04:01.213Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
