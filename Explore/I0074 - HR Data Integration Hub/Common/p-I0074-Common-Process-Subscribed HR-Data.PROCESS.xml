@@ -14,10 +14,10 @@
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
       <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-01-20T05:31:00Z</types1:ModificationDate>
+      <types1:ModificationDate>2021-01-20T08:49:56Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-01-20T05:31:14Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-01-20T08:50:08Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -373,11 +373,11 @@ let $SalaryChangeStatus := if (not(empty($SalaryNode)) and $CompensationPlansCha
 
 (: Period_Salary_Plan :)
 let $PeriodSalaryNode := 
-if (count($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1')]) &gt; 1) then
+if (count($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' ]) &gt; 1) then
 (
-  let $NewPeriodSalary := $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and empty(End_Date)][1] (: this is based on observation that latest plan will always be on top :)
+  let $NewPeriodSalary := $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' and empty(End_Date)][1] (: this is based on observation that latest plan will always be on top :)
   let $OldPeriodSalary := 
-    if (empty($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and not(empty(End_Date))])) then $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1')][last()] else $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and not(empty(End_Date))]
+    if (empty($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' and not(empty(End_Date))])) then $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1'][last()] else $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' and not(empty(End_Date))]
   return 
     if ( xs:date($NewPeriodSalary/Start_Date) &lt;  xs:date($OldPeriodSalary/End_Date) ) then
       $NewPeriodSalary
@@ -418,7 +418,7 @@ if (count($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1')]) &gt; 
 )
 else
 (
-  if (fn:empty($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1')])) then $CompensationPlansNode//Period_Salary_Plan else $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1')]
+  if (fn:empty($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1'])) then $CompensationPlansNode//Period_Salary_Plan else $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1']
 )
 let $PeriodSalaryChangeStatus := if (not(empty($PeriodSalaryNode)) and $CompensationPlansChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationPlansChangeStatus else if ($PeriodSalaryNode[@isAdded='1']) then 
 (
@@ -1469,5 +1469,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-01-20T05:32:20.615Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-01-20T08:51:00.835Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
