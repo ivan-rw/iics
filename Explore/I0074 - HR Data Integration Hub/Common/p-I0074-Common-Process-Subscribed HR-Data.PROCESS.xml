@@ -13,11 +13,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
-      <types1:ModifiedBy>norhana.yusuf@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-01-20T16:05:58Z</types1:ModificationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2021-01-22T10:20:39Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-01-22T07:40:26Z</types1:PublicationDate>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2021-01-22T10:20:55Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -246,9 +246,34 @@ let $NationalTaxIdNode := if (fn:empty($PersonIdentificationNode//National_Ident
 let $NationalTaxIdChangeStatus := if (not(empty($NationalTaxIdNode)) and $PersonIdentificationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonIdentificationChangeStatus else if ($NationalTaxIdNode[@isAdded='1']) then $const_isAdded else if ($NationalTaxIdNode[@isUpdated='1']) then $const_isUpdated else if ($NationalTaxIdNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
 
 (:Position:)
-let $PositionNode := 
-(:    $x//Position[not(@isDeleted='1') and empty(Position_End_Date) or (not(empty(Position_End_Date)) and (xs:date(substring($x//EffectiveDateCET, 1, 10)) &lt; xs:date(substring(Position_End_Date/text(), 1, 10))))]:)
-  $x//Position[not(@isDeleted='1') and empty(Position_End_Date)] 
+
+(:22/1/2021 - positionv2 is only used for 2 fields because DE need to compare these in scenarios where postion have been replaced. Position structure is too big to do a full code in short time so this is a workaround to make this working first. This can be revisited when i have time. :)
+let $PositionV2Node := 
+  if (count($x//Position[not(@isDeleted='1')]) &gt; 0) then
+  (
+    let $NewPosition := $x//Position[not(@isDeleted='1') and empty(Position_End_Date)] 
+    let $OldPosition := $x//Position[not(@isDeleted='1') and not(empty(Position_End_Date))]     
+    return 
+      element {'Position'} 
+      {
+        attribute {'isUpdated'} {'1'},
+        element {'Worker_Type'}{
+          if ($OldPosition/Worker_Type/text() != $NewPosition/Worker_Type/text()) then
+          attribute {'priorValue'}{$OldPosition/Worker_Type/text() } else (), 
+          $NewPosition/Worker_Type/text()},
+        element {'Position_Time_Type'}{
+          if ($OldPosition/Position_Time_Type/text() != $NewPosition/Position_Time_Type/text()) then
+          attribute {'priorValue'}{$OldPosition/Position_Time_Type/text() } else (), 
+          $NewPosition/Position_Time_Type/text()}
+      }
+  )
+  else
+  (
+  )
+
+let $PositionChangeV2Status := if ($PositionV2Node[@isAdded='1']) then $const_isAdded else if ($PositionV2Node[@isUpdated='1']) then $const_isUpdated else if ($PositionV2Node[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+let $PositionNode := $x//Position[not(@isDeleted='1') and empty(Position_End_Date)] 
 let $PositionNode := if (empty($PositionNode)) then $x//Position else $PositionNode  (: some events like TERM can have position ended but we still need this :)
 let $PositionChangeStatus := if ($PositionNode[@isAdded='1']) then $const_isAdded else if ($PositionNode[@isUpdated='1']) then $const_isUpdated else if ($PositionNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
 let $OrgCompanyNode := if (fn:empty($PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COMPANY'])) then $PositionNode/Organization[Organization_Type='COMPANY'] else $PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COMPANY']
@@ -476,10 +501,45 @@ let $OneTimePaymentChangeStatus := if (not(empty($OneTimePaymentNode)) and $Comp
 
 
 (:Compensation:)
+(:
 let $CompensationNode := if (fn:empty($x//Compensation[not(@isDeleted='1') and (empty(Position_End_Date) or Position_End_Date/@isDeleted='1')])) then $x//Compensation else $x//Compensation[not(@isDeleted='1') and (empty(Position_End_Date) or Position_End_Date/@isDeleted='1')]
-let $CompensationChangeStatus := if ($CompensationNode[@isAdded='1']) then $const_isAdded else if ($CompensationNode[@isUpdated='1']) then $const_isUpdated else if ($CompensationNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
 let $CompensationSummaryBasedonCompensationGradeNode := if (fn:empty($CompensationNode//Compensation_Summary_Based_on_Compensation_Grade[not(@isDeleted='1')])) then $CompensationNode//Compensation_Summary_Based_on_Compensation_Grade else $CompensationNode//Compensation_Summary_Based_on_Compensation_Grade[not(@isDeleted='1')]
 let $CompensationSummaryBasedonCompensationGradeChangeStatus := if (not(empty($CompensationSummaryBasedonCompensationGradeNode)) and $CompensationChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationChangeStatus else if ($CompensationSummaryBasedonCompensationGradeNode[@isAdded='1']) then $const_isAdded else if ($CompensationSummaryBasedonCompensationGradeNode[@isUpdated='1']) then $const_isUpdated else if ($CompensationSummaryBasedonCompensationGradeNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+:)
+let $CompensationNode := 
+if (count($x//Compensation[not(@isDeleted='1')]) &gt; 1) then
+(
+  let $NewCompensation := $x//Compensation[not(@isDeleted='1') and empty(Position_End_Date)]
+  let $OldCompensation := $x//Compensation[not(@isDeleted='1') and not(empty(Position_End_Date))]
+  return 
+    element {'Compensation'} 
+    {
+      attribute {'isUpdated'} {'1'},
+      element {'Compensation_Change_Reason'}{
+        if ($OldCompensation/Compensation_Change_Reason/text() != $NewCompensation/Compensation_Change_Reason/text()) then
+        attribute {'priorValue'}{$OldCompensation/Compensation_Change_Reason/text() } else (), 
+        $NewCompensation/Compensation_Change_Reason/text()},
+      element {'Grade_Profile'}{
+        if ($OldCompensation/Grade_Profile/text() != $NewCompensation/Grade_Profile/text()) then
+        attribute {'priorValue'}{$OldCompensation/Grade_Profile/text()} else (), 
+        $NewCompensation/Grade_Profile/text()},
+      element {'Compensation_Step_Current'}{
+        if ($OldCompensation/Compensation_Step_Current/text() != $NewCompensation/Compensation_Step_Current/text()) then
+        attribute {'priorValue'}{$OldCompensation/Compensation_Step_Current/text()} else (), 
+        $NewCompensation/Compensation_Step_Current/text()},
+      element {'Grade_Frequency'}{
+        if ($OldCompensation/Compensation_Summary_Based_on_Compensation_Grade[not(@isDeleted='1')]/Frequency/text() != $NewCompensation/Compensation_Summary_Based_on_Compensation_Grade[not(@isDeleted='1')]/Frequency/text()) then
+        attribute {'priorValue'}{$OldCompensation/Compensation_Summary_Based_on_Compensation_Grade[not(@isDeleted='1')]/Frequency/text()} else (), 
+        $NewCompensation/Compensation_Summary_Based_on_Compensation_Grade[not(@isDeleted='1')]/Frequency/text()}        
+  }
+)
+else
+(
+  if (fn:empty($x//Compensation[not(@isDeleted='1') and (empty(Position_End_Date) or Position_End_Date/@isDeleted='1')])) then $x//Compensation else $x//Compensation[not(@isDeleted='1') and (empty(Position_End_Date) or Position_End_Date/@isDeleted='1')]
+)
+let $CompensationChangeStatus := if ($CompensationNode[@isAdded='1']) then $const_isAdded else if ($CompensationNode[@isUpdated='1']) then $const_isUpdated else if ($CompensationNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
 
 
 (:Compensation_One_Time_Payment, Time_Off_Earnings_and_Deductions, :)
@@ -612,13 +672,22 @@ let $fields :=
   &lt;field&gt;&lt;name&gt;PositionId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Position_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Position_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;JobChangeReason&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Job_Change_Reason}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Job_Change_Reason[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;BusinessTitle&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Business_Title}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Business_Title[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;WorkerType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Worker_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Worker_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;PositionTimeType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Position_Time_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Position_Time_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+{
+  if (fn:string-length($PositionV2Node) &gt; 0) then
+  (
+    &lt;field&gt;&lt;name&gt;WorkerType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeV2Status}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionV2Node/Worker_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Worker_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;,
+    &lt;field&gt;&lt;name&gt;PositionTimeType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeV2Status}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionV2Node/Position_Time_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Position_Time_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;    
+  )
+  else
+  (
+    &lt;field&gt;&lt;name&gt;WorkerType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Worker_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Worker_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;,
+    &lt;field&gt;&lt;name&gt;PositionTimeType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Position_Time_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Position_Time_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  )
+}  
   &lt;field&gt;&lt;name&gt;FullTimeEquivalentPercentage&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Full_Time_Equivalent_Percentage}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Full_Time_Equivalent_Percentage[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;ScheduledWeeklyHours&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Scheduled_Weekly_Hours}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Scheduled_Weekly_Hours[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;DefaultWeeklyHours&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Default_Weekly_Hours}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Default_Weekly_Hours[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;PayRateType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Pay_Rate_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Pay_Rate_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
-  
   &lt;field&gt;&lt;name&gt;PayGroupId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgPaygroupChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgPaygroupNode/Organization_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='PAY_GROUP' and not(@isDeleted='1')]/Organization_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;PayGroupCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgPaygroupChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgPaygroupNode/Organization_Code}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='PAY_GROUP' and not(@isDeleted='1')]/Organization_Code[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;PayGroupName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgPaygroupChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgPaygroupNode/Organization_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='PAY_GROUP' and not(@isDeleted='1')]/Organization_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
@@ -633,8 +702,7 @@ let $fields :=
   &lt;field&gt;&lt;name&gt;EndEmploymentDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/End_Employment_Date}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/End_Employment_Date[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;    
   &lt;field&gt;&lt;name&gt;PositionEndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Position_End_Date}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Position_End_Date[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
   
-  
-  
+
   (:AdditionalInformation:)
   &lt;field&gt;&lt;name&gt;OPCOCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgCostCenterHierarchyChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/OPCO}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/OPCO[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;ReportingUnit&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgCostCenterHierarchyChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Reporting_Unit}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Reporting_Unit[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
@@ -668,7 +736,7 @@ let $fields :=
 
   (:Compensation:)  
   &lt;field&gt;&lt;name&gt;ChangeReason&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationNode/Compensation_Change_Reason}&lt;/source&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;GradeFrequency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationSummaryBasedonCompensationGradeChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationSummaryBasedonCompensationGradeNode/Frequency}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;GradeFrequency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationNode/Grade_Frequency}&lt;/source&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;GradeProfile&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationNode/Grade_Profile}&lt;/source&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;CompensationStepCurrent&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationNode/Compensation_Step_Current}&lt;/source&gt;&lt;/field&gt;    
  
@@ -1469,5 +1537,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-01-22T09:14:07.997Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-01-22T10:21:41.335Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
