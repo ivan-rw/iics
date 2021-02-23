@@ -13,11 +13,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
-      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-02-19T06:02:14Z</types1:ModificationDate>
+      <types1:ModifiedBy>norhana.yusuf@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2021-02-23T04:30:10Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-02-23T03:14:04Z</types1:PublicationDate>
+      <types1:PublishedBy>norhana.yusuf@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2021-02-23T04:30:31Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -709,6 +709,7 @@ else ()
   &lt;field&gt;&lt;name&gt;ManagerUserName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_User_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_User_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;ManagerFirstName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_First_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_First_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;ManagerLastName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_Last_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_Last_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;ManagerEmail&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_Email}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_Email[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
 
   {
   if ($input.in_PayrollCountry = 'DE') then
@@ -1627,5 +1628,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-02-23T04:23:10.573Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-02-23T04:34:48.298Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
