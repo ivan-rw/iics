@@ -3,7 +3,7 @@
    <types1:Item>
       <types1:EntryId>KCv2jop81V4Adyp-gt-2841338-2020-04-02T02:05:45.955Z::pd.xml</types1:EntryId>
       <types1:Name>p-I0074-Common-Process-Subscribed_HR-Data</types1:Name>
-      <types1:ParentFlowIds>0CYybdsMkdypKwK-gt-2317732-2020-04-27T08:29:56.987Z::pd.xml,C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,K0CYybdsMkdypKw-gt-376081-2020-12-13T01:58:11.591Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pMDVK9Em2kVNKSm-gt-5093579-2020-12-20T05:38:55.257Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,QYWeIssjqluQgab-gt-6617180-2020-12-23T01:59:16.691Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml,Uopz4KhPVEQrXhN-gt-3472267-2020-12-16T07:58:20.756Z::pd.xml,VFlprzYLnzYLnzY-gt-2218229-2020-12-14T04:35:16.758Z::pd.xml,yk6yQC8WrY1Sypm-gt-28431768-2021-01-06T01:59:52.389Z::pd.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>0CYybdsMkdypKwK-gt-2317732-2020-04-27T08:29:56.987Z::pd.xml,C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,K0CYybdsMkdypKw-gt-376081-2020-12-13T01:58:11.591Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pMDVK9Em2kVNKSm-gt-5093579-2020-12-20T05:38:55.257Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,QYWeIssjqluQgab-gt-6617180-2020-12-23T01:59:16.691Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,RfRH9ln6lRuImXy-gt-10899158-2021-02-15T05:08:57.077Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml,Uopz4KhPVEQrXhN-gt-3472267-2020-12-16T07:58:20.756Z::pd.xml,VFlprzYLnzYLnzY-gt-2218229-2020-12-14T04:35:16.758Z::pd.xml,yk6yQC8WrY1Sypm-gt-28431768-2021-01-06T01:59:52.389Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+process</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -13,11 +13,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
-      <types1:ModifiedBy>norhana.yusuf@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-02-10T19:51:39Z</types1:ModificationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2021-02-19T06:02:14Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>norhana.yusuf@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-02-10T19:51:52Z</types1:PublicationDate>
+      <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2021-02-23T03:14:04Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -698,15 +698,17 @@ else ()
   &lt;field&gt;&lt;name&gt;BusinessSiteLocationName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$BusinessSiteChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$BusinessSiteNode/Location_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Business_Site[not(@isDeleted='1')]/Location_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;BusinessSiteCountry&lt;/name&gt;&lt;type&gt;country&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$BusinessSiteChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$BusinessSiteNode/Country}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Business_Site[not(@isDeleted='1')]/Country[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;LocationCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$BusinessSiteChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Location_Code}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Location_Code[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;  
-  
+
+&lt;!-- replaced with list 
   &lt;field&gt;&lt;name&gt;SupervisoryRole&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$AssignedRoleSupervisoryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AssignedRoleSupervisoryNode/Role}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Assigned_Role[not(@isDeleted='1') and Organization/Organization_Type='SUPERVISORY'][1]/Role[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;SupervisoryRoleEffectiveFrom&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$AssignedRoleSupervisoryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AssignedRoleSupervisoryNode/Effective_From}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Assigned_Role[not(@isDeleted='1') and Organization/Organization_Type='SUPERVISORY'][1]/Effective_From[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;SupervisoryRoleEffectiveUntil&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$AssignedRoleSupervisoryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AssignedRoleSupervisoryNode/Effective_Until}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Assigned_Role[not(@isDeleted='1') and Organization/Organization_Type='SUPERVISORY'][1]/Effective_Until[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+ --&gt;
+   
   &lt;field&gt;&lt;name&gt;ManagerEmployeeId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_Employee_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_Employee_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;ManagerUserName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_User_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_User_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;ManagerFirstName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_First_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_First_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;ManagerLastName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_Last_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_Last_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;ManagerEmail&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_Email}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_Email[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
 
   {
   if ($input.in_PayrollCountry = 'DE') then
@@ -1042,9 +1044,11 @@ return
              ) then 
            (element{'Allowance_Plan'}{ $n/*}) else()
     
+    
   for $ap in ($filteredAddedAndUpdatadandUnmodifiedAllowances, $filteredDeletedAllowances, $filteredAddedAndDeletedAllowances)
-    let $apChangeStatus := if ($ap[@isAdded='1']) then $const_isAdded else if ($ap[@isUpdated='1']) then $const_isUpdated else if ($ap[@isDeleted='1']) then $const_isDeleted else $const_noChange
-  
+    let $apChangeStatus := 
+    if (not(empty($ap)) and $CompensationPlansChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationPlansChangeStatus else 
+    if ($ap[@isAdded='1']) then $const_isAdded else if ($ap[@isUpdated='1']) then $const_isUpdated else if ($ap[@isDeleted='1']) then $const_isDeleted else $const_noChange
     let $allowancePlanFields :=
     &lt;apfields&gt;
       &lt;field&gt;&lt;name&gt;CompensationPlan&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$apChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ap/Compensation_Plan}&lt;/source&gt;&lt;/field&gt;
@@ -1228,7 +1232,7 @@ return
   &lt;LeaveOfAbsenceList&gt;
   {
     (:Leave_of_Absence:)
-    for $loa in $x//Leave_of_Absence order by xs:date($loa/Leave_Start_Date) descending
+    for $loa in $x//Leave_of_Absence (:order by xs:date($loa/Leave_Start_Date) descending:)
     let $loaChangeStatus := if ($loa[@isAdded='1']) then $const_isAdded else if ($loa[@isUpdated='1']) then $const_isUpdated else if ($loa[@isDeleted='1']) then $const_isDeleted else $const_noChange
   
     let $loaFields :=
@@ -1523,7 +1527,92 @@ return
         (:*** END REPLICATE *** :)
       }
     }
-  &lt;/BonusPlanList&gt;  
+  &lt;/BonusPlanList&gt;
+  
+  &lt;AssignedRoleList&gt;
+  {
+    (:Assigned_Role:)
+    for $ar in $PositionNode//Assigned_Role[not(@isDeleted='1') and Organization/Organization_Type='SUPERVISORY']
+    let $arChangeStatus := if (not(empty($ar)) and $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($ar[@isAdded='1']) then $const_isAdded else if ($ar[@isUpdated='1']) then $const_isUpdated else if ($ar[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    let $assignedRoleFields :=
+    &lt;rcfields&gt;
+      &lt;field&gt;&lt;name&gt;Role&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Role}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;OrganizationID&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Organization/Organization_ID}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;OrganizationCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Organization/Organization_Code}&lt;/source&gt;&lt;/field&gt;       
+      &lt;field&gt;&lt;name&gt;EffectiveFrom&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Effective_From}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;EffectiveUntil&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Effective_Until}&lt;/source&gt;&lt;/field&gt;          
+    &lt;/rcfields&gt;
+    
+    return    
+      element {'AssignedRole'} {
+        if (string-length($arChangeStatus) = 0) then () else attribute{ $arChangeStatus}{'1'},
+        for $f in $assignedRoleFields//field
+        (:***************************************************************************************:)
+        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
+        (:***************************************************************************************:)
+        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
+        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
+        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
+                  
+        let $value := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
+            default return $f/source//text()
+
+        let $priorValue := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
+            default return $f/source//@priorValue
+        
+        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
+        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
+         
+        let $countryAttributes := if ($f/type/text() = 'country') then 
+          (
+            if ($isThisFieldDeleted) then
+              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+            else
+              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+          )
+          else ()
+        
+        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
+        
+        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
+        
+        let $valueIfChangedAttribute := 
+          if ($includeValueIfChangedAttribute = 1) then
+          (
+            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
+              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
+            else 
+              if ($isThisFieldDeleted) then
+              (
+                if ($deletionMarker = '#value#') then 
+                  (
+                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
+                  )
+                  else 
+                  (
+                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
+                  )
+              )
+              else () 
+          )
+          else ()
+          
+        return
+        element {$f/name/text()} 
+        { 
+          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
+           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
+             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+        }
+        (:*** END REPLICATE *** :)
+      }
+    }
+  &lt;/AssignedRoleList&gt;  
 
   &lt;/Worker&gt;
 }
@@ -1538,5 +1627,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-02-10T19:52:16.337Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-02-23T04:23:10.573Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
