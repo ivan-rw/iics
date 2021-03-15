@@ -14,10 +14,10 @@
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
       <types1:ModifiedBy>norhana.yusuf@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-03-15T06:06:59Z</types1:ModificationDate>
+      <types1:ModificationDate>2021-03-15T08:04:56Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>norhana.yusuf@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-03-15T06:07:28Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-03-15T08:05:12Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -661,7 +661,8 @@ let $fields :=
   &lt;field&gt;&lt;name&gt;ScheduledWeeklyHours&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Scheduled_Weekly_Hours}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Scheduled_Weekly_Hours[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;DefaultWeeklyHours&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Default_Weekly_Hours}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Default_Weekly_Hours[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;PayRateType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Pay_Rate_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Pay_Rate_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;WorkingFTE&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Working_FTE}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Working_FTE[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;   
+  &lt;field&gt;&lt;name&gt;WorkingFTE&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Working_FTE}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Working_FTE[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;WorkShift&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Work_Shift}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Work_Shift[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;   
   
   &lt;field&gt;&lt;name&gt;PayGroupId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgPaygroupChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgPaygroupNode/Organization_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='PAY_GROUP' and not(@isDeleted='1')]/Organization_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;PayGroupCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgPaygroupChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgPaygroupNode/Organization_Code}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='PAY_GROUP' and not(@isDeleted='1')]/Organization_Code[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
@@ -1629,5 +1630,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-03-15T06:08:23.845Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-03-15T08:05:33.665Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
