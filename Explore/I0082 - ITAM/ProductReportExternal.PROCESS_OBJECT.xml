@@ -1,0 +1,91 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Wqk7ojm9RuuB3uo-gt-7490877-2020-11-25T16:01:46.789Z::po.xml</types1:EntryId>
+      <types1:Name>ProductReportExternal</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-25T16:01:47Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        xmlns:aetgt="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:internal2="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                        isByCopy="true"
+                        name="ProductReportExternal">
+            <description>This object was generated from [ProductReportExternal complex type] located in the [https://cns.conscia.com/CNSExternalApi/swagger/v1/swagger.json.xsd] source XML schema.</description>
+            <detail>
+               <field label="serialNumber" name="serialNumber" type="string"/>
+               <field label="productNumber" name="productNumber" type="string"/>
+               <field label="productDescription" name="productDescription" type="string"/>
+               <field label="hostName" name="hostName" type="string"/>
+               <field label="ipAddress" name="ipAddress" type="string"/>
+               <field label="snmpLocation" name="snmpLocation" type="string"/>
+               <field label="productQuantity" name="productQuantity" type="int"/>
+               <field label="family" name="family" type="string"/>
+               <field label="technology" name="technology" type="string"/>
+               <field label="architecture" name="architecture" type="string"/>
+               <field label="parentSerialNumber" name="parentSerialNumber" type="string"/>
+               <field label="collectorParentSerialNumber"
+                      name="collectorParentSerialNumber"
+                      type="string"/>
+               <field label="ciscoContractNumber" name="ciscoContractNumber" type="int"/>
+               <field label="externalContractNumber"
+                      name="externalContractNumber"
+                      type="string"/>
+               <field label="serviceLevel" name="serviceLevel" type="string"/>
+               <field label="beginDate" name="beginDate" type="datetime"/>
+               <field label="endDate" name="endDate" type="datetime"/>
+               <field label="consciaCareStatus" name="consciaCareStatus" type="string"/>
+               <field label="isInCollector" name="isInCollector" type="boolean"/>
+               <field label="isInCns" name="isInCns" type="boolean"/>
+               <field label="lastDateOfSupport" name="lastDateOfSupport" type="datetime"/>
+               <field label="serviceCharagble" name="serviceCharagble" type="string"/>
+               <field label="shipSiteNumber" name="shipSiteNumber" type="string"/>
+               <field label="shipSiteName" name="shipSiteName" type="string"/>
+               <field label="shipSiteAddress1" name="shipSiteAddress1" type="string"/>
+               <field label="shipSiteAddress2" name="shipSiteAddress2" type="string"/>
+               <field label="shipSiteCity" name="shipSiteCity" type="string"/>
+               <field label="shipSiteZipCode" name="shipSiteZipCode" type="string"/>
+               <field label="shipSiteCountry" name="shipSiteCountry" type="string"/>
+               <field label="installSiteNumber" name="installSiteNumber" type="string"/>
+               <field label="installSiteAddress1"
+                      name="installSiteAddress1"
+                      type="string"/>
+               <field label="installSiteAddress2"
+                      name="installSiteAddress2"
+                      type="string"/>
+               <field label="installSiteCity" name="installSiteCity" type="string"/>
+               <field label="installSiteZipCode" name="installSiteZipCode" type="string"/>
+               <field label="installSiteCountry" name="installSiteCountry" type="string"/>
+               <field label="installSiteComment1"
+                      name="installSiteComment1"
+                      type="string"/>
+               <field label="installSiteComment2"
+                      name="installSiteComment2"
+                      type="string"/>
+               <field label="customerConsciaName"
+                      name="customerConsciaName"
+                      type="string"/>
+               <field label="customerFullName" name="customerFullName" type="string"/>
+               <field label="customerAddressTelephone"
+                      name="customerAddressTelephone"
+                      type="string"/>
+               <field label="advisoryId" name="advisoryId" type="string"/>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>4nQHHV8IHDWi7p7qSNaPMk</types1:GUID>
+      <types1:DisplayName>ProductReportExternal</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-03-30T21:12:45.652Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

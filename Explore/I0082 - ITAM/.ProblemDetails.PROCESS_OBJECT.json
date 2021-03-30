@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "iFqUwv3a8WLfQeMlqS210C",
+    "name" : "ProblemDetails",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "ck1SwEYrwn2H0Fd-gt-3037193-2020-11-25T16:01:46.041Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

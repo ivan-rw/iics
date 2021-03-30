@@ -1,0 +1,45 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wUIsNAYvtpeFRqX-gt-7490885-2020-11-25T16:01:47.357Z::po.xml</types1:EntryId>
+      <types1:Name>po-ProductReportSearchExternal</types1:Name>
+      <types1:ParentFlowIds>ibdxWq9bdsreK8Z-gt-7991992-2020-11-26T15:36:41.142Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>This object was generated from [ProductReportSearchExternal complex type] located in the [https://cns.conscia.com/CNSExternalApi/swagger/v1/swagger.json.xsd] source XML schema.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-25T16:01:47Z</types1:CreationDate>
+      <types1:ModifiedBy>ivanj@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-26T15:37:47Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="po-ProductReportSearchExternal"
+                        isByCopy="true"
+                        name="po-ProductReportSearchExternal">
+            <description>This object was generated from [ProductReportSearchExternal complex type] located in the [https://cns.conscia.com/CNSExternalApi/swagger/v1/swagger.json.xsd] source XML schema.</description>
+            <tags/>
+            <detail>
+               <field label="token" name="token" type="string"/>
+               <field label="productNumber" name="productNumber" type="string"/>
+               <field label="serialNumber" name="serialNumber" type="string"/>
+               <field label="getAllConfiguration"
+                      name="getAllConfiguration"
+                      type="string"/>
+               <field label="isInCollector" name="isInCollector" type="string"/>
+               <field label="isInCns" name="isInCns" type="string"/>
+               <field label="pageNumber" name="pageNumber" type="string"/>
+               <field label="pageSize" name="pageSize" type="string"/>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>2SfSblbGkKahXkX8x5t9EC</types1:GUID>
+      <types1:DisplayName>po-ProductReportSearchExternal</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-03-30T21:12:45.64Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

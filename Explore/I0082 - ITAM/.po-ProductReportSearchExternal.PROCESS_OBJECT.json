@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "2SfSblbGkKahXkX8x5t9EC",
+    "name" : "po-ProductReportSearchExternal",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "wUIsNAYvtpeFRqX-gt-7490885-2020-11-25T16:01:47.357Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This object was generated from [ProductReportSearchExternal complex type] located in the [https://cns.conscia.com/CNSExternalApi/swagger/v1/swagger.json.xsd] source XML schema.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

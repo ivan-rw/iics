@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "3EvdhWXKXdpbkfy85MlLCR",
+    "name" : "PsirtAdvisoryExternal",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "x6Ru5V1FyuRZXDy-gt-2886526-2020-11-25T16:01:46.373Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

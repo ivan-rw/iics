@@ -1,0 +1,71 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>x6Ru5V1FyuRZXDy-gt-2886526-2020-11-25T16:01:46.373Z::po.xml</types1:EntryId>
+      <types1:Name>PsirtAdvisoryExternal</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-25T16:01:46Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        xmlns:aetgt="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:internal2="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                        isByCopy="true"
+                        name="PsirtAdvisoryExternal">
+            <description>This object was generated from [PsirtAdvisoryExternal complex type] located in the [https://cns.conscia.com/CNSExternalApi/swagger/v1/swagger.json.xsd] source XML schema.</description>
+            <detail>
+               <field label="id" name="id" type="int"/>
+               <field label="psirtAdvisoryApiId" name="psirtAdvisoryApiId" type="int"/>
+               <field label="advisoryId" name="advisoryId" type="string"/>
+               <field label="advisoryUrl" name="advisoryUrl" type="string"/>
+               <field label="intellishieldUrl" name="intellishieldUrl" type="string"/>
+               <field label="title" name="title" type="string"/>
+               <field label="consciaRecommendation"
+                      name="consciaRecommendation"
+                      type="string"/>
+               <field label="vulnerability" name="vulnerability" type="string"/>
+               <field label="workaround" name="workaround" type="string"/>
+               <field label="workaroundManual" name="workaroundManual" type="string"/>
+               <field label="softwareRelease" name="softwareRelease" type="string"/>
+               <field label="softwareReleaseManual"
+                      name="softwareReleaseManual"
+                      type="string"/>
+               <field label="bugIds" name="bugIds" type="string"/>
+               <field label="psirtAdvisorySeverity"
+                      name="psirtAdvisorySeverity"
+                      type="int"/>
+               <field label="psirtAdvisoryStatus" name="psirtAdvisoryStatus" type="int"/>
+               <field label="isRecommendationReviewed"
+                      name="isRecommendationReviewed"
+                      type="boolean"/>
+               <field label="isProductReviewed" name="isProductReviewed" type="boolean"/>
+               <field label="isPublished" name="isPublished" type="boolean"/>
+               <field label="firstPublishedDateApi"
+                      name="firstPublishedDateApi"
+                      type="datetime"/>
+               <field label="lastUpdatedDateApi"
+                      name="lastUpdatedDateApi"
+                      type="datetime"/>
+               <field label="lastModifiedDate" name="lastModifiedDate" type="datetime"/>
+               <field label="lastNotificationDate"
+                      name="lastNotificationDate"
+                      type="datetime"/>
+               <field label="creationDate" name="creationDate" type="datetime"/>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>3EvdhWXKXdpbkfy85MlLCR</types1:GUID>
+      <types1:DisplayName>PsirtAdvisoryExternal</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-03-30T21:12:45.666Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

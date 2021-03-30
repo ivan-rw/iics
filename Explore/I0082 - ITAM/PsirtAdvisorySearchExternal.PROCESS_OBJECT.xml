@@ -1,0 +1,62 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>fRabbfTQbdxWq9b-gt-3037199-2020-11-25T16:01:47.084Z::po.xml</types1:EntryId>
+      <types1:Name>PsirtAdvisorySearchExternal</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-25T16:01:47Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        xmlns:aetgt="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:internal2="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                        isByCopy="true"
+                        name="PsirtAdvisorySearchExternal">
+            <description>This object was generated from [PsirtAdvisorySearchExternal complex type] located in the [https://cns.conscia.com/CNSExternalApi/swagger/v1/swagger.json.xsd] source XML schema.</description>
+            <detail>
+               <field label="token" name="token" type="string"/>
+               <field label="advisoryId" name="advisoryId" type="string"/>
+               <field label="statuses" name="statuses" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                  </options>
+               </field>
+               <field label="severities" name="severities" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                  </options>
+               </field>
+               <field label="psirtAdvisoryApiStatus"
+                      name="psirtAdvisoryApiStatus"
+                      type="int"/>
+               <field label="psirtAdvisoryApiExists"
+                      name="psirtAdvisoryApiExists"
+                      type="boolean"/>
+               <field label="creationDateFrom" name="creationDateFrom" type="datetime"/>
+               <field label="creationDateTo" name="creationDateTo" type="datetime"/>
+               <field label="lastModifiedDateFrom"
+                      name="lastModifiedDateFrom"
+                      type="datetime"/>
+               <field label="lastModifiedDateTo"
+                      name="lastModifiedDateTo"
+                      type="datetime"/>
+               <field label="pageNumber" name="pageNumber" type="int"/>
+               <field label="pageSize" name="pageSize" type="int"/>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>foMx1UevWm9l6mqzk7Icse</types1:GUID>
+      <types1:DisplayName>PsirtAdvisorySearchExternal</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-03-30T21:12:45.582Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
