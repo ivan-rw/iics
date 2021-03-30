@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "kZJe3S1DjcvdIUJHSnP5MI",
+    "name" : "Architecture",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "PsxKlFmVSciY3Ax-gt-7466680-2020-11-25T16:01:45.673Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

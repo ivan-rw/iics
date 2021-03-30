@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "6qWStq7d1S2gxIxKp3gjCB",
+    "name" : "CustomProblemDetails",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "NuoJ49ARJi4tciS-gt-7492477-2020-11-25T16:01:47.635Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

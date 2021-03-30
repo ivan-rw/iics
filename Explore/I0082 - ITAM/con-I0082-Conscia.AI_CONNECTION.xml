@@ -1,0 +1,49 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>45bfTQbdxWq9bds-gt-2409185-2020-11-12T20:39:07.889Z::conn.xml</types1:EntryId>
+      <types1:Name>con-I0082-Conscia</types1:Name>
+      <types1:ParentFlowIds>6KUk1IVDov6or3r-gt-19908500-2020-11-23T15:51:07.092Z::pd.xml,ibdxWq9bdsreK8Z-gt-7991992-2020-11-26T15:36:41.142Z::pd.xml,lpOfTRgpDqotxGo-gt-20803182-2020-11-24T09:09:41.805Z::pd.xml,vHWOMzeHbcjqbdp-gt-6879887-2020-11-12T19:29:15.354Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>REQUIRE_UPDATE</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-12T20:39:08Z</types1:CreationDate>
+      <types1:ModifiedBy>ivanj@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-12T21:12:51Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>michal.janochowski@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-24T09:29:38Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/con-I0082-Conscia/con-I0082-Conscia.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="con-I0082-Conscia"
+                     label="con-I0082-Conscia"
+                     name="con-I0082-Conscia">
+            <description/>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false" name="hostName" value="cns.conscia.com"/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/svc_I0082_Conscia/svc_I0082_Conscia_svcDef.xml"
+                               guid="9xjkNldzs2ugZxejMfmmqA"
+                               name="svc-I0082-Conscia"
+                               supportsConnectionTest="false"
+                               uuid="ca60ba9e-f027-4230-a044-c56ebe4ed59f">
+               <description>Conscia external API</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>jLpMfu4JbUpiSBRj1bdI43</types1:GUID>
+      <types1:DisplayName>con-I0082-Conscia</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-03-30T21:13:30.355Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,44 @@
+{
+  "objectInfo" : {
+    "id" : "jLpMfu4JbUpiSBRj1bdI43",
+    "name" : "con-I0082-Conscia",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "45bfTQbdxWq9bds-gt-2409185-2020-11-12T20:39:07.889Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "9xjkNldzs2ugZxejMfmmqA",
+    "name" : "svc-I0082-Conscia",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Gpk4AdypKwKBqRi-gt-2401713-2020-11-12T20:20:44.52Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Conscia external API",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0082 - ITAM"
+  } ]
+}
