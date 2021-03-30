@@ -1,0 +1,122 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ibdxWq9bdsreK8Z-gt-7991992-2020-11-26T15:36:41.142Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0082-ProductSearch</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-26T15:36:41Z</types1:CreationDate>
+      <types1:ModifiedBy>ivanj@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-26T16:25:13Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>ivanj@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-26T16:25:18Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0082-ProductSearch/p-I0082-ProductSearch.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0082-ProductSearch"
+                  name="p-I0082-ProductSearch"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="searchCriteria"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:po-ProductReportSearchExternal</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2SfSblbGkKahXkX8x5t9EC</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="output" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmpSearchCriteria" type="reference">
+                  <options>
+                     <option name="referenceTo">con-I0082-Conscia:ProductReportSearchExternal</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jLpMfu4JbUpiSBRj1bdI43</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+                  <wholePayload inputWholePayload="true" outputWholePayload="true"/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="khz00bga" targetId="khz00bg9"/>
+               </start>
+               <assignment id="khz00bg9">
+                  <title>Assignment to temp.tmpSearchCriteria[1]/getAllConfiguration, temp.tmpSearchCriteria[1]/isInCns etc.</title>
+                  <operation source="field" to="temp.tmpSearchCriteria[1]/getAllConfiguration">input.searchCriteria[1]/getAllConfiguration</operation>
+                  <operation source="field" to="temp.tmpSearchCriteria[1]/isInCns">input.searchCriteria[1]/isInCns</operation>
+                  <operation source="field" to="temp.tmpSearchCriteria[1]/isInCollector">input.searchCriteria[1]/isInCollector</operation>
+                  <operation source="field" to="temp.tmpSearchCriteria[1]/pageNumber">input.searchCriteria[1]/pageNumber</operation>
+                  <operation source="field" to="temp.tmpSearchCriteria[1]/pageSize">input.searchCriteria[1]/pageSize</operation>
+                  <operation source="field" to="temp.tmpSearchCriteria[1]/token">input.searchCriteria[1]/token</operation>
+                  <link id="khz1muzc" targetId="khz1mv00"/>
+               </assignment>
+               <eventContainer id="khz1mv00">
+                  <service id="khz1muzb">
+                     <title>Product_ProductSearch</title>
+                     <serviceName>con-I0082-Conscia:Product_ProductSearch</serviceName>
+                     <serviceGUID>jLpMfu4JbUpiSBRj1bdI43</serviceGUID>
+                     <serviceInput>
+                        <parameter name="searchCriteria" source="field">temp.tmpSearchCriteria</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="khz1mv02">
+                     <assignment id="khz1mv0z">
+                        <title>Assignment to output</title>
+                        <operation source="constant" to="output.output">hotovo</operation>
+                     </assignment>
+                     <link id="khz1mv03" targetId="khz1mv00" type="containerLink"/>
+                  </flow>
+                  <flow id="khz1mv05">
+                     <assignment id="khz1mv0b">
+                        <title>Assignment to output</title>
+                        <operation source="field" to="output.output">output.faultInfo[1]/detail</operation>
+                     </assignment>
+                     <link id="khz1mv06" targetId="khz1mv00" type="containerLink"/>
+                  </flow>
+                  <link id="khz1mv01" targetId="khz1mv02" type="containerLink"/>
+                  <link id="khz1mv0w" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="khz1muzz" interrupting="true">
+                        <link id="khz1mv04" targetId="khz1mv05" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>7z4sbXAlbPchMHd28DQlQs</types1:GUID>
+      <types1:DisplayName>p-I0082-ProductSearch</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-03-30T21:16:15.935Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

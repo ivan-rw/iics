@@ -1,0 +1,103 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>vHWOMzeHbcjqbdp-gt-6879887-2020-11-12T19:29:15.354Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0082-Conscia</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-12T19:29:15Z</types1:CreationDate>
+      <types1:ModifiedBy>ivanj@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-23T15:53:44Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>ivanj@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-23T15:53:50Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0082-Conscia/p-I0082-Conscia.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0082-Conscia"
+                  name="p-I0082-Conscia"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="output1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="UserPassword" type="reference">
+                  <options>
+                     <option name="referenceTo">con-I0082-Conscia:UserPasswordRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jLpMfu4JbUpiSBRj1bdI43</option>
+                  </options>
+               </field>
+               <field description="" name="token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="txtTemp" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+                  <wholePayload outputWholePayload="true"/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="khf83tei" targetId="khf83teh"/>
+               </start>
+               <assignment id="khf83teh">
+                  <title>Assignment to temp.UserPassword[1]/pwd, temp.UserPassword[1]/usr</title>
+                  <operation source="constant" to="temp.UserPassword[1]/usr">70804235a3c54d00aa7911eac5c009f1</operation>
+                  <operation source="constant" to="temp.UserPassword[1]/pwd">4b5cd82e56e74f4f90b6400dfa95ee23</operation>
+                  <link id="khf83ten" targetId="khf83tem"/>
+               </assignment>
+               <assignment id="khfb05k9">
+                  <title>Assignment to output1, txtTemp</title>
+                  <operation source="field" to="temp.txtTemp">output.entireResponse</operation>
+                  <operation source="formula" to="output.output1">
+                     <expression language="XQuery">let $x := $temp.txtTemp
+
+return $x</expression>
+                  </operation>
+                  <link id="khukkn1d" targetId="c"/>
+               </assignment>
+               <service id="khf83tem">
+                  <title>AccessToken</title>
+                  <serviceName>con-I0082-Conscia:Token_AccessToken</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="request" source="field">temp.UserPassword</parameter>
+                  </serviceInput>
+                  <link id="khfb05ka" targetId="khfb05k9"/>
+               </service>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>joNDMK7yYEZbW0clDHkZQ6</types1:GUID>
+      <types1:DisplayName>p-I0082-Conscia</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-03-30T21:16:15.916Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

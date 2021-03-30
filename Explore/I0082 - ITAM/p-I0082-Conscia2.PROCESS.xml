@@ -1,0 +1,247 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>6KUk1IVDov6or3r-gt-19908500-2020-11-23T15:51:07.092Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0082-Conscia2</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-23T15:51:07Z</types1:CreationDate>
+      <types1:ModifiedBy>ivanj@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-29T21:45:59Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>ivanj@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-29T21:41:57Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0082-Conscia2/p-I0082-Conscia2.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0082-Conscia2"
+                  name="p-I0082-Conscia2"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="output1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="output2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="output3" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="output4" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="output5" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="output6" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="output7" type="objectlist">
+                  <options>
+                     <option name="referenceTo">con-I0082-Conscia:ExternalPagedResultOfProductReportExternal</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jLpMfu4JbUpiSBRj1bdI43</option>
+                  </options>
+               </field>
+               <field description="" name="error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">OK</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="UserPassword" type="reference">
+                  <options>
+                     <option name="referenceTo">con-I0082-Conscia:UserPasswordRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jLpMfu4JbUpiSBRj1bdI43</option>
+                  </options>
+               </field>
+               <field description="" name="token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="txtTemp" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="productsCount" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="productIterator" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmpSearchCriteria" type="reference">
+                  <options>
+                     <option name="referenceTo">con-I0082-Conscia:ProductReportSearchExternal</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jLpMfu4JbUpiSBRj1bdI43</option>
+                  </options>
+               </field>
+               <field description="" name="tmpsearchCriteria2" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:po-ProductReportSearchExternal</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2SfSblbGkKahXkX8x5t9EC</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="khf83tei" targetId="khf83teh"/>
+               </start>
+               <assignment id="khf83teh">
+                  <title>Assignment to temp.UserPassword[1]/pwd, temp.UserPassword[1]/usr</title>
+                  <operation source="constant" to="temp.UserPassword[1]/usr">70804235a3c54d00aa7911eac5c009f1</operation>
+                  <operation source="constant" to="temp.UserPassword[1]/pwd">4b5cd82e56e74f4f90b6400dfa95ee23</operation>
+                  <link id="khf83ten" targetId="ki3mt0z4"/>
+               </assignment>
+               <eventContainer id="ki3mt0z4">
+                  <service id="khf83tem">
+                     <title>AccessToken</title>
+                     <serviceName>con-I0082-Conscia:Token_AccessToken</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="request" source="field">temp.UserPassword</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="ki3mt0z6">
+                     <assignment id="ki3mt0ze">
+                        <title>Assignment to token</title>
+                        <operation source="formula" to="temp.token">
+                           <expression language="XQuery">let $x := fn:replace(util:escapeJsonString($output.entireResponse),"\\""","")
+return $x</expression>
+                        </operation>
+                        <link id="ki3mt0zm" targetId="ki3mt0zl"/>
+                     </assignment>
+                     <assignment id="ki3mt0zl">
+                        <title>Assignment to token, token etc.</title>
+                        <operation source="field" to="temp.tmpsearchCriteria2[1]/token">temp.token</operation>
+                        <operation source="constant" to="temp.tmpsearchCriteria2[1]/getAllConfiguration">true</operation>
+                        <operation source="constant" to="temp.tmpsearchCriteria2[1]/isInCns">true</operation>
+                        <operation source="constant" to="temp.tmpsearchCriteria2[1]/isInCollector">true</operation>
+                        <operation source="constant" to="temp.tmpsearchCriteria2[1]/pageNumber">1</operation>
+                        <operation source="constant" to="temp.tmpsearchCriteria2[1]/pageSize">1</operation>
+                        <operation source="field" to="temp.tmpSearchCriteria[1]/token">temp.token</operation>
+                        <operation source="constant" to="temp.tmpSearchCriteria[1]/getAllConfiguration">true</operation>
+                        <operation source="constant" to="temp.tmpSearchCriteria[1]/isInCns">true</operation>
+                        <operation source="constant" to="temp.tmpSearchCriteria[1]/isInCollector">true</operation>
+                        <operation source="constant" to="temp.tmpSearchCriteria[1]/pageSize">1</operation>
+                        <operation source="constant" to="temp.tmpSearchCriteria[1]/pageNumber">1</operation>
+                        <operation source="field" to="output.output1">temp.tmpsearchCriteria2[1]/token</operation>
+                        <operation source="field" to="output.output2">temp.tmpsearchCriteria2[1]/getAllConfiguration</operation>
+                        <operation source="field" to="output.output3">temp.tmpsearchCriteria2[1]/pageSize</operation>
+                        <operation source="field" to="output.output4">temp.tmpsearchCriteria2[1]/pageNumber</operation>
+                        <operation source="field" to="output.output5">temp.tmpsearchCriteria2[1]/isInCns</operation>
+                        <operation source="field" to="output.output6">temp.tmpsearchCriteria2[1]/isInCollector</operation>
+                        <link id="ki3mt10b" targetId="ki3mt11j"/>
+                     </assignment>
+                     <eventContainer id="ki3mt11j">
+                        <service id="ki3mt10a">
+                           <title>Product_ProductSearch</title>
+                           <serviceName>con-I0082-Conscia:Product_ProductSearch</serviceName>
+                           <serviceGUID>jLpMfu4JbUpiSBRj1bdI43</serviceGUID>
+                           <serviceInput>
+                              <parameter name="searchCriteria" source="field">temp.tmpSearchCriteria</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="ki3mt11l">
+                           <assignment id="ki3mt11u">
+                              <title>Assignment to output7</title>
+                              <operation source="field" to="output.output7">output.ExternalPagedResultOfProductReportExternal</operation>
+                           </assignment>
+                           <link id="ki3mt11m" targetId="ki3mt11j" type="containerLink"/>
+                        </flow>
+                        <flow id="ki3mt11o">
+                           <assignment id="ki3mt126">
+                              <title>Assignment to error</title>
+                              <operation source="field" to="output.error">output.faultInfo[1]/detail</operation>
+                           </assignment>
+                           <link id="ki3mt11p" targetId="ki3mt11j" type="containerLink"/>
+                        </flow>
+                        <link id="ki3mt11k" targetId="ki3mt11l" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="ki3mt11i" interrupting="true">
+                              <link id="ki3mt11n" targetId="ki3mt11o" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="ki3mt0z7" targetId="ki3mt0z4" type="containerLink"/>
+                  </flow>
+                  <flow id="ki3mt0z9">
+                     <assignment id="ki3mt10t">
+                        <title>Assignment to error</title>
+                        <operation source="field" to="output.error">output.faultInfo[1]/detail</operation>
+                        <link id="ki3mt13y" targetId="ki3mt13x"/>
+                     </assignment>
+                     <service id="ki3mt13x">
+                        <title>Product_ProductSearch</title>
+                        <serviceName>con-I0082-Conscia:Product_ProductSearch</serviceName>
+                        <serviceGUID>jLpMfu4JbUpiSBRj1bdI43</serviceGUID>
+                        <serviceInput>
+                           <parameter name="searchCriteria" source="field"/>
+                        </serviceInput>
+                     </service>
+                     <link id="ki3mt0za" targetId="ki3mt0z4" type="containerLink"/>
+                  </flow>
+                  <link id="ki3mt0z5" targetId="ki3mt0z6" type="containerLink"/>
+                  <link id="ki3mt10j" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="ki3mt0z3" interrupting="true">
+                        <link id="ki3mt0z8" targetId="ki3mt0z9" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>0A4kaGVshiYkerOeM8b6uJ</types1:GUID>
+      <types1:DisplayName>p-I0082-Conscia2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-03-30T21:16:15.876Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
