@@ -1,0 +1,585 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Gpk4AdypKwKBqRi-gt-2401713-2020-11-12T20:20:44.52Z::svc.xml</types1:EntryId>
+      <types1:Name>svc-I0082-Conscia</types1:Name>
+      <types1:ParentFlowIds>45bfTQbdxWq9bds-gt-2409185-2020-11-12T20:39:07.889Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Conscia external API</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-11-12T20:20:45Z</types1:CreationDate>
+      <types1:ModifiedBy>ivanj@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-11-26T16:38:26Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>ivanj@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-11-29T21:45:14Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/svc_I0082_Conscia/svc_I0082_Conscia_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="svc-I0082-Conscia"
+                            label=""
+                            name="svc-I0082-Conscia"
+                            uuid="ca60ba9e-f027-4230-a044-c56ebe4ed59f">
+            <description>Conscia external API</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description="Host Name"
+                                    masked="false"
+                                    name="hostName"
+                                    required="true"
+                                    testWith="cns.conscia.com"
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category="Product"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Product_UpdateProductCollectorInfo"
+                       maxRedirects="100"
+                       name="Product_UpdateProductCollectorInfo"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Possibility to update info about product collector information</description>
+                  <input>
+                     <parameter label="request"
+                                name="request"
+                                required="true"
+                                testWith=""
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">ProductCollectorExternalApiSubstituteExternalRequest</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://{$hostName}/CNSExternalApi/Product/UpdateProductCollectorInfo"
+                                        verb="POST">
+                        <authentication>
+                           <username>S-RC-IFA-BPI</username>
+                           <password/>
+                           <isExpressionInPassword>false</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="SimpleResult"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">SimpleResult</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="Product"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Product_ProductSearch"
+                       maxRedirects="100"
+                       name="Product_ProductSearch"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Product search</description>
+                  <input>
+                     <parameter description="Search criteria"
+                                label="searchCriteria"
+                                name="searchCriteria"
+                                required="true"
+                                testWith="{&#xA;    &#34;token&#34;: &#34;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3MDgwNDIzNWEzYzU0ZDAwYWE3OTExZWFjNWMwMDlmMSIsImp0aSI6IjlhYThlM2MwLWQ3YmItNGU5MS05MzhjLWY0MmUyODdmYjgyOSIsImV4cCI6MTYwNjQxMDQ3NywiaXNzIjoiQ29uc2NpYUFTIiwiYXVkIjoiQ29uc2NpYUFTIn0.ZgkVd-jIVXeW40Z2gEGLkr2a84gR1TNdWw3YhuErdhs&#34;,&#xA;    &#34;getAllConfiguration&#34;: &#34;true&#34;,&#xA;    &#34;pageNumber&#34;: &#34;1&#34;,&#xA;    &#34;pageSize&#34;: &#34;1&#34;,&#xA;    &#34;productNumber&#34;:&#34;&#34;,&#xA;    &#34;serialNumber&#34;: &#34;&#34;,&#xA;    &#34;isInCollector&#34;: &#34;true&#34;,&#xA;    &#34;isInCns&#34;: &#34;true&#34;&#xA;}"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">ProductReportSearchExternal</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://{$hostName}/CNSExternalApi/Product/ProductSearch"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="Text List of ProductReportExternal"
+                            entireResponse="true"
+                            name="ProductSearchResult11"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Token"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Token_AccessToken"
+                       maxRedirects="100"
+                       name="Token_AccessToken"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Get access token</description>
+                  <input>
+                     <parameter description="Provide user and password to get an authentication token"
+                                label="request"
+                                name="request"
+                                required="true"
+                                testWith=""
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">UserPasswordRequest</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://{$hostName}/CNSExternalApi/Token/AccessToken"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">*/*</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="Authentication token"
+                            name="entireResponse"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                        <xquery>{$RESTResponse}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category="Product"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Product_GetProductSearchConfiguration"
+                       maxRedirects="100"
+                       name="Product_GetProductSearchConfiguration"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Product search configuration that can be used in ProductSearch for families, architectures, technologies</description>
+                  <input>
+                     <parameter label="token"
+                                name="token"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://{$hostName}/CNSExternalApi/Product/GetProductSearchConfiguration"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="ProductReportExternalConfiguration"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ProductReportExternalConfiguration</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Architecture">
+                  <description/>
+                  <detail>
+                     <field name="name" type="string"/>
+                     <field name="id" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PsirtAdvisoryStatus">
+                  <description/>
+                  <detail/>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ValidationProblemDetails">
+                  <description/>
+                  <detail/>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ProblemDetails">
+                  <description/>
+                  <detail>
+                     <field name="extensions" type="object"/>
+                     <field name="instance" type="string"/>
+                     <field name="detail" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="title" type="string"/>
+                     <field name="status" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ProductReportExternalConfiguration">
+                  <description/>
+                  <detail>
+                     <field name="architectures" type="objectlist">
+                        <options>
+                           <option name="referenceTo">Architecture</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="technologies" type="objectlist">
+                        <options>
+                           <option name="referenceTo">Technology</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="families" type="objectlist">
+                        <options>
+                           <option name="referenceTo">Family</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PsirtAdvisoryExternal">
+                  <description/>
+                  <detail>
+                     <field name="advisoryId" type="string"/>
+                     <field name="advisoryUrl" type="string"/>
+                     <field name="lastModifiedDate" type="datetime"/>
+                     <field name="isPublished" type="boolean"/>
+                     <field name="softwareReleaseManual" type="string"/>
+                     <field name="isRecommendationReviewed" type="boolean"/>
+                     <field name="intellishieldUrl" type="string"/>
+                     <field name="vulnerability" type="string"/>
+                     <field name="title" type="string"/>
+                     <field name="firstPublishedDateApi" type="datetime"/>
+                     <field name="creationDate" type="datetime"/>
+                     <field name="lastNotificationDate" type="datetime"/>
+                     <field name="workaround" type="string"/>
+                     <field name="isProductReviewed" type="boolean"/>
+                     <field name="psirtAdvisoryStatus" type="reference">
+                        <options>
+                           <option name="referenceTo">PsirtAdvisoryStatus</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="psirtAdvisoryApiId" type="int"/>
+                     <field name="consciaRecommendation" type="string"/>
+                     <field name="id" type="int"/>
+                     <field name="workaroundManual" type="string"/>
+                     <field name="softwareRelease" type="string"/>
+                     <field name="psirtAdvisorySeverity" type="reference">
+                        <options>
+                           <option name="referenceTo">PsirtAdvisorySeverity</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="lastUpdatedDateApi" type="datetime"/>
+                     <field name="bugIds" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PsirtAdvisoryApiStatus">
+                  <description/>
+                  <detail/>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="SimpleResult">
+                  <description/>
+                  <detail>
+                     <field name="additionalInformation" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ProductCollectorExternalApiSubstituteExternal">
+                  <description/>
+                  <detail>
+                     <field name="hostName" type="string"/>
+                     <field name="snmpLocation" type="string"/>
+                     <field name="serialNumber" type="string"/>
+                     <field name="ipAddress" type="string"/>
+                     <field name="ipAddressNumber" type="int"/>
+                     <field name="softwareVersion" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ProductReportExternal">
+                  <description/>
+                  <detail>
+                     <field name="externalContractNumber" type="string"/>
+                     <field name="customerFullName" type="string"/>
+                     <field name="hostName" type="string"/>
+                     <field name="installSiteZipCode" type="string"/>
+                     <field name="installSiteCountry" type="string"/>
+                     <field name="endDate" type="datetime"/>
+                     <field name="installSiteComment1" type="string"/>
+                     <field name="installSiteComment2" type="string"/>
+                     <field name="installSiteAddress1" type="string"/>
+                     <field name="parentSerialNumber" type="string"/>
+                     <field name="lastDateOfSupport" type="datetime"/>
+                     <field name="shipSiteNumber" type="string"/>
+                     <field name="shipSiteName" type="string"/>
+                     <field name="consciaCareStatus" type="string"/>
+                     <field name="installSiteNumber" type="string"/>
+                     <field name="customerAddressTelephone" type="string"/>
+                     <field name="shipSiteAddress2" type="string"/>
+                     <field name="shipSiteAddress1" type="string"/>
+                     <field name="isInCollector" type="string"/>
+                     <field name="isInCns" type="string"/>
+                     <field name="serviceCharagble" type="string"/>
+                     <field name="productDescription" type="string"/>
+                     <field name="customerConsciaName" type="string"/>
+                     <field name="architecture" type="string"/>
+                     <field name="snmpLocation" type="string"/>
+                     <field name="serialNumber" type="string"/>
+                     <field name="advisoryId" type="string"/>
+                     <field name="ipAddress" type="string"/>
+                     <field name="productNumber" type="string"/>
+                     <field name="technology" type="string"/>
+                     <field name="serviceLevel" type="string"/>
+                     <field name="shipSiteZipCode" type="string"/>
+                     <field name="beginDate" type="datetime"/>
+                     <field name="productQuantity" type="int"/>
+                     <field name="installSiteCity" type="string"/>
+                     <field name="installSiteAddress2" type="string"/>
+                     <field name="ciscoContractNumber" type="int"/>
+                     <field name="shipSiteCity" type="string"/>
+                     <field name="collectorParentSerialNumber" type="string"/>
+                     <field name="family" type="string"/>
+                     <field name="shipSiteCountry" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Technology">
+                  <description/>
+                  <detail>
+                     <field name="name" type="string"/>
+                     <field name="architectureId" type="int"/>
+                     <field name="id" type="int"/>
+                     <field name="architecture" type="reference">
+                        <options>
+                           <option name="referenceTo">Architecture</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PsirtAdvisorySearchExternal">
+                  <description/>
+                  <detail>
+                     <field name="psirtAdvisoryApiExists" type="boolean"/>
+                     <field name="advisoryId" type="string"/>
+                     <field name="pageNumber" type="int"/>
+                     <field name="creationDateTo" type="datetime"/>
+                     <field name="lastModifiedDateFrom" type="datetime"/>
+                     <field name="psirtAdvisoryApiStatus" type="reference">
+                        <options>
+                           <option name="referenceTo">PsirtAdvisoryApiStatus</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="creationDateFrom" type="datetime"/>
+                     <field name="pageSize" type="int"/>
+                     <field name="statuses" type="objectlist">
+                        <options>
+                           <option name="referenceTo">PsirtAdvisoryStatus</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="lastModifiedDateTo" type="datetime"/>
+                     <field name="token" type="string"/>
+                     <field name="severities" type="objectlist">
+                        <options>
+                           <option name="referenceTo">PsirtAdvisorySeverity</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PagedResultOfProductReportExternal">
+                  <description/>
+                  <detail>
+                     <field name="pageCount" type="int"/>
+                     <field name="pageNo" type="int"/>
+                     <field name="pageSize" type="int"/>
+                     <field name="items" type="objectlist">
+                        <options>
+                           <option name="referenceTo">ProductReportExternal</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="totalRecordCount" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ProductReportSearchExternal">
+                  <description/>
+                  <detail>
+                     <field name="serialNumber" type="string"/>
+                     <field name="pageNumber" type="string"/>
+                     <field name="pageSize" type="string"/>
+                     <field name="productNumber" type="string"/>
+                     <field name="token" type="string"/>
+                     <field name="isInCollector" type="string"/>
+                     <field name="getAllConfiguration" type="string"/>
+                     <field name="isInCns" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Family">
+                  <description/>
+                  <detail>
+                     <field name="name" type="string"/>
+                     <field name="technology" type="reference">
+                        <options>
+                           <option name="referenceTo">Technology</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="id" type="int"/>
+                     <field name="technologyId" type="int"/>
+                     <field name="isMeraki" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="CustomProblemDetails">
+                  <description/>
+                  <detail>
+                     <field name="instance" type="string"/>
+                     <field name="detail" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="title" type="string"/>
+                     <field name="status" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ProductCollectorExternalApiSubstituteExternalRequest">
+                  <description/>
+                  <detail>
+                     <field name="items" type="objectlist">
+                        <options>
+                           <option name="referenceTo">ProductCollectorExternalApiSubstituteExternal</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="token" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PagedResultOfPsirtAdvisoryExternal">
+                  <description/>
+                  <detail>
+                     <field name="pageCount" type="int"/>
+                     <field name="pageNo" type="int"/>
+                     <field name="pageSize" type="int"/>
+                     <field name="items" type="objectlist">
+                        <options>
+                           <option name="referenceTo">PsirtAdvisoryExternal</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="totalRecordCount" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="UserPasswordRequest">
+                  <description/>
+                  <detail>
+                     <field name="usr" type="string"/>
+                     <field name="pwd" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ExternalPagedResultOfProductReportExternal">
+                  <description/>
+                  <detail/>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PsirtAdvisorySeverity">
+                  <description/>
+                  <detail/>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="string">
+                  <description/>
+                  <detail>
+                     <field name="string" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="boolean">
+                  <description/>
+                  <detail>
+                     <field name="boolean" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="double">
+                  <description/>
+                  <detail>
+                     <field name="double" type="double"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="integer">
+                  <description/>
+                  <detail>
+                     <field name="integer" type="int"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>9xjkNldzs2ugZxejMfmmqA</types1:GUID>
+      <types1:DisplayName>svc-I0082-Conscia</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-03-30T21:12:14.293Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
