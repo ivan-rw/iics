@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "1EFCvTi472YiYm7F3oRCuw",
+    "name" : "svc-I0082-Conscia - Copy 1",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "C46snSDg8SOlA1v-gt-7993509-2020-11-26T15:17:11.457Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Conscia external API",
+        "contentType" : null,
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}
