@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "0cRdAS3aCndhZu3lExUgQD",
+    "name" : "ValidationProblemDetails",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "2XZPnE29Em2kVNK-gt-22580544-2020-11-25T16:01:45.859Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "jf5J2s09mKoebkPv8MA4CL",
+    "name" : "TokenAccess",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Lq0jmu6lS01BchM-gt-7216253-2020-11-25T09:20:10.602Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Token_Access output",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}
