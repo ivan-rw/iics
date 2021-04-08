@@ -1,0 +1,64 @@
+{
+  "objectInfo" : {
+    "id" : "2jIDGkdRz8jkxEE9d5iHEp",
+    "name" : "p-I0074-Common-Process-Subscribed HR-Data _copy2_ivanj",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "VltnKLLsciQlBWl-gt-12428580-2021-04-08T11:32:19.769Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "8ZdyX2cBBFddcYvI3nL0OQ",
+    "name" : "p-Shared-GetCountryISOCodes",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "IabchDxomUhGdwO-gt-11183097-2020-03-17T08:07:15.569Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Enter one or more combination of country name, 2 alpha ISO code, 3 alpha ISO code or 3 digit ISO code. The output will fill all fields with of the matching country.\n\nE.g. \nInput:\n   in_Alpha-2Code = 'MY'\n\nOutput:\n  NumericCode = '458'\n  Alpha2Code = 'MY'\n  Alpha3Code = 'MYS'\n  CountryName = 'Malaysia'\n\nFor multiple country search, use comma as delimeter. E.g.\n   in_Alpha-2Code = 'MY, SG'\n\nLeave all input empty to return all countries.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Shared"
+  }, {
+    "id" : "21sIc53YxHrlLM150l1O4z",
+    "name" : "po-Shared-GetCountryISOCodesResponse",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "7Hdy8NTYglxbdyp-gt-35531076-2020-03-18T03:35:20.946Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Shared"
+  } ]
+}
