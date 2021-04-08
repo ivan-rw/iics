@@ -1,0 +1,44 @@
+{
+  "objectInfo" : {
+    "id" : "4u1c5mkV4nkdBFFuMQNRgr",
+    "name" : "svccon-I0039-CIH-Sub-WorkdayIntegrationHub",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Bbcgp5OjG4abck0-gt-3527589-2020-04-09T04:06:44.361Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "jLTGyj0HLe2dPspsf7q0gR",
+    "name" : "svc-I0079-CIH-Sub-WorkdayIntegrationHub",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "m49WPZ8DfYLnzYL-gt-194644-2019-07-16T06:22:25.197Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "REST interface to subscribe data from Workday Integration Hub.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Subscribe"
+  } ]
+}

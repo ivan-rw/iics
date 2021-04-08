@@ -1,0 +1,166 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>7lJjx9AWbg0ZkL0-gt-2184129-2018-06-26T12:45:24.944Z::svc.xml</types1:EntryId>
+      <types1:Name>I0039_Auth0</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>I0039</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2018-06-26T12:45:24Z</types1:CreationDate>
+      <types1:ModifiedBy>ivanj@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2018-07-04T14:18:00Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>ivanj@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2018-07-01T22:09:03Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/I0039_Auth0/I0039_Auth0_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            label=""
+                            name="I0039 Auth0"
+                            uuid="4846e74b-3dcc-4fc1-b747-65aff977663d">
+            <description/>
+            <tags>I0039</tags>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="getToken"
+                       maxRedirects="100"
+                       name="getToken"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://rockwool-develop.eu.auth0.com/oauth/token"
+                                        verb="POST">
+                        <otherParams>
+                           <otherParam name="client_id">7X1v2XFHoB1xSjXCnpb37iSIlHaTMy3W</otherParam>
+                           <otherParam name="client_secret">aRrXH_-XWsUFoS_f8A5VY8O14BGyvrYUMI9nkKLa4QSkCV_zD0CnTJbhfCCQ6iR7</otherParam>
+                           <otherParam name="audience">https://rockwool-develop.eu.auth0.com/api/v2/</otherParam>
+                           <otherParam name="grant_type">client_credentials</otherParam>
+                        </otherParams>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="access_token"
+                            property="access_token"
+                            type="string"/>
+                     <field description="" name="scope" property="scope" type="string"/>
+                     <field description=""
+                            name="expires_in"
+                            property="expires_in"
+                            type="string"/>
+                     <field description=""
+                            name="token_type"
+                            property="token_type"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="getUsers"
+                       maxRedirects="100"
+                       name="getUsers"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://rockwool-develop.eu.auth0.com/api/v2/users"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Authorization">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FWXdOVGhCT1RVNU1qZzBNVGxFTjBVeFFqZENSall6TWtJMFJqSXlNRFk0T0VJeU5qUTNNUSJ9.eyJpc3MiOiJodHRwczovL3JvY2t3b29sLWRldmVsb3AuZXUuYXV0aDAuY29tLyIsInN1YiI6IjdYMXYyWEZIb0IxeFNqWENucGIzN2lTSWxIYVRNeTNXQGNsaWVudHMiLCJhdWQiOiJodHRwczovL3JvY2t3b29sLWRldmVsb3AuZXUuYXV0aDAuY29tL2FwaS92Mi8iLCJpYXQiOjE1MzA3MDMyMTIsImV4cCI6MTUzMDc4OTYxMiwiYXpwIjoiN1gxdjJYRkhvQjF4U2pYQ25wYjM3aVNJbEhhVE15M1ciLCJzY29wZSI6InJlYWQ6Y2xpZW50X2dyYW50cyBjcmVhdGU6Y2xpZW50X2dyYW50cyBkZWxldGU6Y2xpZW50X2dyYW50cyB1cGRhdGU6Y2xpZW50X2dyYW50cyByZWFkOnVzZXJzIHVwZGF0ZTp1c2VycyBkZWxldGU6dXNlcnMgY3JlYXRlOnVzZXJzIHJlYWQ6dXNlcnNfYXBwX21ldGFkYXRhIHVwZGF0ZTp1c2Vyc19hcHBfbWV0YWRhdGEgZGVsZXRlOnVzZXJzX2FwcF9tZXRhZGF0YSBjcmVhdGU6dXNlcnNfYXBwX21ldGFkYXRhIGNyZWF0ZTp1c2VyX3RpY2tldHMgcmVhZDpjbGllbnRzIHVwZGF0ZTpjbGllbnRzIGRlbGV0ZTpjbGllbnRzIGNyZWF0ZTpjbGllbnRzIHJlYWQ6Y2xpZW50X2tleXMgdXBkYXRlOmNsaWVudF9rZXlzIGRlbGV0ZTpjbGllbnRfa2V5cyBjcmVhdGU6Y2xpZW50X2tleXMgcmVhZDpjb25uZWN0aW9ucyB1cGRhdGU6Y29ubmVjdGlvbnMgZGVsZXRlOmNvbm5lY3Rpb25zIGNyZWF0ZTpjb25uZWN0aW9ucyByZWFkOnJlc291cmNlX3NlcnZlcnMgdXBkYXRlOnJlc291cmNlX3NlcnZlcnMgZGVsZXRlOnJlc291cmNlX3NlcnZlcnMgY3JlYXRlOnJlc291cmNlX3NlcnZlcnMgcmVhZDpkZXZpY2VfY3JlZGVudGlhbHMgdXBkYXRlOmRldmljZV9jcmVkZW50aWFscyBkZWxldGU6ZGV2aWNlX2NyZWRlbnRpYWxzIGNyZWF0ZTpkZXZpY2VfY3JlZGVudGlhbHMgcmVhZDpydWxlcyB1cGRhdGU6cnVsZXMgZGVsZXRlOnJ1bGVzIGNyZWF0ZTpydWxlcyByZWFkOnJ1bGVzX2NvbmZpZ3MgdXBkYXRlOnJ1bGVzX2NvbmZpZ3MgZGVsZXRlOnJ1bGVzX2NvbmZpZ3MgcmVhZDplbWFpbF9wcm92aWRlciB1cGRhdGU6ZW1haWxfcHJvdmlkZXIgZGVsZXRlOmVtYWlsX3Byb3ZpZGVyIGNyZWF0ZTplbWFpbF9wcm92aWRlciBibGFja2xpc3Q6dG9rZW5zIHJlYWQ6c3RhdHMgcmVhZDp0ZW5hbnRfc2V0dGluZ3MgdXBkYXRlOnRlbmFudF9zZXR0aW5ncyByZWFkOmxvZ3MgcmVhZDpzaGllbGRzIGNyZWF0ZTpzaGllbGRzIGRlbGV0ZTpzaGllbGRzIHVwZGF0ZTp0cmlnZ2VycyByZWFkOnRyaWdnZXJzIHJlYWQ6Z3JhbnRzIGRlbGV0ZTpncmFudHMgcmVhZDpndWFyZGlhbl9mYWN0b3JzIHVwZGF0ZTpndWFyZGlhbl9mYWN0b3JzIHJlYWQ6Z3VhcmRpYW5fZW5yb2xsbWVudHMgZGVsZXRlOmd1YXJkaWFuX2Vucm9sbG1lbnRzIGNyZWF0ZTpndWFyZGlhbl9lbnJvbGxtZW50X3RpY2tldHMgcmVhZDp1c2VyX2lkcF90b2tlbnMgY3JlYXRlOnBhc3N3b3Jkc19jaGVja2luZ19qb2IgZGVsZXRlOnBhc3N3b3Jkc19jaGVja2luZ19qb2IgcmVhZDpjdXN0b21fZG9tYWlucyBkZWxldGU6Y3VzdG9tX2RvbWFpbnMgY3JlYXRlOmN1c3RvbV9kb21haW5zIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.OvTU_zcH2vToexWaCDYNQKkK01SYZl8flOWzm3sNhB6sPtyAh1ySnrn4YRH3nB7DA3VjQ8XyhFjhYSccSSYqRdVaAZWqNzWjygcz83ADNwkrgR1l8MCPj5mLBHhuV9exAI6IAi1YtSAqdFMAoZWr9M0Yaxy7Z8L5oiFQuMLsXFvRiXMcad1SWbAYkG0wGqKYsH61buRfs1yd6BEmeEe3LbYTtv_1T7BnfhtCEw3txNCk4wzjg35SLmZcbLLYL0KnXwio91LU5NdM8GG2ZcTqriL85D6VFVKWKU2DKM0sevzELAPb_X1CMPX-fmb8UUtJznByNnnhXTKzzMvrCpWUSg</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="getUser"
+                       maxRedirects="100"
+                       name="getUser"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description/>
+                  <input>
+                     <parameter name="" required="false" testWith="" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://rockwool-develop.eu.auth0.com/api/v2/users/auth0|57e2300a0c5cc4183aa83edd"
+                                        verb="GET"/>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="createUser"
+                       maxRedirects="100"
+                       name="createUser"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://rockwool-develop.eu.auth0.com/api/v2/users"
+                                        verb="POST">
+                        <otherParams>
+                           <otherParam name="connection">Username-Password-Authentication</otherParam>
+                           <otherParam name="email">matthijs.pattipeilohy@temprockwool.com</otherParam>
+                           <otherParam name="username">10006183</otherParam>
+                           <otherParam name="password">Start001</otherParam>
+                           <otherParam name="user_metadata"/>
+                           <otherParam name="email_verified"/>
+                           <otherParam name="verify_email"/>
+                           <otherParam name="app_metadata"/>
+                        </otherParams>
+                        <httpHeaders>
+                           <header name="Authorization">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1FWXdOVGhCT1RVNU1qZzBNVGxFTjBVeFFqZENSall6TWtJMFJqSXlNRFk0T0VJeU5qUTNNUSJ9.eyJpc3MiOiJodHRwczovL3JvY2t3b29sLWRldmVsb3AuZXUuYXV0aDAuY29tLyIsInN1YiI6IjdYMXYyWEZIb0IxeFNqWENucGIzN2lTSWxIYVRNeTNXQGNsaWVudHMiLCJhdWQiOiJodHRwczovL3JvY2t3b29sLWRldmVsb3AuZXUuYXV0aDAuY29tL2FwaS92Mi8iLCJpYXQiOjE1MzA3MDMyMTIsImV4cCI6MTUzMDc4OTYxMiwiYXpwIjoiN1gxdjJYRkhvQjF4U2pYQ25wYjM3aVNJbEhhVE15M1ciLCJzY29wZSI6InJlYWQ6Y2xpZW50X2dyYW50cyBjcmVhdGU6Y2xpZW50X2dyYW50cyBkZWxldGU6Y2xpZW50X2dyYW50cyB1cGRhdGU6Y2xpZW50X2dyYW50cyByZWFkOnVzZXJzIHVwZGF0ZTp1c2VycyBkZWxldGU6dXNlcnMgY3JlYXRlOnVzZXJzIHJlYWQ6dXNlcnNfYXBwX21ldGFkYXRhIHVwZGF0ZTp1c2Vyc19hcHBfbWV0YWRhdGEgZGVsZXRlOnVzZXJzX2FwcF9tZXRhZGF0YSBjcmVhdGU6dXNlcnNfYXBwX21ldGFkYXRhIGNyZWF0ZTp1c2VyX3RpY2tldHMgcmVhZDpjbGllbnRzIHVwZGF0ZTpjbGllbnRzIGRlbGV0ZTpjbGllbnRzIGNyZWF0ZTpjbGllbnRzIHJlYWQ6Y2xpZW50X2tleXMgdXBkYXRlOmNsaWVudF9rZXlzIGRlbGV0ZTpjbGllbnRfa2V5cyBjcmVhdGU6Y2xpZW50X2tleXMgcmVhZDpjb25uZWN0aW9ucyB1cGRhdGU6Y29ubmVjdGlvbnMgZGVsZXRlOmNvbm5lY3Rpb25zIGNyZWF0ZTpjb25uZWN0aW9ucyByZWFkOnJlc291cmNlX3NlcnZlcnMgdXBkYXRlOnJlc291cmNlX3NlcnZlcnMgZGVsZXRlOnJlc291cmNlX3NlcnZlcnMgY3JlYXRlOnJlc291cmNlX3NlcnZlcnMgcmVhZDpkZXZpY2VfY3JlZGVudGlhbHMgdXBkYXRlOmRldmljZV9jcmVkZW50aWFscyBkZWxldGU6ZGV2aWNlX2NyZWRlbnRpYWxzIGNyZWF0ZTpkZXZpY2VfY3JlZGVudGlhbHMgcmVhZDpydWxlcyB1cGRhdGU6cnVsZXMgZGVsZXRlOnJ1bGVzIGNyZWF0ZTpydWxlcyByZWFkOnJ1bGVzX2NvbmZpZ3MgdXBkYXRlOnJ1bGVzX2NvbmZpZ3MgZGVsZXRlOnJ1bGVzX2NvbmZpZ3MgcmVhZDplbWFpbF9wcm92aWRlciB1cGRhdGU6ZW1haWxfcHJvdmlkZXIgZGVsZXRlOmVtYWlsX3Byb3ZpZGVyIGNyZWF0ZTplbWFpbF9wcm92aWRlciBibGFja2xpc3Q6dG9rZW5zIHJlYWQ6c3RhdHMgcmVhZDp0ZW5hbnRfc2V0dGluZ3MgdXBkYXRlOnRlbmFudF9zZXR0aW5ncyByZWFkOmxvZ3MgcmVhZDpzaGllbGRzIGNyZWF0ZTpzaGllbGRzIGRlbGV0ZTpzaGllbGRzIHVwZGF0ZTp0cmlnZ2VycyByZWFkOnRyaWdnZXJzIHJlYWQ6Z3JhbnRzIGRlbGV0ZTpncmFudHMgcmVhZDpndWFyZGlhbl9mYWN0b3JzIHVwZGF0ZTpndWFyZGlhbl9mYWN0b3JzIHJlYWQ6Z3VhcmRpYW5fZW5yb2xsbWVudHMgZGVsZXRlOmd1YXJkaWFuX2Vucm9sbG1lbnRzIGNyZWF0ZTpndWFyZGlhbl9lbnJvbGxtZW50X3RpY2tldHMgcmVhZDp1c2VyX2lkcF90b2tlbnMgY3JlYXRlOnBhc3N3b3Jkc19jaGVja2luZ19qb2IgZGVsZXRlOnBhc3N3b3Jkc19jaGVja2luZ19qb2IgcmVhZDpjdXN0b21fZG9tYWlucyBkZWxldGU6Y3VzdG9tX2RvbWFpbnMgY3JlYXRlOmN1c3RvbV9kb21haW5zIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.OvTU_zcH2vToexWaCDYNQKkK01SYZl8flOWzm3sNhB6sPtyAh1ySnrn4YRH3nB7DA3VjQ8XyhFjhYSccSSYqRdVaAZWqNzWjygcz83ADNwkrgR1l8MCPj5mLBHhuV9exAI6IAi1YtSAqdFMAoZWr9M0Yaxy7Z8L5oiFQuMLsXFvRiXMcad1SWbAYkG0wGqKYsH61buRfs1yd6BEmeEe3LbYTtv_1T7BnfhtCEw3txNCk4wzjg35SLmZcbLLYL0KnXwio91LU5NdM8GG2ZcTqriL85D6VFVKWKU2DKM0sevzELAPb_X1CMPX-fmb8UUtJznByNnnhXTKzzMvrCpWUSg</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="token">
+                  <description/>
+                  <detail>
+                     <field name="token" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>2cgxDW1YBs5c9vYpYtEdeI</types1:GUID>
+      <types1:DisplayName>I0039 Auth0</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-04-08T09:35:21.765Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

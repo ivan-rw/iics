@@ -1,0 +1,56 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>kMydx2CGeFRqXpI-gt-7801876-2018-07-20T11:21:41.16Z::conn.xml</types1:EntryId>
+      <types1:Name>I0039-odata</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TSTVMAS90,I0039</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2018-07-20T11:21:41Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     xmlns:ns2="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                     displayName="I0039-odata"
+                     label="I0039-odata"
+                     name="I0039-odata">
+            <description/>
+            <tags>I0039,.agent:TSTVMAS90</tags>
+            <agent>TSTVMAS90</agent>
+            <attributes>
+               <attribute encrypted="false" name="username" value=""/>
+               <attribute encrypted="true" name="password" value=""/>
+               <attribute encrypted="false"
+                          name="ServiceRootUri"
+                          value="http://services.odata.org/Northwind/Northwind.svc/Customers"/>
+               <attribute encrypted="false" name="Odata Parameter File Path" value=""/>
+               <attribute encrypted="false" name="Data Serialization Format" value="ATOM/XML"/>
+               <attribute encrypted="false" name="Object Filter" value=""/>
+               <attribute encrypted="false" name="$write-PRIMARY KEY OVERRIDE" value=""/>
+            </attributes>
+            <ns2:javaConnector agentOnly="true"
+                               plugin="ICS"
+                               supportsConnectionTest="true"
+                               supportsDataPreview="true"
+                               supportsOData="true"
+                               type="OData"
+                               uuid="b93e0491-8bb5-41a0-ba60-50cfb4102180">
+               <ns2:description> OData Cloud Connector</ns2:description>
+            </ns2:javaConnector>
+            <odata>
+               <enabled>true</enabled>
+            </odata>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>8WSug7naiTfeV55fAlfDME</types1:GUID>
+      <types1:DisplayName>I0039-odata</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-04-08T09:35:21.856Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

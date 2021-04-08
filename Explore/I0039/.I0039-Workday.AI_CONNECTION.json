@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "72oDqsGtDM8fYv67mTGosu",
+    "name" : "I0039-Workday",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "UbdypLK2D86CjqF-gt-6593329-2018-09-03T14:50:20.748Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

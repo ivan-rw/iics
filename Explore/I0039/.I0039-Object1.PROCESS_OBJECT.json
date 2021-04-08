@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "57HtbZQo643d6dlu37ku8i",
+    "name" : "I0039-Object1",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "YJtDC2XZPnE29Em-gt-195379-2018-06-19T14:00:36.822Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "5rlpPMrqU1ilv0EC8QdbEs",
+    "name" : "I0039 - test",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "fZ3r0x7bcoq3xgj-gt-56141653-2018-06-19T08:12:56.091Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

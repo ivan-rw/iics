@@ -1,0 +1,51 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Bbcgp5OjG4abck0-gt-3527589-2020-04-09T04:06:44.361Z::conn.xml</types1:EntryId>
+      <types1:Name>svccon-I0039-CIH-Sub-WorkdayIntegrationHub</types1:Name>
+      <types1:ParentFlowIds>CYybdsMkdypKwKB-gt-20127755-2020-04-09T04:06:44.563Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TSTVMAS90</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-04-09T04:06:44Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-04-09T09:26:01Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-04-09T09:26:06Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/svccon-I0039-CIH-Sub-WorkdayIntegrationHub/svccon-I0039-CIH-Sub-WorkdayIntegrationHub.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="svccon-I0039-CIH-Sub-WorkdayIntegrationHub"
+                     label="svccon-I0039-CIH-Sub-WorkdayIntegrationHub"
+                     name="svccon-I0039-CIH-Sub-WorkdayIntegrationHub">
+            <description/>
+            <tags>.agent:TSTVMAS90</tags>
+            <agent>TSTVMAS90</agent>
+            <attributes>
+               <attribute encrypted="false"
+                          name="subscriptionURL"
+                          value="https://integration-test.rockwool.com:19443/api/v1/subscriptions/sub_I0039_Workday_Concur/data"/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="true"
+                               connectorPath="project:/rt.connector/svc_I0079_CIH_Sub_WorkdayIntegrationHub/svc_I0079_CIH_Sub_WorkdayIntegrationHub_svcDef.xml"
+                               guid="jLTGyj0HLe2dPspsf7q0gR"
+                               name="svc-I0079-CIH-Sub-WorkdayIntegrationHub"
+                               supportsConnectionTest="false"
+                               uuid="a1ad9add-eeeb-4c5e-9dc8-2947981757f9">
+               <description>REST interface to subscribe data from Workday Integration Hub.</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>4u1c5mkV4nkdBFFuMQNRgr</types1:GUID>
+      <types1:DisplayName>svccon-I0039-CIH-Sub-WorkdayIntegrationHub</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-04-08T09:35:24.254Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

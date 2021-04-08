@@ -1,0 +1,264 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>CYybdsMkdypKwKB-gt-20127755-2020-04-09T04:06:44.563Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0039-WorkdayIntegrationHub-API-Subscription</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TSTVMAS90,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2020-04-09T04:06:45Z</types1:CreationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2020-08-19T09:56:57Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2020-08-19T09:57:18Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.p-I0039-WorkdayIntegrationHub-API-Subscription/p-I0039-WorkdayIntegrationHub-API-Subscription.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0039-WorkdayIntegrationHub-API-Subscription"
+                  name="p-I0039-WorkdayIntegrationHub-API-Subscription"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags>.agent:TSTVMAS90,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_FullLoad" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Used by Informatica Subscription Notification"
+                          name="publicationEventId"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Used by Informatica Subscription Notification"
+                          name="subscriptionEventId"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Used by Informatica Subscription Notification"
+                          name="subscriptionName"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_WIP_Folder" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vwWorkdayWorker" type="reference">
+                  <options>
+                     <option name="referenceTo">sql-I0079-HR:vwWorkdayWorker_CIHSubResponseFormat</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4y8IxPDyztqff0VmpQWR0S</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SubscriptionResponse" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TSTVMAS90</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k8sdkvib" targetId="k8sdkvia"/>
+               </start>
+               <subflow id="k8sdkvia">
+                  <title>p-Shared-GetEnvironmentVariables</title>
+                  <subflowGUID>hVwvolFWXAfkAG7pjbqKwh</subflowGUID>
+                  <subflowPath>p-Shared-GetEnvironmentVariables</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_IDFPath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_Environment" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ScriptPath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ArchiveCommand" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_SharedSQLServerName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_SharedDatabaseName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_AgentHomePath" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_OrgId" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ServerName" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="k8sdkvjh" targetId="k8sdkvjg"/>
+               </subflow>
+               <subflow id="jyqss71q">
+                  <title>p-I0079-WorkdayIntegrationHub-Subscribe-Adapter</title>
+                  <subflowGUID>bCGbZ8JvP6xcfPdJqRQVmm</subflowGUID>
+                  <subflowPath>p-I0079-WorkdayIntegrationHub-Subscribe-Adapter</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_ResultFormat" source="constant" updatable="true">CSV text</parameter>
+                     <parameter name="in_SubscriptionResponse" source="field" updatable="true">temp.tmp_SubscriptionResponse</parameter>
+                     <parameter name="in_IncludeFields" source="constant" updatable="true">WorkerId;ADUserId;PreferredFirstName;PreferredLastName;PreferredMiddleName;Email;PayGroup;BusinessSiteAddressCountry;BusinessSiteLocale;OPCOCode;OPCOName;CostCenter;CostCenterType;Active;TerminationDate;CountryCurrency</parameter>
+                     <parameter name="in_FilePathWithFileName" source="formula" updatable="true">
+                        <expression language="XQuery">concat($temp.tmp_WIP_Folder, 'WorkerData_', util:getProcessId(), '_', fn:format-dateTime(fn:current-dateTime(), '[Y0001][M01][D01][H01][m01][s01]'), '.txt')</expression>
+                     </parameter>
+                  </input>
+                  <outputDef>
+                     <field name="out_WorkerDataResult" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="jyygf2wu" targetId="jyygf2wt"/>
+               </subflow>
+               <assignment id="k8sdkvjg">
+                  <title>Assignment to tmp_WIP_Folder</title>
+                  <operation source="formula" to="temp.tmp_WIP_Folder">
+                     <expression language="XQuery">concat($output.out_IDFPath, 'CONCUR\IN\I0039\WorkdayIntegrationHub\')</expression>
+                  </operation>
+                  <link id="k8sdkvji" targetId="jysg7wjs"/>
+               </assignment>
+               <container id="jysg7wjs" type="exclusive">
+                  <title>in_FullLoad?</title>
+                  <flow id="jysgv64n">
+                     <assignment id="jysgv655">
+                        <title>Assignment to tmp_vwWorkdayWorker, tmp_SubscriptionResponse</title>
+                        <operation source="query" to="temp.tmp_vwWorkdayWorker">
+                           <query advanceQuery="false"
+                                  from="sql-I0079-HR:vwWorkdayWorker_CIHSubResponseFormat"/>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_SubscriptionResponse">
+                           <expression language="XQuery">util:parseXML($temp.tmp_vwWorkdayWorker[1]/response)</expression>
+                        </operation>
+                     </assignment>
+                     <link id="jysgv64o" targetId="jysg7wjs" type="containerLink"/>
+                  </flow>
+                  <flow id="jysgv64p">
+                     <service id="jysgv65m">
+                        <title>Subscribe: HR Worker data</title>
+                        <serviceName>svccon-I0039-CIH-Sub-WorkdayIntegrationHub:subscribe</serviceName>
+                        <serviceGUID>4u1c5mkV4nkdBFFuMQNRgr</serviceGUID>
+                        <serviceInput/>
+                        <link id="k8sdkvdy" targetId="k8sdkvdx"/>
+                     </service>
+                     <assignment id="k8sdkvdx">
+                        <title>Assignment to tmp_SubscriptionResponse</title>
+                        <operation source="formula" to="temp.tmp_SubscriptionResponse">
+                           <expression language="XQuery">$output.response</expression>
+                        </operation>
+                     </assignment>
+                     <link id="jysgv64q" targetId="jysg7wjs" type="containerLink"/>
+                  </flow>
+                  <link id="jysgv64l" targetId="jysgv64n" type="containerLink">
+                     <condition source="formula">
+                        <function name="true">
+                           <arg name="field">{$input.in_FullLoad}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jysgv64m" targetId="jysgv64p" type="containerLink">
+                     <condition source="formula">
+                        <function name="false">
+                           <arg name="field">{$input.in_FullLoad}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jysgv66f" targetId="jyqss71q"/>
+               </container>
+               <container id="jyygf2wt" type="exclusive">
+                  <title>out_WorkerDataResult</title>
+                  <flow id="jyygf2wx">
+                     <link id="jyygf2wy" targetId="jyygf2wt" type="containerLink"/>
+                  </flow>
+                  <flow id="jyygf2x0">
+                     <service id="jyygf2xz">
+                        <title>Run a Shell Command: Create List File</title>
+                        <serviceName>avShellService</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="command" source="formula">
+                              <expression language="XQuery">concat('dir /b ', $temp.tmp_WIP_Folder, 'WorkerData_*.txt &gt; ',$temp.tmp_WIP_Folder, 'List_WorkerData.txt')</expression>
+                           </parameter>
+                           <parameter name="workingDirPath" source="formula">
+                              <expression language="XQuery">'C:\'</expression>
+                           </parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="jyygf2x1" targetId="jyygf2wt" type="containerLink"/>
+                  </flow>
+                  <link id="jyygf2ww" targetId="jyygf2wx" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$output.out_WorkerDataResult}</arg>
+                           <arg name="right"/>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jyygf2wz" targetId="jyygf2x0" type="containerLink"/>
+                  <link id="jyygf2yi" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>9QpusHsrQKLbVIz8ZUcTY2</types1:GUID>
+      <types1:DisplayName>p-I0039-WorkdayIntegrationHub-API-Subscription</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-04-08T09:35:27.409Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

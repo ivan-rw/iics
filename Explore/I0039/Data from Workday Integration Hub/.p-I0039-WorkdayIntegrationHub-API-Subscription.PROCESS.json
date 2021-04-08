@@ -1,0 +1,104 @@
+{
+  "objectInfo" : {
+    "id" : "9QpusHsrQKLbVIz8ZUcTY2",
+    "name" : "p-I0039-WorkdayIntegrationHub-API-Subscription",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "CYybdsMkdypKwKB-gt-20127755-2020-04-09T04:06:44.563Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "hVwvolFWXAfkAG7pjbqKwh",
+    "name" : "p-Shared-GetEnvironmentVariables",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "D8WhIpppppppppp-gt-34253860-2019-10-31T03:21:23.479Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Shared"
+  }, {
+    "id" : "4u1c5mkV4nkdBFFuMQNRgr",
+    "name" : "svccon-I0039-CIH-Sub-WorkdayIntegrationHub",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Bbcgp5OjG4abck0-gt-3527589-2020-04-09T04:06:44.361Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0039/Data from Workday Integration Hub"
+  }, {
+    "id" : "4y8IxPDyztqff0VmpQWR0S",
+    "name" : "sql-I0079-HR",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "CVf4VQT53nQciSr-gt-3452346-2020-04-08T09:54:00.466Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Common"
+  }, {
+    "id" : "bCGbZ8JvP6xcfPdJqRQVmm",
+    "name" : "p-I0079-WorkdayIntegrationHub-Subscribe-Adapter",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8MLjBeE1KoJBUht-gt-1566514-2019-07-25T11:46:10.962Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Return Workday worker data in various format (csv, XML etc.) to facilitate mapping. Adapter should always be used when subscribing to Workday Worker data to minimize impact if there is a change in topic.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0079 - Workday Integration Hub/Subscribe"
+  } ]
+}

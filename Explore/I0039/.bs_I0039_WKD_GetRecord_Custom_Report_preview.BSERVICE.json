@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "afKrVdQsxMIcjl9f2Oc6sR",
+    "name" : "bs_I0039_WKD_GetRecord_Custom_Report_preview",
+    "type" : "BSERVICE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD627000000000019"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      }, {
+        "name" : "001KD62800000000002J",
+        "value" : "afKrVdQsxMIcjl9f2Oc6sR@Execute_Report"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "objectRefs" : [ {
+    "id" : "64tkPKb1YdieP2dK9Lg6Yv",
+    "name" : "wsc_I0039_WD_custom_report_preview",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD60B0000000000D4"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Custom report WD preview tenant",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/SYS"
+  } ]
+}

@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "7prwDMf4T0fcTplKXHpyIQ",
+    "name" : "bs_I0039_WKD_test",
+    "type" : "BSERVICE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD627000000000018"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      }, {
+        "name" : "001KD62800000000002D",
+        "value" : "7prwDMf4T0fcTplKXHpyIQ@Execute_Report"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "objectRefs" : [ {
+    "id" : "9n0Ji3fBXpAd3GIH6yR7it",
+    "name" : "wsc_I0039_WD_custom_report_prod",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD60B0000000000CW"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Custom report WD test tenant",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/SYS"
+  } ]
+}
