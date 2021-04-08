@@ -1,0 +1,53 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>T53nQciSrZMSPfX-gt-7706476-2021-04-08T11:25:57.734Z::pd.xml</types1:EntryId>
+      <types1:Name>ix-Process2</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2021-04-08T11:25:58Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ix-Process2"
+                  name="ix-Process2"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kn8sm1kf" targetId="kn8sm1ke"/>
+               </start>
+               <subflow id="kn8sm1ke">
+                  <title>ix-Process1</title>
+                  <subflowGUID>9jk3RvJUyQEjIrNZUEH10a</subflowGUID>
+                  <subflowPath>ix-Process1</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef/>
+                  <link id="kn8sm1kg" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>0maftJGqjKFbl5ykmaELkZ</types1:GUID>
+      <types1:DisplayName>ix-Process2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-04-08T11:28:29.214Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

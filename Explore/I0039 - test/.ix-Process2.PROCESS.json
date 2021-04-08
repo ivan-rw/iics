@@ -1,0 +1,44 @@
+{
+  "objectInfo" : {
+    "id" : "0maftJGqjKFbl5ykmaELkZ",
+    "name" : "ix-Process2",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "T53nQciSrZMSPfX-gt-7706476-2021-04-08T11:25:57.734Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "9jk3RvJUyQEjIrNZUEH10a",
+    "name" : "ix-Process1",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "sKKkhEuHWvJ4rsw-gt-12386546-2021-04-08T11:24:15.293Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "INVALID"
+      }
+    },
+    "path" : "/Explore/I0039 - test"
+  } ]
+}
