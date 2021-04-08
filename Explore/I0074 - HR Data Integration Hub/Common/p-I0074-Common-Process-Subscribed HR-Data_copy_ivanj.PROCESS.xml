@@ -4,7 +4,7 @@
       <types1:EntryId>QYeOm6S6fPAreFR-gt-12384087-2021-04-08T11:20:20.684Z::pd.xml</types1:EntryId>
       <types1:Name>p-I0074-Common-Process-Subscribed_HR-Data_copy_ivanj</types1:Name>
       <types1:MimeType>application/xml+process</types1:MimeType>
-      <types1:Description/>
+      <types1:Description>ivanj</types1:Description>
       <types1:AppliesTo/>
       <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
       <types1:VersionLabel>1.0</types1:VersionLabel>
@@ -13,7 +13,7 @@
       <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2021-04-08T11:20:21Z</types1:CreationDate>
       <types1:ModifiedBy>ivanj@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-04-08T11:20:45Z</types1:ModificationDate>
+      <types1:ModificationDate>2021-04-08T11:31:40Z</types1:ModificationDate>
       <types1:PublicationStatus>unpublished</types1:PublicationStatus>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -23,7 +23,7 @@
                   name="p-I0074-Common-Process-Subscribed_HR-Data_copy_ivanj"
                   overrideAPIName="false">
             <appliesTo/>
-            <description/>
+            <description>ivanj</description>
             <tags>.agent:TEST,.anonymous</tags>
             <generator>Informatica Process Designer 11</generator>
             <input>
@@ -1634,5 +1634,5 @@ return
       <types1:GUID>8Uwfz0qiLvWhoUlAT72J4T</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data_copy_ivanj</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-04-08T11:30:50.571Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-04-08T11:31:53.908Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
