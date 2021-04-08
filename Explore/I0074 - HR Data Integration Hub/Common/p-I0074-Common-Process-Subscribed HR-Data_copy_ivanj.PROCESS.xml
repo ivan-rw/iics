@@ -1,0 +1,1638 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>QYeOm6S6fPAreFR-gt-12384087-2021-04-08T11:20:20.684Z::pd.xml</types1:EntryId>
+      <types1:Name>p-I0074-Common-Process-Subscribed_HR-Data_copy_ivanj</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TEST,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ivanj@rwgroup.test</types1:CreatedBy>
+      <types1:CreationDate>2021-04-08T11:20:21Z</types1:CreationDate>
+      <types1:ModifiedBy>ivanj@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2021-04-08T11:20:45Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="p-I0074-Common-Process-Subscribed HR-Data_copy_ivanj"
+                  name="p-I0074-Common-Process-Subscribed_HR-Data_copy_ivanj"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags>.agent:TEST,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="The XML to be processed. Mandatory."
+                          name="in_WorkersXml"
+                          required="true"
+                          type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="What to return for deleted values. Default is blank, which will return back the deleted value."
+                          name="in_DeletionMarker"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="XQuery date format. Default [Y0001]-[M01]-[D01]"
+                          name="in_DateFormat"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Payroll country 2 character code (e.g. DK). Mandatory. Possible to pass multiple values e.g.  CA,US"
+                          name="in_PayrollCountry"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IncludeValueIfChangedAttribute"
+                          type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_Standard_WorkerDataXml" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TEST</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k8nw7ofa" targetId="k8nw7of9"/>
+               </start>
+               <subflow id="k8nw7of9">
+                  <title>p-Shared-GetCountryISOCodes</title>
+                  <subflowGUID>8ZdyX2cBBFddcYvI3nL0OQ</subflowGUID>
+                  <subflowPath>p-Shared-GetCountryISOCodes</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_GetCountryISOCodesResult" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:po-Shared-GetCountryISOCodesResponse</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">21sIc53YxHrlLM150l1O4z</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="k8nw7okd" targetId="k8nw7ofw"/>
+               </subflow>
+               <assignment id="k8nw7ofw">
+                  <title>Assignment to out_Standard_WorkerDataXml</title>
+                  <operation source="formula" to="output.out_Standard_WorkerDataXml">
+                     <expression language="XQuery">(:init - start copy from here:)
+let $includeValueIfChangedAttribute := if ($input.in_IncludeValueIfChangedAttribute = fn:true()) then 1 else 0 
+let $dateFormat := if (string-length($input.in_DateFormat) &gt; 0) then $input.in_DateFormat else '[Y0001]-[M01]-[D01]'
+let $deletionMarker := $input.in_DeletionMarker
+let $const_isAdded := 'isAdded'
+let $const_isUpdated := 'isUpdated'
+let $const_isDeleted := 'isDeleted'
+let $const_noChange := ''
+let $const_ValueBeforeDeleteText := 'beforeDelete'
+let $const_ValueBeforeUpdateText := 'priorValue'
+let $NationalIdType :=
+  for $c in fn:tokenize($input.in_PayrollCountry, ',')
+  return
+  switch($c)
+      case 'DK' return 'DNK-CPR'
+      case 'NL' return 'NLD-BSN'
+      case 'CA' return 'CAN-SIN'
+      case 'DE' return 'Social Insurance Number'
+      case 'US' return 'USA-SSN'
+      default return ()
+      
+let $SocialInsuranceNumberType :=
+  for $c in fn:tokenize($input.in_PayrollCountry, ',')
+  return
+  switch($c)
+      case 'DE' return 'DEU-SVNR'
+      default return ()
+      
+let $NationalTaxIdType :=
+  for $c in fn:tokenize($input.in_PayrollCountry, ',')
+  return
+  switch($c)
+      case 'DE' return 'DEU-SID'
+      default return ()      
+
+return 
+&lt;WorkerUpdates&gt;
+{
+for $w at $workerIndex in $input.in_WorkersXml//Worker
+for $x at $workerUpdateIndex in  $w//WorkerUpdate 
+
+
+(: try to swap PGI PGO here so that PGI will always come first :)
+let $replaceNode := 
+if ($x//EventCode/text() = 'PGI' and $input.in_WorkersXml//Worker[$workerIndex + 1]//EventCode/text() = 'PGO' and 
+  $input.in_WorkersXml//Worker[$workerIndex + 1]/WorkerId/text() = $x/../../WorkerId/text() ) then
+ $input.in_WorkersXml//Worker[$workerIndex + 1]/WorkerUpdates/WorkerUpdate
+else 
+  if ($x//EventCode/text() = 'PGO' and $workerIndex &gt; 0 and  $input.in_WorkersXml//Worker[$workerIndex - 1]//EventCode/text() = 'PGI' and 
+    $input.in_WorkersXml//Worker[$workerIndex - 1]/WorkerId/text() = $x/../../WorkerId/text() ) then
+   $input.in_WorkersXml//Worker[$workerIndex - 1]/WorkerUpdates/WorkerUpdate
+  else 
+  ()
+let $x := if (fn:not(fn:empty($replaceNode))) then $replaceNode else $x
+
+
+
+let $workerId := $x/../../WorkerId/text()
+
+(:WorkerStatus:)
+let $WorkerStatusNode := if (fn:empty($x//Worker_Status[not(@isDeleted='1')])) then $x//Worker_Status else $x//Worker_Status[not(@isDeleted='1')]
+let $WorkerStatusChangeStatus := if ($WorkerStatusNode[@isAdded='1']) then $const_isAdded else if ($WorkerStatusNode[@isUpdated='1']) then $const_isUpdated else if ($WorkerStatusNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+(:Personal:)
+let $PersonalNode := if (fn:empty($x//Personal[not(@isDeleted='1')])) then $x//Personal else $x//Personal[not(@isDeleted='1')]
+let $PersonalChangeStatus := if ($PersonalNode[@isAdded='1']) then $const_isAdded else if ($PersonalNode[@isUpdated='1']) then $const_isUpdated else if ($PersonalNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $LegalNameNode := if (fn:empty($PersonalNode//Legal_Name[not(@isDeleted='1')])) then $PersonalNode//Legal_Name else $PersonalNode//Legal_Name[not(@isDeleted='1')]
+let $LegalNameChangeStatus := if (not(empty($LegalNameNode)) and $PersonalChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonalChangeStatus else if ($LegalNameNode[@isAdded='1']) then $const_isAdded else if ($LegalNameNode[@isUpdated='1']) then $const_isUpdated else if ($LegalNameNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $LegalSuffixDataNode := if (fn:empty($LegalNameNode//Suffix_Data[not(@isDeleted='1')])) then $LegalNameNode//Suffix_Data else $LegalNameNode//Suffix_Data[not(@isDeleted='1')]
+let $LegalSuffixDataChangeStatus := if (not(empty($LegalSuffixDataNode)) and $LegalNameChangeStatus = ($const_isAdded, $const_isDeleted)) then $LegalNameChangeStatus else if ($LegalSuffixDataNode[@isAdded='1']) then $const_isAdded else if ($LegalSuffixDataNode[@isUpdated='1']) then $const_isUpdated else if ($LegalSuffixDataNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $LegalHereditaryNode := if (fn:empty($LegalSuffixDataNode//Hereditary_Suffix_Reference[not(@isDeleted='1')])) then $LegalSuffixDataNode//Hereditary_Suffix_Reference else $LegalSuffixDataNode//Hereditary_Suffix_Reference[not(@isDeleted='1')]
+let $LegalHereditaryChangeStatus := if (not(empty($LegalHereditaryNode)) and $LegalSuffixDataChangeStatus = ($const_isAdded, $const_isDeleted)) then $LegalSuffixDataChangeStatus else if ($LegalHereditaryNode[@isAdded='1']) then $const_isAdded else if ($LegalHereditaryNode[@isUpdated='1']) then $const_isUpdated else if ($LegalHereditaryNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $PreferredNameNode := if (fn:empty($PersonalNode//Preferred_Name[not(@isDeleted='1')])) then $PersonalNode//Preferred_Name else $PersonalNode//Preferred_Name[not(@isDeleted='1')]
+let $PreferredNameChangeStatus := if (not(empty($PreferredNameNode)) and $PersonalChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonalChangeStatus else if ($PreferredNameNode[@isAdded='1']) then $const_isAdded else if ($PreferredNameNode[@isUpdated='1']) then $const_isUpdated else if ($PreferredNameNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $CitizenshipNode := if (fn:empty($PersonalNode//Citizenship[not(@isDeleted='1')])) then $PersonalNode//Citizenship else $PersonalNode//Citizenship[not(@isDeleted='1')]
+let $CitizenshipChangeStatus := if (not(empty($CitizenshipNode)) and $PersonalChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonalChangeStatus else if ($CitizenshipNode[@isAdded='1']) then $const_isAdded else if ($CitizenshipNode[@isUpdated='1']) then $const_isUpdated else if ($CitizenshipNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $EthnicityNode := if (fn:empty($PersonalNode//Ethnicity[not(@isDeleted='1')])) then $PersonalNode//Ethnicity else $PersonalNode//Ethnicity[not(@isDeleted='1')]
+let $EthnicityChangeStatus := if (not(empty($EthnicityNode)) and $PersonalChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonalChangeStatus else if ($EthnicityNode[@isAdded='1']) then $const_isAdded else if ($EthnicityNode[@isUpdated='1']) then $const_isUpdated else if ($EthnicityNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $DisabilityStatusNode := if (fn:empty($PersonalNode//Disability_Status[not(@isDeleted='1')])) then $PersonalNode//Disability_Status else $PersonalNode//Disability_Status[not(@isDeleted='1')]
+let $DisabilityStatusChangeStatus := if (not(empty($DisabilityStatusNode)) and $PersonalChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonalChangeStatus else if ($DisabilityStatusNode[@isAdded='1']) then $const_isAdded else if ($DisabilityStatusNode[@isUpdated='1']) then $const_isUpdated else if ($DisabilityStatusNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+(:PersonCommunication:)
+let $PersonCommunicationNode := if (fn:empty($x//Person_Communication[not(@isDeleted='1')])) then $x//Person_Communication else $x//Person_Communication[not(@isDeleted='1')]
+let $PersonCommunicationChangeStatus := if ($PersonCommunicationNode[@isAdded='1']) then $const_isAdded else if ($PersonCommunicationNode[@isUpdated='1']) then $const_isUpdated else if ($PersonCommunicationNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+(: added logic for DE - in case new hire and address is missing, try to get from the next sequence :)
+let $PrimaryHomeAddressNode := 
+
+  if ($input.in_PayrollCountry = 'DE' and 
+      $x//EventCode/text() = 'HIR' and 
+      fn:empty($PersonCommunicationNode//Address[Usage_Type='HOME']) and 
+      $input.in_WorkersXml//Worker[$workerIndex + 1]/WorkerUpdates/WorkerUpdate[1]//EventCode/text() = 'DTA' and 
+      $input.in_WorkersXml//Worker[$workerIndex + 1]/WorkerId/text() = $x/../../WorkerId/text() 
+     ) then 
+    if (fn:empty($input.in_WorkersXml//Worker[$workerIndex+1]/WorkerUpdates/WorkerUpdate[1]//Person_Communication/Address[Usage_Type='HOME' and not(@isDeleted='1')])) then $input.in_WorkersXml//Worker[$workerIndex+1]/WorkerUpdates/WorkerUpdate[1]//Person_Communication/Address[Usage_Type='HOME'] else $input.in_WorkersXml//Worker[$workerIndex+1]/WorkerUpdates/WorkerUpdate[1]//Person_Communication/Address[Usage_Type='HOME' and not(@isDeleted='1')]     
+  else
+    if (fn:empty($PersonCommunicationNode//Address[Usage_Type='HOME' and not(@isDeleted='1')])) then $PersonCommunicationNode//Address[Usage_Type='HOME'] else $PersonCommunicationNode//Address[Usage_Type='HOME' and not(@isDeleted='1')]
+  
+
+let $PrimaryHomeAddressChangeStatus := if (not(empty($PrimaryHomeAddressNode)) and $PersonCommunicationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonCommunicationChangeStatus else if ($PrimaryHomeAddressNode[@isAdded='1']) then $const_isAdded else if ($PrimaryHomeAddressNode[@isUpdated='1']) then $const_isUpdated else if ($PrimaryHomeAddressNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+
+let $PrimaryHomePhoneNode := if (fn:empty($PersonCommunicationNode//Phone[Usage_Type='HOME' and not(@isDeleted='1')])) then $PersonCommunicationNode//Phone[Usage_Type='HOME'] else $PersonCommunicationNode//Phone[Usage_Type='HOME' and not(@isDeleted='1')]
+let $PrimaryHomePhoneChangeStatus := if (not(empty($PrimaryHomePhoneNode)) and $PersonCommunicationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonCommunicationChangeStatus else if ($PrimaryHomePhoneNode[@isAdded='1']) then $const_isAdded else if ($PrimaryHomePhoneNode[@isUpdated='1']) then $const_isUpdated else if ($PrimaryHomePhoneNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $PrimaryHomeEmailNode := if (fn:empty($PersonCommunicationNode//Email[Usage_Type='HOME' and not(@isDeleted='1')])) then $PersonCommunicationNode//Email[Usage_Type='HOME'] else $PersonCommunicationNode//Email[Usage_Type='HOME' and not(@isDeleted='1')]
+let $PrimaryHomeEmailChangeStatus := if (not(empty($PrimaryHomeEmailNode)) and $PersonCommunicationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonCommunicationChangeStatus else if ($PrimaryHomeEmailNode[@isAdded='1']) then $const_isAdded else if ($PrimaryHomeEmailNode[@isUpdated='1']) then $const_isUpdated else if ($PrimaryHomeEmailNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+let $PrimaryWorkPhoneNode := if (fn:empty($PersonCommunicationNode//Phone[Usage_Type='WORK' and not(@isDeleted='1')])) then $PersonCommunicationNode//Phone[Usage_Type='WORK'] else $PersonCommunicationNode//Phone[Usage_Type='WORK' and not(@isDeleted='1')]
+let $PrimaryWorkPhoneChangeStatus := if (not(empty($PrimaryWorkPhoneNode)) and $PersonCommunicationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonCommunicationChangeStatus else if ($PrimaryWorkPhoneNode[@isAdded='1']) then $const_isAdded else if ($PrimaryWorkPhoneNode[@isUpdated='1']) then $const_isUpdated else if ($PrimaryWorkPhoneNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+let $PrimaryWorkEmailNode := if (fn:empty($PersonCommunicationNode//Email[Usage_Type='WORK' and not(@isDeleted='1')])) then $PersonCommunicationNode//Email[Usage_Type='WORK'] else $PersonCommunicationNode//Email[Usage_Type='WORK' and not(@isDeleted='1')]
+let $PrimaryWorkEmailChangeStatus := if (not(empty($PrimaryWorkEmailNode)) and $PersonCommunicationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonCommunicationChangeStatus else if ($PrimaryWorkEmailNode[@isAdded='1']) then $const_isAdded else if ($PrimaryWorkEmailNode[@isUpdated='1']) then $const_isUpdated else if ($PrimaryWorkEmailNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+(:Person_Identification:)
+let $PersonIdentificationNode := if (fn:empty($x//Person_Identification[not(@isDeleted='1')])) then $x//Person_Identification else $x//Person_Identification[not(@isDeleted='1')]
+let $PersonIdentificationChangeStatus := if ($PersonIdentificationNode[@isAdded='1']) then $const_isAdded else if ($PersonIdentificationNode[@isUpdated='1']) then $const_isUpdated else if ($PersonIdentificationNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $NationalIdentifierNode := if (fn:empty($PersonIdentificationNode//National_Identifier[not(@isDeleted='1') and National_ID_Type=$NationalIdType])) then $PersonIdentificationNode//National_Identifier[National_ID_Type=$NationalIdType] else $PersonIdentificationNode//National_Identifier[not(@isDeleted='1') and National_ID_Type=$NationalIdType]
+let $NationalIdentifierChangeStatus := if (not(empty($NationalIdentifierNode)) and $PersonIdentificationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonIdentificationChangeStatus else if ($NationalIdentifierNode[@isAdded='1']) then $const_isAdded else if ($NationalIdentifierNode[@isUpdated='1']) then $const_isUpdated else if ($NationalIdentifierNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $PrevSystemIdNode := if (fn:empty($PersonIdentificationNode//Other_Identifier[Custom_ID_Type='Previous_System_ID' and not(@isDeleted='1')])) then $PersonIdentificationNode//Other_Identifier[Custom_ID_Type='Previous_System_ID'] else $PersonIdentificationNode//Other_Identifier[not(@isDeleted='1') and Custom_ID_Type='Previous_System_ID']
+let $PrevSystemIdChangeStatus := if (not(empty($PrevSystemIdNode)) and $PersonIdentificationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonIdentificationChangeStatus else if ($PrevSystemIdNode[@isAdded='1']) then $const_isAdded else if ($PrevSystemIdNode[@isUpdated='1']) then $const_isUpdated else if ($PrevSystemIdNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+let $UIDNumberNode := if (fn:empty($PersonIdentificationNode//Other_Identifier[Custom_ID_Type='UID Number' and not(@isDeleted='1')])) then $PersonIdentificationNode//Other_Identifier[Custom_ID_Type='UID Number'] else $PersonIdentificationNode//Other_Identifier[not(@isDeleted='1') and Custom_ID_Type='UID Number']
+let $UIDNumberChangeStatus := if (not(empty($UIDNumberNode)) and $PersonIdentificationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonIdentificationChangeStatus else if ($UIDNumberNode[@isAdded='1']) then $const_isAdded else if ($UIDNumberNode[@isUpdated='1']) then $const_isUpdated else if ($UIDNumberNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+let $SocialInsuranceNumberNode := if (fn:empty($PersonIdentificationNode//National_Identifier[not(@isDeleted='1') and National_ID_Type=$SocialInsuranceNumberType])) then $PersonIdentificationNode//National_Identifier[National_ID_Type=$SocialInsuranceNumberType] else $PersonIdentificationNode//National_Identifier[not(@isDeleted='1') and National_ID_Type=$SocialInsuranceNumberType]
+let $SocialInsuranceNumberChangeStatus := if (not(empty($SocialInsuranceNumberNode)) and $PersonIdentificationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonIdentificationChangeStatus else if ($SocialInsuranceNumberNode[@isAdded='1']) then $const_isAdded else if ($SocialInsuranceNumberNode[@isUpdated='1']) then $const_isUpdated else if ($SocialInsuranceNumberNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+let $NationalTaxIdNode := if (fn:empty($PersonIdentificationNode//National_Identifier[not(@isDeleted='1') and National_ID_Type=$NationalTaxIdType])) then $PersonIdentificationNode//National_Identifier[National_ID_Type=$NationalTaxIdType] else $PersonIdentificationNode//National_Identifier[not(@isDeleted='1') and National_ID_Type=$NationalTaxIdType]
+let $NationalTaxIdChangeStatus := if (not(empty($NationalTaxIdNode)) and $PersonIdentificationChangeStatus = ($const_isAdded, $const_isDeleted)) then $PersonIdentificationChangeStatus else if ($NationalTaxIdNode[@isAdded='1']) then $const_isAdded else if ($NationalTaxIdNode[@isUpdated='1']) then $const_isUpdated else if ($NationalTaxIdNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+(:Position:)
+let $PositionNode := 
+(:    $x//Position[not(@isDeleted='1') and empty(Position_End_Date) or (not(empty(Position_End_Date)) and (xs:date(substring($x//EffectiveDateCET, 1, 10)) &lt; xs:date(substring(Position_End_Date/text(), 1, 10))))]:)
+  $x//Position[not(@isDeleted='1') and empty(Position_End_Date)] 
+  
+let $EndedPositionNode := if (empty($PositionNode)) then () else  $x//Position[not(@isDeleted='1') and not(empty(Position_End_Date))] 
+  
+let $PositionNode := if (empty($PositionNode)) then $x//Position else $PositionNode  (: some events like TERM can have position ended but we still need this :)
+let $PositionChangeStatus := if ($PositionNode[@isAdded='1']) then $const_isAdded else if ($PositionNode[@isUpdated='1']) then $const_isUpdated else if ($PositionNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $EndedPositionChangeStatus := if ($EndedPositionNode[@isAdded='1']) then $const_isAdded else if ($EndedPositionNode[@isUpdated='1']) then $const_isUpdated else if ($EndedPositionNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+let $EndedPositionOrgCostCenterNode := 
+if (count($EndedPositionNode/Organization[Organization_Type='COST_CENTER']) &gt; 1) then
+(
+  let $NewEndedPositionCostCenter := $EndedPositionNode/Organization[Organization_Type='COST_CENTER' and not(@isDeleted='1')]
+  let $OldEndedPositionCostCenter := $EndedPositionNode/Organization[Organization_Type='COST_CENTER' and @isDeleted='1']
+  return 
+    element {'Organization'} 
+    {
+      attribute {'isUpdated'} {'1'},
+      element {'Organization_ID'}{
+        if ($OldEndedPositionCostCenter/Organization_ID/text() != $NewEndedPositionCostCenter/Organization_ID/text()) then
+        attribute {'priorValue'}{$OldEndedPositionCostCenter/Organization_ID/text() } else (), 
+        $NewEndedPositionCostCenter/Organization_ID/text()},
+      element {'Organization_Type'}{
+        if ($OldEndedPositionCostCenter/Organization_Type/text() != $NewEndedPositionCostCenter/Organization_Type/text()) then
+        attribute {'priorValue'}{$OldEndedPositionCostCenter/Organization_Type/text()} else (), 
+        $NewEndedPositionCostCenter/Organization_Type/text()},
+      element {'Organization_Code'}{
+        if ($OldEndedPositionCostCenter/Organization_Code/text() != $NewEndedPositionCostCenter/Organization_Code/text()) then
+        attribute {'priorValue'}{$OldEndedPositionCostCenter/Organization_Code/text()} else (), 
+        $NewEndedPositionCostCenter/Organization_Code/text()},
+      element {'Organization_Name'}{
+        if ($OldEndedPositionCostCenter/Organization_Name/text() != $NewEndedPositionCostCenter/Organization_Name/text()) then
+        attribute {'priorValue'}{$OldEndedPositionCostCenter/Organization_Name/text()} else (), 
+        $NewEndedPositionCostCenter/Organization_Code/text()},
+      element {'Mapped_Value'}{
+        if ($OldEndedPositionCostCenter/Mapped_Value/text() != $NewEndedPositionCostCenter/Mapped_Value/text()) then
+        attribute {'priorValue'}{$OldEndedPositionCostCenter/Mapped_Value/text()} else (), 
+        $NewEndedPositionCostCenter/Mapped_Value/text()}
+  }
+)
+else
+(
+  if (fn:empty($EndedPositionNode/Organization[not(@isDeleted='1') and Organization_Type='COST_CENTER'])) then $EndedPositionNode/Organization[Organization_Type='COST_CENTER'] else $EndedPositionNode/Organization[not(@isDeleted='1') and Organization_Type='COST_CENTER']
+)
+let $EndedPositionOrgCostCenterChangeStatus := if (not(empty($EndedPositionOrgCostCenterNode)) and $EndedPositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $EndedPositionChangeStatus else if ($EndedPositionOrgCostCenterNode[@isAdded='1']) then $const_isAdded else if ($EndedPositionOrgCostCenterNode[@isUpdated='1']) then $const_isUpdated else if ($EndedPositionOrgCostCenterNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+let $OrgCompanyNode := if (fn:empty($PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COMPANY'])) then $PositionNode/Organization[Organization_Type='COMPANY'] else $PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COMPANY']
+let $OrgCompanyChangeStatus := if (not(empty($OrgCompanyNode)) and $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($OrgCompanyNode[@isAdded='1']) then $const_isAdded else if ($OrgCompanyNode[@isUpdated='1']) then $const_isUpdated else if ($OrgCompanyNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $OrgPaygroupNode := if (fn:empty($PositionNode/Organization[not(@isDeleted='1') and Organization_Type='PAY_GROUP'])) then $PositionNode/Organization[Organization_Type='PAY_GROUP'] else $PositionNode/Organization[not(@isDeleted='1') and Organization_Type='PAY_GROUP']
+let $OrgPaygroupChangeStatus := if (not(empty($OrgPaygroupNode)) and $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($OrgPaygroupNode[@isAdded='1']) then $const_isAdded else if ($OrgPaygroupNode[@isUpdated='1']) then $const_isUpdated else if ($OrgPaygroupNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+let $OrgCostCenterNode := 
+if (count($PositionNode/Organization[Organization_Type='COST_CENTER']) &gt; 1) then
+(
+  let $NewCostCenter := $PositionNode/Organization[Organization_Type='COST_CENTER' and not(@isDeleted='1')]
+  let $OldCostCenter := $PositionNode/Organization[Organization_Type='COST_CENTER' and @isDeleted='1']
+  return 
+    element {'Organization'} 
+    {
+      attribute {'isUpdated'} {'1'},
+      element {'Organization_ID'}{
+        if ($OldCostCenter/Organization_ID/text() != $NewCostCenter/Organization_ID/text()) then
+        attribute {'priorValue'}{$OldCostCenter/Organization_ID/text() } else (), 
+        $NewCostCenter/Organization_ID/text()},
+      element {'Organization_Type'}{
+        if ($OldCostCenter/Organization_Type/text() != $NewCostCenter/Organization_Type/text()) then
+        attribute {'priorValue'}{$OldCostCenter/Organization_Type/text()} else (), 
+        $NewCostCenter/Organization_Type/text()},
+      element {'Organization_Code'}{
+        if ($OldCostCenter/Organization_Code/text() != $NewCostCenter/Organization_Code/text()) then
+        attribute {'priorValue'}{$OldCostCenter/Organization_Code/text()} else (), 
+        $NewCostCenter/Organization_Code/text()},
+      element {'Organization_Name'}{
+        if ($OldCostCenter/Organization_Name/text() != $NewCostCenter/Organization_Name/text()) then
+        attribute {'priorValue'}{$OldCostCenter/Organization_Name/text()} else (), 
+        $NewCostCenter/Organization_Code/text()},
+      element {'Mapped_Value'}{
+        if ($OldCostCenter/Mapped_Value/text() != $NewCostCenter/Mapped_Value/text()) then
+        attribute {'priorValue'}{$OldCostCenter/Mapped_Value/text()} else (), 
+        $NewCostCenter/Mapped_Value/text()}
+  }
+)
+else
+(
+  if (fn:empty($PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COST_CENTER'])) then $PositionNode/Organization[Organization_Type='COST_CENTER'] else $PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COST_CENTER']
+)
+let $OrgCostCenterChangeStatus := if (not(empty($OrgCostCenterNode)) and $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($OrgCostCenterNode[@isAdded='1']) then $const_isAdded else if ($OrgCostCenterNode[@isUpdated='1']) then $const_isUpdated else if ($OrgCostCenterNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $OrgCostCenterTypeNode := if (fn:empty($PositionNode/Organization[not(@isDeleted='1') and Organization_ID = ('Indirect_Cost_Centers', 'Direct_Cost_Centers') and Organization_Type='COST_CENTER_HIERARCHY'])) then $PositionNode/Organization[Organization_Type='COST_CENTER_HIERARCHY' and Organization_ID = ('Indirect_Cost_Centers', 'Direct_Cost_Centers')] else $PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COST_CENTER_HIERARCHY' and Organization_ID = ('Indirect_Cost_Centers', 'Direct_Cost_Centers')]
+let $OrgCostCenterTypeChangeStatus := if (not(empty($OrgCostCenterTypeNode)) and $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($OrgCostCenterTypeNode[@isAdded='1']) then $const_isAdded else if ($OrgCostCenterTypeNode[@isUpdated='1']) then $const_isUpdated else if ($OrgCostCenterTypeNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $OrgSupervisoryNode := if (fn:empty($PositionNode/Organization[not(@isDeleted='1') and Organization_Type='SUPERVISORY'])) then $PositionNode/Organization[Organization_Type='SUPERVISORY'] else $PositionNode/Organization[not(@isDeleted='1') and Organization_Type='SUPERVISORY']
+let $OrgSupervisoryChangeStatus := if (not(empty($OrgSupervisoryNode)) and $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($OrgSupervisoryNode[@isAdded='1']) then $const_isAdded else if ($OrgSupervisoryNode[@isUpdated='1']) then $const_isUpdated else if ($OrgSupervisoryNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $OrgCostCenterHierarchyNode := if (fn:empty($PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COST_CENTER_HIERARCHY' and Organization_ID!='Direct_Cost_Centers' and Organization_ID!='Indirect_Cost_Centers'])) then $PositionNode/Organization[Organization_Type='COST_CENTER_HIERARCHY' and Organization_ID!='Direct_Cost_Centers' and Organization_ID!='Indirect_Cost_Centers'] else $PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COST_CENTER_HIERARCHY' and Organization_ID!='Direct_Cost_Centers' and Organization_ID!='Indirect_Cost_Centers']
+let $OrgCostCenterHierarchyChangeStatus := if (not(empty($OrgCostCenterHierarchyNode)) and $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($OrgCostCenterHierarchyNode[@isAdded='1']) then $const_isAdded else if ($OrgCostCenterHierarchyNode[@isUpdated='1']) then $const_isUpdated else if ($OrgCostCenterHierarchyNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+let $AssignedRoleSupervisoryNode := if (fn:empty($PositionNode//Assigned_Role[not(@isDeleted='1') and Organization/Organization_Type='SUPERVISORY'])) then $PositionNode//Assigned_Role[Organization/Organization_Type='SUPERVISORY'] else $PositionNode//Assigned_Role[not(@isDeleted='1') and Organization/Organization_Type='SUPERVISORY'][1]
+let $AssignedRoleSupervisoryChangeStatus := if (not(empty($AssignedRoleSupervisoryNode)) and $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($AssignedRoleSupervisoryNode[@isAdded='1']) then $const_isAdded else if ($AssignedRoleSupervisoryNode[@isUpdated='1']) then $const_isUpdated else if ($AssignedRoleSupervisoryNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+let $BusinessSiteNode := if (fn:empty($PositionNode//Business_Site[not(@isDeleted='1')])) then $PositionNode//Business_Site else $PositionNode//Business_Site[not(@isDeleted='1')]
+let $BusinessSiteChangeStatus := if (fn:empty($BusinessSiteNode) and  $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($BusinessSiteNode[@isAdded='1']) then $const_isAdded else if ($BusinessSiteNode[@isUpdated='1']) then $const_isUpdated else if ($BusinessSiteNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $isPositionEnded := if (not(empty($PositionNode/Position_End_Date)) and (xs:date(substring($x//EffectiveDateCET, 1, 10)) &gt;= xs:date(substring($PositionNode/Position_End_Date/text(), 1, 10)))) then '1' else '0'
+
+(:AdditionalInformation:)
+let $AdditionalInformationNode := if (fn:empty($x//Additional_Information[not(@isDeleted='1')])) then $x//Additional_Information else $x//Additional_Information[not(@isDeleted='1')]
+let $AdditionalInformationChangeStatus := if ($AdditionalInformationNode[@isAdded='1']) then $const_isAdded else if ($AdditionalInformationNode[@isUpdated='1']) then $const_isUpdated else if ($AdditionalInformationNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $SupervisorChangeStatus := if ($AdditionalInformationChangeStatus = ($const_isAdded, $const_isDeleted)) then $AdditionalInformationChangeStatus else if ($AdditionalInformationNode/Manager_Employee_ID[@isAdded='1']) then $const_isAdded else if ($AdditionalInformationNode/Manager_Employee_ID[@priorValue]) then $const_isUpdated else if ($AdditionalInformationNode/Manager_Employee_ID[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+(:Compensation_Plans:)
+let $CompensationPlansNode := if (fn:empty($x//Compensation_Plans[not(@isDeleted='1') and (empty(Position_End_Date) or Position_End_Date/@isDeleted='1')])) then $x//Compensation_Plans else $x//Compensation_Plans[not(@isDeleted='1') and (empty(Position_End_Date) or Position_End_Date/@isDeleted='1')]
+let $CompensationPlansNode := if (empty($CompensationPlansNode)) then $x//Compensation_Plans else $CompensationPlansNode
+let $CompensationPlansChangeStatus := if ($CompensationPlansNode[@isAdded='1']) then $const_isAdded else if ($CompensationPlansNode[@isUpdated='1']) then $const_isUpdated else if ($CompensationPlansNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+(: Salary_and_Hourly_Plan :)
+let $SalaryNode := 
+if (count($CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1')]) &gt; 1) then
+(
+  let $NewSalary := $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1') and fn:string-length(End_Date) = 0]
+  (:let $OldSalary := $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1') and fn:string-length(End_Date) &gt; 0]:)
+  let $OldSalary := (for $n in $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1') and fn:string-length(End_Date) &gt; 0] order by $n/End_Date descending return $n)[1]
+ 
+  return 
+    element {'Salary_and_Hourly_Plan'} 
+    {
+      attribute {'isUpdated'} {'1'},
+      element {'Compensation_Plan'}{
+        if ($OldSalary/Compensation_Plan/text() != $NewSalary/Compensation_Plan/text()) then
+        attribute {'priorValue'}{$OldSalary/Compensation_Plan/text() } else (), 
+        $NewSalary/Compensation_Plan/text()},
+      element {'Amount'}{
+        if ($OldSalary/Amount/text() != $NewSalary/Amount/text()) then
+        attribute {'priorValue'}{$OldSalary/Amount/text()} else (), 
+        $NewSalary/Amount/text()},
+      element {'Prorated_Amount'}{
+        if ($OldSalary/Prorated_Amount/text() != $NewSalary/Prorated_Amount/text()) then
+        attribute {'priorValue'}{$OldSalary/Prorated_Amount/text()} else (), 
+        $NewSalary/Prorated_Amount/text()},
+      element {'Apply_FTE'}{
+        if ($OldSalary/Apply_FTE/text() != $NewSalary/Apply_FTE/text()) then
+        attribute {'priorValue'}{$OldSalary/Apply_FTE/text()} else (), 
+        $NewSalary/Apply_FTE/text()},
+      element {'Currency'}{
+        if ($OldSalary/Currency/text() != $NewSalary/Currency/text()) then
+        attribute {'priorValue'}{$OldSalary/Currency/text()} else (), 
+        $NewSalary/Currency/text()},
+      element {'Frequency'}{
+        if ($OldSalary/Frequency/text() != $NewSalary/Frequency/text()) then
+        attribute {'priorValue'}{$OldSalary/Frequency/text()} else (), 
+        $NewSalary/Frequency/text()},
+      element {'Start_Date'}{
+        if ($OldSalary/Start_Date/text() != $NewSalary/Start_Date/text()) then
+        attribute {'priorValue'}{$OldSalary/Start_Date/text()} else (), 
+        $NewSalary/Start_Date/text()},
+      element {'End_Date'}{attribute {'priorValue'}{$OldSalary/End_Date/text()}, $NewSalary/End_Date/text()}
+  }
+)
+else
+(
+  (: THIS PART HERE NEEDS TO CHECK IF ADDED SALARY = DELETED SALARY like allowance  :)
+  if (fn:empty($CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1')])) then $CompensationPlansNode//Salary_and_Hourly_Plan else $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1')]
+)
+let $SalaryChangeStatus := if (not(empty($SalaryNode)) and $CompensationPlansChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationPlansChangeStatus else if ($SalaryNode[@isAdded='1']) then 
+(
+  if ($SalaryNode = $CompensationPlansNode//Salary_and_Hourly_Plan[@isDeleted='1']) then () else $const_isAdded
+)
+ else if ($SalaryNode[@isUpdated='1']) then $const_isUpdated else if ($SalaryNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+(: Period_Salary_Plan :)
+let $PeriodSalaryNode := 
+if (count($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' ]) &gt; 1) then
+(
+  let $NewPeriodSalary := $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' and empty(End_Date)][1] (: this is based on observation that latest plan will always be on top :)
+  let $OldPeriodSalary := 
+    if (empty($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' and not(empty(End_Date))])) then $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1'][last()] else $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' and not(empty(End_Date))]
+  return 
+    if ( xs:date($NewPeriodSalary/Start_Date) &lt;  xs:date($OldPeriodSalary/End_Date) ) then
+      $NewPeriodSalary
+    else
+      element {'Period_Salary_Plan'} 
+      {
+        attribute {'isUpdated'} {'1'},
+        element {'Compensation_Plan'}{
+          if ($OldPeriodSalary/Compensation_Plan/text() != $NewPeriodSalary/Compensation_Plan/text()) then
+          attribute {'priorValue'}{$OldPeriodSalary/Compensation_Plan/text() } else (), 
+          $NewPeriodSalary/Compensation_Plan/text()},
+        element {'Amount'}{
+          if ($OldPeriodSalary/Amount/text() != $NewPeriodSalary/Amount/text()) then
+          attribute {'priorValue'}{$OldPeriodSalary/Amount/text()} else (), 
+          $NewPeriodSalary/Amount/text()},
+        element {'Prorated_Amount'}{
+          if ($OldPeriodSalary/Period_Multiplier/text() != $NewPeriodSalary/Period_Multiplier/text()) then
+          attribute {'priorValue'}{$OldPeriodSalary/Period_Multiplier/text()} else (), 
+          $NewPeriodSalary/Period_Multiplier/text()},
+        element {'Currency'}{
+          if ($OldPeriodSalary/Currency/text() != $NewPeriodSalary/Currency/text()) then
+          attribute {'priorValue'}{$OldPeriodSalary/Currency/text()} else (), 
+          $NewPeriodSalary/Currency/text()},
+        element {'Frequency'}{
+          if ($OldPeriodSalary/Frequency/text() != $NewPeriodSalary/Frequency/text()) then
+          attribute {'priorValue'}{$OldPeriodSalary/Frequency/text()} else (), 
+          $NewPeriodSalary/Frequency/text()},
+        element {'Start_Date'}{
+          if ($OldPeriodSalary/Start_Date/text() != $NewPeriodSalary/Start_Date/text()) then
+          attribute {'priorValue'}{$OldPeriodSalary/Start_Date/text()} else (), 
+          $NewPeriodSalary/Start_Date/text()},
+          
+        element {'End_Date'}{
+          if ($OldPeriodSalary/End_Date/text() != $NewPeriodSalary/End_Date/text()) then
+          attribute {'priorValue'}{$OldPeriodSalary/End_Date/text()} else (), 
+          $NewPeriodSalary/End_Date/text()}
+      }
+)
+else
+(
+  if (fn:empty($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1'])) then $CompensationPlansNode//Period_Salary_Plan else $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1']
+)
+let $PeriodSalaryChangeStatus := if (not(empty($PeriodSalaryNode)) and $CompensationPlansChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationPlansChangeStatus else if ($PeriodSalaryNode[@isAdded='1']) then 
+(
+  if ($PeriodSalaryNode = $CompensationPlansNode//Period_Salary_Plan[@isDeleted='1']) then () else $const_isAdded
+)
+ else if ($PeriodSalaryNode[@isUpdated='1']) then $const_isUpdated else if ($PeriodSalaryNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+ 
+
+ 
+ (: Compensation_One_Time_Payment :)
+let $OneTimePaymentNode := 
+if (count($x//Compensation_One_Time_Payment[not(@isDeleted='1')]) &gt; 1) then
+(
+  let $NewOneTimePayment := $x//Compensation_One_Time_Payment[not(@isDeleted='1') and empty(End_Date)]
+  let $OldOneTimePayment := $x//Compensation_One_Time_Payment[not(@isDeleted='1') and not(empty(End_Date))]
+  return 
+    element {'Compensation_One_Time_Payment'} 
+    {
+      attribute {'isUpdated'} {'1'},
+      element {'External_Payroll_Code_Name'}{
+        if ($OldOneTimePayment/External_Payroll_Code_Name/text() != $NewOneTimePayment/External_Payroll_Code_Name/text()) then
+        attribute {'priorValue'}{$OldOneTimePayment/External_Payroll_Code_Name/text() } else (), 
+        $NewOneTimePayment/External_Payroll_Code_Name/text()},
+      element {'External_Payroll_Code'}{
+        if ($OldOneTimePayment/External_Payroll_Code/text() != $NewOneTimePayment/External_Payroll_Code/text()) then
+        attribute {'priorValue'}{$OldOneTimePayment/External_Payroll_Code/text() } else (), 
+        $NewOneTimePayment/External_Payroll_Code/text()},
+      element {'Earning_or_Deduction'}{
+        if ($OldOneTimePayment/Earning_or_Deduction/text() != $NewOneTimePayment/Earning_or_Deduction/text()) then
+        attribute {'priorValue'}{$OldOneTimePayment/Earning_or_Deduction/text()} else (), 
+        $NewOneTimePayment/Earning_or_Deduction/text()},        
+      element {'Amount'}{
+        if ($OldOneTimePayment/Amount/text() != $NewOneTimePayment/Amount/text()) then
+        attribute {'priorValue'}{$OldOneTimePayment/Amount/text()} else (), 
+        $NewOneTimePayment/Amount/text()},
+      element {'Currency'}{
+        if ($OldOneTimePayment/Currency/text() != $NewOneTimePayment/Currency/text()) then
+        attribute {'priorValue'}{$OldOneTimePayment/Currency/text()} else (), 
+        $NewOneTimePayment/Currency/text()},
+      element {'Reason'}{
+        if ($OldOneTimePayment/Reason/text() != $NewOneTimePayment/Reason/text()) then
+        attribute {'priorValue'}{$OldOneTimePayment/Reason/text()} else (), 
+        $NewOneTimePayment/Reason/text()}
+  }
+)
+else
+(
+  if (fn:empty($x//Compensation_One_Time_Payment[not(@isDeleted='1')])) then $x//Compensation_One_Time_Payment else $x//Compensation_One_Time_Payment[not(@isDeleted='1')]
+)
+let $OneTimePaymentChangeStatus := if (not(empty($OneTimePaymentNode)) and $CompensationPlansChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationPlansChangeStatus else if ($OneTimePaymentNode[@isAdded='1']) then 
+(
+  if ($OneTimePaymentNode = $CompensationPlansNode//Compensation_One_Time_Payment[@isDeleted='1']) then () else $const_isAdded
+)
+ else if ($OneTimePaymentNode[@isUpdated='1']) then $const_isUpdated else if ($OneTimePaymentNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+(:Compensation:)
+let $CompensationNode := $x//Compensation[not(@isDeleted='1') and empty(Position_End_Date)] 
+let $EndedCompensationNode := if (empty($CompensationNode)) then () else  $x//Compensation[not(@isDeleted='1') and not(empty(Position_End_Date))] 
+let $CompensationNode := if (empty($CompensationNode)) then $x//Compensation else $CompensationNode  
+
+
+let $CompensationChangeStatus := if ($CompensationNode[@isAdded='1']) then $const_isAdded else if ($CompensationNode[@isUpdated='1']) then $const_isUpdated else if ($CompensationNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $EndedCompensationChangeStatus := if ($EndedCompensationNode[@isAdded='1']) then $const_isAdded else if ($EndedCompensationNode[@isUpdated='1']) then $const_isUpdated else if ($EndedCompensationNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $CompensationSummaryBasedonCompensationGradeNode := if (fn:empty($CompensationNode//Compensation_Summary_Based_on_Compensation_Grade[not(@isDeleted='1')])) then $CompensationNode//Compensation_Summary_Based_on_Compensation_Grade else $CompensationNode//Compensation_Summary_Based_on_Compensation_Grade[not(@isDeleted='1')]
+let $CompensationSummaryBasedonCompensationGradeChangeStatus := if (not(empty($CompensationSummaryBasedonCompensationGradeNode)) and $CompensationChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationChangeStatus else if ($CompensationSummaryBasedonCompensationGradeNode[@isAdded='1']) then $const_isAdded else if ($CompensationSummaryBasedonCompensationGradeNode[@isUpdated='1']) then $const_isUpdated else if ($CompensationSummaryBasedonCompensationGradeNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+(:Compensation_One_Time_Payment, Time_Off_Earnings_and_Deductions, :)
+let $Corresponding_PGIPGO_WorkerNode := $input.in_WorkersXml//Worker[WorkerId=$workerId and
+         WorkerUpdates/WorkerUpdate/EffectiveDateCET = $x//EffectiveDateCET and
+         (:WorkerUpdates/WorkerUpdate/EffectiveTimeCET = $x//EffectiveTimeCET and:)
+         WorkerUpdates/WorkerUpdate/EventCode/text() =  (if ($x//EventCode/text() = 'PGI') then 'PGO' else 'PGI')]
+
+let $Corresponding_PGIPGO_WorkerNode := $input.in_WorkersXml//Worker/WorkerUpdates/WorkerUpdate[../../WorkerId=$workerId and
+         EffectiveDateCET = $x//EffectiveDateCET and
+         (:WorkerUpdates/WorkerUpdate/EffectiveTimeCET = $x//EffectiveTimeCET and:)
+         EventCode/text() =  (if ($x//EventCode/text() = 'PGI') then 'PGO' else 'PGI')]
+         
+let $FullEventCodes := string-join($input.in_WorkersXml//Worker/WorkerUpdates/WorkerUpdate[../../WorkerId=$workerId]/EventCode/text(), '_')
+         
+
+let $fields :=
+&lt;fields&gt;
+  (: Personal :)
+  &lt;field&gt;&lt;name&gt;UserName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/Workday_Account}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;LegalFirstName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$LegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$LegalNameNode/First_Name}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;LegalMiddleName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$LegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$LegalNameNode/Middle_Name}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;LegalLastName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$LegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$LegalNameNode/Last_Name}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;LegalHereditary&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$LegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$LegalNameNode/Hereditary}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;LegalSecondaryLastName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$LegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$LegalNameNode/Secondary_Last_Name}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;LegalDisplayName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$LegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$LegalNameNode/General_Display_Name}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;LegalTitle&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$LegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$LegalNameNode/Title}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;LegalSuffix&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$LegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$LegalNameNode/Social_Suffix}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;LegalHereditarySuffix&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$LegalSuffixDataChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$LegalHereditaryNode/ID[type='Predefined_Name_Component_ID']}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PreferredFirstName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PreferredNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PreferredNameNode/First_Name}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PreferredMiddleName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PreferredNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PreferredNameNode/Middle_Name}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PreferredLastName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PreferredNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PreferredNameNode/Last_Name}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PreferredSecondaryLastName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PreferredNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PreferredNameNode/Secondary_Last_Name}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;PreferredDisplayName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PreferredNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PreferredNameNode/General_Display_Name}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;Gender&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/Gender}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;DateOfBirth&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/Date_of_Birth}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;CountryOfBirth&lt;/name&gt;&lt;type&gt;country&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/Country_of_Birth}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;CityOfBirth&lt;/name&gt;&lt;type&gt;country&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/City_of_Birth}&lt;/source&gt;&lt;/field&gt;    
+  &lt;field&gt;&lt;name&gt;Nationality&lt;/name&gt;&lt;type&gt;country&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/Nationality}&lt;/source&gt;&lt;/field&gt;
+&lt;field&gt;&lt;name&gt;CitizenshipStatusId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$CitizenshipChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CitizenshipNode/Citizenship_Status_ID}&lt;/source&gt;&lt;/field&gt;
+&lt;field&gt;&lt;name&gt;MaritalStatus&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/Marital_Status}&lt;/source&gt;&lt;/field&gt;
+&lt;field&gt;&lt;name&gt;MaritalStatusDate&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/Marital_Status_Date}&lt;/source&gt;&lt;/field&gt;  
+&lt;field&gt;&lt;name&gt;EthnicityId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$EthnicityChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EthnicityNode/Ethnicity_ID}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;PreferredLanguage&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/Preferred_Language}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;Disability&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$DisabilityStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$DisabilityStatusNode/Disability}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;DisabilityGrade&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$DisabilityStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$DisabilityStatusNode/Grade }&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;DisabilityStatusDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$DisabilityStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$DisabilityStatusNode/Disability_Status_Date }&lt;/source&gt;&lt;/field&gt;
+   &lt;field&gt;&lt;name&gt;DisabilityCertificationID&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$DisabilityStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$DisabilityStatusNode/Certification_ID }&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;DisabilityCertifiedAt&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$DisabilityStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$DisabilityStatusNode/Certified_At }&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;DisabilityCertificationAuthority&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$DisabilityStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$DisabilityStatusNode/Certification_Authority }&lt;/source&gt;&lt;/field&gt; 
+  &lt;field&gt;&lt;name&gt;DisabilityDateKnown&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$DisabilityStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$DisabilityStatusNode/Date_Known }&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;DisabilityEndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$DisabilityStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$DisabilityStatusNode/End_Date }&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;DisabilityFTETowardsQuota&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$DisabilityStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$DisabilityStatusNode/FTE_Towards_Quota }&lt;/source&gt;&lt;/field&gt; 
+  &lt;field&gt;&lt;name&gt;DisabilityRemainingCapacity&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$DisabilityStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$DisabilityStatusNode/Remaining_Capacity }&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;EligibleForOvertime&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/Contractual_Terms_-_Eligible_for_Overtime }&lt;/source&gt;&lt;/field&gt; 
+    
+  {
+  if ($input.in_PayrollCountry = 'DE') then
+  (
+    &lt;field&gt;&lt;name&gt;DEPensionType1&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/DE_Pension_Type_1}&lt;/source&gt;&lt;/field&gt;,
+    &lt;field&gt;&lt;name&gt;DEPensionType2&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/DE_Pension_Type_2}&lt;/source&gt;&lt;/field&gt;,
+    &lt;field&gt;&lt;name&gt;DEAgreementTemplate&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Personal&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonalChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonalNode/DE_Agreement_Template}&lt;/source&gt;&lt;/field&gt;
+  )
+  else ()
+  }
+    
+  
+(:$input.in_PayrollCountry  :)
+  
+  (: WorkerStatus :)
+  &lt;field&gt;&lt;name&gt;Status&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Status}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;Active&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Active}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;ActiveStatusDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Active_Status_Date}&lt;/source&gt;&lt;/field&gt;    
+  &lt;field&gt;&lt;name&gt;HireDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Hire_Date}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;OriginalHireDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Original_Hire_Date}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;TerminationDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Termination_Date}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;TerminationNotificationDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Termination_Notification_Date}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;TerminationLastDayOfWork&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Termination_Last_Day_of_Work}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;LastDayOfWork&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Last_Day_of_Work}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PrimaryTerminationReason&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Primary_Termination_Reason}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PrimaryTerminationCategory&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Primary_Termination_Category}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;LocalTerminationReason&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Local_Termination_Reason}&lt;/source&gt;&lt;/field&gt;
+          
+  &lt;field&gt;&lt;name&gt;SeniorityDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Seniority_Date}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;ContinuousServiceDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Continuous_Service_Date}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;RetirementEligibilityDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Retirement_Eligibility_Date}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;BenefitsServiceDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Benefits_Service_Date}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PayGroup&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;WorkerStatus&lt;/group&gt;&lt;parentChangeStatus&gt;{$WorkerStatusChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$WorkerStatusNode/Pay_Group}&lt;/source&gt;&lt;/field&gt;
+  
+  (: PersonCommunication:)
+  &lt;field&gt;&lt;name&gt;HomeAddressLine1&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/Address_Line_1}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomeAddressLine2&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/Address_Line_2}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomeAddressLine3&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/Address_Line_3}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomeAddressLine4&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/Address_Line_4}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;HomeAddressCity&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/City}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomeAddressPostalCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/Postal_Code}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomeAddressStateProvince&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/State_Province}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomeAddressRegion&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/Country_Region}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;HomeAddressRegionISO&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/Country_Region_ISO}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomeAddressRegionSubdivision1&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/Region_Subdivision_1}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;HomeAddressCountry&lt;/name&gt;&lt;type&gt;country&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeAddressNode/Country}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomeEmail&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomeEmailChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomeEmailNode/Email_Address}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomePhoneFormatted&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomePhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomePhoneNode/Formatted_Phone_Number}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomePhoneType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomePhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomePhoneNode/Phone_Device_Type}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomePhoneInternationalCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomePhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomePhoneNode/International_Phone_Code}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;HomePhoneNumber&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryHomePhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryHomePhoneNode/Phone_Number}&lt;/source&gt;&lt;/field&gt;
+  
+  &lt;field&gt;&lt;name&gt;WorkEmail&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryWorkEmailChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryWorkEmailNode/Email_Address}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;WorkPhoneFormatted&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryWorkPhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryWorkPhoneNode/Formatted_Phone_Number}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;WorkPhoneType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryWorkPhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryWorkPhoneNode/Phone_Device_Type}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;WorkPhoneInternationalCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryWorkPhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryWorkPhoneNode/International_Phone_Code}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;WorkPhoneNumber&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrimaryWorkPhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrimaryWorkPhoneNode/Phone_Number}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;WorkAddressIsHomeAddress&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonCommunication&lt;/group&gt;&lt;parentChangeStatus&gt;{$PersonCommunicationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PersonCommunicationNode/Work_Address_is_Home_Address}&lt;/source&gt;&lt;/field&gt;    
+  
+  (: PersonIdentification :)
+  &lt;field&gt;&lt;name&gt;NationalId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$NationalIdentifierChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$NationalIdentifierNode/National_ID}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;NationalIdExpirationDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$NationalIdentifierChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$NationalIdentifierNode/Expiration_Date}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;SocialInsuranceNumber&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$SocialInsuranceNumberChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SocialInsuranceNumberNode/National_ID}&lt;/source&gt;&lt;/field&gt; 
+  &lt;field&gt;&lt;name&gt;NationalTaxId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$NationalTaxIdChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$NationalTaxIdNode/National_ID}&lt;/source&gt;&lt;/field&gt;     
+  &lt;field&gt;&lt;name&gt;PreviousSystemId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$PrevSystemIdChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PrevSystemIdNode/Custom_ID}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;UIDNumber&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PersonIdentification&lt;/group&gt;&lt;parentChangeStatus&gt;{$UIDNumberChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$UIDNumberNode/Custom_ID}&lt;/source&gt;&lt;/field&gt;
+ 
+ 
+  (:Position:)
+  &lt;field&gt;&lt;name&gt;PositionId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Position_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Position_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;JobChangeReason&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Job_Change_Reason}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Job_Change_Reason[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;BusinessTitle&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Business_Title}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Business_Title[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;WorkerType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Worker_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Worker_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PositionTimeType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Position_Time_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Position_Time_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;FullTimeEquivalentPercentage&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Full_Time_Equivalent_Percentage}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Full_Time_Equivalent_Percentage[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;ScheduledWeeklyHours&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Scheduled_Weekly_Hours}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Scheduled_Weekly_Hours[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;DefaultWeeklyHours&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Default_Weekly_Hours}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Default_Weekly_Hours[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PayRateType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Pay_Rate_Type}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Pay_Rate_Type[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;WorkingFTE&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Working_FTE}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Working_FTE[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;WorkShift&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Work_Shift}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Work_Shift[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;   
+  
+  &lt;field&gt;&lt;name&gt;PayGroupId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgPaygroupChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgPaygroupNode/Organization_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='PAY_GROUP' and not(@isDeleted='1')]/Organization_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;PayGroupCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgPaygroupChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgPaygroupNode/Organization_Code}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='PAY_GROUP' and not(@isDeleted='1')]/Organization_Code[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PayGroupName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgPaygroupChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgPaygroupNode/Organization_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='PAY_GROUP' and not(@isDeleted='1')]/Organization_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PayGroupMappedValue&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgPaygroupChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgPaygroupNode/Mapped_Value}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='PAY_GROUP' and not(@isDeleted='1')]/Mapped_Value[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;    
+  &lt;field&gt;&lt;name&gt;CostCenter&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgCostCenterChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgCostCenterNode/Organization_Code}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='COST_CENTER' and not(@isDeleted='1')]/Organization_Code[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;CostCenterType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgCostCenterTypeChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgCostCenterTypeNode/Organization_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='COST_CENTER_HIERARCHY' and Organization_ID=('Indirect_Cost_Centers','Direct_Cost_Centers') and not(@isDeleted='1')]/Organization_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;SupervisoryOrgName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgSupervisoryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgSupervisoryNode/Organization_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='SUPERVISORY' and not(@isDeleted='1')]/Organization_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;SupervisoryOrgCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgSupervisoryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgSupervisoryNode/Organization_Code}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='SUPERVISORY' and not(@isDeleted='1')]/Organization_Code[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;SupervisoryOrgId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgSupervisoryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgSupervisoryNode/Organization_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='SUPERVISORY' and not(@isDeleted='1')]/Organization_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;      
+  &lt;field&gt;&lt;name&gt;CompanyCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgCompanyChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgCompanyNode/Organization_Code}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='COMPANY' and not(@isDeleted='1')]/Organization_Code[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;CompanyName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgCompanyChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OrgCompanyNode/Organization_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Organization[Organization_Type='COMPANY' and not(@isDeleted='1')]/Organization_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;EndEmploymentDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/End_Employment_Date}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/End_Employment_Date[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;    
+  &lt;field&gt;&lt;name&gt;PositionEndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Position_End_Date}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Position_End_Date[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;
+  
+(: Ended Position :)
+{
+if (fn:string-length($EndedPositionNode) &gt; 0) then 
+(
+  &lt;field&gt;&lt;name&gt;WorkerType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedPosition&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedPositionNode/Worker_Type}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;PositionTimeType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedPosition&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedPositionNode/Position_Time_Type}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;PositionEndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;EndedPosition&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedPositionNode/Position_End_Date}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;CostCenter&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedPosition&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionOrgCostCenterChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedPositionOrgCostCenterNode/Organization_Code}&lt;/source&gt;&lt;/field&gt;  
+)
+else ()
+}
+  
+  (:AdditionalInformation:)
+  &lt;field&gt;&lt;name&gt;OPCOCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgCostCenterHierarchyChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/OPCO}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/OPCO[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;ReportingUnit&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$OrgCostCenterHierarchyChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Reporting_Unit}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Reporting_Unit[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+  
+  &lt;field&gt;&lt;name&gt;JobProfile&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$PositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PositionNode/Job_Profile}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Job_Profile[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;/field&gt;  
+  
+  &lt;field&gt;&lt;name&gt;BusinessSiteLocationId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$BusinessSiteChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$BusinessSiteNode/Location_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Business_Site[not(@isDeleted='1')]/Location_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;BusinessSiteLocationName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$BusinessSiteChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$BusinessSiteNode/Location_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Business_Site[not(@isDeleted='1')]/Location_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;BusinessSiteCountry&lt;/name&gt;&lt;type&gt;country&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$BusinessSiteChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$BusinessSiteNode/Country}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Business_Site[not(@isDeleted='1')]/Country[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;LocationCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$BusinessSiteChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Location_Code}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Location_Code[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;  
+
+&lt;!-- replaced with list 
+  &lt;field&gt;&lt;name&gt;SupervisoryRole&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$AssignedRoleSupervisoryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AssignedRoleSupervisoryNode/Role}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Assigned_Role[not(@isDeleted='1') and Organization/Organization_Type='SUPERVISORY'][1]/Role[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;SupervisoryRoleEffectiveFrom&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$AssignedRoleSupervisoryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AssignedRoleSupervisoryNode/Effective_From}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Assigned_Role[not(@isDeleted='1') and Organization/Organization_Type='SUPERVISORY'][1]/Effective_From[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;SupervisoryRoleEffectiveUntil&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;Position&lt;/group&gt;&lt;parentChangeStatus&gt;{$AssignedRoleSupervisoryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AssignedRoleSupervisoryNode/Effective_Until}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Position[not(@isDeleted='1')]/Assigned_Role[not(@isDeleted='1') and Organization/Organization_Type='SUPERVISORY'][1]/Effective_Until[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+ --&gt;
+   
+  &lt;field&gt;&lt;name&gt;ManagerEmployeeId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_Employee_ID}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_Employee_ID[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;ManagerUserName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_User_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_User_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;ManagerFirstName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_First_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_First_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;ManagerLastName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_Last_Name}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_Last_Name[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;ManagerEmail&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Manager&lt;/group&gt;&lt;parentChangeStatus&gt;{$SupervisorChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_Email}&lt;/source&gt;&lt;correlatePGIPGOValue&gt;{$Corresponding_PGIPGO_WorkerNode//Additional_Information[not(@isDeleted='1')]/Manager_Email[not(@isDeleted='1')]/text()}&lt;/correlatePGIPGOValue&gt;&lt;IsPositionField&gt;1&lt;/IsPositionField&gt;&lt;/field&gt;
+
+  {
+  if ($input.in_PayrollCountry = 'DE') then
+  (
+  &lt;field&gt;&lt;name&gt;DEDistrictName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/DE_District_Name}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;DEDistrictRefId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/DE_District_Ref_ID}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;ManagerOfManagerWorkerId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Managers_Manager_Employee_ID}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;ManagerEmail&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_Email}&lt;/source&gt;&lt;/field&gt;       
+  )
+  else ()
+  }
+
+  {
+  if ($input.in_PayrollCountry = 'NL') then
+  (
+  &lt;field&gt;&lt;name&gt;NLPartTimeWorkschemes&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/NL_Part-Time_Workschemes}&lt;/source&gt;&lt;/field&gt;
+  )
+  else ()
+  }
+
+  (:Compensation:)  
+  &lt;field&gt;&lt;name&gt;ChangeReason&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationNode/Compensation_Change_Reason}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;GradeFrequency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationSummaryBasedonCompensationGradeChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationSummaryBasedonCompensationGradeNode/Frequency}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;GradeProfile&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationNode/Grade_Profile}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;CompensationStepCurrent&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationNode/Compensation_Step_Current}&lt;/source&gt;&lt;/field&gt;   
+  
+(: Ended Compensation :)
+{
+if (fn:string-length($EndedCompensationNode) &gt; 0) then 
+(
+  &lt;field&gt;&lt;name&gt;GradeProfile&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedCompensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedCompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedCompensationNode/Grade_Profile}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;CompensationStepCurrent&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedCompensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedCompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedCompensationNode/Compensation_Step_Current}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;PositionEndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;EndedCompensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedCompensationNode/Position_End_Date}&lt;/source&gt;&lt;/field&gt;
+)
+else ()
+}  
+   
+  
+ 
+  (:Compensation_Plans:)
+  (:SalaryAndHourlyPlan:)
+  &lt;field&gt;&lt;name&gt;PlanType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Compensation_Plan}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;Amount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Amount}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;ProratedAmount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Prorated_Amount}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;Currency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Currency}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;Frequency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Frequency}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;ApplyFTE&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Apply_FTE}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;StartDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Start_Date}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;EndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{
+    if (empty($SalaryNode/End_Date) and not(empty($CompensationPlansNode/Position_End_Date))) then (xs:date($CompensationPlansNode/Position_End_Date) - xs:dayTimeDuration("P1D")) else $SalaryNode/End_Date }&lt;/source&gt;&lt;/field&gt;
+    
+    (:PeriodSalaryPlan:)
+  &lt;field&gt;&lt;name&gt;PlanType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PeriodSalaryPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$PeriodSalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PeriodSalaryNode/Compensation_Plan}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;Amount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PeriodSalaryPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$PeriodSalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PeriodSalaryNode/Amount}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;Currency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PeriodSalaryPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$PeriodSalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PeriodSalaryNode/Currency}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;Frequency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PeriodSalaryPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$PeriodSalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PeriodSalaryNode/Frequency}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PeriodMultiplier&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;PeriodSalaryPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$PeriodSalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PeriodSalaryNode/Period_Multiplier}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;StartDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;PeriodSalaryPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$PeriodSalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$PeriodSalaryNode/Start_Date}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;EndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;PeriodSalaryPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$PeriodSalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{
+    if (empty($PeriodSalaryNode/End_Date) and not(empty($CompensationPlansNode/Position_End_Date))) then (xs:date($CompensationPlansNode/Position_End_Date) - xs:dayTimeDuration("P1D")) else $PeriodSalaryNode/End_Date }&lt;/source&gt;&lt;/field&gt;    
+    
+
+
+(:OneTimePayment:)
+  &lt;field&gt;&lt;name&gt;PayrollName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/External_Payroll_Code_Name}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;PayrollCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/External_Payroll_Code}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;EarningOrDeduction&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/Earning_or_Deduction}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;Amount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/Amount}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;Currency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/Currency}&lt;/source&gt;&lt;/field&gt;
+  &lt;field&gt;&lt;name&gt;Reason&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/Reason}&lt;/source&gt;&lt;/field&gt;
+  
+
+   
+&lt;/fields&gt;  
+
+
+  
+return 
+  &lt;Worker&gt;
+    &lt;ChangeInfo&gt;
+      &lt;EffectiveDateUTC&gt;{if (fn:string-length($x//EffectiveMomentUTC) &gt; 0) then fn:format-date(xs:date(fn:substring($x//EffectiveMomentUTC/text(), 1, 10)), $dateFormat) else ''}&lt;/EffectiveDateUTC&gt;
+      &lt;EffectiveTimeUTC&gt;{if (fn:string-length($x//EffectiveMomentUTC) &gt; 0) then fn:substring($x//EffectiveMomentUTC/text(), 12, 8) else ''}&lt;/EffectiveTimeUTC&gt;
+      &lt;EffectiveDateCET&gt;{fn:format-date(xs:date($x//EffectiveDateCET), $dateFormat)}&lt;/EffectiveDateCET&gt;
+      &lt;EffectiveTimeCET&gt;&lt;/EffectiveTimeCET&gt;
+      &lt;EventCode&gt;{$x//EventCode/text()}&lt;/EventCode&gt;
+      &lt;FullSequenceOfEvents&gt;{$FullEventCodes}&lt;/FullSequenceOfEvents&gt;
+    &lt;/ChangeInfo&gt;
+    &lt;WorkerId&gt;{$workerId}&lt;/WorkerId&gt;
+    {
+      for $groupName in distinct-values($fields/field/group/text())
+      return
+      if (
+         ($groupName = 'SalaryAndHourlyPlan' and empty($SalaryNode)) or
+         ($groupName = 'PeriodSalaryPlan' and empty($PeriodSalaryNode)) or
+         ($groupName = 'OneTimePayment' and empty($OneTimePaymentNode))
+         
+       )  then () else (: bank and compensation will not be sent unless there are changes :)
+      element{$groupName}{
+        
+        switch ($groupName)
+          case 'Personal' return ( if (string-length($PersonalChangeStatus) = 0) then () else attribute{ if (string-length($PersonalChangeStatus) = 0) then 'isUpdated' else $PersonalChangeStatus}{'1'}) 
+          case 'PersonIdentification' return ( if (string-length($PersonIdentificationChangeStatus) = 0) then () else attribute{$PersonIdentificationChangeStatus}{'1'})      
+          case 'WorkerStatus' return ( if (string-length($WorkerStatusChangeStatus) = 0) then () else attribute{$WorkerStatusChangeStatus}{'1'})
+          case 'PersonCommunication' return ( if (string-length($PersonCommunicationChangeStatus) = 0) then () else attribute{$PersonCommunicationChangeStatus}{'1'})
+          case 'PersonIdentification' return ( if (string-length($PersonIdentificationChangeStatus) = 0) then () else attribute{$PersonIdentificationChangeStatus}{'1'}) 
+          case 'Position' return ( if (string-length($PositionChangeStatus) = 0) then () else attribute{$PositionChangeStatus}{'1'})
+          case 'EndedPosition' return ( if (string-length($EndedPositionChangeStatus) = 0) then () else attribute{$EndedPositionChangeStatus}{'1'})         
+          case 'Manager' return ( if (string-length($SupervisorChangeStatus) = 0) then () else attribute{$SupervisorChangeStatus}{'1'})
+          case 'SalaryAndHourlyPlan' return ( if (string-length($SalaryChangeStatus) = 0) then () else attribute{$SalaryChangeStatus}{'1'})
+          case 'PeriodSalaryPlan' return ( if (string-length($PeriodSalaryChangeStatus) = 0) then () else attribute{$PeriodSalaryChangeStatus}{'1'})
+          case 'OneTimePayment' return ( if (string-length($OneTimePaymentChangeStatus) = 0) then () else attribute{$OneTimePaymentChangeStatus}{'1'})              case 'Compensation' return ( if (string-length($CompensationChangeStatus) = 0) then () else attribute{$CompensationChangeStatus}{'1'})
+          case 'EndedCompensation' return ( if (string-length($EndedCompensationChangeStatus) = 0) then () else attribute{$EndedCompensationChangeStatus}{'1'})
+          case 'AdditionalInfo' return ( if (string-length($AdditionalInformationChangeStatus) = 0) then () else attribute{$AdditionalInformationChangeStatus}{'1'})          
+          default return (),
+        
+        for $f in $fields/field[group=$groupName]
+        (:***************************************************************************************:)
+        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
+        (:***************************************************************************************:)
+        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
+        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
+        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
+                  
+        let $value := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
+            default return $f/source//text()
+
+        let $priorValue := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
+            default return $f/source//@priorValue
+        
+        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
+        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
+         
+        let $countryAttributes := if ($f/type/text() = 'country') then 
+          (
+            if ($isThisFieldDeleted) then
+              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+            else
+              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+          )
+          else ()
+        
+        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
+        
+        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
+        
+        let $valueIfChangedAttribute := 
+          if ($includeValueIfChangedAttribute = 1) then
+          (
+            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
+              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
+            else 
+              if ($isThisFieldDeleted) then
+              (
+                if ($deletionMarker = '#value#') then 
+                  (
+                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
+                  )
+                  else 
+                  (
+                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
+                  )
+              )
+              else () 
+          )
+          else ()
+          
+        return
+        element {$f/name/text()} 
+        { 
+          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
+           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
+             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+        }
+        (:*** END REPLICATE *** :)
+    }
+  }
+  
+  &lt;EmergencyContactList&gt;
+  {
+    (: created related person nodes, even for communication with person :)
+    let $combinedRelatedPersonNodes := 
+    (
+       if (fn:empty($x//Related_Person[not(@isDeleted='1') and Emergency_Contact='1'])) then $x//Related_Person[Emergency_Contact='1'] else $x//Related_Person[not(@isDeleted='1') and Emergency_Contact='1'],
+        for $rpc in $x//Related_Person_Communication[not(@isDeleted='1') and not(Related_Person_ID=$x//Related_Person/Related_Person_ID)]
+        return
+          element {'Related_Person'} { 
+            element {'Related_Person_ID'} { $rpc/Related_Person_ID/text() }
+           }
+    )
+    (:RelatedPerson and RelatedPersonCommunication:)
+  (:for $rp in if (fn:empty($x//Related_Person[not(@isDeleted='1') and Emergency_Contact='1'])) then $x//Related_Person[Emergency_Contact='1'] else $x//Related_Person[not(@isDeleted='1') and Emergency_Contact='1']:)
+    for $rp in $combinedRelatedPersonNodes
+    let $rpChangeStatus := if ($rp[@isAdded='1']) then $const_isAdded else if ($rp[@isUpdated='1']) then $const_isUpdated else if ($rp[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    let $rpLegalNameNode := if (fn:empty($rp//Legal_Name[not(@isDeleted='1')])) then $rp//Legal_Name else $rp//Legal_Name[not(@isDeleted='1')]
+    let $rpLegalNameChangeStatus := if (not(empty($rpLegalNameNode)) and $rpChangeStatus = ($const_isAdded, $const_isDeleted)) then $rpChangeStatus else if ($rpLegalNameNode[@isAdded='1']) then $const_isAdded else if ($rpLegalNameNode[@isUpdated='1']) then $const_isUpdated else if ($rpLegalNameNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    
+    let $rpCommunicationNode := if (fn:empty($x//Related_Person_Communication[not(@isDeleted='1') and Related_Person_ID=$rp/Related_Person_ID])) then $x//Related_Person_Communication[Related_Person_ID=$rp/Related_Person_ID] else $x//Related_Person_Communication[not(@isDeleted='1') and Related_Person_ID=$rp/Related_Person_ID]
+    
+    let $rpCommunicationChangeStatus := if ($rpCommunicationNode[@isAdded='1']) then $const_isAdded else if ($rpCommunicationNode[@isUpdated='1']) then $const_isUpdated else if ($rpCommunicationNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    let $rpPrimaryHomeAddressNode := if (fn:empty($rpCommunicationNode//Address[Usage_Type='HOME' and not(@isDeleted='1')])) then $rpCommunicationNode//Address[Usage_Type='HOME'] else $rpCommunicationNode//Address[Usage_Type='HOME' and not(@isDeleted='1')]
+    let $rpPrimaryHomeAddressChangeStatus := if (not(empty($rpPrimaryHomeAddressNode)) and $rpCommunicationChangeStatus = ($const_isAdded, $const_isDeleted)) then $rpCommunicationChangeStatus else if ($rpPrimaryHomeAddressNode[@isAdded='1']) then $const_isAdded else if ($rpPrimaryHomeAddressNode[@isUpdated='1']) then $const_isUpdated else if ($rpPrimaryHomeAddressNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    let $rpPrimaryHomePhoneNode := if (fn:empty($rpCommunicationNode//Phone[Usage_Type='HOME' and not(@isDeleted='1')])) then $rpCommunicationNode//Phone[Usage_Type='HOME'] else $rpCommunicationNode//Phone[Usage_Type='HOME' and not(@isDeleted='1')]
+    let $rpPrimaryHomePhoneChangeStatus := if (not(empty($rpPrimaryHomePhoneNode)) and $rpCommunicationChangeStatus = ($const_isAdded, $const_isDeleted)) then $rpCommunicationChangeStatus else if ($rpPrimaryHomePhoneNode[@isAdded='1']) then $const_isAdded else if ($rpPrimaryHomePhoneNode[@isUpdated='1']) then $const_isUpdated else if ($rpPrimaryHomePhoneNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    let $rpPrimaryHomeEmailNode := if (fn:empty($rpCommunicationNode//Email[Usage_Type='HOME' and not(@isDeleted='1')])) then $rpCommunicationNode//Email[Usage_Type='HOME'] else $rpCommunicationNode//Email[Usage_Type='HOME' and not(@isDeleted='1')]
+    let $rpPrimaryHomeEmailChangeStatus := if (not(empty($rpPrimaryHomeEmailNode)) and $rpCommunicationChangeStatus = ($const_isAdded, $const_isDeleted)) then $rpCommunicationChangeStatus else if ($rpPrimaryHomeEmailNode[@isAdded='1']) then $const_isAdded else if ($rpPrimaryHomeEmailNode[@isUpdated='1']) then $const_isUpdated else if ($rpPrimaryHomeEmailNode[@isDeleted='1']) then $const_isDeleted else $const_noChange  
+  
+    let $relatedPersonFields :=
+    &lt;rcfields&gt;
+      &lt;field&gt;&lt;name&gt;RelationshipType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rp/Relationship_Type}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;LegalFirstName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpLegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpLegalNameNode/First_Name}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;LegalMiddleName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpLegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpLegalNameNode/Middle_Name}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;LegalLastName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpLegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpLegalNameNode/Last_Name}&lt;/source&gt;&lt;/field&gt;
+    &lt;field&gt;&lt;name&gt;LegalDisplayName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpLegalNameChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpLegalNameNode/General_Display_Name}&lt;/source&gt;&lt;/field&gt;      
+      &lt;field&gt;&lt;name&gt;HomeAddressLine1&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomeAddressNode/Address_Line_1}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;HomeAddressLine2&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomeAddressNode/Address_Line_2}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;HomeAddressLine3&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomeAddressNode/Address_Line_3}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;HomeAddressCity&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomeAddressNode/City}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;HomeAddressPostalCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomeAddressNode/Postal_Code}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;HomeAddressCountry&lt;/name&gt;&lt;type&gt;country&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomeAddressChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomeAddressNode/Country}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;HomeEmail&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomeEmailChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomeEmailNode/Email_Address}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;HomePhoneFormatted&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomePhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomePhoneNode/Formatted_Phone_Number}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;HomePhoneType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomePhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomePhoneNode/Phone_Device_Type}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;HomePhoneInternationalCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomePhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomePhoneNode/International_Phone_Code}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;HomePhoneNumber&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$rpPrimaryHomePhoneChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$rpPrimaryHomePhoneNode/Phone_Number}&lt;/source&gt;&lt;/field&gt;      
+    &lt;/rcfields&gt;
+    
+    return    
+      element {'EmergencyContact'} {
+        if (string-length($rpChangeStatus) = 0 and string-length($rpCommunicationChangeStatus) = 0) then () else attribute{ if (string-length($rpChangeStatus) = 0) then 'isUpdated' else $rpChangeStatus}{'1'} (: related person is primary, even if address is added or deleted, just set status to isUpdated :),
+        
+        for $f in $relatedPersonFields//field
+        (:***************************************************************************************:)
+        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
+        (:***************************************************************************************:)
+        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
+        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
+        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
+                  
+        let $value := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
+            default return $f/source//text()
+
+        let $priorValue := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
+            default return $f/source//@priorValue
+        
+        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
+        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
+         
+        let $countryAttributes := if ($f/type/text() = 'country') then 
+          (
+            if ($isThisFieldDeleted) then
+              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+            else
+              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+          )
+          else ()
+        
+        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
+        
+        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
+        
+        let $valueIfChangedAttribute := 
+          if ($includeValueIfChangedAttribute = 1) then
+          (
+            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
+              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
+            else 
+              if ($isThisFieldDeleted) then
+              (
+                if ($deletionMarker = '#value#') then 
+                  (
+                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
+                  )
+                  else 
+                  (
+                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
+                  )
+              )
+              else () 
+          )
+          else ()
+          
+        return
+        element {$f/name/text()} 
+        { 
+          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
+           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
+             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+        }
+        (:*** END REPLICATE *** :)
+      }
+    }
+  &lt;/EmergencyContactList&gt;  
+  
+  &lt;AllowancePlanList&gt;
+  {
+    (:AllowancePlan:)
+    let $filteredAddedAndUpdatadandUnmodifiedAllowances := 
+     for $n in $CompensationPlansNode//Allowance_Plan[not(@isDeleted='1')]
+        return if (
+             (($n/Amount/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (string-length($n/Amount/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) or 
+             (($n/Prorated_Amount/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()) or (string-length($n/Prorated_Amount/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()))) or              
+             (($n/Currency/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (string-length($n/Currency/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) or
+             (($n/Frequency/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()) or (string-length($n/Frequency/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()))) or             
+             (($n/Start_Date/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (string-length($n/Start_Date/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) or
+             (($n/End_Date/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (string-length($n/End_Date/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
+             ) then 
+           $n else()
+           
+    let $filteredDeletedAllowances := 
+     for $n in $CompensationPlansNode//Allowance_Plan[@isDeleted='1']
+        return if (
+             (($n/Amount/text() != $x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (string-length($n/Amount/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) or 
+             (($n/Prorated_Amount/text() != $x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()) or (string-length($n/Prorated_Amount/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()))) or              
+             (($n/Currency/text() != $x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (string-length($n/Currency/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) or
+             (($n/Frequency/text() != $x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()) or (string-length($n/Frequency/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()))) or
+             (($n/Start_Date/text() != $x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (string-length($n/Start_Date/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) or
+             (($n/End_Date/text() != $x//Compensation_Plans/Allowance_Plan[@isAddedeted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (string-length($n/End_Date/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
+             ) then 
+           $n else()
+           
+    let $filteredAddedAndDeletedAllowances := 
+     for $n in $CompensationPlansNode//Allowance_Plan[@isAdded='1']
+        return if (
+             (($n/Amount/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (empty($n/Amount/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) and 
+             (($n/Prorated_Amount/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()) or (empty($n/Prorated_Amount/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()))) and              
+             (($n/Frequency/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()) or (empty($n/Frequency/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()))) and
+             (($n/Currency/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (empty($n/Currency/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) and             
+             (($n/Start_Date/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (empty($n/Start_Date/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) and
+             (($n/End_Date/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (empty($n/End_Date/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
+             ) then 
+           (element{'Allowance_Plan'}{ $n/*}) else()
+    
+    
+  for $ap in ($filteredAddedAndUpdatadandUnmodifiedAllowances, $filteredDeletedAllowances, $filteredAddedAndDeletedAllowances)
+    let $apChangeStatus := 
+    if (not(empty($ap)) and $CompensationPlansChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationPlansChangeStatus else 
+    if ($ap[@isAdded='1']) then $const_isAdded else if ($ap[@isUpdated='1']) then $const_isUpdated else if ($ap[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    let $allowancePlanFields :=
+    &lt;apfields&gt;
+      &lt;field&gt;&lt;name&gt;CompensationPlan&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$apChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ap/Compensation_Plan}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;Amount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$apChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ap/Amount}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;ProratedAmount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$apChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ap/Prorated_Amount}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;Currency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$apChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ap/Currency}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;Frequency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$apChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ap/Frequency}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;StartDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;parentChangeStatus&gt;{$apChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ap/Start_Date}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;EndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;parentChangeStatus&gt;{$apChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;
+          {if (empty($ap/End_Date) and not(empty($ap/../Position_End_Date))) then (xs:date($ap/../Position_End_Date/text()) - xs:dayTimeDuration("P1D")) else $ap/End_Date}&lt;/source&gt;&lt;/field&gt;
+    &lt;/apfields&gt;
+    
+    return
+      element {'AllowancePlan'} {
+        if (string-length($apChangeStatus) = 0) then () else attribute{ $apChangeStatus}{'1'},
+        for $f in $allowancePlanFields//field
+        (:***************************************************************************************:)
+        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
+        (:***************************************************************************************:)
+        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
+        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
+        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
+                  
+        let $value := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
+            default return $f/source//text()
+
+        let $priorValue := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
+            default return $f/source//@priorValue
+        
+        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
+        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
+         
+        let $countryAttributes := if ($f/type/text() = 'country') then 
+          (
+            if ($isThisFieldDeleted) then
+              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+            else
+              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+          )
+          else ()
+        
+        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
+        
+        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
+        
+        let $valueIfChangedAttribute := 
+          if ($includeValueIfChangedAttribute = 1) then
+          (
+            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
+              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
+            else 
+              if ($isThisFieldDeleted) then
+              (
+                if ($deletionMarker = '#value#') then 
+                  (
+                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
+                  )
+                  else 
+                  (
+                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
+                  )
+              )
+              else () 
+          )
+          else ()
+          
+        return
+        element {$f/name/text()} 
+        { 
+          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
+           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
+             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+        }
+        (:*** END REPLICATE *** :)
+      }
+    }
+  &lt;/AllowancePlanList&gt;
+  
+  &lt;BankAccountList&gt;
+  {
+    (:Payment_Election:)
+    for $pe in $x//Payment_Election
+    let $peChangeStatus := if ($pe[@isAdded='1']) then $const_isAdded else if ($pe[@isUpdated='1']) then $const_isUpdated else if ($pe[@isDeleted='1']) then $const_isDeleted else $const_noChange
+  
+    
+  (:Payment_Election:)
+    let $paymentElectionFields :=
+    &lt;rcfields&gt;
+      &lt;field&gt;&lt;name&gt;Order&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Order}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;PaymentType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Payment_Type}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;Currency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Currency}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;AccountNumber&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Account_Number}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;AccountType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Account_Type}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;BankId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Bank_ID}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;BranchId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Branch_ID}&lt;/source&gt;&lt;/field&gt;      
+      &lt;field&gt;&lt;name&gt;Country&lt;/name&gt;&lt;type&gt;country&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Country}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;IBAN&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/IBAN}&lt;/source&gt;&lt;/field&gt;
+
+      &lt;field&gt;&lt;name&gt;BIC&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/BIC}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;DistributionBalance&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Distribution_Balance}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;DistributionPercentage&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Distribution_Percentage}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;DistributionAmount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$peChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$pe/Distribution_Amount}&lt;/source&gt;&lt;/field&gt;
+    &lt;/rcfields&gt;
+    
+    return    
+      element {'BankAccount'} {
+        if (string-length($peChangeStatus) = 0) then () else attribute{ $peChangeStatus}{'1'},
+        for $f in $paymentElectionFields//field
+        (:***************************************************************************************:)
+        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
+        (:***************************************************************************************:)
+        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
+        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
+        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
+                  
+        let $value := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
+            default return $f/source//text()
+
+        let $priorValue := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
+            default return $f/source//@priorValue
+        
+        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
+        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
+         
+        let $countryAttributes := if ($f/type/text() = 'country') then 
+          (
+            if ($isThisFieldDeleted) then
+              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+            else
+              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+          )
+          else ()
+        
+        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
+        
+        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
+        
+        let $valueIfChangedAttribute := 
+          if ($includeValueIfChangedAttribute = 1) then
+          (
+            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
+              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
+            else 
+              if ($isThisFieldDeleted) then
+              (
+                if ($deletionMarker = '#value#') then 
+                  (
+                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
+                  )
+                  else 
+                  (
+                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
+                  )
+              )
+              else () 
+          )
+          else ()
+          
+        return
+        element {$f/name/text()} 
+        { 
+          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
+           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
+             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+        }
+        (:*** END REPLICATE *** :)
+      }
+    }
+  &lt;/BankAccountList&gt;  
+
+  &lt;LeaveOfAbsenceList&gt;
+  {
+    (:Leave_of_Absence:)
+    for $loa in $x//Leave_of_Absence (:order by xs:date($loa/Leave_Start_Date) descending:)
+    let $loaChangeStatus := if ($loa[@isAdded='1']) then $const_isAdded else if ($loa[@isUpdated='1']) then $const_isUpdated else if ($loa[@isDeleted='1']) then $const_isDeleted else $const_noChange
+  
+    let $loaFields :=
+    &lt;rcfields&gt;
+      &lt;field&gt;&lt;name&gt;StartDate&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$loaChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$loa/Leave_Start_Date}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;LastDayOfWork&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$loaChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$loa/Leave_Last_Day_of_Work}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;EstimatedEndDate&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$loaChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$loa/Estimated_Leave_End_Date}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;EndDate&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$loaChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$loa/Leave_End_Date}&lt;/source&gt;&lt;/field&gt;            
+      &lt;field&gt;&lt;name&gt;LeaveOfAbsenceType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$loaChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$loa/Leave_of_Absence_Type}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;PayrollEffect&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$loaChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$loa/Payroll_Effect}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;LeaveReason&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$loaChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$loa/Leave_Reason}&lt;/source&gt;&lt;/field&gt;            
+    &lt;/rcfields&gt;
+    
+    return    
+      element {'LeaveOfAbsence'} {
+        if (string-length($loaChangeStatus) = 0) then () else attribute{ $loaChangeStatus}{'1'},
+        for $f in $loaFields//field
+        (:***************************************************************************************:)
+        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
+        (:***************************************************************************************:)
+        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
+        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
+        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
+                  
+        let $value := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
+            default return $f/source//text()
+
+        let $priorValue := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
+            default return $f/source//@priorValue
+        
+        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
+        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
+         
+        let $countryAttributes := if ($f/type/text() = 'country') then 
+          (
+            if ($isThisFieldDeleted) then
+              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+            else
+              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+          )
+          else ()
+        
+        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
+        
+        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
+        
+        let $valueIfChangedAttribute := 
+          if ($includeValueIfChangedAttribute = 1) then
+          (
+            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
+              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
+            else 
+              if ($isThisFieldDeleted) then
+              (
+                if ($deletionMarker = '#value#') then 
+                  (
+                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
+                  )
+                  else 
+                  (
+                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
+                  )
+              )
+              else () 
+          )
+          else ()
+          
+        return
+        element {$f/name/text()} 
+        { 
+          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
+           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
+             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+        }
+        (:*** END REPLICATE *** :)
+      }
+    }
+  &lt;/LeaveOfAbsenceList&gt;
+  
+  &lt;TimeOffList&gt;
+  {
+    (:Leave_of_Absence:)
+    for $timeoff in $x//Time_Off_Earnings_and_Deductions
+    let $TimeOffEarningsAndDeductionsChangeStatus := if ($timeoff[@isAdded='1']) then $const_isAdded else if ($timeoff[@isUpdated='1']) then $const_isUpdated else if ($timeoff[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    let $TimeOffEntryNode := if (fn:empty($timeoff//Time_Off_Entry[not(@isDeleted='1')])) then $timeoff//Time_Off_Entry else $timeoff//Time_Off_Entry[not(@isDeleted='1')]
+
+    let $TimeOffEntryChangeStatus := if (not(empty($TimeOffEntryNode)) and $TimeOffEarningsAndDeductionsChangeStatus = ($const_isAdded, $const_isDeleted)) then $TimeOffEarningsAndDeductionsChangeStatus else if ($TimeOffEntryNode[@isAdded='1']) then $const_isAdded else if ($TimeOffEntryNode[@isUpdated='1']) then $const_isUpdated else if ($TimeOffEntryNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    
+  
+    let $timeoffFields :=
+    &lt;rcfields&gt;
+      &lt;field&gt;&lt;name&gt;ExternalPayrollCodeName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;TimeOff&lt;/group&gt;&lt;parentChangeStatus&gt;{$TimeOffEarningsAndDeductionsChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$timeoff/External_Payroll_Code_Name}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;ExternalPayrollCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;TimeOff&lt;/group&gt;&lt;parentChangeStatus&gt;{$TimeOffEarningsAndDeductionsChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$timeoff/External_Payroll_Code}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;TimeOffType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;TimeOff&lt;/group&gt;&lt;parentChangeStatus&gt;{$TimeOffEarningsAndDeductionsChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$timeoff/Time_Off_Type}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;UnitOfTime&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;TimeOff&lt;/group&gt;&lt;parentChangeStatus&gt;{$TimeOffEarningsAndDeductionsChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$timeoff/Unit_of_Time}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;TimeOffUnits&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;TimeOff&lt;/group&gt;&lt;parentChangeStatus&gt;{$TimeOffEntryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$TimeOffEntryNode/Units}&lt;/source&gt;&lt;/field&gt;     
+  
+    &lt;/rcfields&gt;
+    
+    return    
+      element {'TimeOff'} {
+        if (string-length($TimeOffEntryChangeStatus) = 0) then () else attribute{ $TimeOffEntryChangeStatus}{'1'},
+        for $f in $timeoffFields//field
+        (:***************************************************************************************:)
+        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
+        (:***************************************************************************************:)
+        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
+        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
+        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
+                  
+        let $value := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
+            default return $f/source//text()
+
+        let $priorValue := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
+            default return $f/source//@priorValue
+        
+        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
+        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
+         
+        let $countryAttributes := if ($f/type/text() = 'country') then 
+          (
+            if ($isThisFieldDeleted) then
+              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+            else
+              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+          )
+          else ()
+        
+        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
+        
+        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
+        
+        let $valueIfChangedAttribute := 
+          if ($includeValueIfChangedAttribute = 1) then
+          (
+            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
+              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
+            else 
+              if ($isThisFieldDeleted) then
+              (
+                if ($deletionMarker = '#value#') then 
+                  (
+                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
+                  )
+                  else 
+                  (
+                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
+                  )
+              )
+              else () 
+          )
+          else ()
+          
+        return
+        element {$f/name/text()} 
+        { 
+          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
+           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
+             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+        }
+        (:*** END REPLICATE *** :)
+      }
+    }
+  &lt;/TimeOffList&gt;
+  
+  &lt;BonusPlanList&gt;
+  {
+    (:BonusPlan:)
+    let $filteredAddedAndUpdatadandUnmodifiedBonuses := 
+     for $n in $CompensationPlansNode//Bonus_Plan[not(@isDeleted='1')]
+        return if (
+             (($n/Amount/text() != $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (string-length($n/Amount/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) or 
+             (($n/Currency/text() != $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (string-length($n/Currency/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) or
+             (($n/Start_Date/text() != $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (string-length($n/Start_Date/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) or
+             (($n/End_Date/text() != $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (string-length($n/End_Date/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
+             ) then 
+           $n else()
+           
+           
+    let $filteredDeletedBonuses := 
+     for $n in $CompensationPlansNode//Bonus_Plan[@isDeleted='1']
+        return if (
+             (($n/Amount/text() != $x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (string-length($n/Amount/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) or 
+             (($n/Currency/text() != $x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (string-length($n/Currency/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) or
+             (($n/Start_Date/text() != $x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (string-length($n/Start_Date/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) or
+             (($n/End_Date/text() != $x//Compensation_Plans/Bonus_Plan[@isAddedeted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (string-length($n/End_Date/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
+             ) then 
+           $n else()
+           
+    let $filteredAddedAndDeletedBonuses := 
+     for $n in $CompensationPlansNode//Bonus_Plan[@isAdded='1']
+        return if (
+             (($n/Amount/text() = $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (empty($n/Amount/text()) and empty($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) and 
+             (($n/Currency/text() = $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (empty($n/Currency/text()) and empty($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) and
+             (($n/Start_Date/text() = $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (empty($n/Start_Date/text()) and empty($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) and
+             (($n/End_Date/text() = $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (empty($n/End_Date/text()) and empty($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
+             ) then 
+           (element{'Bonus_Plan'}{ $n/*}) else()
+    
+  for $bp in ($filteredAddedAndUpdatadandUnmodifiedBonuses, $filteredDeletedBonuses, $filteredAddedAndDeletedBonuses)
+    let $bpChangeStatus := if ($bp[@isAdded='1']) then $const_isAdded else if ($bp[@isUpdated='1']) then $const_isUpdated else if ($bp[@isDeleted='1']) then $const_isDeleted else $const_noChange
+  
+    let $bonusPlanFields :=
+    &lt;bonusfields&gt;
+      &lt;field&gt;&lt;name&gt;PlanType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$bp/Compensation_Plan}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;Amount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$bp/Amount}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;Currency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$bp/Currency}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;Frequency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$bp/Frequency}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;StartDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$bp/Start_Date}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;EndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;
+          {if (empty($bp/End_Date) and not(empty($bp/../Position_End_Date))) then (xs:date($bp/../Position_End_Date/text()) - xs:dayTimeDuration("P1D")) else $bp/End_Date}&lt;/source&gt;&lt;/field&gt;
+    &lt;/bonusfields&gt;
+    
+     
+    
+    return
+      element {'BonusPlan'} {
+        if (string-length($bpChangeStatus) = 0) then () else attribute{ $bpChangeStatus}{'1'},
+        for $f in $bonusPlanFields//field
+        (:***************************************************************************************:)
+        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
+        (:***************************************************************************************:)
+        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
+        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
+        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
+                  
+        let $value := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
+            default return $f/source//text()
+
+        let $priorValue := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
+            default return $f/source//@priorValue
+        
+        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
+        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
+         
+        let $countryAttributes := if ($f/type/text() = 'country') then 
+          (
+            if ($isThisFieldDeleted) then
+              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+            else
+              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+          )
+          else ()
+        
+        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
+        
+        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
+        
+        let $valueIfChangedAttribute := 
+          if ($includeValueIfChangedAttribute = 1) then
+          (
+            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
+              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
+            else 
+              if ($isThisFieldDeleted) then
+              (
+                if ($deletionMarker = '#value#') then 
+                  (
+                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
+                  )
+                  else 
+                  (
+                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
+                  )
+              )
+              else () 
+          )
+          else ()
+          
+        return
+        element {$f/name/text()} 
+        { 
+          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
+           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
+             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+        }
+        (:*** END REPLICATE *** :)
+      }
+    }
+  &lt;/BonusPlanList&gt;
+  
+  &lt;AssignedRoleList&gt;
+  {
+    (:Assigned_Role:)
+    for $ar in $PositionNode//Assigned_Role[not(@isDeleted='1') and Organization/Organization_Type='SUPERVISORY']
+    let $arChangeStatus := if (not(empty($ar)) and $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($ar[@isAdded='1']) then $const_isAdded else if ($ar[@isUpdated='1']) then $const_isUpdated else if ($ar[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    let $assignedRoleFields :=
+    &lt;rcfields&gt;
+      &lt;field&gt;&lt;name&gt;Role&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Role}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;OrganizationID&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Organization/Organization_ID}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;OrganizationCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Organization/Organization_Type}&lt;/source&gt;&lt;/field&gt;  
+	 &lt;field&gt;&lt;name&gt;OrganizationName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Organization/Organization_Name}&lt;/source&gt;&lt;/field&gt;  	  
+      &lt;field&gt;&lt;name&gt;EffectiveFrom&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Effective_From}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;EffectiveUntil&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Effective_Until}&lt;/source&gt;&lt;/field&gt;          
+    &lt;/rcfields&gt;
+    
+    return    
+      element {'AssignedRole'} {
+        if (string-length($arChangeStatus) = 0) then () else attribute{ $arChangeStatus}{'1'},
+        for $f in $assignedRoleFields//field
+        (:***************************************************************************************:)
+        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
+        (:***************************************************************************************:)
+        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
+        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
+        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
+                  
+        let $value := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
+            default return $f/source//text()
+
+        let $priorValue := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
+            default return $f/source//@priorValue
+        
+        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
+        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
+         
+        let $countryAttributes := if ($f/type/text() = 'country') then 
+          (
+            if ($isThisFieldDeleted) then
+              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+            else
+              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+          )
+          else ()
+        
+        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
+        
+        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
+        
+        let $valueIfChangedAttribute := 
+          if ($includeValueIfChangedAttribute = 1) then
+          (
+            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
+              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
+            else 
+              if ($isThisFieldDeleted) then
+              (
+                if ($deletionMarker = '#value#') then 
+                  (
+                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
+                  )
+                  else 
+                  (
+                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
+                  )
+              )
+              else () 
+          )
+          else ()
+          
+        return
+        element {$f/name/text()} 
+        { 
+          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
+           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
+             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+        }
+        (:*** END REPLICATE *** :)
+      }
+    }
+  &lt;/AssignedRoleList&gt;  
+
+  &lt;/Worker&gt;
+}
+&lt;/WorkerUpdates&gt;</expression>
+                  </operation>
+                  <link id="k8nw7ofy" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>8Uwfz0qiLvWhoUlAT72J4T</types1:GUID>
+      <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data_copy_ivanj</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2021-04-08T11:30:50.571Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
