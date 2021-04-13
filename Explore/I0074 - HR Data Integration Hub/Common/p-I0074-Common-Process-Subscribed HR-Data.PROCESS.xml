@@ -14,10 +14,10 @@
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
       <types1:ModifiedBy>norazean.shafein@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-03-27T07:55:25Z</types1:ModificationDate>
+      <types1:ModificationDate>2021-04-13T10:11:02Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-04-09T09:13:33Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-04-13T10:11:23Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -1548,8 +1548,7 @@ return
     &lt;rcfields&gt;
       &lt;field&gt;&lt;name&gt;Role&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Role}&lt;/source&gt;&lt;/field&gt;
       &lt;field&gt;&lt;name&gt;OrganizationID&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Organization/Organization_ID}&lt;/source&gt;&lt;/field&gt;
-      &lt;field&gt;&lt;name&gt;OrganizationCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Organization/Organization_Type}&lt;/source&gt;&lt;/field&gt;  
-	 &lt;field&gt;&lt;name&gt;OrganizationName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Organization/Organization_Name}&lt;/source&gt;&lt;/field&gt;  	  
+      &lt;field&gt;&lt;name&gt;OrganizationCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Organization/Organization_Code}&lt;/source&gt;&lt;/field&gt;  	  
       &lt;field&gt;&lt;name&gt;EffectiveFrom&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Effective_From}&lt;/source&gt;&lt;/field&gt;
       &lt;field&gt;&lt;name&gt;EffectiveUntil&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;AssignedRole&lt;/group&gt;&lt;parentChangeStatus&gt;{$arChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ar/Effective_Until}&lt;/source&gt;&lt;/field&gt;          
     &lt;/rcfields&gt;
@@ -1638,5 +1637,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-04-12T06:41:37.162Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-04-13T10:12:52.145Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
