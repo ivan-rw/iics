@@ -14,10 +14,10 @@
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
       <types1:ModifiedBy>norazean.shafein@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-04-13T10:11:02Z</types1:ModificationDate>
+      <types1:ModificationDate>2021-04-16T03:29:49Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-04-13T10:11:23Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-04-16T03:48:40Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -293,6 +293,9 @@ else
   if (fn:empty($EndedPositionNode/Organization[not(@isDeleted='1') and Organization_Type='COST_CENTER'])) then $EndedPositionNode/Organization[Organization_Type='COST_CENTER'] else $EndedPositionNode/Organization[not(@isDeleted='1') and Organization_Type='COST_CENTER']
 )
 let $EndedPositionOrgCostCenterChangeStatus := if (not(empty($EndedPositionOrgCostCenterNode)) and $EndedPositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $EndedPositionChangeStatus else if ($EndedPositionOrgCostCenterNode[@isAdded='1']) then $const_isAdded else if ($EndedPositionOrgCostCenterNode[@isUpdated='1']) then $const_isUpdated else if ($EndedPositionOrgCostCenterNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+let $EndedPositionOrgCompanyNode := if (fn:empty($EndedPositionNode/Organization[not(@isDeleted='1') and Organization_Type='COMPANY'])) then $EndedPositionNode/Organization[Organization_Type='COMPANY'] else $EndedPositionNode/Organization[not(@isDeleted='1') and Organization_Type='COMPANY']
+let $EndedPositionOrgCompanyChangeStatus := if (not(empty($EndedPositionOrgCompanyNode)) and $EndedPositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $EndedPositionChangeStatus else if ($EndedPositionOrgCompanyNode[@isAdded='1']) then $const_isAdded else if ($EndedPositionOrgCompanyNode[@isUpdated='1']) then $const_isUpdated else if ($EndedPositionOrgCompanyNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
 
 let $OrgCompanyNode := if (fn:empty($PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COMPANY'])) then $PositionNode/Organization[Organization_Type='COMPANY'] else $PositionNode/Organization[not(@isDeleted='1') and Organization_Type='COMPANY']
 let $OrgCompanyChangeStatus := if (not(empty($OrgCompanyNode)) and $PositionChangeStatus = ($const_isAdded, $const_isDeleted)) then $PositionChangeStatus else if ($OrgCompanyNode[@isAdded='1']) then $const_isAdded else if ($OrgCompanyNode[@isUpdated='1']) then $const_isUpdated else if ($OrgCompanyNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
@@ -685,7 +688,8 @@ if (fn:string-length($EndedPositionNode) &gt; 0) then
   &lt;field&gt;&lt;name&gt;WorkerType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedPosition&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedPositionNode/Worker_Type}&lt;/source&gt;&lt;/field&gt;,
   &lt;field&gt;&lt;name&gt;PositionTimeType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedPosition&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedPositionNode/Position_Time_Type}&lt;/source&gt;&lt;/field&gt;,
   &lt;field&gt;&lt;name&gt;PositionEndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;EndedPosition&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedPositionNode/Position_End_Date}&lt;/source&gt;&lt;/field&gt;,
-  &lt;field&gt;&lt;name&gt;CostCenter&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedPosition&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionOrgCostCenterChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedPositionOrgCostCenterNode/Organization_Code}&lt;/source&gt;&lt;/field&gt;  
+  &lt;field&gt;&lt;name&gt;CostCenter&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedPosition&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionOrgCostCenterChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedPositionOrgCostCenterNode/Organization_Code}&lt;/source&gt;&lt;/field&gt;,  
+  &lt;field&gt;&lt;name&gt;CompanyCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedPosition&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionOrgCompanyChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedPositionOrgCompanyNode/Organization_Code}&lt;/source&gt;&lt;/field&gt; 
 )
 else ()
 }
@@ -1637,5 +1641,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-04-13T10:12:52.145Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-04-16T04:13:17.621Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
