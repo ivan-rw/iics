@@ -64,6 +64,26 @@
     },
     "path" : "/SYS"
   }, {
+    "id" : "gZjZHXZyNOye3Rk2F2rF4K",
+    "name" : "m_I0082_JetAdvice",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD617000000000189"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0082 - ITAM"
+  }, {
     "id" : "6TJNHtpPiK5dn7AWraZUm8",
     "name" : "TEST",
     "type" : "AgentGroup",
@@ -83,25 +103,5 @@
       }
     },
     "path" : "/SYS"
-  }, {
-    "id" : "cnMgCVXAaSYiACrBkKyMwt",
-    "name" : "m_I0082_JetAdvice_old",
-    "type" : "DTEMPLATE",
-    "metadata" : {
-      "modelVersion" : {
-        "major" : 0,
-        "minor" : 0
-      },
-      "repoInfo" : {
-        "repoHandle" : "001KD617000000000185"
-      },
-      "contextAttributes" : null,
-      "additionalInfo" : {
-        "description" : "",
-        "contentType" : "JSON",
-        "documentState" : "VALID"
-      }
-    },
-    "path" : "/Explore/I0082 - ITAM"
   } ]
 }
