@@ -3,7 +3,7 @@
    <types1:Item>
       <types1:EntryId>KCv2jop81V4Adyp-gt-2841338-2020-04-02T02:05:45.955Z::pd.xml</types1:EntryId>
       <types1:Name>p-I0074-Common-Process-Subscribed_HR-Data</types1:Name>
-      <types1:ParentFlowIds>0CYybdsMkdypKwK-gt-2317732-2020-04-27T08:29:56.987Z::pd.xml,C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,K0CYybdsMkdypKw-gt-376081-2020-12-13T01:58:11.591Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pMDVK9Em2kVNKSm-gt-5093579-2020-12-20T05:38:55.257Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,QYWeIssjqluQgab-gt-6617180-2020-12-23T01:59:16.691Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,RfRH9ln6lRuImXy-gt-10899158-2021-02-15T05:08:57.077Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml,T6Pw97yV4AdypKw-gt-4674397-2021-03-05T08:52:47.27Z::pd.xml,Uopz4KhPVEQrXhN-gt-3472267-2020-12-16T07:58:20.756Z::pd.xml,VFlprzYLnzYLnzY-gt-2218229-2020-12-14T04:35:16.758Z::pd.xml,yk6yQC8WrY1Sypm-gt-28431768-2021-01-06T01:59:52.389Z::pd.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>0CYybdsMkdypKwK-gt-2317732-2020-04-27T08:29:56.987Z::pd.xml,C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,K0CYybdsMkdypKw-gt-376081-2020-12-13T01:58:11.591Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pMDVK9Em2kVNKSm-gt-5093579-2020-12-20T05:38:55.257Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,QYWeIssjqluQgab-gt-6617180-2020-12-23T01:59:16.691Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,RfRH9ln6lRuImXy-gt-10899158-2021-02-15T05:08:57.077Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml,T6Pw97yV4AdypKw-gt-4674397-2021-03-05T08:52:47.27Z::pd.xml,TPdqRi92qBbbeJO-gt-2721252-2021-04-22T08:49:44.739Z::pd.xml,Uopz4KhPVEQrXhN-gt-3472267-2020-12-16T07:58:20.756Z::pd.xml,VFlprzYLnzYLnzY-gt-2218229-2020-12-14T04:35:16.758Z::pd.xml,yk6yQC8WrY1Sypm-gt-28431768-2021-01-06T01:59:52.389Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+process</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -13,11 +13,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
-      <types1:ModifiedBy>norazean.shafein@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-04-16T03:29:49Z</types1:ModificationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2021-04-23T05:58:55Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-04-16T03:48:40Z</types1:PublicationDate>
+      <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
+      <types1:PublicationDate>2021-04-23T05:59:13Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -471,56 +471,7 @@ let $PeriodSalaryChangeStatus := if (not(empty($PeriodSalaryNode)) and $Compensa
   if ($PeriodSalaryNode = $CompensationPlansNode//Period_Salary_Plan[@isDeleted='1']) then () else $const_isAdded
 )
  else if ($PeriodSalaryNode[@isUpdated='1']) then $const_isUpdated else if ($PeriodSalaryNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
- 
-
- 
- (: Compensation_One_Time_Payment :)
-let $OneTimePaymentNode := 
-if (count($x//Compensation_One_Time_Payment[not(@isDeleted='1')]) &gt; 1) then
-(
-  let $NewOneTimePayment := $x//Compensation_One_Time_Payment[not(@isDeleted='1') and empty(End_Date)]
-  let $OldOneTimePayment := $x//Compensation_One_Time_Payment[not(@isDeleted='1') and not(empty(End_Date))]
-  return 
-    element {'Compensation_One_Time_Payment'} 
-    {
-      attribute {'isUpdated'} {'1'},
-      element {'External_Payroll_Code_Name'}{
-        if ($OldOneTimePayment/External_Payroll_Code_Name/text() != $NewOneTimePayment/External_Payroll_Code_Name/text()) then
-        attribute {'priorValue'}{$OldOneTimePayment/External_Payroll_Code_Name/text() } else (), 
-        $NewOneTimePayment/External_Payroll_Code_Name/text()},
-      element {'External_Payroll_Code'}{
-        if ($OldOneTimePayment/External_Payroll_Code/text() != $NewOneTimePayment/External_Payroll_Code/text()) then
-        attribute {'priorValue'}{$OldOneTimePayment/External_Payroll_Code/text() } else (), 
-        $NewOneTimePayment/External_Payroll_Code/text()},
-      element {'Earning_or_Deduction'}{
-        if ($OldOneTimePayment/Earning_or_Deduction/text() != $NewOneTimePayment/Earning_or_Deduction/text()) then
-        attribute {'priorValue'}{$OldOneTimePayment/Earning_or_Deduction/text()} else (), 
-        $NewOneTimePayment/Earning_or_Deduction/text()},        
-      element {'Amount'}{
-        if ($OldOneTimePayment/Amount/text() != $NewOneTimePayment/Amount/text()) then
-        attribute {'priorValue'}{$OldOneTimePayment/Amount/text()} else (), 
-        $NewOneTimePayment/Amount/text()},
-      element {'Currency'}{
-        if ($OldOneTimePayment/Currency/text() != $NewOneTimePayment/Currency/text()) then
-        attribute {'priorValue'}{$OldOneTimePayment/Currency/text()} else (), 
-        $NewOneTimePayment/Currency/text()},
-      element {'Reason'}{
-        if ($OldOneTimePayment/Reason/text() != $NewOneTimePayment/Reason/text()) then
-        attribute {'priorValue'}{$OldOneTimePayment/Reason/text()} else (), 
-        $NewOneTimePayment/Reason/text()}
-  }
-)
-else
-(
-  if (fn:empty($x//Compensation_One_Time_Payment[not(@isDeleted='1')])) then $x//Compensation_One_Time_Payment else $x//Compensation_One_Time_Payment[not(@isDeleted='1')]
-)
-let $OneTimePaymentChangeStatus := if (not(empty($OneTimePaymentNode)) and $CompensationPlansChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationPlansChangeStatus else if ($OneTimePaymentNode[@isAdded='1']) then 
-(
-  if ($OneTimePaymentNode = $CompensationPlansNode//Compensation_One_Time_Payment[@isDeleted='1']) then () else $const_isAdded
-)
- else if ($OneTimePaymentNode[@isUpdated='1']) then $const_isUpdated else if ($OneTimePaymentNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
-
-
+  
 (:Compensation:)
 let $CompensationNode := $x//Compensation[not(@isDeleted='1') and empty(Position_End_Date)] 
 let $EndedCompensationNode := if (empty($CompensationNode)) then () else  $x//Compensation[not(@isDeleted='1') and not(empty(Position_End_Date))] 
@@ -779,16 +730,7 @@ else ()
     
 
 
-(:OneTimePayment:)
-  &lt;field&gt;&lt;name&gt;PayrollName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/External_Payroll_Code_Name}&lt;/source&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;PayrollCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/External_Payroll_Code}&lt;/source&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;EarningOrDeduction&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/Earning_or_Deduction}&lt;/source&gt;&lt;/field&gt;  
-  &lt;field&gt;&lt;name&gt;Amount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/Amount}&lt;/source&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;Currency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/Currency}&lt;/source&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;Reason&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;OneTimePayment&lt;/group&gt;&lt;parentChangeStatus&gt;{$OneTimePaymentChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$OneTimePaymentNode/Reason}&lt;/source&gt;&lt;/field&gt;
   
-
-   
 &lt;/fields&gt;  
 
 
@@ -809,9 +751,7 @@ return
       return
       if (
          ($groupName = 'SalaryAndHourlyPlan' and empty($SalaryNode)) or
-         ($groupName = 'PeriodSalaryPlan' and empty($PeriodSalaryNode)) or
-         ($groupName = 'OneTimePayment' and empty($OneTimePaymentNode))
-         
+         ($groupName = 'PeriodSalaryPlan' and empty($PeriodSalaryNode))
        )  then () else (: bank and compensation will not be sent unless there are changes :)
       element{$groupName}{
         
@@ -826,7 +766,7 @@ return
           case 'Manager' return ( if (string-length($SupervisorChangeStatus) = 0) then () else attribute{$SupervisorChangeStatus}{'1'})
           case 'SalaryAndHourlyPlan' return ( if (string-length($SalaryChangeStatus) = 0) then () else attribute{$SalaryChangeStatus}{'1'})
           case 'PeriodSalaryPlan' return ( if (string-length($PeriodSalaryChangeStatus) = 0) then () else attribute{$PeriodSalaryChangeStatus}{'1'})
-          case 'OneTimePayment' return ( if (string-length($OneTimePaymentChangeStatus) = 0) then () else attribute{$OneTimePaymentChangeStatus}{'1'})              case 'Compensation' return ( if (string-length($CompensationChangeStatus) = 0) then () else attribute{$CompensationChangeStatus}{'1'})
+          case 'Compensation' return ( if (string-length($CompensationChangeStatus) = 0) then () else attribute{$CompensationChangeStatus}{'1'})
           case 'EndedCompensation' return ( if (string-length($EndedCompensationChangeStatus) = 0) then () else attribute{$EndedCompensationChangeStatus}{'1'})
           case 'AdditionalInfo' return ( if (string-length($AdditionalInformationChangeStatus) = 0) then () else attribute{$AdditionalInformationChangeStatus}{'1'})          
           default return (),
@@ -1246,9 +1186,42 @@ return
   &lt;LeaveOfAbsenceList&gt;
   {
     (:Leave_of_Absence:)
-    for $loa in $x//Leave_of_Absence (:order by xs:date($loa/Leave_Start_Date) descending:)
+    let $filteredAddedAndUpdatadandUnmodifiedLOA := 
+     for $n in $x//Leave_of_Absence[not(@isDeleted='1')]
+        return if (
+             (($n/Leave_Start_Date/text() != $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()) or (string-length($n/Leave_Start_Date/text()) != string-length($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()))) or 
+             (($n/Leave_Last_Day_of_Work/text() != $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()) or (string-length($n/Leave_Last_Day_of_Work/text()) != string-length($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()))) or 
+             (($n/Estimated_Leave_End_Date/text() != $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()) or (string-length($n/Estimated_Leave_End_Date/text()) != string-length($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()))) or
+             (($n/Leave_End_Date/text() != $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()) or (string-length($n/Leave_End_Date/text()) != string-length($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()))) or      
+             (($n/Payroll_Effect/text() != $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text()) or (string-length($n/Payroll_Effect/text()) != string-length($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text())))                            
+             ) then 
+           $n else()
+           
+    let $filteredDeletedLOA := 
+     for $n in $x//Leave_of_Absence[@isDeleted='1']
+        return if (
+             (($n/Leave_Start_Date/text() != $x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()) or (string-length($n/Leave_Start_Date/text()) != string-length($x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()))) or
+             (($n/Leave_Last_Day_of_Work/text() != $x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()) or (string-length($n/Leave_Last_Day_of_Work/text()) != string-length($x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()))) or
+             (($n/Estimated_Leave_End_Date/text() != $x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()) or (string-length($n/Estimated_Leave_End_Date/text()) != string-length($x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()))) or   
+             (($n/Leave_End_Date/text() != $x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()) or (string-length($n/Leave_End_Date/text()) != string-length($x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()))) or      
+             (($n/Payroll_Effect/text() != $x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text()) or (string-length($n/Payroll_Effect/text()) != string-length($x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text())))                             
+             ) then 
+           $n else()
+           
+    let $filteredAddedAndDeletedLOA := 
+     for $n in $x//Leave_of_Absence[@isAdded='1']
+        return if (
+             (($n/Leave_Start_Date/text() = $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()) or (empty($n/Leave_Start_Date/text()) and empty($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()))) and 
+             (($n/Leave_Last_Day_of_Work/text() = $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()) or (empty($n/Leave_Last_Day_of_Work/text()) and empty($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()))) and 
+             (($n/Estimated_Leave_End_Date/text() = $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()) or (empty($n/Estimated_Leave_End_Date/text()) and empty($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()))) and    
+             (($n/Leave_End_Date/text() = $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()) or (empty($n/Leave_End_Date/text()) and empty($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()))) and              
+             (($n/Payroll_Effect/text() = $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text()) or (empty($n/Payroll_Effect/text()) and empty($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text())))
+             ) then 
+           (element{'Allowance_Plan'}{ $n/*}) else()
+    
+    
+  for $loa in ($filteredAddedAndUpdatadandUnmodifiedLOA, $filteredDeletedLOA, $filteredAddedAndDeletedLOA)
     let $loaChangeStatus := if ($loa[@isAdded='1']) then $const_isAdded else if ($loa[@isUpdated='1']) then $const_isUpdated else if ($loa[@isDeleted='1']) then $const_isDeleted else $const_noChange
-  
     let $loaFields :=
     &lt;rcfields&gt;
       &lt;field&gt;&lt;name&gt;StartDate&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$loaChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$loa/Leave_Start_Date}&lt;/source&gt;&lt;/field&gt;
@@ -1330,6 +1303,131 @@ return
       }
     }
   &lt;/LeaveOfAbsenceList&gt;
+  
+  
+  &lt;OneTimePaymentList&gt;
+  {
+    (:Compensation_One_Time_Payment:)
+    let $filteredAddedAndUpdatadandUnmodifiedOTP := 
+     for $n in $x//Compensation_One_Time_Payment[not(@isDeleted='1')]
+        return if (
+             (($n/External_Payroll_Code_Name/text() != $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code_Name/text()) or (string-length($n/External_Payroll_Code_Name/text()) != string-length($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code_Name/text()))) or 
+             (($n/External_Payroll_Code/text() != $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code/text()) or (string-length($n/External_Payroll_Code/text()) != string-length($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code/text()))) or              
+             (($n/Earning_or_Deduction/text() != $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Earning_or_Deduction/text()) or (string-length($n/Earning_or_Deduction/text()) != string-length($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Earning_or_Deduction/text()))) or
+             (($n/Amount/text() != $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Amount/text()) or (string-length($n/Amount/text()) != string-length($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Amount/text()))) or             
+             (($n/Currency/text() != $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Currency/text()) or (string-length($n/Currency/text()) != string-length($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Currency/text()))) or
+             (($n/Reason/text() != $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Reason/text()) or (string-length($n/Reason/text()) != string-length($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Reason/text())))
+             ) then 
+           $n else()
+           
+    let $filteredDeletedOTP := 
+     for $n in $x//Compensation_One_Time_Payment[@isDeleted='1']
+        return if (
+             (($n/External_Payroll_Code_Name/text() != $x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code_Name/text()) or (string-length($n/External_Payroll_Code_Name/text()) != string-length($x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code_Name/text()))) or 
+             (($n/External_Payroll_Code/text() != $x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code/text()) or (string-length($n/External_Payroll_Code/text()) != string-length($x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code/text()))) or             
+             (($n/Earning_or_Deduction/text() != $x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Earning_or_Deduction/text()) or (string-length($n/Earning_or_Deduction/text()) != string-length($x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Earning_or_Deduction/text()))) or              
+             (($n/Amount/text() != $x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Amount/text()) or (string-length($n/Amount/text()) != string-length($x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Amount/text()))) or
+             (($n/Currency/text() != $x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Currency/text()) or (string-length($n/Currency/text()) != string-length($x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Currency/text()))) or
+             (($n/Reason/text() != $x//Compensation_One_Time_Payment[@isAddedeted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Reason/text()) or (string-length($n/Reason/text()) != string-length($x//Compensation_One_Time_Payment[@isAdded='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Reason/text())))
+             ) then 
+           $n else()
+           
+    let $filteredAddedAndDeletedOTP := 
+     for $n in $x//Compensation_One_Time_Payment[@isAdded='1']
+        return if (
+             (($n/External_Payroll_Code_Name/text() = $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code_Name/text()) or (empty($n/External_Payroll_Code_Name/text()) and empty($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code_Name/text()))) and              
+             (($n/External_Payroll_Code/text() = $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code/text()) or (empty($n/External_Payroll_Code/text()) and empty($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/External_Payroll_Code/text()))) and
+             (($n/Earning_or_Deduction/text() = $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Earning_or_Deduction/text()) or (empty($n/Earning_or_Deduction/text()) and empty($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Earning_or_Deduction/text()))) and             
+             (($n/Amount/text() = $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Amount/text()) or (empty($n/Amount/text()) and empty($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Amount/text()))) and   
+             (($n/Currency/text() = $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Currency/text()) or (empty($n/Currency/text()) and empty($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Currency/text()))) and             
+             (($n/Reason/text() = $x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Reason/text()) or (empty($n/Reason/text()) and empty($x//Compensation_One_Time_Payment[@isDeleted='1' and One_Time_Payment_ID=$n/One_Time_Payment_ID]/Reason/text())))
+             ) then 
+           (element{'Allowance_Plan'}{ $n/*}) else()
+    
+    
+  for $otp in ($filteredAddedAndUpdatadandUnmodifiedOTP, $filteredDeletedOTP, $filteredAddedAndDeletedOTP)
+    let $otpChangeStatus := if ($otp[@isAdded='1']) then $const_isAdded else if ($otp[@isUpdated='1']) then $const_isUpdated else if ($otp[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    let $otpPlanFields :=
+    &lt;otpfields&gt;
+      &lt;field&gt;&lt;name&gt;PayrollName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$otpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$otp/External_Payroll_Code_Name}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;PayrollCode&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$otpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$otp/External_Payroll_Code}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;EarningOrDeduction&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$otpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$otp/Earning_or_Deduction}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;Amount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$otpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$otp/Amount}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;Currency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$otpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$otp/Currency}&lt;/source&gt;&lt;/field&gt;
+      &lt;field&gt;&lt;name&gt;Reason&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$otpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$otp/Reason}&lt;/source&gt;&lt;/field&gt;
+    &lt;/otpfields&gt;
+    
+    return
+      element {'OneTimePayment'} {
+        if (string-length($otpChangeStatus) = 0) then () else attribute{ $otpChangeStatus}{'1'},
+        for $f in $otpPlanFields//field
+        (:***************************************************************************************:)
+        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
+        (:***************************************************************************************:)
+        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
+        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
+        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
+                  
+        let $value := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
+            default return $f/source//text()
+
+        let $priorValue := 
+          switch($f/type)
+            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
+            default return $f/source//@priorValue
+        
+        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
+        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
+         
+        let $countryAttributes := if ($f/type/text() = 'country') then 
+          (
+            if ($isThisFieldDeleted) then
+              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+            else
+              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
+          )
+          else ()
+        
+        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
+        
+        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
+        
+        let $valueIfChangedAttribute := 
+          if ($includeValueIfChangedAttribute = 1) then
+          (
+            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
+              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
+            else 
+              if ($isThisFieldDeleted) then
+              (
+                if ($deletionMarker = '#value#') then 
+                  (
+                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
+                  )
+                  else 
+                  (
+                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
+                  )
+              )
+              else () 
+          )
+          else ()
+          
+        return
+        element {$f/name/text()} 
+        { 
+          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
+           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
+             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
+        }
+        (:*** END REPLICATE *** :)
+      }
+    }
+  &lt;/OneTimePaymentList&gt;
+  
   
   &lt;TimeOffList&gt;
   {
@@ -1641,5 +1739,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-04-16T04:13:17.621Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-04-23T06:00:54.024Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
