@@ -3,7 +3,7 @@
    <types1:Item>
       <types1:EntryId>KCv2jop81V4Adyp-gt-2841338-2020-04-02T02:05:45.955Z::pd.xml</types1:EntryId>
       <types1:Name>p-I0074-Common-Process-Subscribed_HR-Data</types1:Name>
-      <types1:ParentFlowIds>0CYybdsMkdypKwK-gt-2317732-2020-04-27T08:29:56.987Z::pd.xml,C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,K0CYybdsMkdypKw-gt-376081-2020-12-13T01:58:11.591Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pMDVK9Em2kVNKSm-gt-5093579-2020-12-20T05:38:55.257Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,QYWeIssjqluQgab-gt-6617180-2020-12-23T01:59:16.691Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,RfRH9ln6lRuImXy-gt-10899158-2021-02-15T05:08:57.077Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml,T6Pw97yV4AdypKw-gt-4674397-2021-03-05T08:52:47.27Z::pd.xml,TPdqRi92qBbbeJO-gt-2721252-2021-04-22T08:49:44.739Z::pd.xml,Uopz4KhPVEQrXhN-gt-3472267-2020-12-16T07:58:20.756Z::pd.xml,VFlprzYLnzYLnzY-gt-2218229-2020-12-14T04:35:16.758Z::pd.xml,yk6yQC8WrY1Sypm-gt-28431768-2021-01-06T01:59:52.389Z::pd.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>0CYybdsMkdypKwK-gt-2317732-2020-04-27T08:29:56.987Z::pd.xml,8NciZBpDUQbgdwU-gt-2930767-2021-04-28T05:53:26.962Z::pd.xml,C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,K0CYybdsMkdypKw-gt-376081-2020-12-13T01:58:11.591Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pMDVK9Em2kVNKSm-gt-5093579-2020-12-20T05:38:55.257Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,QYWeIssjqluQgab-gt-6617180-2020-12-23T01:59:16.691Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,RfRH9ln6lRuImXy-gt-10899158-2021-02-15T05:08:57.077Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml,T6Pw97yV4AdypKw-gt-4674397-2021-03-05T08:52:47.27Z::pd.xml,TPdqRi92qBbbeJO-gt-2721252-2021-04-22T08:49:44.739Z::pd.xml,Uopz4KhPVEQrXhN-gt-3472267-2020-12-16T07:58:20.756Z::pd.xml,VFlprzYLnzYLnzY-gt-2218229-2020-12-14T04:35:16.758Z::pd.xml,yk6yQC8WrY1Sypm-gt-28431768-2021-01-06T01:59:52.389Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+process</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -14,10 +14,10 @@
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
       <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-04-23T05:58:55Z</types1:ModificationDate>
+      <types1:ModificationDate>2021-05-04T12:10:43Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>daniel.ong@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-04-23T05:59:13Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-05-04T12:10:59Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -129,6 +129,7 @@ let $NationalIdType :=
       case 'CA' return 'CAN-SIN'
       case 'DE' return 'Social Insurance Number'
       case 'US' return 'USA-SSN'
+      case 'GB' return 'GBR-NI'
       default return ()
       
 let $SocialInsuranceNumberType :=
@@ -360,117 +361,78 @@ let $SupervisorChangeStatus := if ($AdditionalInformationChangeStatus = ($const_
 
 
 (:Compensation_Plans:)
-let $CompensationPlansNode := if (fn:empty($x//Compensation_Plans[not(@isDeleted='1') and (empty(Position_End_Date) or Position_End_Date/@isDeleted='1')])) then $x//Compensation_Plans else $x//Compensation_Plans[not(@isDeleted='1') and (empty(Position_End_Date) or Position_End_Date/@isDeleted='1')]
-let $CompensationPlansNode := if (empty($CompensationPlansNode)) then $x//Compensation_Plans else $CompensationPlansNode
-let $CompensationPlansChangeStatus := if ($CompensationPlansNode[@isAdded='1']) then $const_isAdded else if ($CompensationPlansNode[@isUpdated='1']) then $const_isUpdated else if ($CompensationPlansNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
-(: Salary_and_Hourly_Plan :)
-let $SalaryNode := 
-if (count($CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1')]) &gt; 1) then
-(
-  let $NewSalary := $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1') and fn:string-length(End_Date) = 0]
-  (:let $OldSalary := $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1') and fn:string-length(End_Date) &gt; 0]:)
-  let $OldSalary := (for $n in $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1') and fn:string-length(End_Date) &gt; 0] order by $n/End_Date descending return $n)[1]
- 
+let $endedAllowancesPlans := $x//Compensation_Plans/*[local-name() = ('Allowance_Plan', 'Period_Salary_Plan', 'Salary_and_Hourly_Plan', 'Bonus_Plan') and ( @isDeleted='1' or ../@isDeleted='1' or fn:string-length(End_Date[not(@isDeleted='1')]) &gt; 0 or fn:string-length(../Position_End_Date[not(@isDeleted='1')]) &gt; 0 )]
+let $activeAllowancesPlans := $x//Compensation_Plans/*[local-name() = ('Allowance_Plan', 'Period_Salary_Plan', 'Salary_and_Hourly_Plan', 'Bonus_Plan') and (not(@isDeleted='1' or ../@isDeleted='1' or fn:string-length(End_Date[not(@isDeleted='1')]) &gt; 0 or fn:string-length(../Position_End_Date[not(@isDeleted='1')]) &gt; 0))]
+let $processedDeletedAllowancesPlans :=
+  for $a in $endedAllowancesPlans
+    let $matchingActive := $activeAllowancesPlans[Compensation_Plan = $a/Compensation_Plan]
   return 
-    element {'Salary_and_Hourly_Plan'} 
-    {
-      attribute {'isUpdated'} {'1'},
-      element {'Compensation_Plan'}{
-        if ($OldSalary/Compensation_Plan/text() != $NewSalary/Compensation_Plan/text()) then
-        attribute {'priorValue'}{$OldSalary/Compensation_Plan/text() } else (), 
-        $NewSalary/Compensation_Plan/text()},
-      element {'Amount'}{
-        if ($OldSalary/Amount/text() != $NewSalary/Amount/text()) then
-        attribute {'priorValue'}{$OldSalary/Amount/text()} else (), 
-        $NewSalary/Amount/text()},
-      element {'Prorated_Amount'}{
-        if ($OldSalary/Prorated_Amount/text() != $NewSalary/Prorated_Amount/text()) then
-        attribute {'priorValue'}{$OldSalary/Prorated_Amount/text()} else (), 
-        $NewSalary/Prorated_Amount/text()},
-      element {'Apply_FTE'}{
-        if ($OldSalary/Apply_FTE/text() != $NewSalary/Apply_FTE/text()) then
-        attribute {'priorValue'}{$OldSalary/Apply_FTE/text()} else (), 
-        $NewSalary/Apply_FTE/text()},
-      element {'Currency'}{
-        if ($OldSalary/Currency/text() != $NewSalary/Currency/text()) then
-        attribute {'priorValue'}{$OldSalary/Currency/text()} else (), 
-        $NewSalary/Currency/text()},
-      element {'Frequency'}{
-        if ($OldSalary/Frequency/text() != $NewSalary/Frequency/text()) then
-        attribute {'priorValue'}{$OldSalary/Frequency/text()} else (), 
-        $NewSalary/Frequency/text()},
-      element {'Start_Date'}{
-        if ($OldSalary/Start_Date/text() != $NewSalary/Start_Date/text()) then
-        attribute {'priorValue'}{$OldSalary/Start_Date/text()} else (), 
-        $NewSalary/Start_Date/text()},
-      element {'End_Date'}{attribute {'priorValue'}{$OldSalary/End_Date/text()}, $NewSalary/End_Date/text()}
+    if (fn:serialize($a/*) = fn:serialize($matchingActive/*)) then 
+      ()
+    else 
+    (
+      if (fn:string-length($matchingActive) = 0) then $a else ()  
+    )  
+let $compFields := ('Compensation_Plan', 'Amount', 'Prorated_Amount', 'Currency', 'Frequency', 'Period_Multiplier', 'Start_Date', 'End_Date') let $processedActiveAllowancesPlans :=
+  for $a in $activeAllowancesPlans
+    let $matchingEnded := $endedAllowancesPlans[Compensation_Plan = $a/Compensation_Plan]
+  return 
+    if (fn:serialize($a/*) = fn:serialize($matchingEnded/*)) then 
+      element { $a/node-name() } {$a/*}
+    else
+      element {$a/node-name()  } {
+        if ($a/@isUpdated='1') then attribute {'isUpdated'} {'1'}
+        else
+          if (fn:string-length($matchingEnded) = 0) then
+            if (data($a/@isAdded)='1' or data($a/../@isAdded='1')) then 
+              attribute {'isAdded'} {'1'}
+            else
+              ()
+          else
+            attribute {'isUpdated'} {'1'}, 
+        for $cf in $compFields
+        return
+        element {$cf}{
+          (:priorValue:)
+          if (fn:string-length(fn:data($a/*[local-name()=$cf]/@priorValue)) &gt; 0) then 
+            attribute {'priorValue'}{fn:data($a/*[local-name()=$cf]/@priorValue)} 
+          else
+            if (fn:string-length($matchingEnded) = 0) then
+            () 
+            else
+              if (fn:serialize($a/*[local-name()=$cf]/text()) != fn:serialize($matchingEnded/*[local-name()=$cf]/text())) then
+                attribute {'priorValue'}{ $matchingEnded/*[local-name()=$cf]/text() }
+              else
+                if (fn:string-length(fn:data($matchingEnded/*[local-name()=$cf]/@priorValue)) &gt; 0 and fn:serialize($a/*[local-name()=$cf]/text()) != fn:serialize(fn:data($matchingEnded/*[local-name()=$cf]/@priorValue))) then
+                  attribute {'priorValue'}{ fn:data($matchingEnded/*[local-name()=$cf]/@priorValue) }     
+                else
+                (),
+          (: value :)
+          $a/*[local-name()=$cf]/text()}
   }
-)
-else
-(
-  (: THIS PART HERE NEEDS TO CHECK IF ADDED SALARY = DELETED SALARY like allowance  :)
-  if (fn:empty($CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1')])) then $CompensationPlansNode//Salary_and_Hourly_Plan else $CompensationPlansNode//Salary_and_Hourly_Plan[not(@isDeleted='1')]
-)
-let $SalaryChangeStatus := if (not(empty($SalaryNode)) and $CompensationPlansChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationPlansChangeStatus else if ($SalaryNode[@isAdded='1']) then 
-(
-  if ($SalaryNode = $CompensationPlansNode//Salary_and_Hourly_Plan[@isDeleted='1']) then () else $const_isAdded
-)
- else if ($SalaryNode[@isUpdated='1']) then $const_isUpdated else if ($SalaryNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+let $CompensationPlansNode := 
+&lt;Compensation_Plans&gt;{  $processedDeletedAllowancesPlans, $processedActiveAllowancesPlans }&lt;/Compensation_Plans&gt;
+let $CompensationPlansChangeStatus := if ($CompensationPlansNode[@isAdded='1']) then $const_isAdded else if ($CompensationPlansNode[@isUpdated='1']) then $const_isUpdated else if ($CompensationPlansNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+
+
+
+
+(: Salary_and_Hourly_Plan :)
+let $SalaryNode := $CompensationPlansNode/Salary_and_Hourly_Plan
+let $SalaryChangeStatus := 
+    if ($SalaryNode[@isAdded='1']) then $const_isAdded else if ($SalaryNode[@isDeleted='1']) then $const_isDeleted else
+      if (count($SalaryNode/*[string-length(@priorValue) &gt; 0 or @isAdded='1' or @isDeleted='1']) &gt; 0) then $const_isUpdated else $const_noChange
+
 
 (: Period_Salary_Plan :)
-let $PeriodSalaryNode := 
-if (count($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' ]) &gt; 1) then
-(
-  let $NewPeriodSalary := $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' and empty(End_Date)][1] (: this is based on observation that latest plan will always be on top :)
-  let $OldPeriodSalary := 
-    if (empty($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' and not(empty(End_Date))])) then $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1'][last()] else $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1' and not(empty(End_Date))]
-  return 
-    if ( xs:date($NewPeriodSalary/Start_Date) &lt;  xs:date($OldPeriodSalary/End_Date) ) then
-      $NewPeriodSalary
-    else
-      element {'Period_Salary_Plan'} 
-      {
-        attribute {'isUpdated'} {'1'},
-        element {'Compensation_Plan'}{
-          if ($OldPeriodSalary/Compensation_Plan/text() != $NewPeriodSalary/Compensation_Plan/text()) then
-          attribute {'priorValue'}{$OldPeriodSalary/Compensation_Plan/text() } else (), 
-          $NewPeriodSalary/Compensation_Plan/text()},
-        element {'Amount'}{
-          if ($OldPeriodSalary/Amount/text() != $NewPeriodSalary/Amount/text()) then
-          attribute {'priorValue'}{$OldPeriodSalary/Amount/text()} else (), 
-          $NewPeriodSalary/Amount/text()},
-        element {'Prorated_Amount'}{
-          if ($OldPeriodSalary/Period_Multiplier/text() != $NewPeriodSalary/Period_Multiplier/text()) then
-          attribute {'priorValue'}{$OldPeriodSalary/Period_Multiplier/text()} else (), 
-          $NewPeriodSalary/Period_Multiplier/text()},
-        element {'Currency'}{
-          if ($OldPeriodSalary/Currency/text() != $NewPeriodSalary/Currency/text()) then
-          attribute {'priorValue'}{$OldPeriodSalary/Currency/text()} else (), 
-          $NewPeriodSalary/Currency/text()},
-        element {'Frequency'}{
-          if ($OldPeriodSalary/Frequency/text() != $NewPeriodSalary/Frequency/text()) then
-          attribute {'priorValue'}{$OldPeriodSalary/Frequency/text()} else (), 
-          $NewPeriodSalary/Frequency/text()},
-        element {'Start_Date'}{
-          if ($OldPeriodSalary/Start_Date/text() != $NewPeriodSalary/Start_Date/text()) then
-          attribute {'priorValue'}{$OldPeriodSalary/Start_Date/text()} else (), 
-          $NewPeriodSalary/Start_Date/text()},
-          
-        element {'End_Date'}{
-          if ($OldPeriodSalary/End_Date/text() != $NewPeriodSalary/End_Date/text()) then
-          attribute {'priorValue'}{$OldPeriodSalary/End_Date/text()} else (), 
-          $NewPeriodSalary/End_Date/text()}
-      }
-)
-else
-(
-  if (fn:empty($CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1'])) then $CompensationPlansNode//Period_Salary_Plan else $CompensationPlansNode//Period_Salary_Plan[not(@isDeleted='1') and Compensation_Plan='PERIOD_SALARY_PLAN-6-1']
-)
-let $PeriodSalaryChangeStatus := if (not(empty($PeriodSalaryNode)) and $CompensationPlansChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationPlansChangeStatus else if ($PeriodSalaryNode[@isAdded='1']) then 
-(
-  if ($PeriodSalaryNode = $CompensationPlansNode//Period_Salary_Plan[@isDeleted='1']) then () else $const_isAdded
-)
- else if ($PeriodSalaryNode[@isUpdated='1']) then $const_isUpdated else if ($PeriodSalaryNode[@isDeleted='1']) then $const_isDeleted else $const_noChange
+let $PeriodSalaryNode := $CompensationPlansNode/Period_Salary_Plan
+let $PeriodSalaryChangeStatus := 
+    if ($PeriodSalaryNode[@isAdded='1']) then $const_isAdded else if ($PeriodSalaryNode[@isDeleted='1']) then $const_isDeleted else
+      if (count($PeriodSalaryNode/*[string-length(@priorValue) &gt; 0 or @isAdded='1' or @isDeleted='1']) &gt; 0) then $const_isUpdated else $const_noChange
+
+
   
 (:Compensation:)
 let $CompensationNode := $x//Compensation[not(@isDeleted='1') and empty(Position_End_Date)] 
@@ -713,7 +675,6 @@ else ()
   &lt;field&gt;&lt;name&gt;ProratedAmount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Prorated_Amount}&lt;/source&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;Currency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Currency}&lt;/source&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;Frequency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Frequency}&lt;/source&gt;&lt;/field&gt;
-  &lt;field&gt;&lt;name&gt;ApplyFTE&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Apply_FTE}&lt;/source&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;StartDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$SalaryNode/Start_Date}&lt;/source&gt;&lt;/field&gt;
   &lt;field&gt;&lt;name&gt;EndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;SalaryAndHourlyPlan&lt;/group&gt;&lt;parentChangeStatus&gt;{$SalaryChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{
     if (empty($SalaryNode/End_Date) and not(empty($CompensationPlansNode/Position_End_Date))) then (xs:date($CompensationPlansNode/Position_End_Date) - xs:dayTimeDuration("P1D")) else $SalaryNode/End_Date }&lt;/source&gt;&lt;/field&gt;
@@ -961,48 +922,10 @@ return
   
   &lt;AllowancePlanList&gt;
   {
-    (:AllowancePlan:)
-    let $filteredAddedAndUpdatadandUnmodifiedAllowances := 
-     for $n in $CompensationPlansNode//Allowance_Plan[not(@isDeleted='1')]
-        return if (
-             (($n/Amount/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (string-length($n/Amount/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) or 
-             (($n/Prorated_Amount/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()) or (string-length($n/Prorated_Amount/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()))) or              
-             (($n/Currency/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (string-length($n/Currency/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) or
-             (($n/Frequency/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()) or (string-length($n/Frequency/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()))) or             
-             (($n/Start_Date/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (string-length($n/Start_Date/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) or
-             (($n/End_Date/text() != $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (string-length($n/End_Date/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
-             ) then 
-           $n else()
-           
-    let $filteredDeletedAllowances := 
-     for $n in $CompensationPlansNode//Allowance_Plan[@isDeleted='1']
-        return if (
-             (($n/Amount/text() != $x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (string-length($n/Amount/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) or 
-             (($n/Prorated_Amount/text() != $x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()) or (string-length($n/Prorated_Amount/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()))) or              
-             (($n/Currency/text() != $x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (string-length($n/Currency/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) or
-             (($n/Frequency/text() != $x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()) or (string-length($n/Frequency/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()))) or
-             (($n/Start_Date/text() != $x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (string-length($n/Start_Date/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) or
-             (($n/End_Date/text() != $x//Compensation_Plans/Allowance_Plan[@isAddedeted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (string-length($n/End_Date/text()) != string-length($x//Compensation_Plans/Allowance_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
-             ) then 
-           $n else()
-           
-    let $filteredAddedAndDeletedAllowances := 
-     for $n in $CompensationPlansNode//Allowance_Plan[@isAdded='1']
-        return if (
-             (($n/Amount/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (empty($n/Amount/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) and 
-             (($n/Prorated_Amount/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()) or (empty($n/Prorated_Amount/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Prorated_Amount/text()))) and              
-             (($n/Frequency/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()) or (empty($n/Frequency/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Frequency/text()))) and
-             (($n/Currency/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (empty($n/Currency/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) and             
-             (($n/Start_Date/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (empty($n/Start_Date/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) and
-             (($n/End_Date/text() = $x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (empty($n/End_Date/text()) and empty($x//Compensation_Plans/Allowance_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
-             ) then 
-           (element{'Allowance_Plan'}{ $n/*}) else()
-    
-    
-  for $ap in ($filteredAddedAndUpdatadandUnmodifiedAllowances, $filteredDeletedAllowances, $filteredAddedAndDeletedAllowances)
+  for $ap in $CompensationPlansNode//Allowance_Plan
     let $apChangeStatus := 
-    if (not(empty($ap)) and $CompensationPlansChangeStatus = ($const_isAdded, $const_isDeleted)) then $CompensationPlansChangeStatus else 
-    if ($ap[@isAdded='1']) then $const_isAdded else if ($ap[@isUpdated='1']) then $const_isUpdated else if ($ap[@isDeleted='1']) then $const_isDeleted else $const_noChange
+    if ($ap[@isAdded='1']) then $const_isAdded else if ($ap[@isDeleted='1']) then $const_isDeleted else
+      if (count($ap/*[string-length(@priorValue) &gt; 0 or @isAdded='1' or @isDeleted='1']) &gt; 0) then $const_isUpdated else $const_noChange
     let $allowancePlanFields :=
     &lt;apfields&gt;
       &lt;field&gt;&lt;name&gt;CompensationPlan&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$apChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$ap/Compensation_Plan}&lt;/source&gt;&lt;/field&gt;
@@ -1185,42 +1108,43 @@ return
 
   &lt;LeaveOfAbsenceList&gt;
   {
-    (:Leave_of_Absence:)
-    let $filteredAddedAndUpdatadandUnmodifiedLOA := 
-     for $n in $x//Leave_of_Absence[not(@isDeleted='1')]
-        return if (
-             (($n/Leave_Start_Date/text() != $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()) or (string-length($n/Leave_Start_Date/text()) != string-length($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()))) or 
-             (($n/Leave_Last_Day_of_Work/text() != $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()) or (string-length($n/Leave_Last_Day_of_Work/text()) != string-length($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()))) or 
-             (($n/Estimated_Leave_End_Date/text() != $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()) or (string-length($n/Estimated_Leave_End_Date/text()) != string-length($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()))) or
-             (($n/Leave_End_Date/text() != $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()) or (string-length($n/Leave_End_Date/text()) != string-length($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()))) or      
-             (($n/Payroll_Effect/text() != $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text()) or (string-length($n/Payroll_Effect/text()) != string-length($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text())))                            
-             ) then 
-           $n else()
-           
-    let $filteredDeletedLOA := 
-     for $n in $x//Leave_of_Absence[@isDeleted='1']
-        return if (
-             (($n/Leave_Start_Date/text() != $x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()) or (string-length($n/Leave_Start_Date/text()) != string-length($x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()))) or
-             (($n/Leave_Last_Day_of_Work/text() != $x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()) or (string-length($n/Leave_Last_Day_of_Work/text()) != string-length($x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()))) or
-             (($n/Estimated_Leave_End_Date/text() != $x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()) or (string-length($n/Estimated_Leave_End_Date/text()) != string-length($x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()))) or   
-             (($n/Leave_End_Date/text() != $x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()) or (string-length($n/Leave_End_Date/text()) != string-length($x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()))) or      
-             (($n/Payroll_Effect/text() != $x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text()) or (string-length($n/Payroll_Effect/text()) != string-length($x//Leave_of_Absence[@isAdded='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text())))                             
-             ) then 
-           $n else()
-           
-    let $filteredAddedAndDeletedLOA := 
-     for $n in $x//Leave_of_Absence[@isAdded='1']
-        return if (
-             (($n/Leave_Start_Date/text() = $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()) or (empty($n/Leave_Start_Date/text()) and empty($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Start_Date/text()))) and 
-             (($n/Leave_Last_Day_of_Work/text() = $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()) or (empty($n/Leave_Last_Day_of_Work/text()) and empty($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_Last_Day_of_Work/text()))) and 
-             (($n/Estimated_Leave_End_Date/text() = $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()) or (empty($n/Estimated_Leave_End_Date/text()) and empty($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Estimated_Leave_End_Date/text()))) and    
-             (($n/Leave_End_Date/text() = $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()) or (empty($n/Leave_End_Date/text()) and empty($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Leave_End_Date/text()))) and              
-             (($n/Payroll_Effect/text() = $x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text()) or (empty($n/Payroll_Effect/text()) and empty($x//Leave_of_Absence[@isDeleted='1' and Leave_of_Absence_Type=$n/Leave_of_Absence_Type and (Leave_Reason=$n/Leave_Reason or (string-length(Leave_Reason/text()) = 0 and string-length($n/Leave_Reason/text()) = 0))]/Payroll_Effect/text())))
-             ) then 
-           (element{'Allowance_Plan'}{ $n/*}) else()
     
+    let $filteredAdded_And_AddedDeletedLOA :=
+    for $n in $x//Leave_of_Absence[@isAdded='1']
+    let $matchDeleted := 
+      for $f in $x//Leave_of_Absence[@isDeleted='1']
+      return
+        if ($f[($n/Leave_Start_Date = Leave_Start_Date or (fn:string-length($n/Leave_Start_Date) = 0 and fn:string-length(Leave_Start_Date) = 0)) and 
+                                      ($n/Estimated_Leave_End_Date = Estimated_Leave_End_Date or (fn:string-length($n/Estimated_Leave_End_Date) = 0 and fn:string-length(Estimated_Leave_End_Date) = 0)) and 
+                                      ($n/Leave_Last_Day_of_Work = Leave_Last_Day_of_Work or (fn:string-length($n/Leave_Last_Day_of_Work) = 0 and fn:string-length(Leave_Last_Day_of_Work) = 0)) and 
+                                      ($n/Leave_of_Absence_Type = Leave_of_Absence_Type or (fn:string-length($n/Leave_of_Absence_Type) = 0 and fn:string-length(Leave_of_Absence_Type) = 0)) and 
+                                      ($n/Leave_End_Date = Leave_End_Date or (fn:string-length($n/Leave_End_Date) = 0 and fn:string-length(Leave_End_Date) = 0)) and 
+                                    ($n/Leave_Reason = Leave_Reason or (fn:string-length($n/Leave_Reason) = 0 and fn:string-length(Leave_Reason) = 0)	)
+                                    ]) then $f else ()
+    return
+    if (fn:string-length($matchDeleted) &gt; 0) then 
+      (element{'Leave_of_Absence'}{ $n/*}) else $n
+     
+      
+    let $filteredDeletedLOA :=
+    for $n in $x//Leave_of_Absence[@isDeleted='1']
+    let $matchAdded := 
+      for $f in $x//Leave_of_Absence[@isAdded='1']
+      return
+      if ($f[($n/Leave_Start_Date = Leave_Start_Date or (fn:string-length($n/Leave_Start_Date) = 0 and fn:string-length(Leave_Start_Date) = 0)) and 
+                                      ($n/Estimated_Leave_End_Date = Estimated_Leave_End_Date or (fn:string-length($n/Estimated_Leave_End_Date) = 0 and fn:string-length(Estimated_Leave_End_Date) = 0)) and 
+                                      ($n/Leave_Last_Day_of_Work = Leave_Last_Day_of_Work or (fn:string-length($n/Leave_Last_Day_of_Work) = 0 and fn:string-length(Leave_Last_Day_of_Work) = 0)) and 
+                                      ($n/Leave_of_Absence_Type = Leave_of_Absence_Type or (fn:string-length($n/Leave_of_Absence_Type) = 0 and fn:string-length(Leave_of_Absence_Type) = 0)) and 
+                                      ($n/Leave_End_Date = Leave_End_Date or (fn:string-length($n/Leave_End_Date) = 0 and fn:string-length(Leave_End_Date) = 0)) and 
+                                      ($n/Leave_Reason = Leave_Reason or (fn:string-length($n/Leave_Reason) = 0 and fn:string-length(Leave_Reason) = 0))
+                                    ]) then $f else ()
+    return
+    if (fn:string-length($matchAdded) &gt; 0) then 
+      () else $n
+      
+  let $filteredOtherLOA := $x//Leave_of_Absence[not(@isDeleted='1') and not(@isAdded='1') ]
     
-  for $loa in ($filteredAddedAndUpdatadandUnmodifiedLOA, $filteredDeletedLOA, $filteredAddedAndDeletedLOA)
+  for $loa in ($filteredDeletedLOA, $filteredAdded_And_AddedDeletedLOA,  $filteredOtherLOA)
     let $loaChangeStatus := if ($loa[@isAdded='1']) then $const_isAdded else if ($loa[@isUpdated='1']) then $const_isUpdated else if ($loa[@isDeleted='1']) then $const_isDeleted else $const_noChange
     let $loaFields :=
     &lt;rcfields&gt;
@@ -1520,126 +1444,7 @@ return
     }
   &lt;/TimeOffList&gt;
   
-  &lt;BonusPlanList&gt;
-  {
-    (:BonusPlan:)
-    let $filteredAddedAndUpdatadandUnmodifiedBonuses := 
-     for $n in $CompensationPlansNode//Bonus_Plan[not(@isDeleted='1')]
-        return if (
-             (($n/Amount/text() != $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (string-length($n/Amount/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) or 
-             (($n/Currency/text() != $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (string-length($n/Currency/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) or
-             (($n/Start_Date/text() != $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (string-length($n/Start_Date/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) or
-             (($n/End_Date/text() != $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (string-length($n/End_Date/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
-             ) then 
-           $n else()
-           
-           
-    let $filteredDeletedBonuses := 
-     for $n in $CompensationPlansNode//Bonus_Plan[@isDeleted='1']
-        return if (
-             (($n/Amount/text() != $x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (string-length($n/Amount/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) or 
-             (($n/Currency/text() != $x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (string-length($n/Currency/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) or
-             (($n/Start_Date/text() != $x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (string-length($n/Start_Date/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) or
-             (($n/End_Date/text() != $x//Compensation_Plans/Bonus_Plan[@isAddedeted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (string-length($n/End_Date/text()) != string-length($x//Compensation_Plans/Bonus_Plan[@isAdded='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
-             ) then 
-           $n else()
-           
-    let $filteredAddedAndDeletedBonuses := 
-     for $n in $CompensationPlansNode//Bonus_Plan[@isAdded='1']
-        return if (
-             (($n/Amount/text() = $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()) or (empty($n/Amount/text()) and empty($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Amount/text()))) and 
-             (($n/Currency/text() = $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()) or (empty($n/Currency/text()) and empty($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Currency/text()))) and
-             (($n/Start_Date/text() = $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()) or (empty($n/Start_Date/text()) and empty($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/Start_Date/text()))) and
-             (($n/End_Date/text() = $x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text()) or (empty($n/End_Date/text()) and empty($x//Compensation_Plans/Bonus_Plan[@isDeleted='1' and Compensation_Plan=$n/Compensation_Plan]/End_Date/text())))
-             ) then 
-           (element{'Bonus_Plan'}{ $n/*}) else()
-    
-  for $bp in ($filteredAddedAndUpdatadandUnmodifiedBonuses, $filteredDeletedBonuses, $filteredAddedAndDeletedBonuses)
-    let $bpChangeStatus := if ($bp[@isAdded='1']) then $const_isAdded else if ($bp[@isUpdated='1']) then $const_isUpdated else if ($bp[@isDeleted='1']) then $const_isDeleted else $const_noChange
-  
-    let $bonusPlanFields :=
-    &lt;bonusfields&gt;
-      &lt;field&gt;&lt;name&gt;PlanType&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$bp/Compensation_Plan}&lt;/source&gt;&lt;/field&gt;
-      &lt;field&gt;&lt;name&gt;Amount&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$bp/Amount}&lt;/source&gt;&lt;/field&gt;
-      &lt;field&gt;&lt;name&gt;Currency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$bp/Currency}&lt;/source&gt;&lt;/field&gt;
-      &lt;field&gt;&lt;name&gt;Frequency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$bp/Frequency}&lt;/source&gt;&lt;/field&gt;
-      &lt;field&gt;&lt;name&gt;StartDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$bp/Start_Date}&lt;/source&gt;&lt;/field&gt;
-      &lt;field&gt;&lt;name&gt;EndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;parentChangeStatus&gt;{$bpChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;
-          {if (empty($bp/End_Date) and not(empty($bp/../Position_End_Date))) then (xs:date($bp/../Position_End_Date/text()) - xs:dayTimeDuration("P1D")) else $bp/End_Date}&lt;/source&gt;&lt;/field&gt;
-    &lt;/bonusfields&gt;
-    
-     
-    
-    return
-      element {'BonusPlan'} {
-        if (string-length($bpChangeStatus) = 0) then () else attribute{ $bpChangeStatus}{'1'},
-        for $f in $bonusPlanFields//field
-        (:***************************************************************************************:)
-        (:*** BELOW SECTION SHOULD TO BE REPLICATED TO RELATED COMMUNICATION AND ALLOWANCE PLAN BECAUSE INFORMATICA DOESN'T SUPPORT FUNCTION FOR NOW *** :)
-        (:***************************************************************************************:)
-        let $isThisFieldAdded := ($f/parentChangeStatus/text() = $const_isAdded or $f/source/*[@isAdded='1'])
-        let $isThisFieldDeleted := $f/parentChangeStatus/text() = $const_isDeleted or ($f/source/*[@isDeleted='1'] and not($f/IsPositionField/text() = '1' and $isPositionEnded = '1') )
-        let $isThisFieldUpdated := if (fn:count($f/source/*/@priorValue) &gt; 0) then fn:true() else fn:false()
-                  
-        let $value := 
-          switch($f/type)
-            case 'date' return if (fn:string-length($f/source//text()) &gt; 0) then fn:format-date(xs:date($f/source//text()), $dateFormat) else ()
-            default return $f/source//text()
 
-        let $priorValue := 
-          switch($f/type)
-            case 'date' return if (fn:string-length($f/source//@priorValue) &gt; 0) then fn:format-date(xs:date($f/source//@priorValue), $dateFormat) else ()
-            default return $f/source//@priorValue
-        
-        let $countryAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value] else ()
-        let $countryPriorValueAltCodeNodes := if ($f/type/text() = 'country') then $output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$priorValue] else ()
-         
-        let $countryAttributes := if ($f/type/text() = 'country') then 
-          (
-            if ($isThisFieldDeleted) then
-              (attribute{'beforeDeleteNumericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'beforeDeleteAlpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
-            else
-              (attribute{'numericCode'}{$countryAltCodeNodes/NumericCode/text()}, attribute{'alpha3Code'}{$countryAltCodeNodes/Alpha3Code/text()})
-          )
-          else ()
-        
-        let $priorCountryAttributes := if ($f/type/text() = 'country') then (attribute{'priorNumericCode'}{$countryPriorValueAltCodeNodes/NumericCode/text()}, attribute{'priorAlpha3Code'}{$countryPriorValueAltCodeNodes/Alpha3Code/text()})  else ()
-        
-        let $correlatePGIPGOAttribute := if (fn:string-length($f/correlatePGIPGOValue/text()) &gt; 0) then (attribute{'correlatePGIPGOValue'}{$f/correlatePGIPGOValue/text()}) else ()
-        
-        let $valueIfChangedAttribute := 
-          if ($includeValueIfChangedAttribute = 1) then
-          (
-            if ( ($x//EventCode/text() = 'HIR') or $isThisFieldAdded or $isThisFieldUpdated) then
-              (attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ())
-            else 
-              if ($isThisFieldDeleted) then
-              (
-                if ($deletionMarker = '#value#') then 
-                  (
-                    attribute{'valueIfChanged'}{$value}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/NumericCode/text()}, attribute{'alpha3CodeIfChanged'}{$output.out_GetCountryISOCodesResult//CountryISOCodes[Alpha2Code=$value]/Alpha3Code/text()})  else ()
-                  )
-                  else 
-                  (
-                    attribute{'valueIfChanged'}{$deletionMarker}, if ($f/type/text() = 'country') then (attribute{'numericCodeIfChanged'}{$deletionMarker}, attribute{'alpha3CodeIfChanged'}{$deletionMarker})  else ()
-                  )
-              )
-              else () 
-          )
-          else ()
-          
-        return
-        element {$f/name/text()} 
-        { 
-          if ($isThisFieldAdded) then (attribute{'isAdded'}{'1'}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
-          else if ($isThisFieldDeleted) then (attribute {$const_isDeleted}{"1"}, attribute{$const_ValueBeforeDeleteText}{$value}, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, if ($deletionMarker = '#value#') then $value else $deletionMarker)
-           else if ($isThisFieldUpdated) then (attribute{$const_ValueBeforeUpdateText}{$priorValue}, $priorCountryAttributes, $countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value )
-             else ($countryAttributes, $correlatePGIPGOAttribute, $valueIfChangedAttribute, $value)
-        }
-        (:*** END REPLICATE *** :)
-      }
-    }
-  &lt;/BonusPlanList&gt;
   
   &lt;AssignedRoleList&gt;
   {
@@ -1739,5 +1544,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-04-23T06:00:54.024Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-05-05T02:47:50.942Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
