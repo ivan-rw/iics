@@ -104,6 +104,26 @@
     },
     "path" : "/Explore/I0082 - ITAM"
   }, {
+    "id" : "2NoZUNFvEOUb9M6F4GTJgh",
+    "name" : "mt_I0082_users_count",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD60Z00000000017W"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0082 - ITAM"
+  }, {
     "id" : "2y1nl6xkVIiknI31Z7c7iU",
     "name" : "mt_I0082_LW",
     "type" : "MTT",
