@@ -3,7 +3,7 @@
    <types1:Item>
       <types1:EntryId>KCv2jop81V4Adyp-gt-2841338-2020-04-02T02:05:45.955Z::pd.xml</types1:EntryId>
       <types1:Name>p-I0074-Common-Process-Subscribed_HR-Data</types1:Name>
-      <types1:ParentFlowIds>0CYybdsMkdypKwK-gt-2317732-2020-04-27T08:29:56.987Z::pd.xml,8NciZBpDUQbgdwU-gt-2930767-2021-04-28T05:53:26.962Z::pd.xml,C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,K0CYybdsMkdypKw-gt-376081-2020-12-13T01:58:11.591Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pMDVK9Em2kVNKSm-gt-5093579-2020-12-20T05:38:55.257Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,QYWeIssjqluQgab-gt-6617180-2020-12-23T01:59:16.691Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,RfRH9ln6lRuImXy-gt-10899158-2021-02-15T05:08:57.077Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml,T6Pw97yV4AdypKw-gt-4674397-2021-03-05T08:52:47.27Z::pd.xml,TPdqRi92qBbbeJO-gt-2721252-2021-04-22T08:49:44.739Z::pd.xml,Uopz4KhPVEQrXhN-gt-3472267-2020-12-16T07:58:20.756Z::pd.xml,VFlprzYLnzYLnzY-gt-2218229-2020-12-14T04:35:16.758Z::pd.xml,yk6yQC8WrY1Sypm-gt-28431768-2021-01-06T01:59:52.389Z::pd.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>0CYybdsMkdypKwK-gt-2317732-2020-04-27T08:29:56.987Z::pd.xml,8NciZBpDUQbgdwU-gt-2930767-2021-04-28T05:53:26.962Z::pd.xml,C46snSDg8SOlA1v-gt-1614555-2020-08-24T09:14:44.57Z::pd.xml,HZCU7uMydx2CGeF-gt-3133480-2020-09-23T03:26:26.546Z::pd.xml,K0CYybdsMkdypKw-gt-376081-2020-12-13T01:58:11.591Z::pd.xml,KAWa-gt-889577-2020-03-12T06:04:58.67Z::pd.xml,kVKjvMKQr3rp3yD-gt-23076274-2020-03-11T11:01:13.166Z::pd.xml,PAZf5kck8jKBmeK-gt-7118502-2020-07-21T05:59:33.666Z::pd.xml,pMDVK9Em2kVNKSm-gt-5093579-2020-12-20T05:38:55.257Z::pd.xml,pzDLdw8jIw8jIw8-gt-7882293-2019-11-01T07:19:31.253Z::pd.xml,QYWeIssjqluQgab-gt-6617180-2020-12-23T01:59:16.691Z::pd.xml,r81Owhz5chspiRA-gt-23074916-2020-11-26T02:08:42.822Z::pd.xml,RfRH9ln6lRuImXy-gt-10899158-2021-02-15T05:08:57.077Z::pd.xml,sV5aaabdqpw0VPN-gt-4540046-2020-08-14T07:17:57.296Z::pd.xml,T6Pw97yV4AdypKw-gt-4674397-2021-03-05T08:52:47.27Z::pd.xml,TPdqRi92qBbbeJO-gt-2721252-2021-04-22T08:49:44.739Z::pd.xml,txGomUhGdwOLIFv-gt-7516265-2021-05-11T10:22:10.322Z::pd.xml,Uopz4KhPVEQrXhN-gt-3472267-2020-12-16T07:58:20.756Z::pd.xml,VFlprzYLnzYLnzY-gt-2218229-2020-12-14T04:35:16.758Z::pd.xml,yk6yQC8WrY1Sypm-gt-28431768-2021-01-06T01:59:52.389Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+process</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -13,11 +13,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
-      <types1:ModifiedBy>norazean.shafein@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-05-05T05:05:09Z</types1:ModificationDate>
+      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2021-05-21T03:17:52Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-05-05T05:12:47Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-05-24T05:07:17Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -412,7 +412,7 @@ let $processedDeletedAllowancesPlans :=
     )  
 let $compFields := ('Compensation_Plan', 'Amount', 'Prorated_Amount', 'Currency', 'Frequency', 'Period_Multiplier', 'Start_Date', 'End_Date') let $processedActiveAllowancesPlans :=
   for $a in $activeAllowancesPlans
-    let $matchingEnded := $endedAllowancesPlans[Compensation_Plan = $a/Compensation_Plan]
+    let $matchingEnded := $endedAllowancesPlans[Compensation_Plan = $a/Compensation_Plan][1]
   return 
     if (fn:serialize($a/*) = fn:serialize($matchingEnded/*)) then 
       element { $a/node-name() } {$a/*}
@@ -456,15 +456,16 @@ let $CompensationPlansChangeStatus := if ($CompensationPlansNode[@isAdded='1']) 
 
 
 
-(: Salary_and_Hourly_Plan :)
-let $SalaryNode := $CompensationPlansNode/Salary_and_Hourly_Plan
+(: Salary_and_Hourly_Plan - return record with latest start_date :)
+let $SalaryNode := for $x in (for $s in $CompensationPlansNode/Salary_and_Hourly_Plan order by $s/Start_Date descending return $s)[1] return $x
 let $SalaryChangeStatus := 
     if ($SalaryNode[@isAdded='1']) then $const_isAdded else if ($SalaryNode[@isDeleted='1']) then $const_isDeleted else
       if (count($SalaryNode/*[string-length(@priorValue) &gt; 0 or @isAdded='1' or @isDeleted='1']) &gt; 0) then $const_isUpdated else $const_noChange
 
 
-(: Period_Salary_Plan :)
-let $PeriodSalaryNode := $CompensationPlansNode/Period_Salary_Plan
+(: Period_Salary_Plan - return record with latest start_date :)
+let $PeriodSalaryNode := for $x in (for $s at $idx in $CompensationPlansNode/Period_Salary_Plan order by $s/Start_Date descending return $s)[1] return $x
+
 let $PeriodSalaryChangeStatus := 
     if ($PeriodSalaryNode[@isAdded='1']) then $const_isAdded else if ($PeriodSalaryNode[@isDeleted='1']) then $const_isDeleted else
       if (count($PeriodSalaryNode/*[string-length(@priorValue) &gt; 0 or @isAdded='1' or @isDeleted='1']) &gt; 0) then $const_isUpdated else $const_noChange
@@ -1150,11 +1151,22 @@ return
 
   &lt;LeaveOfAbsenceList&gt;
   {
+    let $loalist :=
+    for $l at $idx in $x//Leave_of_Absence
+    return 
+    element{'Leave_of_Absence'} { 
+      if ($l/@isAdded = '1') then attribute{'isAdded'}{'1'} else (),
+      if ($l/@isUpdated = '1') then attribute{'isUpdated'}{'1'} else (),
+      if ($l/@isDeleted = '1') then attribute{'isDeleted'}{'1'} else (),
+      $l/*,
+      element{'SortOrder'}{$idx}
+    }
+    
     
     let $filteredAdded_And_AddedDeletedLOA :=
-    for $n in $x//Leave_of_Absence[@isAdded='1']
+    for $n in $loalist[@isAdded='1']
     let $matchDeleted := 
-      for $f in $x//Leave_of_Absence[@isDeleted='1']
+      for $f in $loalist[@isDeleted='1']
       return
         if ($f[($n/Leave_Start_Date = Leave_Start_Date or (fn:string-length($n/Leave_Start_Date) = 0 and fn:string-length(Leave_Start_Date) = 0)) and 
                                       ($n/Estimated_Leave_End_Date = Estimated_Leave_End_Date or (fn:string-length($n/Estimated_Leave_End_Date) = 0 and fn:string-length(Estimated_Leave_End_Date) = 0)) and 
@@ -1169,9 +1181,9 @@ return
      
       
     let $filteredDeletedLOA :=
-    for $n in $x//Leave_of_Absence[@isDeleted='1']
+    for $n in $loalist[@isDeleted='1']
     let $matchAdded := 
-      for $f in $x//Leave_of_Absence[@isAdded='1']
+      for $f in $loalist[@isAdded='1']
       return
       if ($f[($n/Leave_Start_Date = Leave_Start_Date or (fn:string-length($n/Leave_Start_Date) = 0 and fn:string-length(Leave_Start_Date) = 0)) and 
                                       ($n/Estimated_Leave_End_Date = Estimated_Leave_End_Date or (fn:string-length($n/Estimated_Leave_End_Date) = 0 and fn:string-length(Estimated_Leave_End_Date) = 0)) and 
@@ -1184,9 +1196,9 @@ return
     if (fn:string-length($matchAdded) &gt; 0) then 
       () else $n
       
-  let $filteredOtherLOA := $x//Leave_of_Absence[not(@isDeleted='1') and not(@isAdded='1') ]
+  let $filteredOtherLOA := $loalist[not(@isDeleted='1') and not(@isAdded='1') ]
     
-  for $loa in ($filteredDeletedLOA, $filteredAdded_And_AddedDeletedLOA,  $filteredOtherLOA)
+  for $loa in ($filteredDeletedLOA, $filteredAdded_And_AddedDeletedLOA,  $filteredOtherLOA) order by $loa/SortOrder
     let $loaChangeStatus := if ($loa[@isAdded='1']) then $const_isAdded else if ($loa[@isUpdated='1']) then $const_isUpdated else if ($loa[@isDeleted='1']) then $const_isDeleted else $const_noChange
     let $loaFields :=
     &lt;rcfields&gt;
@@ -1586,5 +1598,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-05-05T05:46:10.667Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-05-25T07:27:52.814Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
