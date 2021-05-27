@@ -264,6 +264,26 @@
     },
     "path" : "/Explore/I0082 - ITAM"
   }, {
+    "id" : "7RqqSXTgZcudVbwUuf0Bs6",
+    "name" : "mt_I0082_Locations",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "001KD60Z00000000017Y"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/I0082 - ITAM"
+  }, {
     "id" : "6BMq0BkwzgyehvFOBFhhsk",
     "name" : "mt_I0082_LW_SW_Compliance",
     "type" : "MTT",
