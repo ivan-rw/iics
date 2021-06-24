@@ -13,11 +13,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>daniel.ong@rwgroup.test</types1:CreatedBy>
       <types1:CreationDate>2020-04-02T02:05:46Z</types1:CreationDate>
-      <types1:ModifiedBy>daniel.ong@rwgroup.test</types1:ModifiedBy>
-      <types1:ModificationDate>2021-05-21T03:17:52Z</types1:ModificationDate>
+      <types1:ModifiedBy>norazean.shafein@rwgroup.test</types1:ModifiedBy>
+      <types1:ModificationDate>2021-06-11T06:32:59Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>norazean.shafein@rwgroup.test</types1:PublishedBy>
-      <types1:PublicationDate>2021-05-24T05:07:17Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-06-23T05:44:11Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.p-I0074-Common-Process-Subscribed_HR-Data/p-I0074-Common-Process-Subscribed_HR-Data.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -679,7 +679,9 @@ else ()
   &lt;field&gt;&lt;name&gt;DEDistrictName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/DE_District_Name}&lt;/source&gt;&lt;/field&gt;,
   &lt;field&gt;&lt;name&gt;DEDistrictRefId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/DE_District_Ref_ID}&lt;/source&gt;&lt;/field&gt;,
   &lt;field&gt;&lt;name&gt;ManagerOfManagerWorkerId&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Managers_Manager_Employee_ID}&lt;/source&gt;&lt;/field&gt;,
-  &lt;field&gt;&lt;name&gt;ManagerEmail&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Manager_Email}&lt;/source&gt;&lt;/field&gt;       
+  &lt;field&gt;&lt;name&gt;ManagerOfManagerFirstName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Managers_Manager_First_Name}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;ManagerOfManagerLastName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Managers_Manager_Last_Name}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;ManagerOfManagerEmail&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;AdditionalInfo&lt;/group&gt;&lt;parentChangeStatus&gt;{$AdditionalInformationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$AdditionalInformationNode/Managers_Manager_Email}&lt;/source&gt;&lt;/field&gt;    
   )
   else ()
   }
@@ -697,6 +699,7 @@ else ()
   &lt;field&gt;&lt;name&gt;GradeFrequency&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationSummaryBasedonCompensationGradeChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationSummaryBasedonCompensationGradeNode/Frequency}&lt;/source&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;GradeProfile&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationNode/Grade_Profile}&lt;/source&gt;&lt;/field&gt;  
   &lt;field&gt;&lt;name&gt;CompensationStepCurrent&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationNode/Compensation_Step_Current}&lt;/source&gt;&lt;/field&gt;   
+  &lt;field&gt;&lt;name&gt;CompensationStepName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;Compensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$CompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$CompensationNode/Compensation_Step_Name}&lt;/source&gt;&lt;/field&gt;   
   
 (: Ended Compensation :)
 {
@@ -704,6 +707,7 @@ if (fn:string-length($EndedCompensationNode) &gt; 0) then
 (
   &lt;field&gt;&lt;name&gt;GradeProfile&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedCompensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedCompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedCompensationNode/Grade_Profile}&lt;/source&gt;&lt;/field&gt;,
   &lt;field&gt;&lt;name&gt;CompensationStepCurrent&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedCompensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedCompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedCompensationNode/Compensation_Step_Current}&lt;/source&gt;&lt;/field&gt;,
+  &lt;field&gt;&lt;name&gt;CompensationStepName&lt;/name&gt;&lt;type&gt;text&lt;/type&gt;&lt;group&gt;EndedCompensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedCompensationChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedCompensationNode/Compensation_Step_Name}&lt;/source&gt;&lt;/field&gt;,
   &lt;field&gt;&lt;name&gt;PositionEndDate&lt;/name&gt;&lt;type&gt;date&lt;/type&gt;&lt;group&gt;EndedCompensation&lt;/group&gt;&lt;parentChangeStatus&gt;{$EndedPositionChangeStatus}&lt;/parentChangeStatus&gt;&lt;source&gt;{$EndedCompensationNode/Position_End_Date}&lt;/source&gt;&lt;/field&gt;
 )
 else ()
@@ -1598,5 +1602,5 @@ return
       <types1:GUID>8Ucexdm5QeNcidEFppkuaX</types1:GUID>
       <types1:DisplayName>p-I0074-Common-Process-Subscribed HR-Data</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-05-25T07:27:52.814Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-06-24T07:38:03.963Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
